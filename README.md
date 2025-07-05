@@ -7,7 +7,7 @@
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Ko--fi?color=29abe0&logo=ko-fi&logoColor=white&style=for-the-badge)](https://ko-fi.com/t4ctor)
 [![Releases](https://img.shields.io/github/downloads/Tectors/j0.dev/total?style=for-the-badge&color=00ffa2&label=Releases)](https://github.com/Tectors/j0.dev/releases)
 
-## Licensing
+# Licensing
 
 This project is licensed under the [GNU General Public License v3.0](./Licensing/GPLv3.txt).
 
