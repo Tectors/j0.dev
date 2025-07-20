@@ -1,0 +1,20 @@
+<Styles xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style Selector="CaptionButtons">
+        <Setter Property="MaxHeight" Value="{DynamicResource TitleBarHeight}"/>
+        <Setter Property="Height" Value="{DynamicResource TitleBarHeight}"/>
+    </Style>
+
+    <Style Selector="CaptionButtons Button">
+        <Setter Property="Height" Value="{DynamicResource TitleBarHeight}"/>
+    </Style>
+    
+    <Style Selector="Button">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="BorderBrush" Value="#171717"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+</Styles>

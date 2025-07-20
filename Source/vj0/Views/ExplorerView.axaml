@@ -1,0 +1,234 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vj0="clr-namespace:vj0.Services.Framework"
+    xmlns:Explorer="clr-namespace:vj0.Models.Files"
+    xmlns:viewModels1="clr-namespace:vj0.ViewModels"
+
+    x:Class="vj0.Views.ExplorerView"
+    x:DataType="viewModels1:ExplorerViewModel"
+    
+    Background="#0a0a0a"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="500">
+    
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Row="0" Grid.Column="0">
+                <DockPanel LastChildFill="True" IsVisible="{Binding IsFolderView}">
+                    <!--<Border Margin="0 0 0 5" DockPanel.Dock="Top" Height="50">
+                        <Grid ColumnDefinitions="*" ColumnSpacing="0">
+                            <Border
+                                Background="{DynamicResource PanelBackgroundBrush}"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="12"
+                                Margin="5 0 0 0">
+                            </Border>
+                        </Grid>
+                    </Border>-->
+                    
+                    <Border
+                        Margin="0 0 0 0"
+                        Background="{DynamicResource PanelBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="{DynamicResource FrameBorderThickness}"
+                        CornerRadius="12 12 0 0"
+                        MinHeight="32">
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TreeView AttachedToVisualTree="TreeView_AttachedToVisualTree"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      x:Name="FileTree"
+                                      Padding="10" ItemsSource="{Binding TreeViewCollection}">
+                                
+                                <TreeView.ItemContainerTheme>
+                                    <ControlTheme x:DataType="Explorer:TreeItem" TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                        <Setter Property="IsExpanded" Value="{Binding Expanded, Mode=TwoWay}" />
+                                        <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
+                                        
+                                        <Style Selector="^:empty /template/ ToggleButton#PART_ExpandCollapseChevron">
+                                            <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
+                                        </Style>
+                                        
+                                        <Style Selector="^:not(:empty) /template/ ToggleButton#PART_ExpandCollapseChevron">
+                                            <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
+                                        </Style>
+                                    </ControlTheme>
+                                </TreeView.ItemContainerTheme>
+                                
+                                <TreeView.ItemTemplate>
+                                    <TreeDataTemplate ItemsSource="{Binding FolderChildren}">
+                                        <Grid IsHitTestVisible="False">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Left: Folder Icons + Name -->
+                                            <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                                                <Canvas Width="14" Height="14" Margin="0 3 8 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Path
+                                                        Data="M2.5,5.5 A1.5,1.5 0 0 1 4,4 H7.172 A1.5,1.5 0 0 1 8.232,4.44 L9.56,5.76 A1.5,1.5 0 0 0 10.62,6 H16 A1.5,1.5 0 0 1 17.5,7.5 V14.5 A1.5,1.5 0 0 1 16,16 H4 A1.5,1.5 0 0 1 2.5,14.5 V5.5 Z"
+                                                        Stroke="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Converter={StaticResource ForegroundExpandedConverter}}"
+                                                        StrokeThickness="1"
+                                                        Fill="{Binding ItemBrush}"
+                                                        Width="14"
+                                                        Height="14"
+                                                        Stretch="Uniform"/>
+                                                </Canvas>
+
+                                                <TextBlock Background="Transparent" ToolTip.ShowDelay="1000" FontSize="14" IsHitTestVisible="False" Text="{Binding Name}" VerticalAlignment="Center">
+                                                </TextBlock>
+                                                
+                                                <!-- Right: Asset Count -->
+                                                <StackPanel IsHitTestVisible="False" IsVisible="{Binding HasAssets}" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.5" Margin="9 0 9 0">
+                                                    <TextBlock FontSize="12" Text="• " HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                    <TextBlock FontSize="14" Text="{Binding AssetCount}" />
+                                                    <TextBlock FontSize="14" Text=" files" />
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Grid>
+                                    </TreeDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                            
+                            <Border
+                                IsVisible="{Binding Source={x:Static vj0:AppServices.Settings}, Path=ExplorerView.ShowStats}"
+                                Background="#0f0f0f"
+                                Grid.Row="1" 
+                                HorizontalAlignment="Stretch"
+                                Height="120" 
+                                VerticalAlignment="Bottom" 
+                                BorderThickness="0 1 0 0" 
+                                BorderBrush="#0fafff"
+                                CornerRadius="15 15 0 0">
+                                
+                                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="4" Margin="25 0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="14" Text="Packages"/>
+                                        <TextBlock FontSize="14" Text="{Binding SelectedItemPackageCount}" Grid.Column="1"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="14" Text="Folders"/>
+                                        <TextBlock FontSize="14" Text="{Binding SelectedItemFolderCount}" Grid.Column="1"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="14" Text="Archive"/>
+                                        <TextBlock FontSize="14" Text="{Binding SelectedItemArchive}" Grid.Column="1"/>
+                                    </Grid>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock FontSize="14" Text="Mount Point"/>
+                                        <TextBlock FontSize="14" Text="{Binding SelectedItemMountPoint}" Grid.Column="1"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                
+                <DockPanel LastChildFill="True" IsVisible="{Binding !IsFolderView}">
+                    <!--<Border Margin="0 0 0 5" DockPanel.Dock="Top" Height="50">
+                        <Grid ColumnDefinitions="*" ColumnSpacing="0">
+                            <Border
+                                Background="{DynamicResource PanelBackgroundBrush}"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="12"
+                                Margin="5 0 0 0">
+                            </Border>
+                        </Grid>
+                    </Border>-->
+                    
+                    <Border
+                        Margin="0 0 0 0"
+                        Background="{DynamicResource PanelBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="1 1 1 0"
+                        CornerRadius="12 12 0 0"
+                        MinHeight="32">
+                        
+                        <Grid>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                <ListBox Margin="10" ItemsSource="{Binding FlatViewFiles}" 
+                                         SelectionMode="Multiple"
+                                         AutoScrollToSelectedItem="True"
+                                         DoubleTapped="OnFileItemDoubleTapped">
+                                    
+                                    <ListBox.Styles>
+                                        <Style Selector="ListBoxItem">
+                                            <Setter Property="Padding" Value="0"/>
+                                            <Setter Property="Margin" Value="0"/>
+                                        </Style>
+                                    </ListBox.Styles>
+                                    
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate DataType="Explorer:FileTile">
+                                            <StackPanel ToolTip.Tip="{Binding Path}" Spacing="5" Margin="25 0 0 0"
+                                                        Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <Canvas Width="14" Height="14" Margin="0 0 8 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <Path
+                                                        Data="M4,2 H10 L14,6 V14 A2,2 0 0 1 12,16 H4 A2,2 0 0 1 2,14 V4 A2,2 0 0 1 4,2 Z M10,2 V6 H14"
+                                                        Stroke="White"
+                                                        StrokeThickness="1"
+                                                        Fill="White"
+                                                        Width="14"
+                                                        Height="14"
+                                                        Stretch="Uniform"/>
+                                                </Canvas>
+                                                <TextBlock Text="{Binding NameWithoutExtension}"
+                                                           FontSize="14"
+                                                           VerticalAlignment="Center"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+                </DockPanel>
+            </Grid>
+            
+            <GridSplitter Grid.Row="0" Grid.Column="1" Opacity="0"/>
+        </Grid>
+    </Grid>
+</UserControl>

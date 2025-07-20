@@ -1,0 +1,68 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:profileEditor="clr-namespace:vj0.ViewModels.ProfileEditor"
+    xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
+
+    x:Class="vj0.Views.ProfileEditor.AESKeyProfileEditor"
+    x:DataType="profileEditor:ProfileEditorViewModel"
+
+    mc:Ignorable="d"
+    d:DesignWidth="700"
+    d:DesignHeight="550"
+
+    Focusable="True">
+    
+    <navigation:NavigationUnboundFrame>
+        <ScrollViewer Margin="25 0 14 0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Stretch" Padding="0 0 35 0"
+                      HorizontalAlignment="Stretch">
+            
+            <ItemsControl Margin="10" VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"
+                          Padding="0 14 0 14"
+                          ItemsSource="{Binding PakKeyEntries}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="8" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Spacing="10">
+                            <Border BorderBrush="#3d3d3d" Background="#0f0f0f" BorderThickness="1" CornerRadius="10">
+                                <Grid Margin="20">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                                            <StackPanel>
+                                            </StackPanel>
+                            
+                                            <StackPanel Orientation="Vertical" Spacing="3" Margin="0 5 0 0">
+                                                <TextBlock Text="{Binding FileName}" FontSize="16" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Guid}" FontSize="13" Opacity="0.66" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                
+                                        <Grid Margin="0 20 0 0" ColumnDefinitions="*,Auto">
+                                            <TextBox
+                                                FontFamily="Consolas"
+                                                FontSize="14"
+                                                HorizontalAlignment="Stretch"
+                                                Height="33"
+                                                Text="{Binding Key, Mode=TwoWay}"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </navigation:NavigationUnboundFrame>
+</UserControl>

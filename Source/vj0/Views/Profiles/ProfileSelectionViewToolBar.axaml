@@ -1,0 +1,42 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:controls="clr-namespace:vj0.Controls"
+    xmlns:profiles="clr-namespace:vj0.Models.Profiles"
+
+    x:Class="vj0.Views.Profiles.ProfileSelectionViewToolbar"
+    mc:Ignorable="d"
+    d:DesignWidth="550"
+    d:DesignHeight="40"
+
+    Focusable="True"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch">
+    
+    <StackPanel Orientation="Horizontal" Spacing="10">
+        <Button Cursor="Hand" Width="33" BorderThickness="0" Command="{x:Static profiles:Profile.CreateNewProfileCommand}" Height="30" Background="#0095ff" Opacity="1" CornerRadius="7" IsVisible="True">
+            <ToolTip.Tip>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Create a New Profile</TextBlock>
+                    <controls:KeybindDisplay Keybind="Ctrl+" />
+                </StackPanel>
+            </ToolTip.Tip>
+            
+            <Button.Resources>
+                <ResourceDictionary>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#2ea8ff</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed">#2ea8ff</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                </ResourceDictionary>
+            </Button.Resources>
+                
+            <Grid>
+                <avalonia:FluentIcon Foreground="White" Opacity="1" FontSize="23" Icon="Add"/>
+            </Grid>
+        </Button>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,87 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extensions="clr-namespace:vj0.Shared.Extensions;assembly=vj0.Shared"
+    xmlns:texture="clr-namespace:CUE4Parse.UE4.Assets.Exports.Texture;assembly=CUE4Parse"
+    xmlns:base="clr-namespace:vj0.Shared.Framework.Base;assembly=vj0.Shared"
+    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:profileEditor="clr-namespace:vj0.ViewModels.ProfileEditor"
+    xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
+
+    x:Class="vj0.Views.ProfileEditor.AdvancedProfileEditor"
+    x:DataType="profileEditor:ProfileEditorViewModel"
+
+    mc:Ignorable="d"
+    d:DesignWidth="700"
+    d:DesignHeight="550"
+
+    Focusable="True">
+
+    <navigation:NavigationUnboundFrame>
+        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Stretch">
+            <StackPanel Margin="20" Spacing="22">
+                <!-- Override Mappings -->
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <Border Background="#0f0f0f" BorderBrush="#3d3d3d" BorderThickness="1" CornerRadius="10">
+                        <Grid Margin="25">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
+                                    <StackPanel>
+                                        <avalonia:FluentIcon HorizontalAlignment="Left" Opacity="0.8" Icon="DataScatter" FontSize="15"></avalonia:FluentIcon>
+                                    </StackPanel>
+                            
+                                    <StackPanel Orientation="Vertical" Spacing="3">
+                                        <TextBlock Text="Override Mappings File" FontSize="16" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Use custom mapping configurations" FontSize="14" Opacity="0.66" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Grid Margin="0 20 0 0" ColumnDefinitions="*,Auto" IsVisible="{Binding Profile.MappingsContainer.Override, Mode=TwoWay, FallbackValue=''}">
+                                    <TextBox Grid.Column="0"
+                                             HorizontalAlignment="Stretch"
+                                             Text="{Binding Profile.MappingsContainer.Path}"/>
+                        
+                                    <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseMappingsPathFile}">
+                                        <avalonia:SymbolIcon Opacity="0.7" Symbol="Document"/>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                            
+                            <ToggleSwitch
+                                IsChecked="{Binding Profile.MappingsContainer.Override, Mode=TwoWay, FallbackValue=''}"
+                                Cursor="Hand"
+                                Width="40"
+                                Margin="0 0 0 0"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                OffContent=""
+                                OnContent=""/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                
+                <StackPanel Opacity="{Binding AutoDetectedGameToOpacity}"
+                            IsHitTestVisible="{Binding !Profile.IsAutoDetected}"
+                            Orientation="Vertical" Spacing="15">
+                    <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Padding="0" Margin="0">
+                        Texture Platform
+                    </TextBlock>
+
+                    <ComboBox HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type texture:ETexturePlatform}}" SelectedItem="{Binding Profile.TexturePlatform, Converter={StaticResource EnumToRecord}}"/>
+                </StackPanel>
+                
+                <StackPanel Opacity="{Binding AutoDetectedGameToOpacity}"
+                            IsHitTestVisible="{Binding !Profile.IsAutoDetected}"
+                            Orientation="Vertical" Spacing="15">
+                    <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Padding="0" Margin="0">
+                        Audio Format
+                    </TextBlock>
+
+                    <ComboBox HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type base:EAudioFormatType}}" SelectedItem="{Binding Profile.AudioFormat, Converter={StaticResource EnumToRecord}}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </navigation:NavigationUnboundFrame>
+</UserControl>

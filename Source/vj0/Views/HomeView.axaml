@@ -1,0 +1,259 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:controls="clr-namespace:vj0.Controls"
+    xmlns:viewModels="clr-namespace:vj0.ViewModels"
+    xmlns:framework="clr-namespace:vj0.Services.Framework"
+    xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
+    xmlns:application="clr-namespace:vj0.Application"
+    x:Class="vj0.Views.HomeView"
+    x:DataType="viewModels:HomeViewModel"
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="800">
+    
+    <UserControl.Resources>
+        <LinearGradientBrush x:Key="AnimatingTextBrush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="White" Offset="0"/>
+            <GradientStop Color="#767676" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+    
+    <Grid>
+        <navigation:NavigationFrame>
+            <Grid>
+                <!-- Background blur effect -->
+                <Border Width="150" Height="56" Margin="0 0 0 -80" Opacity="0.3"
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="White" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <BlurEffect Radius="250"/>
+                    </Border.Effect>
+                </Border>
+                
+                <controls:CursorEffectControl/>
+                
+                <!-- Background image -->
+                <Border x:Name="BackgroundImage" ClipToBounds="True">
+                    <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill"
+                           Margin="0 0" Opacity="0.5">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,55%">
+                                <GradientStop Color="#FF000000" Offset="0" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                </Border>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Spacing="30" Margin="0 0 0 0">
+                        <!-- App icon -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Height="300" HorizontalAlignment="Center"
+                                   Source="/Assets/Icon/App.Icon.png" Margin="0 0 0 -80"/>
+                        </Grid>
+                        
+                        <!-- Fixed container for tagline text to prevent layout shifts -->
+                        <Border HorizontalAlignment="Center" 
+                                Height="35" 
+                                MinWidth="400">
+                            
+                            <TextBlock x:Name="RotatingTaglineText"
+                                       FontFamily="Consolas"
+                                       Foreground="{DynamicResource AnimatingTextBrush}"
+                                       FontWeight="Medium"
+                                       LetterSpacing="-0.4"
+                                       FontSize="25"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Text="the ultimate datamining experience"
+                                       Opacity="0"
+                                       TextAlignment="Center"/>
+                        </Border>
+                        
+                        <!-- Social buttons -->
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Orientation="Horizontal" Spacing="15" Margin="0 15 0 0">
+                            
+                            <!-- Donate button -->
+                            <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
+                                    Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
+                                    Opacity="0.95" Background="#171717" BorderThickness="1"
+                                    BorderBrush="#545454" CornerRadius="8" HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#292929"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#b5b5b5"/>
+                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#b5b5b5"/>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal" Spacing="14">
+                                    <Viewbox Width="18" Height="18" Stretch="Uniform">
+                                        <Path Fill="#ff1c68"
+                                              Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                                        <Viewbox.Effect>
+                                            <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
+                                                              OffsetX="0" OffsetY="0" Opacity="0.3"/>
+                                        </Viewbox.Effect>
+                                    </Viewbox>
+                                    <TextBlock Foreground="White" FontWeight="Bold" FontSize="19">Donate</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            
+                            <!-- Discord button -->
+                            <Button Click="OpenDiscord" Cursor="Hand" ToolTip.Tip="Discord"
+                                    HorizontalAlignment="Stretch" Height="40" Opacity="0.95" Width="40"
+                                    Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Image Source="/Assets/Brands/Scaled/Discord.20px.png"
+                                           Width="20" IsHitTestVisible="False"/>
+                                </StackPanel>
+                            </Button>
+                            
+                            <!-- GitHub button -->
+                            <Button Click="OpenGitHub" Cursor="Hand" ToolTip.Tip="GitHub"
+                                    HorizontalAlignment="Stretch" Height="40" Opacity="0.95" Width="40"
+                                    Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <avalonia:MaterialIcon Width="20" Kind="Github"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            
+                            <!-- Twitter button -->
+                            <Button Click="OpenTwitterAccount" Cursor="Hand" ToolTip.Tip="Twitter"
+                                    HorizontalAlignment="Stretch" Height="40" Opacity="0.95" Width="40"
+                                    Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <avalonia:MaterialIcon Width="20" Kind="Twitter"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Margin="0 20 0 0"
+                                    Orientation="Horizontal" Spacing="15">
+                            
+                            <!-- Get Started button -->
+                            <Button Click="GetStarted"
+                                    Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
+                                    Foreground="#171717"
+                                    IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=!DoesProfileExist}"
+                                    Background="#ffffff" CornerRadius="8" HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center">
+                                <Button.Resources>
+                                    <ResourceDictionary>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="White"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="White"/>
+                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#171717"/>
+                                        <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#171717"/>
+                                    </ResourceDictionary>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal" Spacing="14">
+                                    <TextBlock FontWeight="Bold" FontSize="19">Get Started</TextBlock>
+                                    
+                                    <avalonia:MaterialIcon Width="10" Kind="NavigateNext"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            
+                            <Grid IsVisible="{x:Static application:Globals.IsReadyToExplore}">
+                                <!-- Filter Files button -->
+                                <Button Click="FilterFiles"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
+                                        Foreground="#171717"
+                                        IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=DoesProfileExist}"
+                                        Background="#ffffff" CornerRadius="8" HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#171717"/>
+                                            <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#171717"/>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                    <StackPanel Orientation="Horizontal" Spacing="14">
+                                        <avalonia:MaterialIcon Width="15" Kind="Filter"
+                                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock FontWeight="Bold" FontSize="19">Filter Files</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                
+                                <!-- Explore Files button -->
+                                <Button Click="ExploreFiles"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
+                                        Foreground="#171717"
+                                        IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=IsProfileInitialized}"
+                                        Background="#ffffff" CornerRadius="8" HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center">
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#171717"/>
+                                            <SolidColorBrush x:Key="ButtonForegroundPressed" Color="#171717"/>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                    <StackPanel Orientation="Horizontal" Spacing="14">
+                                        <avalonia:MaterialIcon Width="19" Kind="Folder"
+                                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock FontWeight="Bold" FontSize="19">Explore Files</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0 0 0 20" Opacity="0.5">
+                        <StackPanel x:Name="TipContainer" Orientation="Horizontal" Spacing="5">
+                            <avalonia:MaterialIcon Kind="Lightbulb"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Tip: " HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="TipText" Text="" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </navigation:NavigationFrame>
+    </Grid>
+</UserControl>

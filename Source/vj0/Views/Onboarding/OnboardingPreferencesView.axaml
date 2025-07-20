@@ -1,0 +1,69 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:vj0.Views"
+
+    x:Class="vj0.Views.Onboarding.OnboardingPreferencesView"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="950"
+    d:DesignHeight="700">
+    
+    <Grid Margin="5 0 0 0">
+        <StackPanel VerticalAlignment="Center" Spacing="35">
+            <TextBlock LetterSpacing="-1" HorizontalAlignment="Center" FontSize="33" FontWeight="SemiBold" Foreground="White">
+                <TextBlock.Effect>
+                    <DropShadowEffect
+                        Color="#e3e3e3"
+                        BlurRadius="99"
+                        Opacity="0.2"/>
+                </TextBlock.Effect>
+                
+                Adjust Your Preferences
+            </TextBlock>
+        
+            <views:SettingsView Width="950" Height="400" IsOnboarding="True"/>
+        
+            <Button
+                Foreground="White"
+                Background="#195bff"
+                Height="40"
+                Margin="0 0 0 0"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                ClipToBounds="True"
+                BorderThickness="0"
+                CornerRadius="12"
+                IsDefault="True"
+                Click="Save"
+                Width="180">
+    
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                    </ResourceDictionary>
+                </Button.Resources>
+    
+                <Grid>
+                    <Border
+                        Background="White"
+                        Height="1.4"
+                        Opacity="0.1"
+                        CornerRadius="16 16 0 0"
+                        Margin="0 -5 0 0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Stretch"/>
+
+                    <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="0 1 0 0" Text="Complete Setup" FontSize="16" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

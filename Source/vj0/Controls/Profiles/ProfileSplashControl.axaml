@@ -1,0 +1,38 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:vj0.Models.Profiles"
+    xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    x:Class="vj0.Controls.Profiles.ProfileSplashControl"
+    x:DataType="models:Profile"
+    mc:Ignorable="d"
+    d:DesignWidth="60"
+    d:DesignHeight="64">
+
+  <Grid Width="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=30}" Height="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=30}" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <!-- Splash from Bitmap -->
+    <Border CornerRadius="{Binding Radius, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}}" ClipToBounds="True" IsVisible="{Binding Display.Splash.Exists}">
+      <Image UseLayoutRounding="False" RenderOptions.BitmapInterpolationMode="HighQuality" Source="{Binding Display.Splash.Bitmap}" Stretch="UniformToFill"/>
+    </Border>
+    
+    <!-- Placeholder Brush -->
+    <Border
+      Background="{Binding Display.GradientBrush}"
+      CornerRadius="{Binding Radius, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}}"
+      IsVisible="{Binding !Display.Splash.Exists}">
+      
+      <TextBlock
+        Text="{Binding Display.Abbreviation}"
+        Foreground="White"
+        FontSize="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=12}"
+        FontWeight="Bold"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"/>
+    </Border>
+    
+    <controls:ProgressRing IsVisible="{Binding IsNotInitializedAndIsActive}" Foreground="White" Width="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}" Height="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}"/>
+  </Grid>
+</UserControl>

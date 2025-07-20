@@ -1,0 +1,63 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+
+    x:Class="vj0.Views.Settings.DebugSettingsView"
+    x:DataType="settings:DebugSettingsViewModel"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="1500">
+    
+    <ScrollViewer>
+        <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <Button Click="OpenLogsFolder" Cursor="Hand" Background="#0f0f0f" Foreground="#adadad" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                    </ResourceDictionary>
+                </Button.Resources>
+                
+                <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                    <avalonia:FluentIcon
+                        Icon="WindowConsole"
+                        FontSize="25"
+                        IconVariant="Regular"/>
+                
+                    <TextBlock Padding="10" HorizontalAlignment="Center" FontSize="17">Open Logs</TextBlock>
+                </StackPanel>
+            </Button>
+            
+            <Button Click="OpenStartup" Cursor="Hand" Background="#0f0f0f" Foreground="#adadad" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
+                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                    </ResourceDictionary>
+                </Button.Resources>
+                
+                <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                    <avalonia:FluentIcon
+                        Icon="StarArrowRightStart"
+                        FontSize="25"
+                        IconVariant="Regular"/>
+                
+                    <TextBlock Padding="10" HorizontalAlignment="Center" FontSize="17">Open Startup</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,164 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls"
+                    xmlns:fa="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                    xmlns:primitives="clr-namespace:FluentAvalonia.UI.Controls.Primitives;assembly=FluentAvalonia">
+
+    <Design.PreviewWith>
+        <Border Padding="30" Background="#1a1a1a">
+            <fa:TaskDialog Header="Preview Header"
+                           Width="700"
+                           Height="300">
+                <fa:TaskDialog.Buttons>
+                    <fa:TaskDialogButton Text="OK"/>
+                    <fa:TaskDialogButton Text="Cancel"/>
+                </fa:TaskDialog.Buttons>
+                <fa:TaskDialog.Commands>
+                    <fa:TaskDialogCommand Text="Command 1"/>
+                    <fa:TaskDialogCommand Text="Command 2"/>
+                </fa:TaskDialog.Commands>
+            </fa:TaskDialog>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme TargetType="fa:TaskDialog"
+                  x:Key="{x:Type fa:TaskDialog}"
+                  x:DataType="fa:TaskDialog">
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="Black">
+                    <Rectangle Fill="Black" Opacity="1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               IsHitTestVisible="True"/>
+                    
+                    <Border Margin="0 0 0 0"
+                        Width="700"
+                        Background="#0d0d0d"
+                        ClipToBounds="True"
+                        Padding="50"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                        
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="00:00:00.083" Property="Background"/>
+                            </Transitions>
+                        </Border.Transitions>
+                        
+                        <Grid>
+                            <StackPanel Spacing="12">
+                                <Viewbox Width="18" Height="18" Margin="0 0 12 0" Name="IconHost"
+                                         IsVisible="False">
+                                    <ui:IconSourceElement IconSource="{Binding IconSource}"/>
+                                </Viewbox>
+                                
+                                <TextBlock Text="{TemplateBinding Header}" 
+                                           FontSize="25" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="White"/>
+
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Auto"
+                                              MaxHeight="300">
+                                    <ContentPresenter x:Name="ContentPresenter" FontSize="15"
+                                                      TextWrapping="Wrap"
+                                                      MaxWidth="700" HorizontalAlignment="Left"
+                                                      Content="{TemplateBinding Content}"
+                                                      Margin="0,0,0,0"/>
+                                </ScrollViewer>
+
+                                <ItemsControl x:Name="CommandsHost">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical" Spacing="8"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+
+                                <ItemsControl x:Name="ButtonsHost"
+                                              HorizontalAlignment="Right">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" Spacing="10"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+    <ControlTheme x:Key="{x:Type primitives:TaskDialogButtonHost}"
+              TargetType="primitives:TaskDialogButtonHost">
+        <Setter Property="Background" Value="#1d1d1d"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="#707070"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10 6"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="Root"
+                        Cursor="Hand"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Padding="{TemplateBinding Padding}">
+                    <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                        <Viewbox Width="18" Height="18" Name="IconHost" IsVisible="False">
+                            <ui:IconSourceElement IconSource="{TemplateBinding IconSource}"/>
+                        </Viewbox>
+
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:icon /template/ Viewbox#IconHost">
+            <Setter Property="IsVisible" Value="True"/>
+        </Style>
+
+        <Style Selector="^:pointerover /template/ Border#Root">
+            <Setter Property="Background" Value="#2a2a2a"/>
+            <Setter Property="BorderBrush" Value="#707070"/>
+        </Style>
+
+        <Style Selector="^:pressed /template/ Border#Root">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#707070"/>
+        </Style>
+
+        <Style Selector="^:disabled /template/ Border#Root">
+            <Setter Property="Background" Value="#1a1a1a"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+
+        <Style Selector="^.accent /template/ Border#Root">
+            <Setter Property="Background" Value="#2563eb"/>
+            <Setter Property="BorderBrush" Value="#2563eb"/>
+            <Setter Property="TextElement.Foreground" Value="White"/>
+        </Style>
+        <Style Selector="^.accent:pointerover /template/ Border#Root">
+            <Setter Property="Background" Value="#3b82f6"/>
+        </Style>
+        <Style Selector="^.accent:pressed /template/ Border#Root">
+            <Setter Property="Background" Value="#1d4ed8"/>
+        </Style>
+        <Style Selector="^.accent:disabled /template/ Border#Root">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="TextElement.Foreground" Value="#888"/>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

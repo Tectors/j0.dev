@@ -1,0 +1,23 @@
+﻿<ContentControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="vj0.Controls.Navigation.NavigationUnboundFrame"
+    Background="Transparent">
+    
+    <ContentControl.Template>
+        <ControlTemplate TargetType="ContentControl">
+            <Border
+                ClipToBounds="True"
+                BorderThickness="1 2 1 1"
+                CornerRadius="12" 
+                BorderBrush="{DynamicResource BorderBrush}"
+                Background="{DynamicResource PanelBackgroundBrush}"
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="0 0 15 0">
+                
+                <ContentPresenter Content="{TemplateBinding Content}" />
+            </Border>
+        </ControlTemplate>
+    </ContentControl.Template>
+</ContentControl>

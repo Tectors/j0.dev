@@ -1,0 +1,27 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+
+    x:Class="vj0.Views.Settings.CloudSettingsView"
+    x:DataType="settings:CloudSettingsViewModel"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="1500">
+    
+    <ScrollViewer>
+        <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <controls:SettingsExpander Header="Cloud Service" Description="Runs a locally hosted webhost API to use for applications like JsonAsAsset to interact with the game files.">
+                <controls:SettingsExpander.Footer>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleSwitch Cursor="Hand" IsChecked="{Binding RunHostedAPI}"/>
+                    </StackPanel>
+                </controls:SettingsExpander.Footer>
+            </controls:SettingsExpander>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

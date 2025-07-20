@@ -1,0 +1,123 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:windowModels="clr-namespace:vj0.WindowModels"
+    xmlns:application="clr-namespace:vj0.Application"
+
+    x:Class="vj0.Windows.OnboardingWindow"
+    x:DataType="windowModels:OnboardingWindowModel"
+    
+    Title="Welcome"
+    Background="#0a0a0a"
+
+    Width="1000" MinWidth="1000"
+    Height="660" MinHeight="660"
+    
+    mc:Ignorable="d"
+    
+    d:DesignWidth="{Binding $parent[Window].MinWidth}"
+    d:DesignHeight="{Binding $parent[Window].MinHeight}">
+
+    <Grid RowDefinitions="Auto, *" Margin="{Binding $parent[Window].OffScreenMargin}">
+        <!-- Title Bar -->
+        <Grid>
+            <!-- Arrow Navigation -->
+            <StackPanel Margin="15 15 0 0" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" IsVisible="{Binding CanGoBack}">
+                    <Button Background="Transparent" Foreground="#adadad" Click="Back">
+                        <fluent:FluentIcon Icon="ArrowLeft" IconSize="Size12"/>
+                    </Button>
+            
+                    <Button Background="Transparent" Foreground="#adadad" Click="Next">
+                        <fluent:FluentIcon Icon="ArrowRight" IconSize="Size12"/>
+                    </Button>
+                </StackPanel>
+                
+                <TextBlock IsHitTestVisible="False" Text="{x:Static application:Globals.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+            </StackPanel>
+
+            <!-- Discord Link -->
+            <StackPanel Background="Transparent" Margin="0" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+                <Button Click="OpenDiscordLink"
+                        Foreground="White"
+                        Background="Transparent"
+                        Height="33"
+                        ToolTip.Tip="Discord"
+                        Cursor="Hand"
+                        HorizontalAlignment="Center"
+                        ClipToBounds="True"
+                        BorderThickness="0"
+                        CornerRadius="5"
+                        FontSize="15"
+                        Width="33">
+        
+                    <Image Source="/Assets/Brands/Scaled/Discord.20px.png"
+                           Width="20"
+                           IsHitTestVisible="False"/>
+                </Button>
+                
+                <!-- Donate Link -->
+                <Button Cursor="Hand" Click="OpenDonateLink" ToolTip.Tip="Support Us" Height="30" Width="40" Background="#240a0f" CornerRadius="7">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#66343d"/>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#8a2b3c"/>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                        
+                    <Grid>
+                        <Border
+                            Background="White"
+                            Height="0.3"
+                            Opacity="0.03"
+                            Width="29"
+                            CornerRadius="16 16 0 0"
+                            Margin="0 -4.5 0 0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Stretch"/>
+                            
+                        <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                            <Viewbox Width="18" Height="18" Stretch="Uniform">
+                                <Path
+                                    Fill="#ff1c68"
+                                    Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                            </Viewbox>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                
+                <CaptionButtons Margin="4 0 0 0" x:Name="captionButtons" Background="Transparent"/>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Background Wallpaper -->
+        <Grid Grid.Row="1" Margin="-2 0 0 0">
+            <Border ClipToBounds="True">
+                <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" Opacity="0.5">
+                    <Image.OpacityMask>
+                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,50%">
+                            <GradientStop Color="#FF000000" Offset="0" />
+                            <GradientStop Color="#00000000" Offset="1" />
+                        </LinearGradientBrush>
+                    </Image.OpacityMask>
+                </Image>
+            </Border>
+            
+            <!-- Navigation -->
+            <controls:NavigationView
+                x:Name="OnboardingNavigationView"
+                
+                PaneDisplayMode="LeftCompact"
+                Classes="NoBackground"
+                CompactPaneLength="0">
+
+                <controls:Frame Margin="0 -20 0 0" x:Name="ContentFrame"/>
+            </controls:NavigationView>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,215 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+      <AssemblyName>j0.dev</AssemblyName>
+      <ApplicationIcon>Assets/Icon/App.ico</ApplicationIcon>
+      
+      <Product>j0.dev</Product>
+      <Authors>Tector</Authors>
+
+      <FileVersion>1.0.0.0</FileVersion>
+      <AssemblyVersion>1.0.0.0</AssemblyVersion>
+
+      <ApplicationManifest>Application/app.manifest</ApplicationManifest>
+
+      <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+      <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+      <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+      <PublishSingleFile>true</PublishSingleFile>
+
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <TargetFramework>net8.0</TargetFramework>
+      <SelfContained>true</SelfContained>
+      <OutputType>WinExe</OutputType>
+      <Nullable>enable</Nullable>
+      <LangVersion>latest</LangVersion>
+      <PublishWithSymbols>false</PublishWithSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\Licensing\NOTICE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+      <!-- Licensed ~~~~~~~~~~~ -->
+      <PackageReference Include="Avalonia" Version="11.3.0"/>
+      <PackageReference Include="Avalonia.Desktop" Version="11.3.0"/>
+      <PackageReference Include="Avalonia.Svg" Version="11.3.0"/>
+      
+      <PackageReference Include="Material.Icons.Avalonia" Version="3.0.0-preview1.1"/>
+      <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.0"/>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3"/>
+      <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2"/>
+      <PackageReference Include="DiscordRichPresence" Version="1.2.1.24"/>
+      <PackageReference Include="DynamicData" Version="9.4.1" />
+      <PackageReference Include="FluentAvaloniaUI" Version="2.4.0-preview1"/>
+      <PackageReference Include="FluentIcons.Avalonia.Fluent" Version="1.1.303"/>
+      <PackageReference Include="JWT" Version="11.0.0-beta3"/>
+      <PackageReference Include="MessageBox.Avalonia" Version="3.2.0"/>
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.0-rc.2.24474.3"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-rc.2.24474.1"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.2.24474.1"/>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0-rc.2.24474.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="ReactiveUI" Version="20.4.1" />
+      <PackageReference Include="runtime.native.System.Data.SqlClient.sni" Version="4.7.0"/>
+      <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
+      <PackageReference Include="System.Reactive" Version="6.0.1"/>
+      <!-- <- Licensed ~~~~~~~~~~~ -->
+  </ItemGroup>
+
+  <ItemGroup>
+      <AvaloniaResource Include="Assets\**"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\vj0.Cloud\vj0.Cloud.csproj" />
+    <ProjectReference Include="..\vj0.Shared\vj0.Shared.csproj"/>
+    <ProjectReference Include="..\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj"/>
+    <ProjectReference Include="..\Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Windows\MainWindow.cs">
+      <DependentUpon>MainWindow.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Windows\ProfileEditorWindow.cs">
+      <DependentUpon>ProfileEditorWindow.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Windows\OnboardingWindow.cs">
+      <DependentUpon>OnboardingWindow.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TitleBar.cs">
+      <DependentUpon>TitleBar.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsView.cs">
+      <DependentUpon>SettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ExplorerView.cs">
+      <DependentUpon>ExplorerView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Startup\StartupWelcomeView.cs">
+      <DependentUpon>StartupWelcomeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Startup\StartupSettingsView.cs">
+      <DependentUpon>StartupSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Startup\StartupGuideView.cs">
+      <DependentUpon>StartupGuideView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\SerializationSettingsView.cs">
+      <DependentUpon>SerializationSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\OnlineSettingsView.cs">
+      <DependentUpon>OnlineSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\ModelSettingsView.cs">
+      <DependentUpon>ModelSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\DebugSettingsView.cs">
+      <DependentUpon>DebugSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\CloudSettingsView.cs">
+      <DependentUpon>CloudSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings\ApplicationSettingsView.cs">
+      <DependentUpon>ApplicationSettingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Application\AppInstance.cs">
+      <DependentUpon>AppInstance.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\CursorEffectControl.cs">
+      <DependentUpon>CursorEffectControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupGuide\CloudGuideView.cs">
+      <DependentUpon>CloudGuideView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupGuide\OnboardingTermsEncryptionView.cs">
+      <DependentUpon>OnboardingTermsEncryptionView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupGuide\MappingsGuideView.cs">
+      <DependentUpon>MappingsGuideView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StartupGuide\ProfilesGuideView.cs">
+      <DependentUpon>ProfilesGuideView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Onboarding\OnboardingWelcomeView.cs">
+      <DependentUpon>OnboardingWelcomeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Onboarding\OnboardingTermsView.cs">
+      <DependentUpon>OnboardingTermsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Onboarding\OnboardingPreferencesView.cs">
+      <DependentUpon>OnboardingPreferencesView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OnboardingTerms\OnboardingTermsCloudView.cs">
+      <DependentUpon>OnboardingTermsCloudView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OnboardingTerms\OnboardingTermsProfilesView.cs">
+      <DependentUpon>OnboardingTermsProfilesView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OnboardingTerms\OnboardingTermsMappingsView.cs">
+      <DependentUpon>OnboardingTermsMappingsView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OnboardingTerms\OnboardingTermsEncryptionView.cs">
+      <DependentUpon>OnboardingTermsEncryptionView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profile\ProfileCard.cs">
+      <DependentUpon>ProfileCard.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profile\ProfileSelectionView.cs">
+      <DependentUpon>ProfileSelectionView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profile\ProfileSelectionViewToolbar.cs">
+      <DependentUpon>ProfileSelectionViewToolBar.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProfileEditor\AdvancedProfileEditor.cs">
+      <DependentUpon>AdvancedProfileEditor.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProfileEditor\AESKeyProfileEditor.cs">
+      <DependentUpon>AESKeyProfileEditor.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ProfileEditor\GeneralDetailsProfileEditor.cs">
+      <DependentUpon>GeneralDetailsProfileEditor.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profiles\ProfileSelectionViewToolbar.cs">
+      <DependentUpon>ProfileSelectionViewToolBar.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profiles\ProfileCard.cs">
+      <DependentUpon>ProfileCard.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\KeybindDisplay.cs">
+      <DependentUpon>KeybindDisplay.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Profiles\ProfileSplashControl.cs">
+      <DependentUpon>ProfileSplashControl.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeView.cs">
+      <DependentUpon>HomeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ScopeView.cs">
+      <DependentUpon>ScopeView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profiles\ProfileSelectionView.cs">
+      <DependentUpon>ProfileSelectionView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ScrollTopShadow.cs">
+      <DependentUpon>ScrollTopShadow.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Navigation\NavigationFrame.cs">
+      <DependentUpon>NavigationFrame.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Navigation\NavigationUnboundFrame.cs">
+      <DependentUpon>NavigationUnboundFrame.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Background\" />
+  </ItemGroup>
+</Project>

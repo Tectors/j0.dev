@@ -1,0 +1,246 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:vj0.Converters"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+             xmlns:extensions="clr-namespace:vj0.Shared.Extensions;assembly=vj0.Shared"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             RequestedThemeVariant="Dark"
+             
+             x:Class="vj0.Application.AppInstance">
+
+  <Application.Styles>
+    <StyleInclude Source="/Styles/ButtonStyles.axaml"/>
+    
+    <styling:FluentAvaloniaTheme/>
+    <FluentTheme/>
+
+    <avalonia:MaterialIconStyles/>
+
+    <Style Selector="Window">
+      <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/>
+      <Setter Property="ExtendClientAreaToDecorationsHint" Value="True"/>
+      <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="{DynamicResource TitleBarHeight}"/>
+      <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome"/>
+    </Style>
+    
+    <Style Selector="ui|Frame">
+      <Setter Property="IsNavigationStackEnabled" Value="False"/>
+    </Style>
+
+    <Style Selector="TextBox">
+      <Setter Property="SelectionBrush" Value="#2c5ed4"/>
+      <Setter Property="SelectionForegroundBrush" Value="White"/>
+      <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationView.NoBackground /template/ Border#ContentGridBorder">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+
+    <Style Selector="ui|NavigationView.NoRoundedBackground /template/ Border#ContentGridBorder">
+      <Setter Property="Background" Value="#0d0d0d"/>
+      <Setter Property="BorderBrush" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationView.NoBackgroundWithBorderBrush /template/ Border#ContentGridBorder">
+      <Setter Property="Background" Value="#0d0d0d"/>
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+      <Setter Property="BorderThickness" Value="1 1 0 0"/>
+      <Setter Property="CornerRadius" Value="8 0 0 0"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationView.NoBackgroundWithBorderBrushRoundedCorners /template/ Border#ContentGridBorder">
+      <Setter Property="CornerRadius" Value="8"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem">
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="ui|NavigationView.NoBackground /template/ StackPanel#TopNavArea">
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationView">
+      <Setter Property="IsSettingsVisible" Value="False"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationView.NoBackgroundWithBorderBrush /template/ StackPanel#TopNavArea">
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItemSeparator">
+      <Setter Property="Margin" Value="0 4 0 4"/>
+      <Setter Property="Opacity" Value="0.08"/>
+    </Style>
+    
+    <Style Selector="ScrollBar">
+      <Setter Property="Width" Value="20"/>
+    </Style>
+  </Application.Styles>
+  
+  <Application.Resources>
+    <ResourceDictionary>
+      <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+      <extensions:EnumToRecordConverter x:Key="EnumToRecord"/>
+      <extensions:EnumEqualsConverter x:Key="EnumEquals" />
+      <converters:MultiplyConverter x:Key="MultiplyConverter" />
+      
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="/Styles/TaskDialog.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/TreeViewStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/ScrollBarStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/DataValidationErrorsStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/TextBoxStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/TextBlockStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/ListBoxStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/InfoBarStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/ToolTipStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/ContentDialogStyles.axaml"/>
+      </ResourceDictionary.MergedDictionaries>
+
+      <x:Double x:Key="TitleBarHeight">55</x:Double>
+      <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.425</x:Double>
+      
+      <x:Double x:Key="SettingsExpanderMinHeight">15</x:Double>
+      <x:Double x:Key="SettingsExpanderItemMinHeight">15</x:Double>
+      
+      <Thickness x:Key="MenuBarItemPadding">0</Thickness>
+      
+      <x:Double x:Key="ToolTipContentThemeFontSize">14</x:Double>
+      
+      <CornerRadius x:Key="OverlayCornerRadius">15</CornerRadius>
+      
+      <Thickness x:Key="NavigationViewBorderThickness">8</Thickness>
+      <Thickness x:Key="FlyoutContentThemePadding">10</Thickness>
+      
+      <Thickness x:Key="CornerRadius">4</Thickness>
+      
+      <system:Double x:Key="ToolTipContentMaxWidth">5000</system:Double>
+      <system:Double x:Key="ToolTipMaxWidth">5000</system:Double>
+      
+      <CornerRadius x:Key="ControlCornerRadius">8</CornerRadius>
+      
+      <SolidColorBrush x:Key="ContentDialogBackground" Color="#0f0f10"/>
+      <SolidColorBrush x:Key="ContentDialogTopOverlay" Color="#0f0f10"/>
+      <SolidColorBrush x:Key="ContentDialogBorderBrush" Color="#282828"/>
+
+      <!-- Brushes grouped logically -->
+      <SolidColorBrush x:Key="BackgroundBrush" Color="#0d0d0d"/>
+      
+      <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="White"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="#198cff"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundChecked" Color="#198cff"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="#198cff"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="#198cff"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#235fe8"/>
+      <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#235fe8"/>
+      
+      <SolidColorBrush x:Key="ExpanderBackground" Color="#0f0f0f"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0f0f0f"/>
+      
+      <SolidColorBrush x:Key="CommandBarFlyoutButtonBackground" Color="#161616"/>
+      <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackground" Color="#161616"/>
+      <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackgroundPointerOver" Color="#235fe8"/>
+      <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackgroundPressed" Color="#235fe8"/>
+      
+      <SolidColorBrush x:Key="ForegroundBrush" Color="White"/>
+      <SolidColorBrush x:Key="BorderBrush" Color="#1f2023"/>
+      <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
+      
+      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#0d0d0d"/>
+      
+      <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
+      <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>
+      
+      <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0d0d0d"/>
+      
+      <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#08FFFFFF"/>
+
+      <!-- ComboBox Brushes -->
+      <SolidColorBrush x:Key="ComboBoxBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#4e5157"/>
+      <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#1a1a1a"/>
+      <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#1f1f1f"/>
+      <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#0d5eff"/>
+      <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="#0d5eff"/>
+      
+      <Thickness x:Key="ComboBoxDropdownBorderPadding">0</Thickness>
+      <Thickness x:Key="ComboBoxDropdownContentMargin">0</Thickness>
+      <Thickness x:Key="FrameBorderThickness">2 1 0 0</Thickness>
+
+      <!-- ToggleButton Brushes -->
+      <SolidColorBrush x:Key="ToggleButtonBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="ToggleButtonBackgroundChecked" Color="#235fe8"/>
+
+      <!-- MenuFlyout Brushes -->
+      <SolidColorBrush x:Key="MenuFlyoutPresenterBackground" Color="#141415"/>
+      <SolidColorBrush x:Key="FlyoutPresenterBackground" Color="#141415"/>
+      <SolidColorBrush x:Key="FlyoutBorderThemeBrush" Color="#232323"/>
+      
+      <SolidColorBrush x:Key="MenuFlyoutItemBackground" Color="Transparent"/>
+      <SolidColorBrush x:Key="MenuFlyoutItemBackgroundPointerOver" Color="#235fe8"/>
+      <SolidColorBrush x:Key="MenuFlyoutItemBackgroundPressed" Color="#235fe8"/>
+      <SolidColorBrush x:Key="MenuFlyoutItemBackgroundDisabled" Color="Transparent"/>
+      
+      <SolidColorBrush x:Key="MenuFlyoutItemForeground" Color="White"/>
+      <SolidColorBrush x:Key="MenuFlyoutItemForegroundDisabled" Color="#a8a8a8"/>
+
+      <!-- ToolTip Brushes -->
+      <SolidColorBrush x:Key="ToolTipBackground" Color="#ffffff"/>
+      <SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="#ffffff"/>
+      <SolidColorBrush x:Key="ToolTipForegroundBrush" Color="#090909"/>
+      <SolidColorBrush x:Key="ToolTipBorderBrush" Color="#ffffff"/>
+
+      <!-- TextControl Brushes -->
+      <SolidColorBrush x:Key="TextControlBorderBrush" Color="#4e5157"/>
+      <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#3574f0"/>
+      <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#171717"/>
+      <SolidColorBrush x:Key="TextControlBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#121212"/>
+
+      <!-- ProfileCard Brushes -->
+      <SolidColorBrush x:Key="ProfileCardBackground" Color="#151515"/>
+      <SolidColorBrush x:Key="ProfileCardSubTextColor" Color="#c9c9c9"/>
+
+      <!-- CaptionButton Brushes -->
+      <SolidColorBrush x:Key="CaptionButtonBackground" Color="#1a1a1a"/>
+      <SolidColorBrush x:Key="CaptionButtonForeground" Color="White"/>
+      <SolidColorBrush x:Key="CaptionButtonBorderBrush" Color="#101010"/>
+      
+      <!-- ToggleSwitch Brushes -->
+      <SolidColorBrush x:Key="ToggleSwitchFillOnPointerOver" Color="#3574f0"/>
+      <SolidColorBrush x:Key="ToggleSwitchFillOnPressed" Color="#3574f0"/>
+      <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#3574f0"/>
+      
+      <!-- NavigationView Brushes -->
+      <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#0e91e8"/>
+      <SolidColorBrush x:Key="NavigationViewItemSeparatorForeground" Color="#ffffff"/>
+      <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
+      <SolidColorBrush x:Key="TopNavigationViewItemForegroundDisabled" Color="Transparent"/>
+      <x:Double x:Key="NavigationViewItemOnLeftIconBoxHeight">20</x:Double>
+      <converters:ForegroundExpandedConverter x:Key="ForegroundExpandedConverter" />
+      
+      <LinearGradientBrush x:Key="TreeViewItemSelectedGradient" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#00d0ff" Offset="0.0"/>
+        <GradientStop Color="#1f66ff" Offset="0.1"/>
+        <GradientStop Color="#121212" Offset="1.0"/>
+      </LinearGradientBrush>
+      
+      <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelected" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#171717" Offset="0.3"/>
+      </LinearGradientBrush>
+      
+      <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelectedPointerOver" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#171717" Offset="0.3"/>
+      </LinearGradientBrush>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="vj0.Controls.KeybindDisplay"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <StackPanel Orientation="Horizontal" Spacing="5"
+                Margin="10,0,0,0">
+        <ItemsControl ItemsSource="{Binding Keys}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="5" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#e0e0e0"
+                            Padding="5"
+                            Height="20"
+                            VerticalAlignment="Center"
+                            CornerRadius="5">
+                        <TextBlock FontFamily="Consolas"
+                                   FontWeight="Bold"
+                                   Foreground="#1a1a1a"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding}" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

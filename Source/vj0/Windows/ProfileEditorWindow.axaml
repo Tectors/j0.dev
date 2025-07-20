@@ -1,0 +1,259 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+    xmlns:controls1="clr-namespace:vj0.Controls"
+    xmlns:windowModels="clr-namespace:vj0.WindowModels"
+    xmlns:profileEditor="clr-namespace:vj0.Views.ProfileEditor"
+    xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
+
+    x:Class="vj0.Windows.ProfileEditorWindow"
+    x:DataType="windowModels:ProfileEditorWindowModel"
+
+    Title="{Binding TitleBarText}"
+    
+    Width="900" Height="750"
+    MinWidth="860" MinHeight="550"
+    
+    Background="#0a0a0a"
+    FontWeight="Light"
+    
+    mc:Ignorable="d"
+    
+    d:DesignWidth="{Binding $parent[Window].MinWidth}"
+    d:DesignHeight="{Binding $parent[Window].MinHeight}">
+    
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding Save}" />
+        <KeyBinding Gesture="Enter" Command="{Binding Save}" />
+        <KeyBinding Gesture="Escape" Command="{Binding CloseWindow}" />
+        <KeyBinding Gesture="Ctrl+E" Command="{Binding CloseWindow}" />
+    </Window.KeyBindings>
+
+    <Grid Margin="{Binding $parent[Window].OffScreenMargin}" RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Title Bar -->
+        <Grid>
+            <controls1:CursorEffectControl/>
+            
+            <!-- App Icon / Profile Name Display -->
+            <Grid Height="{DynamicResource TitleBarHeight}">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10" Margin="15,0,0,0">
+                    <Image IsHitTestVisible="False" Source="/Assets/Icon/Scaled/App.Icon.32.png"
+                           Width="20"
+                           IsVisible="{Binding Profile.IsNameEmpty}"
+                           Margin="0,0,5,0"
+                           VerticalAlignment="Center"/>
+                    
+                    <profiles:ProfileSplashControl IsHitTestVisible="False" IsVisible="{Binding !IsNameEmpty}" Radius="10" DataContext="{Binding Profile}"/>
+                    
+                    <Border IsHitTestVisible="False" MaxWidth="300" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding TitleBarText}"
+                                   TextTrimming="CharacterEllipsis"
+                                   TextWrapping="NoWrap"
+                                   IsHitTestVisible="False"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="15"/>
+                    </Border>
+
+                    <Border Margin="-1 0 0 0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            ToolTip.Tip="Auto-detected"
+                            IsVisible="{Binding Profile.IsAutoDetected}"
+                            Padding="6"
+                            Width="30"
+                            Height="30"
+                            Background="#0095ff"
+                            CornerRadius="4">
+                        <fluent:FluentIcon
+                            Icon="HardDrive"
+                            Foreground="White"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+            <!-- Right Side of Title Bar -->
+            <StackPanel Margin="0 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+                <Button Cursor="Hand"
+                        IsVisible="{Binding Profile.IsArchivedGame}"
+                        Height="30"
+                        Width="45"
+                        HorizontalAlignment="Right"
+                        Click="Button_FetchFromDataBase"
+                        ToolTip.Tip="Fetch AES keys and mappings from online archives"
+                        BorderThickness="1"
+                        Padding="10 0"
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        BorderBrush="#1f2023"
+                        CornerRadius="4">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
+                        </ResourceDictionary>
+                    </Button.Resources>
+
+                    <avalonia:FluentIcon FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="CloudArrowDown"></avalonia:FluentIcon>
+                </Button>
+                
+                <CaptionButtons Margin="4 0 0 0" Name="captionButtons"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Navigation -->
+        <Grid Grid.Row="2" Background="#0a0a0a">
+            <controls:NavigationView 
+                 x:Name="ProfileEditorNavigationView"
+                 PaneDisplayMode="Top"
+                 
+                 Margin="10 0 10 0"
+                 
+                 Classes="NoRoundedBackground"
+                 
+                 IsPaneToggleButtonVisible="False" IsPaneVisible="True"
+                 IsBackEnabled="True" IsPaneOpen="True"
+                 Background="#0a0a0a">
+
+                <controls:NavigationView.MenuItems>
+                    <controls:NavigationViewItem IsSelected="True"
+                             Content="Overview"
+                             Tag="{x:Type profileEditor:GeneralDetailsProfileEditor}">
+                        <controls:NavigationViewItem.IconSource>
+                            <fluent:FluentIconSource
+                                Icon="Agents"
+                                IconSize="Size48"
+                                IconVariant="Regular"/>
+                        </controls:NavigationViewItem.IconSource>
+                    </controls:NavigationViewItem>
+                    
+                    <controls:NavigationViewItem Content="Encryption Keys"
+                             IsVisible="{Binding ShowEncryptionTab}"
+                             Tag="{x:Type profileEditor:AESKeyProfileEditor}">
+                        <controls:NavigationViewItem.IconSource>
+                            <fluent:FluentIconSource
+                                Icon="KeyMultiple"
+                                IconSize="Size48"
+                                IconVariant="Regular"/>
+                        </controls:NavigationViewItem.IconSource>
+                    </controls:NavigationViewItem>
+                </controls:NavigationView.MenuItems>
+                
+                <controls:NavigationView.FooterMenuItems>
+                    <controls:NavigationViewItem
+                        Content="Advanced"
+                        Tag="{x:Type profileEditor:AdvancedProfileEditor}">
+                            
+                        <controls:NavigationViewItem.IconSource>
+                            <fluent:FluentIconSource
+                                Icon="BeakerSettings"/>
+                        </controls:NavigationViewItem.IconSource>
+                    </controls:NavigationViewItem>
+                </controls:NavigationView.FooterMenuItems>
+
+                <controls:Frame Padding="15 5 0 0" Background="#0a0a0a" x:Name="ContentFrame"/>
+            </controls:NavigationView>
+        </Grid>
+
+        <!-- Action Bar -->
+        <Grid Grid.Row="3" Background="#0a0a0a">
+            <Grid>
+                <controls1:CursorEffectControl/>
+                
+                <StackPanel Orientation="Horizontal"
+                            Height="60"
+                            Margin="0 5 15 5"
+                            HorizontalAlignment="Right"
+                            Spacing="10"
+                            VerticalAlignment="Bottom">
+
+                    <!-- Save -->
+                    <Button Cursor="Hand"
+                            Click="Save"
+                            IsEnabled="{Binding !Profile.HasErrors}"
+                            Height="33"
+                            FontSize="15"
+                            Background="#195bff"
+                            Padding="10 0"
+                            FontWeight="Bold"
+                            CornerRadius="4">
+                                                    
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding SaveChangesText}"/>
+                                <controls1:KeybindDisplay Keybind="Ctrl+S" />
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        
+                        <Button.Resources>
+                            <ResourceDictionary>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                            </ResourceDictionary>
+                        </Button.Resources>
+
+                        <Grid>
+                            <Border
+                                Background="White"
+                                Height="1.4"
+                                Opacity="0.1"
+                                CornerRadius="16 16 0 0"
+                                Margin="0 0 0 0"
+                                IsVisible="{Binding !Profile.HasErrors}"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Stretch"/>
+
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <avalonia:FluentIcon HorizontalAlignment="Center" VerticalAlignment="Center" Icon="Checkmark" IsVisible="{Binding !Profile.HasErrors}"></avalonia:FluentIcon>
+                                
+                                <TextBlock Margin="0 1 0 0" Text="{Binding SaveChangesText}" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+
+                    <!-- Close Window -->
+                    <Button Cursor="Hand"
+                            Click="CloseWindow"
+                            Height="33"
+                            FontSize="13"
+                            BorderThickness="1"
+                            Padding="10 0"
+                            BorderBrush="#242424"
+                            Background="#1a1a1a"
+                            CornerRadius="4">
+                        <Button.Resources>
+                            <ResourceDictionary>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#242424</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#34373a</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBorderBrush">#4e5157</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#4e5157</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
+                            </ResourceDictionary>
+                        </Button.Resources>
+                        
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Close without Saving</TextBlock>
+                                <controls1:KeybindDisplay Keybind="Escape" />
+                            </StackPanel>
+                        </ToolTip.Tip>
+
+                        <TextBlock FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">Cancel</TextBlock>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

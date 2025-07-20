@@ -1,0 +1,192 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:views="clr-namespace:vj0.Views"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:windowModels="clr-namespace:vj0.WindowModels"
+    xmlns:profiles="clr-namespace:vj0.Views.Profiles"
+    xmlns:controls1="clr-namespace:vj0.Controls"
+    xmlns:application="clr-namespace:vj0.Application"
+
+    x:Class="vj0.Windows.MainWindow"
+    x:DataType="windowModels:MainWindowModel"
+    
+    Title="{Binding Title}"
+
+    Width="1390" Height="840"
+    MinWidth="935" MinHeight="680"
+    
+    mc:Ignorable="d"
+    
+    d:DesignWidth="{Binding $parent[Window].MinWidth}"
+    d:DesignHeight="{Binding $parent[Window].MinHeight}">
+
+    <Window.KeyBindings>
+        <KeyBinding Gesture="Ctrl+E" Command="{Binding RequestEditProfile}" />
+    </Window.KeyBindings>
+    
+    <Grid RowDefinitions="Auto, *" Margin="{Binding $parent[Window].OffScreenMargin}">
+        <!-- Title Bar -->
+        <views:TitleBar Grid.Row="0"/>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto, *">
+            <!-- Entire Navigation -->
+            <controls:NavigationView
+                Grid.Column="1"
+                
+                PaneDisplayMode="LeftCompact"
+                CompactPaneLength="{DynamicResource TitleBarHeight}"
+                
+                Classes="NoRoundedBackground"
+                
+                IsBackButtonVisible="False" IsPaneToggleButtonVisible="False"
+                SelectionFollowsFocus="True"
+                
+                Background="#0a0a0a"
+                Margin="2 0 0 0"
+
+                x:Name="MainNavigationView">
+
+                <controls:NavigationView.MenuItems>
+                    <!-- Home -->
+                    <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:HomeView}" IsSelected="True">
+                        <fluent:SymbolIcon Symbol="Home" IconVariant="Filled" FontSize="18" />
+                    </controls:NavigationViewItem>
+                    
+                    <controls:NavigationViewItemSeparator IsVisible="{x:Static application:Globals.IsReadyToExplore}"/>
+                    
+                    <!-- Scope -->
+                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Scope" Tag="{x:Type views:ScopeView}" IsEnabled="{Binding DoesProfileExist}">
+                        <controls:NavigationViewItem.Styles>
+                            <Style Selector="controls|NavigationViewItem">
+                                <Setter Property="IconSource">
+                                    <Setter.Value>
+                                        <fluent:SymbolIconSource Symbol="Filter" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+
+                            <Style Selector="controls|NavigationViewItem:selected">
+                                <Setter Property="IconSource">
+                                    <Setter.Value>
+                                        <fluent:SymbolIconSource Symbol="Filter" IconVariant="Filled" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </controls:NavigationViewItem.Styles>
+                    </controls:NavigationViewItem>
+                    
+                    <!-- Explorer -->
+                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerView}" IsEnabled="{Binding IsProfileInitialized}">
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
+                                <controls1:KeybindDisplay Keybind="Ctrl+Alt+L" />
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        
+                        <avalonia:MaterialIcon Width="20" Kind="Folder" Margin="0 0 2 0" />
+                    </controls:NavigationViewItem>
+                </controls:NavigationView.MenuItems>
+
+                <controls:NavigationView.FooterMenuItems>
+                    <!-- Profiles -->
+                    <controls:NavigationViewItem x:Name="ProfileNavigationItem" Content="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
+                        <controls:NavigationViewItem.InfoBadge>
+                            <controls:InfoBadge Background="#03d7fc" Margin="0 5 8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
+                        </controls:NavigationViewItem.InfoBadge>
+                        
+                        <controls:NavigationViewItem.Styles>
+                            <Style Selector="controls|NavigationViewItem">
+                                <Setter Property="IconSource">
+                                    <Setter.Value>
+                                        <fluent:SymbolIconSource Symbol="Agents" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+
+                            <Style Selector="controls|NavigationViewItem:selected">
+                                <Setter Property="IconSource">
+                                    <Setter.Value>
+                                        <fluent:SymbolIconSource Symbol="Agents" IconVariant="Filled" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </controls:NavigationViewItem.Styles>
+                    </controls:NavigationViewItem>
+                    
+                    <controls:NavigationViewItemSeparator/>
+                    
+                    <!-- Settings -->
+                    <controls:NavigationViewItem Margin="0 5 0 0" Content="Settings" Tag="{x:Type views:SettingsView}">
+                        <controls:NavigationViewItem.IconSource>
+                            <fluent:FluentIconSource
+                                Icon="Settings"
+                                IconSize="Size32"
+                                IconVariant="Regular"/>
+                        </controls:NavigationViewItem.IconSource>
+                    </controls:NavigationViewItem>
+                </controls:NavigationView.FooterMenuItems>
+
+                <Grid Background="#0a0a0a">
+                    <!-- Content Frame -->
+                    <controls:Frame Background="#0a0a0a" x:Name="ContentFrame"/>
+                    
+                    <!-- Notifications -->
+                     <ItemsControl Margin="0 10" VerticalAlignment="Bottom" ItemsSource="{Binding Info.Messages}">
+                         <ItemsControl.ItemTemplate>
+                             <DataTemplate>
+                                 <controls:InfoBar
+                                     Title="{Binding Title}"
+                                     Message="{Binding Message}"
+                                     Severity="{Binding Severity}"
+                                     
+                                     CornerRadius="8"
+                                     Classes="FadeIn"
+                                     
+                                     Margin="25 2"
+                                     Background="#7F0f0f0f"
+                                     
+                                     IsOpen="True">
+                                     
+                                     <controls:InfoBar.Effect>
+                                         <DropShadowEffect Color="Black"
+                                           Opacity="0.35"
+                                           BlurRadius="90"/>
+                                     </controls:InfoBar.Effect>
+                                     
+                                     <controls:InfoBar.ActionButton>
+                                         <Button Cursor="Hand" IsVisible="{Binding UseButton}" 
+                                              Content="{Binding ButtonTitle}" 
+                                              Command="{Binding ButtonCommand}"
+                                              Padding="6"/>
+                                     </controls:InfoBar.ActionButton>
+                                     
+                                     <controls:InfoBar.Styles>
+                                         <Style Selector="controls|InfoBar.FadeIn">
+                                             <Style.Animations>
+                                                 <Animation Duration="0:0:0.1">
+                                                     <KeyFrame Cue="0%">
+                                                         <Setter Property="Opacity" Value="0.0"/>
+                                                     </KeyFrame>
+                                                     <KeyFrame Cue="100%">
+                                                         <Setter Property="Opacity" Value="1.0"/>
+                                                     </KeyFrame>
+                                                 </Animation>
+                                             </Style.Animations>
+                                         </Style>
+                                     </controls:InfoBar.Styles>
+                                 </controls:InfoBar>
+                             </DataTemplate>
+                         </ItemsControl.ItemTemplate>
+                     </ItemsControl>
+                </Grid>
+            </controls:NavigationView>
+        </Grid>
+    </Grid>
+</Window>

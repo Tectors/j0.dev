@@ -1,0 +1,60 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels1="clr-namespace:vj0.ViewModels"
+    xmlns:files="clr-namespace:vj0.Models.Files"
+    xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
+
+    x:Class="vj0.Views.ScopeView"
+    x:DataType="viewModels1:ScopeViewModel"
+    
+    Background="#0a0a0a"
+    
+    mc:Ignorable="d"
+    d:DesignWidth="1500"
+    d:DesignHeight="500">
+    
+    <UserControl.KeyBindings>
+        <KeyBinding Gesture="Enter" Command="{Binding LoadCommand}" />
+    </UserControl.KeyBindings>
+    
+    <Grid>
+        <navigation:NavigationFrame>
+            <ListBox Margin="10" ItemsSource="{Binding Files}" 
+                     SelectionMode="Multiple"
+                     AutoScrollToSelectedItem="True">
+                
+                <ListBox.Styles>
+                    <Style Selector="ListBoxItem" x:DataType="files:ScopeTile">
+                        <Style.Setters>
+                            <Setter Property="IsEnabled" Value="{Binding IsDecrypted}" />
+                        </Style.Setters>
+                    </Style>
+                    <Style Selector="ListBoxItem:disabled">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </Style>
+                </ListBox.Styles>
+                
+                <ListBox.ItemContainerTheme>
+                    <ControlTheme x:DataType="files:ScopeTile" TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                        <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
+                    </ControlTheme>
+                </ListBox.ItemContainerTheme>
+                
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="files:ScopeTile">
+                        <StackPanel Spacing="5" Margin="25 0 0 0"
+                                    Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Name}"
+                                       FontSize="14"
+                                       VerticalAlignment="Center"
+                                       TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </navigation:NavigationFrame>
+    </Grid>
+</UserControl>
