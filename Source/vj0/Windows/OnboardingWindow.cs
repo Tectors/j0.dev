@@ -58,7 +58,7 @@ public partial class OnboardingWindow : WindowBase<OnboardingWindowModel>
 
             Close();
         
-            Settings.Application.CompletedOnboarding = false;
+            Settings.Application.CompletedOnboarding = true;
             Settings.Save();
             
             return;
