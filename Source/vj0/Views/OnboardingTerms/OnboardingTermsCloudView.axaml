@@ -22,7 +22,7 @@
             <TextBlock FontSize="26" LetterSpacing="-1"
                        FontWeight="SemiBold"
                        Foreground="{DynamicResource TextFillPrimaryBrush}">
-                What is the Cloud Web API?
+                What is the Cloud Service?
                 
                 <fluent:FluentIcon
                     Icon="Cloud"

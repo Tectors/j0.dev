@@ -470,7 +470,7 @@ public class Profile : BaseProfileDisplay
 
         try
         {
-            await FetchEncryptionKeysAsync("https://fortnitecentral.genxgames.gg/api/v1/aes");
+            await FetchEncryptionKeysAsync();
             
             _ = Save();
         }

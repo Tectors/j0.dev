@@ -57,7 +57,9 @@ public class APIBase
         var request = new RestRequest(fullUrl, method);
 
         foreach (var parameter in parameters)
+        {
             request.AddParameter(parameter);
+        }
 
         return request;
     }

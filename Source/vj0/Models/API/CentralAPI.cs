@@ -72,7 +72,7 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
         var localPath = Path.Combine(targetFolder, mapping.FileName);
         if (forceDownload || !File.Exists(localPath))
         {
-            var data = await ExecuteAsync(mapping.Url, Method.Get, false);
+            var data = await ExecuteAsync(mapping.Url.Replace("https://fortnitecentral.genxgames.gg/", ""), Method.Get, false);
             if (!data.IsSuccessful || data.RawBytes is null)
             {
                 return null;

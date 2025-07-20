@@ -63,7 +63,7 @@
                 </controls:NavigationView.MenuItems>
                 
                 <controls:NavigationView.MenuItems>
-                    <controls:NavigationViewItem Content="Cloud Web API?" Tag="{x:Type OnboardingGuide:OnboardingTermsCloudView}">
+                    <controls:NavigationViewItem Content="Cloud Service?" Tag="{x:Type OnboardingGuide:OnboardingTermsCloudView}">
                         <controls:NavigationViewItem.IconSource>
                             <fluent:FluentIconSource
                                 Icon="Cloud"

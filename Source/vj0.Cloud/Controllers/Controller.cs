@@ -224,6 +224,8 @@ public class CloudApiController : ControllerBase
                 return profile;
             }
         }
+        
+        found = true;
 
         return MainProfile;
     }
