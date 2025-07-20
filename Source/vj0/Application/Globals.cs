@@ -20,7 +20,7 @@ public static class Globals
     public const string EMPTY_CHAR = "0x0000000000000000000000000000000000000000000000000000000000000000";
     
     public const string VERSION = "0.0.1";
-    public const string COMMIT = "f1840c8";
+    public const string COMMIT = "b846caa";
     
     public const string DISCORD_LINK = "https://discord.gg/eV9DF6sBsz";
     public const string GITHUB_LINK = "https://github.com/Tectors/j0.dev";

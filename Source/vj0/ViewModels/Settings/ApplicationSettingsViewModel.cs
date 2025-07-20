@@ -10,7 +10,7 @@ namespace vj0.ViewModels.Settings;
 
 public partial class ApplicationSettingsViewModel : ViewModelBase
 {
-    [ObservableProperty] private bool _completedOnboarding = true;
+    [ObservableProperty] private bool _completedOnboarding;
     [ObservableProperty] private bool _loadRecentProfileOnLaunch = true;
     [ObservableProperty] private bool _saveWindowResolution = true;
     [ObservableProperty] private PixelSize _lastWindowResolution;
