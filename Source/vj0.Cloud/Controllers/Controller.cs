@@ -25,7 +25,7 @@ public class CloudApiController : ControllerBase
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     private static IEnumerable<BaseProfile> SecondaryBaseProfiles = [];
     private static BaseProfile? MainProfile;
-    private static bool IsBaseProfileInitialized => MainProfile is { IsInitialized: true };
+    private static bool IsBaseProfileReady => MainProfile!.Provider.Files.Count > 0;
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
     public static void SetProfile(BaseProfile profile)
@@ -60,7 +60,7 @@ public class CloudApiController : ControllerBase
     [HttpGet("metadata")]
     public ActionResult Get()
     {
-        if (!IsBaseProfileInitialized) return new BadRequestObjectResult(JsonConvert.SerializeObject(new
+        if (!IsBaseProfileReady) return new BadRequestObjectResult(JsonConvert.SerializeObject(new
         {
             reason = "Not initialized yet"
         }, Formatting.Indented));
@@ -75,7 +75,7 @@ public class CloudApiController : ControllerBase
     [HttpGet("export")]
     public ActionResult Get(bool raw, string? path)
     {
-        if (!IsBaseProfileInitialized) return BadRequest();
+        if (!IsBaseProfileReady) return BadRequest();
         if (path == null) return BadRequest();
         
         var contentType = Request.Headers.ContentType;
@@ -152,39 +152,50 @@ public class CloudApiController : ControllerBase
     /* Handle raw exports */
     public ActionResult HandleRawExport(string path, BaseProvider provider)
     {
-        var objectPath = $"{path.SubstringBefore('.')}.o.uasset";
-            
-        var pkg = provider.LoadPackage(path);
-        var exports = pkg.GetExports().ToArray();
-        var finalExports = new List<UObject>(exports);
-
-        var mergedExports = new List<UObject>();
-        if (provider.TryLoadPackage(objectPath, out var editorAsset))
+        try
         {
-            foreach (var export in exports)
+            var objectPath = $"{path.SubstringBefore('.')}.o.uasset";
+
+            var pkg = provider.LoadPackage(path);
+            var exports = pkg.GetExports().ToArray();
+            var finalExports = new List<UObject>(exports);
+
+            var mergedExports = new List<UObject>();
+            if (provider.TryLoadPackage(objectPath, out var editorAsset))
             {
-                var editorData = editorAsset.GetExportOrNull($"{export.Name}EditorOnlyData");
-                if (editorData == null)
+                foreach (var export in exports)
                 {
-                    continue;
+                    var editorData = editorAsset.GetExportOrNull($"{export.Name}EditorOnlyData");
+                    if (editorData == null)
+                    {
+                        continue;
+                    }
+
+                    export.Properties.AddRange(editorData.Properties);
+                    mergedExports.Add(export);
                 }
-                
-                export.Properties.AddRange(editorData.Properties);
-                mergedExports.Add(export);
+
+                finalExports.AddRange(editorAsset.GetExports()
+                    .Where(editorExport => !mergedExports.Contains(editorExport)));
             }
 
-            finalExports.AddRange(editorAsset.GetExports().Where(editorExport => !mergedExports.Contains(editorExport)));
+            mergedExports.Clear();
+
+            var converters = new Dictionary<Type, JsonConverter>
+                { { typeof(FColorVertexBuffer), new FColorVertexBufferCustomConverter() } };
+            var settings = new JsonSerializerSettings
+                { ContractResolver = new FColorVertexBufferCustomResolver(converters!) };
+
+            /* Serialize object, and return it indented */
+            return new OkObjectResult(JsonConvert.SerializeObject(new
+            {
+                jsonOutput = finalExports
+            }, Formatting.Indented, settings));
         }
-        mergedExports.Clear();
-
-        var converters = new Dictionary<Type, JsonConverter> {{ typeof(FColorVertexBuffer), new FColorVertexBufferCustomConverter() }};
-        var settings = new JsonSerializerSettings { ContractResolver = new FColorVertexBufferCustomResolver(converters!) };
-
-        /* Serialize object, and return it indented */
-        return new OkObjectResult(JsonConvert.SerializeObject(new
+        catch (Exception ex)
         {
-            jsonOutput = finalExports
-        }, Formatting.Indented, settings));
+            return StatusCode(500, ex);
+        }
     }
     
     /*

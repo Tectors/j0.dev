@@ -23,11 +23,11 @@ public class APIBase
         BaseURL = baseUrl;
     }
 
-    protected async Task<T?> ExecuteAsync<T>(string url, Method method = Method.Get, bool verbose = true, params Parameter[] parameters)
+    protected async Task<T?> ExecuteAsync<T>(string url, Method method = Method.Get, bool verbose = true, bool useBaseUrl = true, params Parameter[] parameters)
     {
         try
         {
-            var request = CreateRequest(url, method, parameters);
+            var request = CreateRequest(url, method, parameters, useBaseUrl);
 
             var response = await _client.ExecuteAsync<T>(request).ConfigureAwait(false);
             LogResponse(request, response, verbose);
@@ -51,9 +51,9 @@ public class APIBase
         return response;
     }
 
-    private RestRequest CreateRequest(string url, Method method, Parameter[] parameters)
+    private RestRequest CreateRequest(string url, Method method, Parameter[] parameters, bool useBaseUrl = true)
     {
-        var fullUrl = string.IsNullOrEmpty(BaseURL) ? url : $"{BaseURL}/{url}";
+        var fullUrl = useBaseUrl ? string.IsNullOrEmpty(BaseURL) ? url : $"{BaseURL}/{url}" : url;
         var request = new RestRequest(fullUrl, method);
 
         foreach (var parameter in parameters)

@@ -470,7 +470,7 @@ public class Profile : BaseProfileDisplay
 
         try
         {
-            await FetchEncryptionKeysAsync();
+            await FetchEncryptionKeysAsync("https://fortnitecentral.genxgames.gg/api/v1/aes");
             
             _ = Save();
         }
@@ -550,7 +550,7 @@ public class Profile : BaseProfileDisplay
     
     public async Task FetchEncryptionKeysAsync(string url = null!, bool isUnknown = false)
     {
-        var aes = await RestAPI.Central.GetAesAsync(url);
+        var aes = await RestAPI.Central.GetAesAsync(url, useBaseUrl: false);
 
         if (aes == null)
         {

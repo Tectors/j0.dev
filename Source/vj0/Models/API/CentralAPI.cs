@@ -15,7 +15,7 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
 {
     private readonly string _mappingsFolder = Globals.MappingsFolder.FullName;
     
-    public async Task<AesResponse?> GetAesAsync(string? url = null, string? version = null)
+    public async Task<AesResponse?> GetAesAsync(string? url = null, string? version = null, bool useBaseUrl = true)
     {
         url ??= "api/v1/aes";
         if (!string.IsNullOrWhiteSpace(version))
@@ -23,7 +23,7 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
             url += $"?version={version}";
         }
 
-        var aes = await ExecuteAsync<AesResponse>(url, verbose: false);
+        var aes = await ExecuteAsync<AesResponse>(url, verbose: false, useBaseUrl: useBaseUrl);
 
         if (aes == null)
         {
