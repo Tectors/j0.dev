@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CUE4Parse.UE4.Objects.Core.Misc;
+using vj0.Shared.Extensions;
 
 namespace vj0.Models.Files;
 
@@ -13,8 +14,13 @@ public partial class ScopeTile : ObservableObject
     /* Purely UI */
     [ObservableProperty] private bool _selected;
     
-    [ObservableProperty] private long _length;
+    [ObservableProperty] 
+    [NotifyPropertyChangedFor(nameof(ReadableLength))]
+    private long _length;
+    
     [ObservableProperty] private int _fileCount;
     [ObservableProperty] private string _mountPoint = null!;
     [ObservableProperty] private FGuid _guid;
+
+    public string ReadableLength => StringExtensions.GetReadableSize(Length);
 }

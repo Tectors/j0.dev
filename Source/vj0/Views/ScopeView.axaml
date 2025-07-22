@@ -51,6 +51,11 @@
                                        FontSize="14"
                                        VerticalAlignment="Center"
                                        TextTrimming="CharacterEllipsis"/>
+                            
+                            <TextBlock Text="{Binding ReadableLength}"
+                                       FontSize="14"
+                                       VerticalAlignment="Center"
+                                       TextTrimming="CharacterEllipsis"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

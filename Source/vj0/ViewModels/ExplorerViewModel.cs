@@ -62,7 +62,7 @@ public partial class ExplorerViewModel : ViewModelBase
     public override Task Initialize()
     {
         if (!Globals.IsReadyToExplore) return base.Initialize();
-        
+
         IsLoading = true;
 
         var assetFilter = this
@@ -93,21 +93,12 @@ public partial class ExplorerViewModel : ViewModelBase
     public async Task FinalizeWhenProviderExplorerReady(Func<bool>? cancellationCheck = null)
     {
         if (!Globals.IsReadyToExplore) return;
-        
+
         IsLoading = true;
 
-        while (Provider.Files.Count == 0)
-        {
-            if (cancellationCheck?.Invoke() == true)
-            {
-                IsLoading = false;
-                
-                return;
-            }
-            await Task.Delay(50);
-        }
-
         var fileTiles = Provider.Files
+            .AsParallel()
+            .WithCancellation(CancellationToken.None)
             .Where(pair => IsValidAssetPath(pair.Key) && !pair.Value.IsUePackagePayload)
             .Select(pair => new FileTile(pair.Key))
             .ToList();
