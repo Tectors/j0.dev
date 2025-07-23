@@ -15,8 +15,8 @@
 
     Focusable="True">
     
-    <navigation:NavigationUnboundFrame>
-        <ScrollViewer Margin="25 0 14 0"
+    <Grid>
+        <ScrollViewer Margin="0 0 14 0"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
                       VerticalAlignment="Stretch" Padding="0 0 35 0"
@@ -35,7 +35,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" Spacing="10">
-                            <Border BorderBrush="#3d3d3d" Background="#0f0f0f" BorderThickness="1" CornerRadius="10">
+                            <Border BorderBrush="#3d3d3d" Background="#0a0a0a" BorderThickness="1" CornerRadius="10">
                                 <Grid Margin="20">
                                     <StackPanel Orientation="Vertical">
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
@@ -64,5 +64,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-    </navigation:NavigationUnboundFrame>
+    </Grid>
 </UserControl>

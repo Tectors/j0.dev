@@ -143,8 +143,8 @@
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#235fe8"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#235fe8"/>
       
-      <SolidColorBrush x:Key="ExpanderBackground" Color="#0f0f0f"/>
-      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0f0f0f"/>
+      <SolidColorBrush x:Key="ExpanderBackground" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="CommandBarFlyoutButtonBackground" Color="#161616"/>
       <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackground" Color="#161616"/>
@@ -160,7 +160,7 @@
       <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>
       
-      <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0d0d0d"/>
+      <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#08FFFFFF"/>
 
@@ -174,7 +174,7 @@
       
       <Thickness x:Key="ComboBoxDropdownBorderPadding">0</Thickness>
       <Thickness x:Key="ComboBoxDropdownContentMargin">0</Thickness>
-      <Thickness x:Key="FrameBorderThickness">2 1 0 0</Thickness>
+      <Thickness x:Key="FrameBorderThickness">1 1 0 0</Thickness>
 
       <!-- ToggleButton Brushes -->
       <SolidColorBrush x:Key="ToggleButtonBackground" Color="Transparent"/>

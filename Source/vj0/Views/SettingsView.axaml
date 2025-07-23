@@ -16,10 +16,8 @@
     d:DesignHeight="1500"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     
-    <Grid>
-        <navigation:NavigationFrame IsVisible="{Binding !IsOnboarding}"/>
-        
-        <controls:NavigationView Margin="20 20 0 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+    <navigation:NavigationFrame HideBorder="{Binding IsOnboarding}">
+        <controls:NavigationView Margin="20 20 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
                 <controls:NavigationViewItem Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
@@ -65,5 +63,5 @@
             
             <controls:Frame x:Name="ContentFrame"/>
         </controls:NavigationView>
-    </Grid>
+    </navigation:NavigationFrame>
 </UserControl>

@@ -19,7 +19,7 @@ public static class Globals
     public static readonly FGuid ZERO_GUID = new();
     public const string EMPTY_CHAR = "0x0000000000000000000000000000000000000000000000000000000000000000";
     
-    public const string VERSION = "0.0.1";
+    public const string VERSION = "1.0.0";
     public const string COMMIT = "b846caa";
     
     public const string DISCORD_LINK = "https://discord.gg/eV9DF6sBsz";

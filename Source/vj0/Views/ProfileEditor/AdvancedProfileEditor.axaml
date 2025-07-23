@@ -19,12 +19,12 @@
 
     Focusable="True">
 
-    <navigation:NavigationUnboundFrame>
-        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Stretch">
+    <Grid>
+        <StackPanel Margin="0" Orientation="Vertical" VerticalAlignment="Stretch">
             <StackPanel Margin="20" Spacing="22">
                 <!-- Override Mappings -->
                 <StackPanel Orientation="Vertical" Spacing="10">
-                    <Border Background="#0f0f0f" BorderBrush="#3d3d3d" BorderThickness="1" CornerRadius="10">
+                    <Border Background="#0a0a0a" BorderBrush="#3d3d3d" BorderThickness="1" CornerRadius="10">
                         <Grid Margin="25">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
@@ -83,5 +83,5 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-    </navigation:NavigationUnboundFrame>
+    </Grid>
 </UserControl>

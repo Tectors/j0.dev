@@ -92,7 +92,7 @@
                             <!-- Donate button -->
                             <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
                                     Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
-                                    Opacity="0.95" Background="#171717" BorderThickness="1"
+                                    Opacity="0.95" Background="#0a0a0a" BorderThickness="1"
                                     BorderBrush="#545454" CornerRadius="8" HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center">
                                 <Button.Resources>
