@@ -15,7 +15,7 @@
     
     <ScrollViewer>
         <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-            <Button Click="OpenLogsFolder" Cursor="Hand" Background="#0f0f0f" Foreground="#adadad" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+            <Button Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
@@ -37,7 +37,7 @@
                 </StackPanel>
             </Button>
             
-            <Button Click="OpenStartup" Cursor="Hand" Background="#0f0f0f" Foreground="#adadad" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+            <Button Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
