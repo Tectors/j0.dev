@@ -142,6 +142,7 @@ public partial class MainWindowModel : WindowModelBase
     public void NavigateToExplorer()
     {
         if (!Globals.IsReadyToExplore || !IsProfileInitialized) return;
+        
         Navigation.App.Open(typeof(ExplorerView));
     }
 

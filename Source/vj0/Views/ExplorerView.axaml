@@ -6,7 +6,6 @@
     xmlns:vj0="clr-namespace:vj0.Services.Framework"
     xmlns:Explorer="clr-namespace:vj0.Models.Files"
     xmlns:viewModels1="clr-namespace:vj0.ViewModels"
-    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
 
     x:Class="vj0.Views.ExplorerView"
     x:DataType="viewModels1:ExplorerViewModel"
@@ -26,47 +25,38 @@
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" MinWidth="150"/>
+                <ColumnDefinition Width="*" MinWidth="150"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             
             <Grid Grid.Row="0" Grid.Column="0">
                 <DockPanel LastChildFill="True" IsVisible="{Binding IsFolderView}">
-                    <Border Margin="0 0 0 5" DockPanel.Dock="Top">
-                        <Grid ColumnDefinitions="*,*,*">
+                    <Border Margin="0 0 0 0" DockPanel.Dock="Top">
+                        <Grid>
                             <Border
                                 Grid.Column="0"
-                                Background="#0f0f0f"
-                                BorderBrush="#2e2f2f"
-                                BorderThickness="1"
-                                CornerRadius="12"
+                                Background="#0d0d0d"
+                                Height="50"
+                                BorderBrush="#1e1f1f"
+                                BorderThickness="1 1 1 0"
+                                CornerRadius="8 8 0 0"
                                 Padding="10"
                                 HorizontalAlignment="Stretch"
-                                Margin="0 0 0 0">
-                                <avalonia:MaterialIcon FontSize="19" Kind="Archive"/>
-                            </Border>
-                            <Border
-                                Grid.Column="1"
-                                Background="#0f0f0f"
-                                BorderBrush="#2e2f2f"
-                                BorderThickness="1"
-                                CornerRadius="12"
-                                Padding="10"
-                                HorizontalAlignment="Stretch"
-                                Margin="3 0 0 0">
-                                <avalonia:MaterialIcon FontSize="16" Kind="Folder"/>
-                            </Border>
-                            <Border
-                                Grid.Column="2"
-                                Background="#0f0f0f"
-                                BorderBrush="#2e2f2f"
-                                BorderThickness="1"
-                                CornerRadius="12"
-                                Padding="10"
-                                HorizontalAlignment="Stretch"
-                                Margin="3 0 0 0">
-                                <avalonia:MaterialIcon FontSize="16" Kind="FileOutline"/>
+                                ClipToBounds="True"
+                                Margin="10 0 10 -5">
+                                
+                                <Border Width="30" Height="30" Margin="-60 -60 0 0" Opacity="1"
+                                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border.Effect>
+                                        <BlurEffect Radius="150"/>
+                                    </Border.Effect>
+                                </Border>
                             </Border>
                         </Grid>
                     </Border>

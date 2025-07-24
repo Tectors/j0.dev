@@ -40,7 +40,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle Name="ThumbVisual"
-                       Fill="#4a4a4a"
+                       Fill="#804a4a4a"
                        Stroke="{TemplateBinding BorderBrush}"
                        StrokeThickness="{DynamicResource ScrollBarThumbStrokeThickness}"
                        RadiusX="6"
@@ -56,13 +56,13 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ Rectangle">
-            <Setter Property="Fill" Value="#9c9c9c" />
+            <Setter Property="Fill" Value="#984a4a4a" />
         </Style>
         <Style Selector="^:pressed  /template/ Rectangle">
-            <Setter Property="Fill" Value="#9c9c9c" />
+            <Setter Property="Fill" Value="#B39c9c9c" />
         </Style>
         <Style Selector="^:disabled  /template/ Rectangle">
-            <Setter Property="Fill" Value="#9c9c9c" />
+            <Setter Property="Fill" Value="#B39c9c9c" />
         </Style>
     </ControlTheme>
 
@@ -196,10 +196,8 @@
                                               Interval="50"
                                               Opacity="0"
                                               Content="&#xEDDC;"/>
-
                             </Grid>
                         </Border>
-
                     </Grid>
                 </ControlTemplate>
             </Setter>
@@ -299,23 +297,6 @@
 
             <Style Selector="^ /template/ Thumb">
                 <Setter Property="RenderTransform" Value="{DynamicResource HorizontalSmallScrollThumbScaleTransform}" />
-            </Style>
-        </Style>
-
-        <Style Selector="^[IsExpanded=true]">
-            <Style Selector="^ /template/ Grid#Root">
-                <Setter Property="Background" Value="Transparent" />
-            </Style>
-            <Style Selector="^ /template/ Rectangle#TrackRect">
-                <Setter Property="Stroke" Value="White" />
-                <Setter Property="Opacity" Value="1" />
-            </Style>
-            <Style Selector="^ /template/ Thumb">
-                <Setter Property="RenderTransform" Value="none" />
-                <Setter Property="Background" Value="White" />
-            </Style>
-            <Style Selector="^ /template/ RepeatButton">
-                <Setter Property="Opacity" Value="1" />
             </Style>
         </Style>
 
