@@ -28,6 +28,7 @@
 
     <Window.KeyBindings>
         <KeyBinding Gesture="Ctrl+E" Command="{Binding RequestEditProfile}" />
+        <KeyBinding Gesture="Ctrl+Alt+L" Command="{Binding NavigateToExplorer}" />
     </Window.KeyBindings>
     
     <Grid RowDefinitions="Auto, *" Margin="{Binding $parent[Window].OffScreenMargin}">
@@ -60,6 +61,18 @@
                     
                     <controls:NavigationViewItemSeparator IsVisible="{x:Static application:Globals.IsReadyToExplore}"/>
                     
+                    <!-- Explorer -->
+                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerView}" IsEnabled="{Binding IsProfileInitialized}">
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
+                                <controls1:KeybindDisplay Keybind="Ctrl+Alt+L" />
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        
+                        <avalonia:MaterialIcon Width="20" Kind="Folder" Margin="0 0 2 0" />
+                    </controls:NavigationViewItem>
+                    
                     <!-- Scope -->
                     <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Scope" Tag="{x:Type views:ScopeView}" IsEnabled="{Binding DoesProfileExist}">
                         <controls:NavigationViewItem.Styles>
@@ -79,18 +92,6 @@
                                 </Setter>
                             </Style>
                         </controls:NavigationViewItem.Styles>
-                    </controls:NavigationViewItem>
-                    
-                    <!-- Explorer -->
-                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerView}" IsEnabled="{Binding IsProfileInitialized}">
-                        <ToolTip.Tip>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
-                                <controls1:KeybindDisplay Keybind="Ctrl+Alt+L" />
-                            </StackPanel>
-                        </ToolTip.Tip>
-                        
-                        <avalonia:MaterialIcon Width="20" Kind="Folder" Margin="0 0 2 0" />
                     </controls:NavigationViewItem>
                 </controls:NavigationView.MenuItems>
 

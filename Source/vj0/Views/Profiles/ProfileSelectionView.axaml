@@ -28,7 +28,7 @@
                 <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" 
                        Margin="0 0" Opacity="0.165">
                     <Image.OpacityMask>
-                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,86%">
+                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,96%">
                             <GradientStop Color="#FF000000" Offset="0" />
                             <GradientStop Color="#00000000" Offset="1" />
                         </LinearGradientBrush>

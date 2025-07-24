@@ -20,7 +20,7 @@
   <Border
     CornerRadius="12"
     x:Name="ProfileCardBackground"
-    Background="#141415"
+    Background="#B3141415"
     PointerEntered="OnCardPointerEntered"
     PointerExited="OnCardPointerExited"
     ClipToBounds="True"
@@ -253,7 +253,7 @@
                 </LinearGradientBrush>
 
                 <LinearGradientBrush x:Key="ButtonBackgroundDisabled" StartPoint="0%,0%" EndPoint="100%,0%">
-                  <GradientStop Color="#2e2d2b" Offset="0.9"/>
+                  <GradientStop Color="#802E2D2B" Offset="0.9"/>
                 </LinearGradientBrush>
                 
                 <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>

@@ -15,6 +15,7 @@ using vj0.Models.Profiles;
 using vj0.Services;
 using vj0.Services.Framework;
 using vj0.Shared.Framework.Base;
+using vj0.Views;
 using vj0.Views.Profiles;
 
 namespace vj0.WindowModels;
@@ -136,6 +137,12 @@ public partial class MainWindowModel : WindowModelBase
     public void RequestEditProfile()
     {
         CurrentProfile?.OpenEditor();
+    }
+    
+    public void NavigateToExplorer()
+    {
+        if (!Globals.IsReadyToExplore || !IsProfileInitialized) return;
+        Navigation.App.Open(typeof(ExplorerView));
     }
 
     /* ~~~ Status Transitions ~~~ */

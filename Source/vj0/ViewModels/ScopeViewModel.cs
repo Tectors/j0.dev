@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CUE4Parse.FileProvider.Objects;
 using CUE4Parse.UE4.VirtualFileSystem;
@@ -14,6 +15,13 @@ namespace vj0.ViewModels;
 public partial class ScopeViewModel : ViewModelBase
 {
     public ObservableCollection<ScopeTile> Files { get; } = new();
+    
+    [ObservableProperty] private ObservableCollection<FileTile> _selectedItems = [];
+    [ObservableProperty] private ObservableCollection<TreeItem> _selectedTreeItems = [];
+    [ObservableProperty] private ReadOnlyObservableCollection<FileTile> _viewCollection = new([]);
+    [ObservableProperty] private ObservableCollection<TreeItem> _treeViewCollection = [];
+    [ObservableProperty] private ObservableCollection<TreeItem> _fileViewStack = [];
+    [ObservableProperty] private ObservableCollection<TreeItem> _fileViewCollection = [];
     
     private static readonly Regex FileRegex = new(@"^(?!global|pakchunk.+optional\-).+(pak|utoc)$", RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
 

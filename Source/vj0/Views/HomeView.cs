@@ -102,11 +102,6 @@ public partial class HomeView : ViewBase<HomeViewModel>
         Navigation.App.Open(typeof(ProfileSelectionView));
     }
 
-    private void FilterFiles(object? sender, RoutedEventArgs e)
-    {
-        Navigation.App.Open(typeof(ScopeView));
-    }
-
     private void ExploreFiles(object? sender, RoutedEventArgs e)
     {
         Navigation.App.Open(typeof(ExplorerView));

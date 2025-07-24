@@ -13,9 +13,9 @@
 
     <ControlTheme x:Key="{x:Type ui:ContentDialog}" TargetType="ui:ContentDialog">
         <Setter Property="Foreground" Value="{DynamicResource ContentDialogForeground}"/>
-        <Setter Property="Background" Value="#0f0f10"/>
-        <Setter Property="BorderBrush" Value="#181818"/>
-        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Background" Value="#0a0a0a"/>
+        <Setter Property="BorderBrush" Value="#222323"/>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="15" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="Template">
@@ -25,7 +25,7 @@
                            Background="{DynamicResource ContentDialogSmokeFill}">
                         <Border Name="BackgroundElement"
                                 Background="{TemplateBinding Background}"
-                                BorderThickness="2"
+                                BorderThickness="1"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 MinWidth="400"
@@ -104,22 +104,22 @@
                                                     HorizontalContentAlignment="Center"
                                                     VerticalContentAlignment="Center"
                                                     Cursor="Hand"
-                                                    Background="#141415"
+                                                    Background="#151515"
                                                     Padding="20 8"
                                                     BorderBrush="#313131"
-                                                    FontWeight="Bold"
+                                                    FontWeight="Medium"
                                                     FontSize="15"
                                                     BorderThickness="1"
                                                     IsVisible="False">
                                                 <Button.Resources>
                                                     <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1f1f22</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#313131</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1c1c1c</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3e3e3e</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1f1f22</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1c1c1c</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
                                                         
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#313131</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3e3e3e</SolidColorBrush>
                                                     </ResourceDictionary>
                                                 </Button.Resources>
                                                 
@@ -130,10 +130,10 @@
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
                                                     Cursor="Hand"
-                                                    Background="#141415"
-                                                    BorderBrush="#313131"
+                                                    Background="#151515"
                                                     Padding="20 8"
-                                                    FontWeight="Bold"
+                                                    BorderBrush="#313131"
+                                                    FontWeight="Medium"
                                                     FontSize="15"
                                                     BorderThickness="1"
                                                     HorizontalContentAlignment="Center"
@@ -142,15 +142,15 @@
                                                 
                                                 <Button.Resources>
                                                     <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1f1f22</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#313131</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1c1c1c</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3e3e3e</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1f1f22</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1c1c1c</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
                                                         
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#313131</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3e3e3e</SolidColorBrush>
                                                     </ResourceDictionary>
-                                                </Button.Resources>    
+                                                </Button.Resources>
                                             </Button>
                                             
                                             <Button Name="PrimaryButton"

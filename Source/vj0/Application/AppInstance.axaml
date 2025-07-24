@@ -99,6 +99,7 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/ScrollBarStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/DataValidationErrorsStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TextBoxStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/ComboBoxStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TextBlockStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ListBoxStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/InfoBarStyles.axaml"/>
@@ -143,8 +144,8 @@
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#235fe8"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#235fe8"/>
       
-      <SolidColorBrush x:Key="ExpanderBackground" Color="#0a0a0a"/>
-      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="ExpanderBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#121212"/>
       
       <SolidColorBrush x:Key="CommandBarFlyoutButtonBackground" Color="#161616"/>
       <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackground" Color="#161616"/>
@@ -203,8 +204,8 @@
       <SolidColorBrush x:Key="TextControlBorderBrush" Color="#4e5157"/>
       <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#3574f0"/>
       <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#171717"/>
-      <SolidColorBrush x:Key="TextControlBackground" Color="#121212"/>
-      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#121212"/>
+      <SolidColorBrush x:Key="TextControlBackground" Color="#80121212"/>
+      <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#80121212"/>
 
       <!-- ProfileCard Brushes -->
       <SolidColorBrush x:Key="ProfileCardBackground" Color="#151515"/>
@@ -229,9 +230,7 @@
       <converters:ForegroundExpandedConverter x:Key="ForegroundExpandedConverter" />
       
       <LinearGradientBrush x:Key="TreeViewItemSelectedGradient" StartPoint="0%,0%" EndPoint="100%,0%">
-        <GradientStop Color="#00d0ff" Offset="0.0"/>
         <GradientStop Color="#1f66ff" Offset="0.1"/>
-        <GradientStop Color="#121212" Offset="1.0"/>
       </LinearGradientBrush>
       
       <LinearGradientBrush x:Key="NavigationViewItemBackgroundSelected" StartPoint="0%,0%" EndPoint="100%,0%">

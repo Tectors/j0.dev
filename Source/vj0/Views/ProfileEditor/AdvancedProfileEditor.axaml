@@ -21,7 +21,7 @@
 
     <Grid>
         <StackPanel Margin="0" Orientation="Vertical" VerticalAlignment="Stretch">
-            <StackPanel Margin="20" Spacing="22">
+            <StackPanel Margin="15 25" Spacing="22">
                 <!-- Override Mappings -->
                 <StackPanel Orientation="Vertical" Spacing="10">
                     <Border Background="#0a0a0a" BorderBrush="#3d3d3d" BorderThickness="1" CornerRadius="10">
