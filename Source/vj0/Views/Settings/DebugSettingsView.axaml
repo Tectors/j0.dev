@@ -15,7 +15,7 @@
     
     <ScrollViewer>
         <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-            <Button Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+            <Button Height="64" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
@@ -33,11 +33,11 @@
                         FontSize="25"
                         IconVariant="Regular"/>
                 
-                    <TextBlock Padding="10" HorizontalAlignment="Center" FontSize="17">Open Logs</TextBlock>
+                    <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Logs</TextBlock>
                 </StackPanel>
             </Button>
             
-            <Button Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+            <Button Height="64" Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
@@ -55,7 +55,7 @@
                         FontSize="25"
                         IconVariant="Regular"/>
                 
-                    <TextBlock Padding="10" HorizontalAlignment="Center" FontSize="17">Open Startup</TextBlock>
+                    <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Startup</TextBlock>
                 </StackPanel>
             </Button>
         </StackPanel>

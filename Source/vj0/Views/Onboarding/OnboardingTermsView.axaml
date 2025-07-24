@@ -77,27 +77,14 @@
             </controls:NavigationView>
         
             <Button
-                Foreground="White"
-                Background="#195bff"
+                Classes="BlueShine"
                 Height="40"
-                Margin="0 0 0 0"
                 Cursor="Hand"
                 HorizontalAlignment="Center"
                 ClipToBounds="True"
-                BorderThickness="0"
-                CornerRadius="12"
                 IsDefault="True"
                 Click="Next"
                 Width="180">
-    
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                    </ResourceDictionary>
-                </Button.Resources>
     
                 <Grid>
                     <Border

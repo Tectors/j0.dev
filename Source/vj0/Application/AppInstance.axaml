@@ -11,11 +11,11 @@
              x:Class="vj0.Application.AppInstance">
 
   <Application.Styles>
-    <StyleInclude Source="/Styles/ButtonStyles.axaml"/>
-    
     <styling:FluentAvaloniaTheme/>
     <FluentTheme/>
 
+    <StyleInclude Source="/Styles/ButtonStyles.axaml"/>
+    
     <avalonia:MaterialIconStyles/>
 
     <Style Selector="Window">
@@ -164,6 +164,8 @@
       <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#08FFFFFF"/>
+      <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#24FFFFFF"/>
+      <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#1AFFFFFF"/>
 
       <!-- ComboBox Brushes -->
       <SolidColorBrush x:Key="ComboBoxBackground" Color="#121212"/>

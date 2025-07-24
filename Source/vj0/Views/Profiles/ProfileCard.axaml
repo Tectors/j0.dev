@@ -45,7 +45,7 @@
       <Grid RowDefinitions="Auto,*,Auto">
         <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="25,31,16,12">
           <Grid Grid.Row="0">
-            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="15">
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="17">
               <!-- Splash -->
               <profilesControls:ProfileSplashControl SplashScale="2.14" Radius="15" DataContext="{Binding Profile}">
                 <profilesControls:ProfileSplashControl.RenderTransform>
@@ -313,7 +313,8 @@
             <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
               <controls:SymbolIcon
                 Height="22"
-                Symbol="Settings"
+                Symbol="Edit"
+                Opacity="0.95"
                 Foreground="White"
                 FontSize="23"
                 Width="22" />

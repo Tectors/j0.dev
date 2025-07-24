@@ -178,11 +178,11 @@
 
                     <!-- Save -->
                     <Button Cursor="Hand"
-                            Click="Save"
                             IsEnabled="{Binding !Profile.HasErrors}"
+                            Classes="BlueShine"
+                            Click="Save"
                             Height="33"
                             FontSize="15"
-                            Background="#195bff"
                             Padding="10 0"
                             FontWeight="Bold"
                             CornerRadius="4">
@@ -194,15 +194,6 @@
                             </StackPanel>
                         </ToolTip.Tip>
                         
-                        <Button.Resources>
-                            <ResourceDictionary>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
-                                <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
-                                <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                            </ResourceDictionary>
-                        </Button.Resources>
-
                         <Grid>
                             <Border
                                 Background="White"

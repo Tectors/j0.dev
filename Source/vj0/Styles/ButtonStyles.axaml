@@ -1,20 +1,171 @@
-<Styles xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Styles xmlns="https://github.com/avaloniaui"    
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <Style Selector="CaptionButtons">
         <Setter Property="MaxHeight" Value="{DynamicResource TitleBarHeight}"/>
         <Setter Property="Height" Value="{DynamicResource TitleBarHeight}"/>
     </Style>
-
+    
     <Style Selector="CaptionButtons Button">
         <Setter Property="Height" Value="{DynamicResource TitleBarHeight}"/>
     </Style>
-    
+        
     <Style Selector="Button">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="BorderBrush" Value="#171717"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
+    </Style>
+        
+    <!-- Glass Button -->
+    <Style Selector="Button.Glass">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="#0a0a0a" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="#545454" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="15,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        Foreground="{TemplateBinding Foreground}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.Glass /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+    
+    <Style Selector="Button.Glass /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    
+    <Style Selector="Button.Glass:pointerover">
+        <Setter Property="Background" Value="#292929" />
+        <Setter Property="BorderBrush" Value="#b5b5b5" />
+    </Style>
+    
+    <Style Selector="Button.Glass:pressed">
+        <Setter Property="Background" Value="#292929" />
+        <Setter Property="BorderBrush" Value="#b5b5b5" />
+    </Style>
+    
+    <!-- White Button -->
+    <Style Selector="Button.White">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="Foreground" Value="#171717" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.White /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+
+    <Style Selector="Button.White:pointerover">
+        <Setter Property="Foreground" Value="#171717" />
+        <Setter Property="Background" Value="White" />
+    </Style>
+
+    <Style Selector="Button.White:pressed">
+        <Setter Property="Foreground" Value="#171717" />
+        <Setter Property="Background" Value="White" />
+    </Style>
+    
+    <!-- Blue Shine Button -->
+    <Style Selector="Button.BlueShine">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#195bff" />
+        
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.BlueShine /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+
+    <Style Selector="Button.BlueShine:pointerover">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#195bff" />
+    </Style>
+
+    <Style Selector="Button.BlueShine:pressed">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#195bff" />
+    </Style>
+    
+    <Style Selector="Button.BlueShine:disabled">
+        <Setter Property="Opacity" Value="0.5" />
     </Style>
 </Styles>
