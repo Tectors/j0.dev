@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:profileEditor="clr-namespace:vj0.ViewModels.ProfileEditor"
+    xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
 
     x:Class="vj0.Views.ProfileEditor.GeneralDetailsProfileEditor"
     x:DataType="profileEditor:ProfileEditorViewModel"
@@ -16,9 +17,9 @@
 
     Focusable="True">
 
-    <Grid>
+    <navigation:NavigationUnboundFrame>
         <StackPanel Margin="0" Orientation="Vertical" VerticalAlignment="Stretch">
-            <StackPanel Margin="15 25" Spacing="22">
+            <StackPanel Margin="35" Spacing="22">
                 <!-- Profile Name + Game Engine -->
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="20" Opacity="{Binding AutoDetectedGameToOpacity}" IsHitTestVisible="{Binding !Profile.IsAutoDetected}">
                     <StackPanel Orientation="Vertical" Spacing="15" Grid.Column="0">
@@ -107,5 +108,5 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-    </Grid>
+    </navigation:NavigationUnboundFrame>
 </UserControl>

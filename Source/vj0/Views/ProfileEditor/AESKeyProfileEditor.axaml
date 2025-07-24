@@ -15,16 +15,15 @@
 
     Focusable="True">
     
-    <Grid>
+    <navigation:NavigationUnboundFrame>
         <ScrollViewer Margin="0 0 14 0"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled"
-                      VerticalAlignment="Stretch" Padding="0 0 35 0"
+                      VerticalAlignment="Stretch" Padding="15 0 15 0"
                       HorizontalAlignment="Stretch">
             
-            <ItemsControl Margin="10" VerticalAlignment="Stretch"
+            <ItemsControl Margin="35" VerticalAlignment="Stretch"
                           HorizontalAlignment="Stretch"
-                          Padding="0 14 0 14"
                           ItemsSource="{Binding PakKeyEntries}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -64,5 +63,5 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-    </Grid>
+    </navigation:NavigationUnboundFrame>
 </UserControl>

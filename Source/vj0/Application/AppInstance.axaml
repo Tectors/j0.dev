@@ -107,7 +107,7 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/ContentDialogStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
-      <x:Double x:Key="TitleBarHeight">55</x:Double>
+      <x:Double x:Key="TitleBarHeight">60</x:Double>
       <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.425</x:Double>
       
       <x:Double x:Key="SettingsExpanderMinHeight">15</x:Double>
