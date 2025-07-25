@@ -9,7 +9,7 @@
             <Border
                 ClipToBounds="True"
                 BorderThickness="1 1 1 1"
-                CornerRadius="12" 
+                CornerRadius="12"
                 BorderBrush="{DynamicResource BorderBrush}"
                 Background="{DynamicResource PanelBackgroundBrush}"
                 HorizontalAlignment="Stretch" 
