@@ -275,7 +275,6 @@
               <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <controls:SymbolIcon
                   Symbol="Play"
-                  Foreground="White"
                   HorizontalAlignment="Center"
                   Margin="0 0 0 0"
                   VerticalAlignment="Center"
@@ -304,7 +303,6 @@
             HorizontalAlignment="Stretch">
             <Button.Resources>
               <ResourceDictionary>
-                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#303030</SolidColorBrush>
                 <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#b3b3b3</SolidColorBrush>
                 <SolidColorBrush x:Key="ButtonBorderBrushPressed">#b3b3b3</SolidColorBrush>
               </ResourceDictionary>
@@ -313,8 +311,7 @@
             <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
               <controls:SymbolIcon
                 Height="22"
-                Symbol="Edit"
-                Opacity="0.95"
+                Symbol="Settings"
                 Foreground="White"
                 FontSize="23"
                 Width="22" />

@@ -45,17 +45,17 @@ public partial class HomeView : ViewBase<HomeViewModel>
         var toStart = _isReversed ? Colors.White : Color.Parse("#767676");
         var toEnd = _isReversed ? Color.Parse("#767676") : Colors.White;
 
-        const int steps = 150;
+        const int steps = 80;
         var easing = new SineEaseInOut();
-        var duration = TimeSpan.FromSeconds(0.4);
+        var duration = TimeSpan.FromSeconds(0.25);
         var delay = duration.TotalMilliseconds / steps;
 
         for (var i = 0; i <= steps; i++)
         {
-            var t = easing.Ease(i / (double)steps);
+            var time = easing.Ease(i / (double)steps);
 
-            var lerpedStart = InterpolateColor(fromStart, toStart, t);
-            var lerpedEnd = InterpolateColor(fromEnd, toEnd, t);
+            var lerpedStart = InterpolateColor(fromStart, toStart, time);
+            var lerpedEnd = InterpolateColor(fromEnd, toEnd, time);
 
             _branchBrush.GradientStops[0].Color = lerpedStart;
             _branchBrush.GradientStops[1].Color = lerpedEnd;

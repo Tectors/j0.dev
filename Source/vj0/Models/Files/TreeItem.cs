@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Media;
-using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -35,19 +34,26 @@ public partial class TreeItem : ObservableObject
     [ObservableProperty]
     private string _filePath;
     
-    public IBrush ItemBrush => 
-        Name == "Engine" ? new SolidColorBrush(Color.Parse("#e86c0e"))
-        : Name == "Config" || Name == "Slate" ? new SolidColorBrush(Color.Parse("#6e6e6e"))
-        : Name == "Plugins" ? new SolidColorBrush(Color.Parse("#ff5959"))
-        : Name == "Environments" ? new SolidColorBrush(Color.Parse("#35fc46"))
-        : Name == "Athena" ? new SolidColorBrush(Color.Parse("#6500ff"))
-        : Name == "Blueprints" || Name == "Blueprint" ? new SolidColorBrush(Color.Parse("#0059ff"))
-        : Name == "TimeOfDay" || Name == "TODM" ? new SolidColorBrush(Color.Parse("#006eff"))
-        : Name == "UI" ? new SolidColorBrush(Color.Parse("#ffc400"))
-        : Name == "Sounds" ? new SolidColorBrush(Color.Parse("#ff3300"))
-        : Name == "Animation" ? new SolidColorBrush(Color.Parse("#91ff00"))
+    private IBrush? _itemBrush;
+    public IBrush ItemBrush => _itemBrush ??= GetItemBrush();
 
-        : new SolidColorBrush(Color.Parse("#0e91e8"));
+    public IBrush GetItemBrush()
+    {
+        return Name switch
+        {
+            "Engine" => new SolidColorBrush(Color.Parse("#e86c0e")),
+            "Config" or "Slate" => new SolidColorBrush(Color.Parse("#6e6e6e")),
+            "Plugins" => new SolidColorBrush(Color.Parse("#ff5959")),
+            "Environments" => new SolidColorBrush(Color.Parse("#35fc46")),
+            "Athena" => new SolidColorBrush(Color.Parse("#6500ff")),
+            "Blueprints" or "Blueprint" => new SolidColorBrush(Color.Parse("#0059ff")),
+            "TimeOfDay" or "TODM" => new SolidColorBrush(Color.Parse("#006eff")),
+            "UI" => new SolidColorBrush(Color.Parse("#ffc400")),
+            "Sounds" => new SolidColorBrush(Color.Parse("#ff3300")),
+            "Animation" => new SolidColorBrush(Color.Parse("#91ff00")),
+            _ => new SolidColorBrush(Color.Parse("#0e91e8"))
+        };
+    }
 
     private IReadOnlyList<TreeItem>? _cachedFolderChildren;
     private readonly object _childrenLock = new();
@@ -85,9 +91,6 @@ public partial class TreeItem : ObservableObject
     private bool _expanded;
 
     [ObservableProperty]
-    private Bitmap? _fileBitmap;
-
-    [ObservableProperty]
     private TreeItem? _parent;
 
     private readonly ConcurrentDictionary<string, TreeItem> _childrenLookup = new();
@@ -98,12 +101,16 @@ public partial class TreeItem : ObservableObject
         {
             var localCache = _cachedFolderChildren;
             if (localCache != null)
+            {
                 return localCache;
+            }
 
             lock (_childrenLock)
             {
                 if (_cachedFolderChildren != null)
+                {
                     return _cachedFolderChildren;
+                }
 
                 _cachedFolderChildren = _childrenLookup.Values
                     .Where(x => x.Type == ENodeType.Folder)
@@ -114,6 +121,14 @@ public partial class TreeItem : ObservableObject
             }
         }
     }
+    
+    public IReadOnlyList<TreeItem> AllChildren
+    {
+        get
+        {
+            return _cachedAllChildren ??= _childrenLookup.Values.ToArray();
+        }
+    }
 
     private int? _folderCount;
     public int FolderCount
@@ -121,19 +136,37 @@ public partial class TreeItem : ObservableObject
         get
         {
             if (_folderCount.HasValue)
+            {
                 return _folderCount.Value;
+            }
 
             _folderCount = _childrenLookup.Values.Count(x => x.Type == ENodeType.Folder);
             return _folderCount.Value;
         }
     }
 
-    public bool HasFolders => FolderCount > 0;
-    
-    public int AssetCount => _childrenLookup.Values.Count(x => x.Type == ENodeType.File);
-    
-    public bool HasAssets => AssetCount > 0;
+    private bool? _hasFolders;
+    public bool HasFolders => _hasFolders ??= FolderCount > 0;
 
+    private bool? _hasAssets;
+    public bool HasAssets => _hasAssets ??= AssetCount > 0;
+    
+    private int? _assetCount;
+
+    public int AssetCount
+    {
+        get
+        {
+            if (_assetCount.HasValue)
+            {
+                return _assetCount.Value;
+            }
+
+            _assetCount = _childrenLookup.Values.Count(x => x.Type == ENodeType.File);
+            return _assetCount.Value;
+        }
+    }
+    
     [ObservableProperty]
     private bool _isSorted;
 
@@ -176,14 +209,41 @@ public partial class TreeItem : ObservableObject
         }
     }
     
+    private IReadOnlyList<TreeItem>? _cachedAllChildren;
+
     public Task<IReadOnlyList<TreeItem>> GetAllChildrenAsync()
     {
-        return Task.FromResult<IReadOnlyList<TreeItem>>(_childrenLookup.Values.ToArray());
+        return Task.FromResult(_cachedAllChildren ??= _childrenLookup.Values.ToArray());
     }
 
     [RelayCommand]
     private Task CopyPath()
     {
         return App.Clipboard.SetTextAsync(FilePath);
+    }
+    
+    public void Refresh()
+    {
+        lock (_childrenLock)
+        {
+            _cachedFolderChildren = null;
+            _cachedAllChildren = null;
+            _assetCount = null;
+            _folderCount = null;
+            _hasAssets = null;
+            _hasFolders = null;
+        }
+
+        _ = FolderChildren;
+        _ = FolderCount;
+        _ = AssetCount;
+        _ = HasAssets;
+        _ = HasFolders;
+
+        OnPropertyChanged(nameof(FolderChildren));
+        OnPropertyChanged(nameof(FolderCount));
+        OnPropertyChanged(nameof(AssetCount));
+        OnPropertyChanged(nameof(HasAssets));
+        OnPropertyChanged(nameof(HasFolders));
     }
 }

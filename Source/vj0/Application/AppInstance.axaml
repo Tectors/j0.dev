@@ -95,6 +95,7 @@
       
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="/Styles/TaskDialog.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/BreadcrumbBarItemStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TreeViewStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ScrollBarStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/DataValidationErrorsStyles.axaml"/>

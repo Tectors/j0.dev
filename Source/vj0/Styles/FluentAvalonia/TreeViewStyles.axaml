@@ -93,7 +93,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource TreeViewItemBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#a3a3a3"/>
-        <Setter Property="MinHeight" Value="25"/>
+        <Setter Property="MinHeight" Value="22"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
         <Setter Property="Template">

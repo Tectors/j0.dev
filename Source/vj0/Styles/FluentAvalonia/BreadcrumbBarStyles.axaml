@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="using:FluentAvalonia.UI.Controls">
+
+    <ControlTheme TargetType="ui:BreadcrumbBar"
+                  x:Key="{x:Type ui:BreadcrumbBar}">
+        <!--<Setter Property="AutomationProperties.LandmarkType" Value="Navigation" />-->
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="10 0 10 0" BorderBrush="#1f2023" BorderThickness="1" Background="#80121212" CornerRadius="5">
+                    <ui:ItemsRepeater Name="PART_ItemsRepeater" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    
+</ResourceDictionary>

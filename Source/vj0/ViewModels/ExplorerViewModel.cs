@@ -267,9 +267,44 @@ public partial class ExplorerViewModel : ViewModelBase
         IsFolderView = false;
 
         if (!directory.EndsWith("/"))
-        {
             directory += "/";
+
+        var parts = directory.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        var rootName = parts[0];
+        var current = TreeViewCollection
+            .FirstOrDefault(x => x.Name.Equals(rootName, StringComparison.OrdinalIgnoreCase));
+
+        var newStack = new List<TreeItem>();
+        if (current == null)
+        {
+            Console.WriteLine($"Root folder '{rootName}' not found.");
+            FileViewStack = new();
+            return;
         }
+
+        newStack.Add(current);
+
+        for (int i = 1; i < parts.Length; i++)
+        {
+            var part = parts[i];
+
+            if (!current.TryGetChild(part, out var next))
+            {
+                next = current.AllChildren
+                    .FirstOrDefault(c => c.Name.Equals(part, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (next == null)
+            {
+                Console.WriteLine($"Could not find '{part}' under '{current.Name}'");
+                break;
+            }
+
+            current = next;
+            newStack.Add(current);
+        }
+
+        FileViewStack = new ObservableCollection<TreeItem>(newStack);
 
         var matchingFiles = _viewAssetCache.Items
             .Where(tile =>
@@ -284,9 +319,10 @@ public partial class ExplorerViewModel : ViewModelBase
 
         FlatViewFiles = new ObservableCollection<FileTile>(matchingFiles);
         SelectedItems = new ObservableCollection<FileTile>(matchingFiles);
-        
+
         DispatcherTimer.RunOnce(() => IsFolderView = true, TimeSpan.FromSeconds(5));
     }
+
     
     public void SelectFolder(TreeItem item)
     {
@@ -334,6 +370,7 @@ public partial class ExplorerViewModel : ViewModelBase
 
         while (parent != null)
         {
+            parent.Refresh();
             newStack.Insert(0, parent);
             parent = parent.Parent;
         }

@@ -59,7 +59,7 @@
                 </Grid>
                 
                 <!-- Profile Button -->
-                <Button Margin="3 0 4 0" Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="40" CornerRadius="8">
+                <Button Margin="3 0 4 0" Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
                     <Button.Flyout>
                         <Flyout>
                             <Grid Width="170">
@@ -193,7 +193,7 @@
                     <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
 
                     <!-- Cloud Service -->
-                    <Button IsVisible="{Binding IsAPIServiceEnabled}" ToolTip.Tip="Cloud Service" Height="35" Background="Transparent" Opacity="1.0" CornerRadius="8">
+                    <Button IsVisible="{Binding IsAPIServiceEnabled}" ToolTip.Tip="Cloud Service" Height="40" Background="Transparent" Opacity="1.0" CornerRadius="8">
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel Width="100" Spacing="8">

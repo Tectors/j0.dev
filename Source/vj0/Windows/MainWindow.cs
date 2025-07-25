@@ -13,7 +13,7 @@ public partial class MainWindow : WindowBase<MainWindowModel>
         
         Navigation.App.Initialize(MainNavigationView);
         Navigation.App.OnNavigate += WindowModel.OnNavigationItemSelected;
-        
+
         WindowModel.Initialize();
     }
 

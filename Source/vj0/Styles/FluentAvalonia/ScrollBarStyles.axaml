@@ -19,8 +19,8 @@
 
     <x:Double x:Key="ScrollBarThumbOffset">2</x:Double>
     <x:Double x:Key="ScrollBarSize">12</x:Double>
-    <Thickness x:Key="ScrollBarMargin">1</Thickness>
-    <x:Double x:Key="ScrollBarVerticalThumbMinHeight">30</x:Double>
+    <Thickness x:Key="ScrollBarMargin">1 1 1 1</Thickness>
+    <x:Double x:Key="ScrollBarVerticalThumbMinHeight">35</x:Double>
     <x:Double x:Key="ScrollBarVerticalThumbMinWidth">20</x:Double>
     <x:Double x:Key="ScrollBarHorizontalThumbMinWidth">0</x:Double>
     <x:Double x:Key="ScrollBarHorizontalThumbMinHeight">12</x:Double>
@@ -43,8 +43,8 @@
                        Fill="#804a4a4a"
                        Stroke="{TemplateBinding BorderBrush}"
                        StrokeThickness="{DynamicResource ScrollBarThumbStrokeThickness}"
-                       RadiusX="6"
-                       RadiusY="6" />
+                       RadiusX="5"
+                       RadiusY="5" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -133,7 +133,7 @@
 
                                 <Rectangle Name="TrackRect" 
                                            Grid.RowSpan="3"
-                                           Margin="0">
+                                           Margin="5 0 0 0">
                                     <Rectangle.Transitions>
                                         <Transitions>
                                             <DoubleTransition Property="Opacity" Duration="0:0:0.1" />

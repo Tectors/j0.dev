@@ -74,7 +74,7 @@
                     </controls:NavigationViewItem>
                     
                     <!-- Scope -->
-                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Scope" Tag="{x:Type views:ScopeView}" IsEnabled="{Binding DoesProfileExist}">
+                    <!--<controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Scope" Tag="{x:Type views:ScopeView}" IsEnabled="{Binding DoesProfileExist}">
                         <controls:NavigationViewItem.Styles>
                             <Style Selector="controls|NavigationViewItem">
                                 <Setter Property="IconSource">
@@ -92,7 +92,7 @@
                                 </Setter>
                             </Style>
                         </controls:NavigationViewItem.Styles>
-                    </controls:NavigationViewItem>
+                    </controls:NavigationViewItem>-->
                 </controls:NavigationView.MenuItems>
 
                 <controls:NavigationView.FooterMenuItems>
