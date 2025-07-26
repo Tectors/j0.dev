@@ -145,7 +145,7 @@
                         CornerRadius="8">
                         <Grid>
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                                <ListBox Margin="10" ItemsSource="{Binding FlatViewFiles}" 
+                                <ListBox Margin="15" ItemsSource="{Binding FlatViewFiles}" 
                                          SelectionMode="Multiple"
                                          AutoScrollToSelectedItem="True"
                                          DoubleTapped="OnFileItemDoubleTapped">

@@ -319,6 +319,13 @@ public partial class ExplorerViewModel : ViewModelBase
 
         FlatViewFiles = new ObservableCollection<FileTile>(matchingFiles);
         SelectedItems = new ObservableCollection<FileTile>(matchingFiles);
+        
+        var sortedChildren = current.AllChildren
+            .OrderBy(x => x.Type)
+            .ThenBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+
+        FileViewCollection = new ObservableCollection<TreeItem>(sortedChildren);
 
         DispatcherTimer.RunOnce(() => IsFolderView = true, TimeSpan.FromSeconds(5));
     }

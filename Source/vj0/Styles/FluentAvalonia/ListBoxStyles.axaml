@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     x:CompileBindings="True">
     <Design.PreviewWith>
         <Border Padding="20">
@@ -47,6 +46,10 @@
             </ControlTemplate>
         </Setter>
     </ControlTheme>
+    
+    <LinearGradientBrush x:Key="ListBoxItemSelectedGradient" StartPoint="0%,0%" EndPoint="100%,0%">
+        <GradientStop Color="#1f66ff" Offset="0.8"/>
+    </LinearGradientBrush>
 
     <!-- 
     ListBoxItem styles use the WinUI ListViewItem style, however, WinUI is missing a bunch of 
@@ -58,7 +61,7 @@
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="Background" Value="{DynamicResource ListViewItemBackground}" />
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="CornerRadius" Value="4" />
         <Setter Property="Foreground" Value="{DynamicResource ListViewItemForeground}" />
         <Setter Property="Padding" Value="16,0,12,0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -78,7 +81,7 @@
                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       CornerRadius="{TemplateBinding CornerRadius}"
-                                      Margin="1"/>
+                                      Margin="0.7"/>
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -99,7 +102,7 @@
 
         <Style Selector="^:pressed">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedGradient}" />
+                <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedGradient}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundPressed}" />
@@ -108,7 +111,7 @@
 
         <Style Selector="^:selected">
             <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedGradient}" />
+                <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedGradient}" />
             </Style>
             <Style Selector="^ /template/ ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
@@ -118,7 +121,7 @@
                 <Setter Property="RenderTransform" Value="scaleY(1)" />
             </Style>
             <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
-                <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedGradient}" />
+                <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedGradient}" />
             </Style>
             <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelected}" />
@@ -127,7 +130,7 @@
 
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedGradient}" />
+                    <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedGradient}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter">
                     <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
@@ -139,7 +142,7 @@
 
             <Style Selector="^:pressed">
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
-                    <Setter Property="Background" Value="{DynamicResource TreeViewItemSelectedGradient}" />
+                    <Setter Property="Background" Value="{DynamicResource ListBoxItemSelectedGradient}" />
                 </Style>
                 <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
                     <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
