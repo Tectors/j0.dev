@@ -18,16 +18,12 @@
     
     <Grid RowDefinitions="*,5,*">
         <!-- Top -->
-        <Border Grid.Row="0" 
+        <Border Grid.Row="0"
                 BorderThickness="1 1 0 1" 
                 BorderBrush="{DynamicResource BorderBrush}" 
                 Background="{DynamicResource PanelBackgroundBrush}"
                 CornerRadius="12 0 0 12">
             
-            <TextBlock Text="Top Section" 
-                       HorizontalAlignment="Center" 
-                       VerticalAlignment="Center"
-                       Foreground="White" />
         </Border>
         
         <GridSplitter Grid.Row="1" 
@@ -144,6 +140,8 @@
                         Background="#121212"
                         CornerRadius="8">
                         <Grid>
+                            <TextBlock IsVisible="{Binding !FilesInFolderView}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.35">No files in folder</TextBlock>
+                            
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <ListBox Margin="15" ItemsSource="{Binding FlatViewFiles}" 
                                          SelectionMode="Multiple"
@@ -161,12 +159,12 @@
                                         <DataTemplate DataType="Explorer:FileTile">
                                             <StackPanel ToolTip.Tip="{Binding Path}" Spacing="5" Margin="25 0 0 0"
                                                         Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                <Canvas Width="14" Height="14" Margin="0 0 8 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Canvas Width="14" Height="14" Margin="0 0 4 0" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                     <Path
                                                         Data="M4,2 H10 L14,6 V14 A2,2 0 0 1 12,16 H4 A2,2 0 0 1 2,14 V4 A2,2 0 0 1 4,2 Z M10,2 V6 H14"
                                                         Stroke="White"
                                                         StrokeThickness="1"
-                                                        Fill="White"
+                                                        Fill="#0e91e8"
                                                         Width="14"
                                                         Height="14"
                                                         Stretch="Uniform"/>

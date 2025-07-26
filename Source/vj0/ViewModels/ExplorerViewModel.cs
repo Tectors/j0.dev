@@ -30,22 +30,19 @@ public partial class ExplorerViewModel : ViewModelBase
 
     public int AssetCount;
     
-    [ObservableProperty] private bool _isFolderView = true;
-
-    [ObservableProperty] private string _searchText = string.Empty;
     [ObservableProperty] private string _searchFilter = string.Empty;
     [ObservableProperty] private bool _useRegex;
-    [ObservableProperty] private bool _isLoading = true;
 
-    [ObservableProperty] private ObservableCollection<FileTile> _selectedItems = [];
-    [ObservableProperty] private ObservableCollection<TreeItem> _selectedTreeItems = [];
-    [ObservableProperty] private ReadOnlyObservableCollection<FileTile> _viewCollection = new([]);
     [ObservableProperty] private ObservableCollection<TreeItem> _treeViewCollection = [];
     [ObservableProperty] private ObservableCollection<TreeItem> _fileViewStack = [];
     [ObservableProperty] private ObservableCollection<TreeItem> _fileViewCollection = [];
+    [ObservableProperty] private ReadOnlyObservableCollection<FileTile> _viewCollection = new([]);
     
     [ObservableProperty]
     private ObservableCollection<FileTile> _flatViewFiles = [];
+    
+    [ObservableProperty]
+    bool _filesInFolderView;
     
     [ObservableProperty]
     private int _selectedItemPackageCount;
@@ -62,8 +59,6 @@ public partial class ExplorerViewModel : ViewModelBase
     public override Task Initialize()
     {
         if (!Globals.IsReadyToExplore) return base.Initialize();
-
-        IsLoading = true;
 
         var assetFilter = this
             .WhenAnyValue<ExplorerViewModel, (string filter, bool regex), string, bool>(x => x.SearchFilter, x => x.UseRegex, (filter, regex) => (filter, regex))
@@ -94,8 +89,6 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         if (!Globals.IsReadyToExplore) return;
 
-        IsLoading = true;
-
         var fileTiles = Provider.Files
             .AsParallel()
             .WithCancellation(CancellationToken.None)
@@ -110,7 +103,6 @@ public partial class ExplorerViewModel : ViewModelBase
         });
         
         await BuildTreeAsync();
-        IsLoading = false;
     }
 
     public async Task BuildTreeAsync(IReadOnlyDictionary<string, GameFile> files = null!)
@@ -257,15 +249,12 @@ public partial class ExplorerViewModel : ViewModelBase
 
     public void Reset()
     {
-        SearchText = string.Empty;
         SearchFilter = string.Empty;
         UseRegex = false;
     }
 
     public void FlatViewJumpTo(string directory)
     {
-        IsFolderView = false;
-
         if (!directory.EndsWith("/"))
             directory += "/";
 
@@ -318,7 +307,7 @@ public partial class ExplorerViewModel : ViewModelBase
             .ToList();
 
         FlatViewFiles = new ObservableCollection<FileTile>(matchingFiles);
-        SelectedItems = new ObservableCollection<FileTile>(matchingFiles);
+        FilesInFolderView = FlatViewFiles.Count > 0;
         
         var sortedChildren = current.AllChildren
             .OrderBy(x => x.Type)
@@ -326,37 +315,14 @@ public partial class ExplorerViewModel : ViewModelBase
             .ToArray();
 
         FileViewCollection = new ObservableCollection<TreeItem>(sortedChildren);
-
-        DispatcherTimer.RunOnce(() => IsFolderView = true, TimeSpan.FromSeconds(5));
     }
 
     
     public void SelectFolder(TreeItem item)
     {
-        SelectedTreeItems = [item];
     }
     
-    partial void OnSelectedTreeItemsChanged(ObservableCollection<TreeItem> value)
-    {
-        if (value.Count > 0)
-        {
-            var selected = value[0];
-            
-            SelectedItemPackageCount = selected.AssetCount;
-            SelectedItemFolderCount = selected.FolderCount;
-            SelectedItemArchive = selected.Archive;
-            SelectedItemMountPoint = selected.MountPoint;
-        }
-        else
-        {
-            SelectedItemPackageCount = 0;
-            SelectedItemFolderCount = 0;
-            SelectedItemArchive = "";
-            SelectedItemMountPoint = "";
-        }
-    }
-
-    private void LoadTreeItems(TreeItem item)
+    public void LoadTreeItems(TreeItem item)
     {
         Task.Run((Func<Task?>)(async () =>
         {

@@ -94,7 +94,9 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
     private void OnBreadcrumbItemPressed(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
     {
-        // throw new NotImplementedException();
+        if (args.Item is not TreeItem treeItem) return;
+        
+        ViewModel.LoadTreeItems(treeItem);
     }
 
     private void FileTree_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
