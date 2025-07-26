@@ -12,12 +12,7 @@ public class HomeViewModel : ViewModelBase
 
     public readonly string[] TagLines =
     [
-        /*
-        not yet :]
-        
         "the ultimate datamining experience",
-        */
-        
         "buy us some time (and coffee ☕)",
         "developed by a dedicated community of contributors",
         "powered by Avalonia and CUEParse",
@@ -25,7 +20,9 @@ public class HomeViewModel : ViewModelBase
         "look closer.",
         "accidentally pushed into prod",
         "developed with coffee ☕",
-        "\"Tector was able to build this in a cave with a box of scraps!\"",
+        "powered by frustration and breakthroughs",
+        "we speak fluent .uasset",
+        "we lost the documentation years ago",
     ];
     
     public string[] Tips =
