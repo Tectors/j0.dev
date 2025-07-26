@@ -95,7 +95,7 @@
         <Setter Property="Foreground" Value="#a3a3a3"/>
         <Setter Property="MinHeight" Value="21"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}"/>
+        <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <StackPanel>
@@ -111,6 +111,17 @@
                             TemplatedControl.IsTemplateFocusTarget="True"
                             Margin="0">
                         <Panel>
+                            <Rectangle Name="SelectionIndicator"
+                                       Width="3"
+                                       Height="12" Margin="0 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       RadiusX="2"
+                                       RadiusY="2"
+                                       IsVisible="False"
+                                       Opacity="0.5"
+                                       Fill="Cyan"/>
+
                             <Grid Name="PART_Header"
                                   ColumnDefinitions="Auto, *"
                                   Margin="{TemplateBinding Level, Mode=OneWay, Converter={StaticResource TreeViewItemLeftMarginConverter}}">

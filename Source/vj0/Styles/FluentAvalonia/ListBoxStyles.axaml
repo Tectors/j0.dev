@@ -82,6 +82,25 @@
                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       CornerRadius="{TemplateBinding CornerRadius}"
                                       Margin="0.7"/>
+                    
+                    <!--<Rectangle Name="SelectionIndicator"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Width="3" Height="16"
+                               Margin="2 0 0 0"
+                               UseLayoutRounding="False"
+                               RadiusX="2" RadiusY="2"
+                               IsVisible="False"
+                               RenderTransform="scaleY(0)"
+                               Fill="Cyan">
+                        <Rectangle.Transitions>
+                            <Transitions>
+                                <TransformOperationsTransition Duration="00:00:00.167"
+                                                               Property="RenderTransform"
+                                                               Easing="0,0 0,1"/>
+                            </Transitions>
+                        </Rectangle.Transitions>
+                    </Rectangle>-->
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -136,7 +155,7 @@
                     <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPointerOver}" />
                 </Style>
                 <Style Selector="^ /template/ Rectangle#SelectionIndicator">
-                    <Setter Property="Fill" Value="{DynamicResource ListViewItemSelectionIndicatorPointerOverBrush}" />
+                    <Setter Property="Fill" Value="Cyan" />
                 </Style>
             </Style>
 
@@ -148,13 +167,13 @@
                     <Setter Property="Foreground" Value="{DynamicResource ListViewItemForegroundSelectedPressed}" />
                 </Style>
                 <Style Selector="^ /template/ Rectangle#SelectionIndicator">
-                    <Setter Property="Fill" Value="{DynamicResource ListViewItemSelectionIndicatorPressedBrush}" />
+                    <Setter Property="Fill" Value="Cyan" />
                     <Setter Property="RenderTransform" Value="scaleY(0.5)" />
                 </Style>
             </Style>
 
             <Style Selector="^:disabled /template/ Rectangle#SelectionIndicator">
-                <Setter Property="Fill" Value="{DynamicResource ListViewItemSelectionIndicatorDisabledBrush}" />
+                <Setter Property="Fill" Value="Cyan" />
             </Style>
         </Style>
     </ControlTheme>
