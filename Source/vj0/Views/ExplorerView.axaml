@@ -33,14 +33,14 @@
                       ResizeDirection="Rows" />
         
         <!-- Bottom -->
-        <Border Grid.Row="2" Margin="0 4 7 7">
+        <Border Grid.Row="2" Margin="0 4 0 0">
             <Grid ColumnDefinitions="*,Auto,*">
                 <!-- Folders -->
                 <Border Grid.Column="0"
-                        BorderThickness="1"
+                        BorderThickness="1 1 1 0"
                         Background="#0f0f0f"
                         ClipToBounds="True"
-                        CornerRadius="8">
+                        CornerRadius="8 8 0 0">
                     
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
@@ -125,7 +125,7 @@
                               ResizeDirection="Columns" />
         
                 <Grid Grid.Column="2" RowDefinitions="Auto, *">
-                    <StackPanel Margin="4 0 0 5">
+                    <StackPanel Margin="4 0 0 5" Spacing="10">
                         <controls:BreadcrumbBar
                             Padding="5"
                             ItemsSource="{Binding FileViewStack}"
@@ -140,9 +140,9 @@
 
                     <Border
                         Grid.Row="1"
-                        BorderThickness="1"
                         Background="#121212"
-                        CornerRadius="8">
+                        BorderThickness="1 1 0 0"
+                        CornerRadius="8 0 0 0">
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                                 <GradientStop Color="#1e1e1f" Offset="0" />
@@ -152,7 +152,7 @@
                         <Grid>
                             <TextBlock IsVisible="{Binding !FilesInFolderView}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.45">No files in folder</TextBlock>
                             
-                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer Margin="0 0 5 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                 <ListBox Margin="15" ItemsSource="{Binding FlatViewFiles}" 
                                          SelectionMode="Multiple"
                                          AutoScrollToSelectedItem="True"
