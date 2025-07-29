@@ -27,7 +27,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
 
     private async void StartLoopingGradientAnimation()
     {
-        if (_branchBrush == null)
+        if (_branchBrush is null)
         {
             if (Resources.TryGetValue("AnimatingTextBrush", out var brushObj) && brushObj is LinearGradientBrush brush)
             {

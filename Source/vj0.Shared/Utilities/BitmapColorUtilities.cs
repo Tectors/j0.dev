@@ -11,7 +11,7 @@ public static class BitmapColorUtilities
 {
     public static (Color Start, Color End) GetGradientFromBitmap(Bitmap bmp)
     {
-        if (bmp == null) return default;
+        if (bmp is null) return default;
         
         var width = bmp.PixelSize.Width;
         var height = bmp.PixelSize.Height;

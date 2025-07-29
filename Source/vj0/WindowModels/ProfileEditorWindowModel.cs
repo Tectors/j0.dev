@@ -72,7 +72,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
 
     private void OnArchiveDirectoryChanged()
     {
-        if (Profile == null ||
+        if (Profile is null ||
             /* This operation is to fill the name if it is empty using the archive directory */
             !Profile.Name.IsNullOrEmpty()
             || Profile.ArchiveDirectory.IsNullOrEmpty()

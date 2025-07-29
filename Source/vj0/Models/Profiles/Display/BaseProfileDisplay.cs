@@ -66,7 +66,7 @@ public partial class BaseProfileDisplay : BaseProfile {
 
     protected List<BasePakFileEntry> GetPakFiles()
     {
-        if (Provider == null)
+        if (Provider is null)
         {
             return [];
         }

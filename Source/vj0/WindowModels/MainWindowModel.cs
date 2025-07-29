@@ -110,7 +110,7 @@ public partial class MainWindowModel : WindowModelBase
 
     public void RefreshProfileProperties()
     {
-        if (CurrentProfile == null)
+        if (CurrentProfile is null)
         {
             TitleBarOpacity = 0.0;
         }
@@ -207,7 +207,7 @@ public partial class MainWindowModel : WindowModelBase
         beatTime = 0;
         TitleBarOpacity = 0.0;
 
-        if (beatTimer == null)
+        if (beatTimer is null)
         {
             beatTimer = new DispatcherTimer { Interval = BeatInterval };
             beatTimer.Tick += (_, _) =>
@@ -274,7 +274,7 @@ public partial class MainWindowModel : WindowModelBase
 
     private void UpdateGradientBrush()
     {
-        if (CurrentProfile == null)
+        if (CurrentProfile is null)
         {
             TitleBarOpacity = 0.0;
             
@@ -332,7 +332,7 @@ public partial class MainWindowModel : WindowModelBase
             await Dispatcher.UIThread.InvokeAsync(() => ProfileSelectionVM.UpdateProfileCard(CurrentProfile));
         }
 
-        if (profile == null)
+        if (profile is null)
         {
             return;
         }
@@ -340,7 +340,7 @@ public partial class MainWindowModel : WindowModelBase
         SetCurrentProfile(profile);
         RefreshProfileProperties();
 
-        if (CurrentProfile == null)
+        if (CurrentProfile is null)
         {
             return;
         }

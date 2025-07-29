@@ -10,14 +10,14 @@ public partial class SerializationSettingsViewModel : ViewModelBase
 
     partial void OnReadBlueprintBytecodeChanged(bool value)
     {
-        if (MainWM.CurrentProfile == null || MainWM.CurrentProfile.Provider == null) return;
+        if (MainWM.CurrentProfile is null || MainWM.CurrentProfile.Provider is null) return;
 
         MainWM.CurrentProfile.Provider.ReadScriptData = value;
     }
 
     partial void OnReadMaterialShaderMapsChanged(bool value)
     {
-        if (MainWM.CurrentProfile == null || MainWM.CurrentProfile.Provider == null) return;
+        if (MainWM.CurrentProfile is null || MainWM.CurrentProfile.Provider is null) return;
 
         MainWM.CurrentProfile.Provider.ReadShaderMaps = value;
     }

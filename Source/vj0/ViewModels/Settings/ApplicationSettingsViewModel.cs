@@ -26,7 +26,7 @@ public partial class ApplicationSettingsViewModel : ViewModelBase
 
     partial void OnGameLanguageChanged(ELanguage value)
     {
-        if (MainWM.CurrentProfile == null || MainWM.CurrentProfile.Provider == null) return;
+        if (MainWM.CurrentProfile is null || MainWM.CurrentProfile.Provider is null) return;
 
         Tasks.Run(() => MainWM.CurrentProfile.SetLanguage(value));
     }

@@ -46,7 +46,7 @@ public partial class ScrollTopShadow : UserControl
     
     private void OnScrollChanged(object? sender, ScrollChangedEventArgs e)
     {
-        if (ScrollViewer == null) return;
+        if (ScrollViewer is null) return;
 
         var newTargetOpacity = ScrollViewer.Offset.Y > 0 && HasScrollableVerticalContent ? 1 : 0;
     

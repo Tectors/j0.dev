@@ -12,7 +12,7 @@ public class CloudService : IService
     
     public void Initialize()
     {
-        if (API == null)
+        if (API is null)
         {
             API = new CloudWebAPI();
             
@@ -58,7 +58,7 @@ public class CloudService : IService
 
     public void Stop()
     {
-        if (API == null)
+        if (API is null)
         {
             return;
         }

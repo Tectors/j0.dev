@@ -36,7 +36,7 @@ public partial class ProfileViewModelBase : ViewModelBase
         ? TimeUtilities.GetRelativeTime(Profile.Display.LastUsed.Value, RelativeTimeClock.Now)
         : "Never";
     
-    public bool IsUncompletedProfile => Profile == null || Profile.Status.State == EProfileStatus.Uncompleted;
+    public bool IsUncompletedProfile => Profile is null || Profile.Status.State == EProfileStatus.Uncompleted;
     
     /* Splash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public new virtual void Initialize()

@@ -51,7 +51,7 @@ public partial class SettingsService : ObservableObject, IService
         try
         {
             var settings = JsonConvert.DeserializeObject<SettingsService>(File.ReadAllText(FilePath.FullName));
-            if (settings == null) return;
+            if (settings is null) return;
 
             foreach (var property in settings.GetType().GetProperties())
             {

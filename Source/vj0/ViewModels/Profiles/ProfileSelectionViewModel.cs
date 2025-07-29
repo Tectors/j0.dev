@@ -45,7 +45,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
     {
         await LoadAll();
         
-        if (AppServices.Settings.Application.LoadRecentProfileOnLaunch && MainWM.CurrentProfile == null && !hasAttemptedRecentProfileLoad)
+        if (AppServices.Settings.Application.LoadRecentProfileOnLaunch && MainWM.CurrentProfile is null && !hasAttemptedRecentProfileLoad)
         {
             var recentProfile = GameDetection.GetRecentlyUsedProfiles(1).FirstOrDefault() ?? GameDetection.LoadedProfiles.FirstOrDefault();
 
@@ -87,7 +87,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
                 var card = CreateCard(profile);
                 CardMap[profile.FileName] = card;
                 
-                if (ProfileListPanel == null) continue;
+                if (ProfileListPanel is null) continue;
                 
                 ProfileListPanel.Children.Add(WrapCard!(card));
             }
@@ -113,8 +113,11 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
     public void UpdateProfileCard(Profile profile)
     {
-        if (profile.FileName == null) return;
-        if (ProfileListPanel == null)
+        if (profile is null) return;
+        
+        if (profile.FileName is null) return;
+        
+        if (ProfileListPanel is null)
         {
             if (CardMap.TryGetValue(profile.FileName, out var savedCard))
             {
@@ -132,7 +135,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
                 .OfType<Border>()
                 .FirstOrDefault(b => b.Child == card);
 
-            if (existingBorder == null) return;
+            if (existingBorder is null) return;
 
             ProfileListPanel.Children.Remove(existingBorder);
             IsEmpty = CardMap.Count == 0;
@@ -168,7 +171,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
     private void InsertCardSorted(ProfileCard card)
     {
-        if (card.ViewModel.Profile == null || ProfileListPanel == null) return;
+        if (card.ViewModel.Profile is null || ProfileListPanel is null) return;
 
         var newKey = GetSortKey(card.ViewModel.Profile);
 

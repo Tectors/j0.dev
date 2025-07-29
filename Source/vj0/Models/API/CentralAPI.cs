@@ -25,7 +25,7 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
 
         var aes = await ExecuteAsync<AesResponse>(url, verbose: false, useBaseUrl: useBaseUrl);
 
-        if (aes == null)
+        if (aes is null)
         {
             Log.Information("GetAesAsync failed for URL: {Url}", url);
         }

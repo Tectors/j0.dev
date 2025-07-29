@@ -15,7 +15,7 @@ public static class EnumExtensions
     public static string GetDescription(this Enum value)
     {
         var fi = value.GetType().GetField(value.ToString());
-        if (fi == null)
+        if (fi is null)
         {
             return $"{value} ({value:D})";
         }

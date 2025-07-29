@@ -65,7 +65,7 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
     
     private async void OnProfileSaved(Profile originalProfile, Profile newProfile, bool isUncompleted)
     {
-        if (newProfile == null || originalProfile == null)
+        if (newProfile is null || originalProfile is null)
         {
             return;
         }

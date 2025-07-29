@@ -33,7 +33,7 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
     {
         base.Initialize();
         
-        if (Profile == null) return;
+        if (Profile is null) return;
         
         Profile.Validate();
 
@@ -50,7 +50,7 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
 
     public void GeneratePakFileEntries()
     {
-        if (Profile == null) return;
+        if (Profile is null) return;
         
         PakKeyEntries.Clear();
         

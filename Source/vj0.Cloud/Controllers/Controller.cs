@@ -76,7 +76,7 @@ public class CloudApiController : ControllerBase
     public ActionResult Get(bool raw, string? path)
     {
         if (!IsBaseProfileReady) return BadRequest();
-        if (path == null) return BadRequest();
+        if (path is null) return BadRequest();
         
         var contentType = Request.Headers.ContentType;
         path = path.SubstringBefore('.');
@@ -109,7 +109,7 @@ public class CloudApiController : ControllerBase
         }
 
         var textureData = texture.Decode();
-        if (textureData == null)
+        if (textureData is null)
         {
             return StatusCode(500, new
             {
@@ -127,7 +127,7 @@ public class CloudApiController : ControllerBase
     {
         wave.Decode(true, out var audioFormat, out var data);
         
-        if (data == null || string.IsNullOrEmpty(audioFormat))
+        if (data is null || string.IsNullOrEmpty(audioFormat))
         {
             return Conflict(new
             {
@@ -166,7 +166,7 @@ public class CloudApiController : ControllerBase
                 foreach (var export in exports)
                 {
                     var editorData = editorAsset.GetExportOrNull($"{export.Name}EditorOnlyData");
-                    if (editorData == null)
+                    if (editorData is null)
                     {
                         continue;
                     }

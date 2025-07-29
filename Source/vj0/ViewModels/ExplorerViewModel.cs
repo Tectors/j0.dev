@@ -125,7 +125,7 @@ public partial class ExplorerViewModel : ViewModelBase
                     MaxDegreeOfParallelism = Math.Max(1, Environment.ProcessorCount - 1)
                 };
 
-                if (files == null)
+                if (files is null)
                 {
                     files = Provider.Files;
                 }
@@ -264,7 +264,7 @@ public partial class ExplorerViewModel : ViewModelBase
             .FirstOrDefault(x => x.Name.Equals(rootName, StringComparison.OrdinalIgnoreCase));
 
         var newStack = new List<TreeItem>();
-        if (current == null)
+        if (current is null)
         {
             Console.WriteLine($"Root folder '{rootName}' not found.");
             FileViewStack = new();
@@ -283,7 +283,7 @@ public partial class ExplorerViewModel : ViewModelBase
                     .FirstOrDefault(c => c.Name.Equals(part, StringComparison.OrdinalIgnoreCase));
             }
 
-            if (next == null)
+            if (next is null)
             {
                 Console.WriteLine($"Could not find '{part}' under '{current.Name}'");
                 break;

@@ -77,7 +77,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
     private void HookEvents(ProfileCard card)
     {
         var window = this.GetVisualRoot() as MainWindow;
-        if (window == null)
+        if (window is null)
         {
             return;
         }
@@ -96,7 +96,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
         card.OnEdit += (_, _) =>
         {
             var profile = card.ViewModel.Profile;
-            if (profile == null) return;
+            if (profile is null) return;
             
             profile.OpenEditor(MainWM.Window);
         };
@@ -104,7 +104,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
         card.OnDelete += async (_, _) =>
         {
             var profile = card.ViewModel.Profile;
-            if (profile == null) return;
+            if (profile is null) return;
             
             var dialog = new ContentDialog
             {

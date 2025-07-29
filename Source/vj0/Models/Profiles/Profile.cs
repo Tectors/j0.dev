@@ -120,7 +120,7 @@ public class Profile : BaseProfileDisplay
 
     public void InitializeCache(bool shouldSave = true)
     {
-        if (Provider == null) return;
+        if (Provider is null) return;
         
         var previousPakFiles = PakFileEntries;
         PakFileEntries = GetPakFiles();
@@ -138,7 +138,7 @@ public class Profile : BaseProfileDisplay
         foreach (var unknownKey in Encryption.UnknownKeys)
         {
             var pakFile = PakFileEntries.FirstOrDefault(p => p.Guid == unknownKey.Guid);
-            if (pakFile == null) continue;
+            if (pakFile is null) continue;
                 
             var newKey = new EncryptionKey()
             {
@@ -221,7 +221,7 @@ public class Profile : BaseProfileDisplay
                 {
                     foreach (var extraKey in Encryption.Keys.Where(extraKey => extraKey.IsValid && extraKey.Key != "").Where(extraKey => vfs.TestAesKey(extraKey.AESKey)))
                     {
-                        if (Provider == null) continue;
+                        if (Provider is null) continue;
                         
                         await Provider.SubmitKeyAsync(vfs.EncryptionKeyGuid, extraKey.AESKey);
                         Log.Information($"Submitted Dynamic AES Key: {extraKey.AESKey}");
@@ -235,7 +235,7 @@ public class Profile : BaseProfileDisplay
     {
         var mapping = await RestAPI.Central.FetchMappingAsync();
 
-        if (Provider == null) return;
+        if (Provider is null) return;
 
         var MappingFile = MappingsContainer.Path;
 
@@ -388,7 +388,7 @@ public class Profile : BaseProfileDisplay
     
     public bool Compare(Profile other)
     {
-        if (other == null) return false;
+        if (other is null) return false;
 
         return 
            /* Allows user to change name without restart
@@ -435,7 +435,7 @@ public class Profile : BaseProfileDisplay
                 var json = await File.ReadAllTextAsync(file);
                 var profileSetting = JsonSerializer.Deserialize<Profile>(json);
 
-                if (profileSetting == null) return null;
+                if (profileSetting is null) return null;
 
                 profileSetting.Display.Profile = profileSetting;
                 profileSetting.Display.Splash.Profile = profileSetting;
@@ -554,7 +554,7 @@ public class Profile : BaseProfileDisplay
     {
         var aes = await RestAPI.Central.GetAesAsync(url, useBaseUrl: false);
 
-        if (aes == null)
+        if (aes is null)
         {
             Log.Information("FetchEncryptionKeysAsync Failed");
             return;
@@ -590,7 +590,7 @@ public class Profile : BaseProfileDisplay
         }
         else
         {
-            Encryption.Keys.RemoveAll(k => k == null);
+            Encryption.Keys.RemoveAll(k => k is null);
             Encryption.Keys.RemoveAll(k => dynamicGUIDs.Contains(k.Guid));
             Encryption.Keys.AddRange(newKeys);
         }
@@ -671,7 +671,7 @@ public class Profile : BaseProfileDisplay
 
     public void OpenEditor(Window window = null!)
     {
-        if (window == null)
+        if (window is null)
         {
             window = MainWM.Window;
         }

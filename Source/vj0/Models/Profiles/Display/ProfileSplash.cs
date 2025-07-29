@@ -42,7 +42,7 @@ public class ProfileSplash : ObservableObject
 
     private Bitmap? LoadSplashBitmap()
     {
-        if (Profile == null)
+        if (Profile is null)
         {
             return null;
         }

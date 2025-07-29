@@ -83,7 +83,7 @@ public class NavigatorContext
         if (obj is null) return false;
 
         var viewType = ResolveType(obj);
-        if (_contentFrame == null) return false;
+        if (_contentFrame is null) return false;
         
         return viewType is not null && _contentFrame.CurrentSourcePageType == viewType;
     }

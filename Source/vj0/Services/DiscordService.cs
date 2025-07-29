@@ -82,7 +82,7 @@ public class DiscordService : IService
 
     public void Deinitialize()
     {
-        if (!_isInitialized || _client == null) return;
+        if (!_isInitialized || _client is null) return;
 
         try
         {
@@ -104,7 +104,7 @@ public class DiscordService : IService
     
     public void UpdateDetails(string Details)
     {
-        if (!_isInitialized || _client == null) return;
+        if (!_isInitialized || _client is null) return;
         
         var presence = DefaultPresence;
         presence.Details = Details;
@@ -116,7 +116,7 @@ public class DiscordService : IService
     
     public void UpdateState(string State)
     {
-        if (!_isInitialized || _client == null) return;
+        if (!_isInitialized || _client is null) return;
         
         var presence = DefaultPresence;
         presence.State = State;
