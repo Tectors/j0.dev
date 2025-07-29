@@ -107,7 +107,7 @@ public partial class CloudWebAPI : ObservableObject
     
     public async Task StopAsync()
     {
-        if (app != null)
+        if (app is not null)
         {
             Log.Information("Stopping vj0.Cloud...");
             await app.StopAsync();

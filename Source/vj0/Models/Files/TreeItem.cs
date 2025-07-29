@@ -100,14 +100,14 @@ public partial class TreeItem : ObservableObject
         get
         {
             var localCache = _cachedFolderChildren;
-            if (localCache != null)
+            if (localCache is not null)
             {
                 return localCache;
             }
 
             lock (_childrenLock)
             {
-                if (_cachedFolderChildren != null)
+                if (_cachedFolderChildren is not null)
                 {
                     return _cachedFolderChildren;
                 }

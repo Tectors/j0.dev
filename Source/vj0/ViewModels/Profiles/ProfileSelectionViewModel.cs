@@ -49,7 +49,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         {
             var recentProfile = GameDetection.GetRecentlyUsedProfiles(1).FirstOrDefault() ?? GameDetection.LoadedProfiles.FirstOrDefault();
 
-            if (recentProfile != null)
+            if (recentProfile is not null)
             {
                 _ = MainWM.StartProfileAsync(recentProfile);
             }
@@ -77,7 +77,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
         await Dispatcher.UIThread.InvokeAsync(() =>
         {
-            if (ProfileListPanel != null)
+            if (ProfileListPanel is not null)
             {
                 ProfileListPanel.Children.Clear();
             }

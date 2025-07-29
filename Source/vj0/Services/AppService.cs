@@ -44,7 +44,7 @@ public class AppService : IService
             Title = "Select a Folder"
         })).FirstOrDefault();
 
-        return folder != null ? Uri.UnescapeDataString(folder.Path.AbsolutePath) : null;
+        return folder is not null ? Uri.UnescapeDataString(folder.Path.AbsolutePath) : null;
     }
 
     public async Task<string?> BrowseFileDialog(string suggestedFileName = "", params FilePickerFileType[] fileTypes)
@@ -57,7 +57,7 @@ public class AppService : IService
             Title = "Select a File"
         })).FirstOrDefault();
 
-        return file != null ? Uri.UnescapeDataString(file.Path.AbsolutePath) : null;
+        return file is not null ? Uri.UnescapeDataString(file.Path.AbsolutePath) : null;
     }
     
     public static void OpenLink(string path)

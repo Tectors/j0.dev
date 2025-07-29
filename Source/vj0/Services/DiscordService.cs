@@ -87,7 +87,7 @@ public class DiscordService : IService
         try
         {
             var user = _client.CurrentUser;
-            if (user != null)
+            if (user is not null)
             {
                 Log.Information("Discord Rich Presence Stopped for {Username} ({ID})", user.Username, user.ID);
             }

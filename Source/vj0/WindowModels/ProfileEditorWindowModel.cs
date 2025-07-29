@@ -93,7 +93,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
             break;
         }
 
-        if (version != null)
+        if (version is not null)
         {
             Profile.Name = version;
         }

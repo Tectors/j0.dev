@@ -87,7 +87,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
         card.OnStart += async (_, _) =>
         {
             var profile = card.ViewModel.Profile;
-            if (profile != null)
+            if (profile is not null)
             {
                 await viewModel.StartProfileAsync(profile);
             }
@@ -114,10 +114,10 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
                 PrimaryButtonText = "Delete",
                 PrimaryButtonCommand = new RelayCommand(() =>
                 {
-                    if (profile.FileName != null && ViewModel.CardMap.TryGetValue(profile.FileName, out var cardToRemove))
+                    if (profile.FileName is not null && ViewModel.CardMap.TryGetValue(profile.FileName, out var cardToRemove))
                     {
                         var border = Enumerable.OfType<Border>(ProfileListPanel!.Children).FirstOrDefault(c => c.Child == cardToRemove);
-                        if (border != null)
+                        if (border is not null)
                         {
                             ProfileListPanel.Children.Remove(border);
                         }

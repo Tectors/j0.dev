@@ -30,7 +30,7 @@ public class CloudApiController : ControllerBase
 
     public static void SetProfile(BaseProfile profile)
     {
-        if (profile != null)
+        if (profile is not null)
         {
             Log.Information($"[vj0.Cloud]: MainProfile got updated to {profile.Name}");
         }
@@ -217,7 +217,7 @@ public class CloudApiController : ControllerBase
                 if (!profile.Provider.TryLoadPackage(path, package: out var package)) continue;
                 var assetType = package.GetExports().FirstOrDefault()?.ExportType;
 
-                if (assetType != null && profile.SecondaryAssetTypes.Contains(assetType, StringComparer.OrdinalIgnoreCase))
+                if (assetType is not null && profile.SecondaryAssetTypes.Contains(assetType, StringComparer.OrdinalIgnoreCase))
                 {
                     return profile;
                 }

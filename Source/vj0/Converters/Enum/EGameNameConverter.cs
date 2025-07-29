@@ -7,7 +7,7 @@ public static class EGameNameConverter
     public static string ToName(EGame value)
     {
         var name = System.Enum.GetName(typeof(EGame), value);
-        return name != null && name.StartsWith("GAME_") ? name[5..] : name ?? string.Empty;
+        return name is not null && name.StartsWith("GAME_") ? name[5..] : name ?? string.Empty;
     }
 
     public static bool TryParse(string shortName, out EGame value)

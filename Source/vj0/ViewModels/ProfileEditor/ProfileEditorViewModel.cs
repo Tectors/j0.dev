@@ -59,7 +59,7 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
             var key = "";
 
             var matchingKey = Profile.Encryption.Keys.FirstOrDefault(k => k.Name == pakFileEntry.FileName);
-            if (matchingKey != null)
+            if (matchingKey is not null)
             {
                 key = matchingKey.Key;
             }

@@ -25,14 +25,14 @@ public partial class MainWindowModel : WindowModelBase
 {
     public static InfoService Info => AppServices.Info;
     
-    public string Title => CurrentProfile != null ? $"{CurrentProfile.Name} - {Globals.APP_NAME}" : $"{Globals.APP_NAME} ({Globals.VERSION})";
+    public string Title => CurrentProfile is not null ? $"{CurrentProfile.Name} - {Globals.APP_NAME}" : $"{Globals.APP_NAME} ({Globals.VERSION})";
 
     /* ~~~ Observable State ~~~ */
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsCurrentToolbarContentVisible))]
     private object? _currentToolbarContent;
     
-    public bool IsCurrentToolbarContentVisible => CurrentToolbarContent != null;
+    public bool IsCurrentToolbarContentVisible => CurrentToolbarContent is not null;
 
     [ObservableProperty]
     private AppStatus _status = AppStatus.Idle;
@@ -68,7 +68,7 @@ public partial class MainWindowModel : WindowModelBase
 
     /* ~~~ Profile Info ~~~ */
     public string ProfileDisplayName => CurrentProfile?.Name ?? "Unknown";
-    public bool DoesProfileExist => CurrentProfile != null;
+    public bool DoesProfileExist => CurrentProfile is not null;
     public bool IsProfileInitialized => CurrentProfile?.IsInitialized ?? false;
     
     public double ProfileButtonOpacity => Math.Max(TitleBarOpacity, 0.5);
@@ -76,7 +76,7 @@ public partial class MainWindowModel : WindowModelBase
     /* ~~~ Lifecycle Methods ~~~ */
     public new void Initialize()
     {
-        if (CurrentProfile != null)
+        if (CurrentProfile is not null)
         {
             CurrentProfile.PropertyChanged += (_, args) =>
             {
@@ -98,7 +98,7 @@ public partial class MainWindowModel : WindowModelBase
         var lastProfile = CurrentProfile;
         CurrentProfile = profile;
 
-        if (CurrentProfile != null)
+        if (CurrentProfile is not null)
         {
             CloudApiController.SetProfile(CurrentProfile);
         }
@@ -161,7 +161,7 @@ public partial class MainWindowModel : WindowModelBase
                 
                 if (previousStatus == AppStatus.Active)
                 {
-                    if (CurrentProfile != null)
+                    if (CurrentProfile is not null)
                     {
                         SetCurrentProfile(null);
                     }
@@ -308,9 +308,9 @@ public partial class MainWindowModel : WindowModelBase
         OnPropertyChanged(nameof(TitleBarSecondGradientBrush));
     }
     
-    public static bool IsAPIServiceEnabled => Settings != null && Settings.Cloud.RunHostedAPI;
-    public static bool IsAPIServiceRunning => AppServices.Cloud.API != null && AppServices.Cloud.API!.IsRunning;
-    public static bool IsAPIServiceErrored => AppServices.Cloud.API != null && AppServices.Cloud.API!.HasErrored;
+    public static bool IsAPIServiceEnabled => Settings is not null && Settings.Cloud.RunHostedAPI;
+    public static bool IsAPIServiceRunning => AppServices.Cloud.API is not null && AppServices.Cloud.API!.IsRunning;
+    public static bool IsAPIServiceErrored => AppServices.Cloud.API is not null && AppServices.Cloud.API!.HasErrored;
 
     public void UpdateAPIServiceEnabled()
     {
@@ -325,7 +325,7 @@ public partial class MainWindowModel : WindowModelBase
     
     public async Task StartProfileAsync(Profile profile)
     {
-        if (CurrentProfile != null)
+        if (CurrentProfile is not null)
         {
             CurrentProfile.DisposeProvider();
             

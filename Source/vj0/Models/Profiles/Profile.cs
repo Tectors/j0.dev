@@ -67,7 +67,7 @@ public class Profile : BaseProfileDisplay
 
         await LoadKeys();
         
-        if (Provider != null && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count > 0)
+        if (Provider is not null && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count > 0)
         {
             Status.OnFailure("Please enter a valid AES encryption key in the profile settings.");
             OnInitializationFailure?.Invoke(this);
@@ -75,7 +75,7 @@ public class Profile : BaseProfileDisplay
             return;
         }
         
-        if (Provider != null && Provider.Files.Count == 0)
+        if (Provider is not null && Provider.Files.Count == 0)
         {
             Status.OnFailure("No files were found in the archive or the selected folder.");
             OnInitializationFailure?.Invoke(this);
@@ -83,7 +83,7 @@ public class Profile : BaseProfileDisplay
             return;
         }
 
-        if (Provider != null)
+        if (Provider is not null)
         {
             Provider.LoadVirtualPaths();
             
@@ -210,12 +210,12 @@ public class Profile : BaseProfileDisplay
     
     private async Task LoadKeys()
     {
-        if (Provider != null)
+        if (Provider is not null)
         {
             await Provider.SubmitKeyAsync(Globals.ZERO_GUID, Encryption.MainAESKey);
             Log.Information($"Submitted AES Key: {Encryption.MainAESKey}");
 
-            if (Encryption.HasKeys && Provider != null)
+            if (Encryption.HasKeys && Provider is not null)
             {
                 foreach (var vfs in Provider.UnloadedVfs.ToArray())
                 {
@@ -251,7 +251,7 @@ public class Profile : BaseProfileDisplay
             }
         }
 
-        if (MappingFile != null && File.Exists(MappingFile))
+        if (MappingFile is not null && File.Exists(MappingFile))
         {
             Provider.MappingsContainer = new FileUsmapTypeMappingsProvider(MappingFile);
         
@@ -405,7 +405,7 @@ public class Profile : BaseProfileDisplay
     
     public void DisposeProvider(bool setStatus = true)
     {
-        if (Provider != null)
+        if (Provider is not null)
         {
             Provider.Dispose();
             
@@ -460,7 +460,7 @@ public class Profile : BaseProfileDisplay
         });
 
         var results = await Task.WhenAll(tasks);
-        return results.Where(profile => profile != null).ToList()!;
+        return results.Where(profile => profile is not null).ToList()!;
     }
     
     public async void TryAutoFetchAesKeys()

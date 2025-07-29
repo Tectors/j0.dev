@@ -72,7 +72,7 @@ public partial class ScopeView : ViewBase<ScopeViewModel>
         _longPressTimer.Tick += (_, _) =>
         {
             _longPressTimer?.Stop();
-            if (_longPressItem != null)
+            if (_longPressItem is not null)
             {
                 _longPressHandled = true;
                 /*if (_longPressItem.HasAssets)

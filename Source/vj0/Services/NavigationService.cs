@@ -85,7 +85,7 @@ public class NavigatorContext
         var viewType = ResolveType(obj);
         if (_contentFrame == null) return false;
         
-        return viewType != null && _contentFrame.CurrentSourcePageType == viewType;
+        return viewType is not null && _contentFrame.CurrentSourcePageType == viewType;
     }
 
     private Type? ResolveType(object obj)

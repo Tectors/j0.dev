@@ -31,7 +31,7 @@ public class ProfileSplash : ObservableObject
         OnPropertyChanged(nameof(BitmapGradient));
     }
     
-    [JsonIgnore] public bool Exists => Bitmap != null;
+    [JsonIgnore] public bool Exists => Bitmap is not null;
 
     public ProfileSplash() { }
 

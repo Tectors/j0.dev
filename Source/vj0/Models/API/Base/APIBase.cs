@@ -75,7 +75,7 @@ public class APIBase
             Log.Error(response.ErrorException.ToString());
         }
 
-        if (response.StatusCode != HttpStatusCode.OK && response.Content != null)
+        if (response.StatusCode != HttpStatusCode.OK && response.Content is not null)
         {
             Log.Error(response.Content);
         }

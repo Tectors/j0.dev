@@ -62,14 +62,14 @@ public static class GameDetection
         Action<Profile>? onDetected)
     {
         var existingProfile = LoadedProfiles.FirstOrDefault(p => p.AutoDetectedGameId == gameId);
-        if (existingProfile != null)
+        if (existingProfile is not null)
         {
             await existingProfile.Save();
             return;
         }
 
         var detectedProfile = detectFunc();
-        if (detectedProfile != null)
+        if (detectedProfile is not null)
         {
             Log.Information($"Detected {detectedProfile.Name} at {detectedProfile.ArchiveDirectory}");
 
@@ -86,7 +86,7 @@ public static class GameDetection
         try
         {
             var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\tof_launcher");
-            if (key != null)
+            if (key is not null)
             {
                 var installPath = key.GetValue("GameInstallPath") as string;
                 if (!string.IsNullOrWhiteSpace(installPath))

@@ -341,7 +341,7 @@ public partial class ExplorerViewModel : ViewModelBase
         var newStack = new List<TreeItem>();
         var parent = item;
 
-        while (parent != null)
+        while (parent is not null)
         {
             parent.Refresh();
             newStack.Insert(0, parent);
