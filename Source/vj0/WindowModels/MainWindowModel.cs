@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Media;
@@ -323,6 +324,8 @@ public partial class MainWindowModel : WindowModelBase
         OnPropertyChanged(nameof(IsAPIServiceErrored));
     }
     
+    private CancellationTokenSource? LastProfileCancellationTokenSource = new();
+    
     public async Task StartProfileAsync(Profile profile)
     {
         if (CurrentProfile is not null)
@@ -337,6 +340,11 @@ public partial class MainWindowModel : WindowModelBase
             return;
         }
         
+        LastProfileCancellationTokenSource?.Cancel();
+        LastProfileCancellationTokenSource?.Dispose();
+        
+        LastProfileCancellationTokenSource = new CancellationTokenSource();
+        
         SetCurrentProfile(profile);
         RefreshProfileProperties();
 
@@ -346,13 +354,13 @@ public partial class MainWindowModel : WindowModelBase
         }
         
         CurrentProfile.Display.LastUsed = DateTime.Now;
-        await CurrentProfile.Save();
+        _ = CurrentProfile.Save();
 
         CurrentProfile.CheckStatusNotifies();
         CurrentProfile.Status.SetState(EProfileStatus.Active);
         CurrentProfile.IsInitialized = false;
 
-        await Dispatcher.UIThread.InvokeAsync(() => ProfileSelectionVM.UpdateProfileCard(CurrentProfile));
+        _ = Dispatcher.UIThread.InvokeAsync(() => ProfileSelectionVM.UpdateProfileCard(CurrentProfile));
 
         NavigateToStatus(AppStatus.Active);
         
@@ -363,7 +371,7 @@ public partial class MainWindowModel : WindowModelBase
         _ = Task.Run(async () =>
         {
             await Task.Delay(100);
-            await CurrentProfile.Initialize();
+            await CurrentProfile.Initialize(LastProfileCancellationTokenSource!.Token);
         });
     }
 

@@ -113,9 +113,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
     public void UpdateProfileCard(Profile profile)
     {
-        if (profile is null) return;
-        
-        if (profile.FileName is null) return;
+        if (profile is null || profile.FileName is null) return;
         
         if (ProfileListPanel is null)
         {

@@ -179,6 +179,7 @@
                     <!-- Save -->
                     <Button Cursor="Hand"
                             IsEnabled="{Binding !Profile.HasErrors}"
+                            IsHitTestVisible="{Binding !Profile.HasErrors}"
                             Classes="BlueShine"
                             Click="Save"
                             Height="33"
