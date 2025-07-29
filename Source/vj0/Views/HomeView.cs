@@ -39,15 +39,15 @@ public partial class HomeView : ViewBase<HomeViewModel>
             }
         }
 
-        var fromStart = _isReversed ? Color.Parse("#767676") : Colors.White;
-        var fromEnd = _isReversed ? Colors.White : Color.Parse("#767676");
+        var fromStart = _isReversed ? Color.Parse("#303030") : Colors.White;
+        var fromEnd = _isReversed ? Colors.White : Color.Parse("#303030");
 
-        var toStart = _isReversed ? Colors.White : Color.Parse("#767676");
-        var toEnd = _isReversed ? Color.Parse("#767676") : Colors.White;
+        var toStart = _isReversed ? Colors.White : Color.Parse("#303030");
+        var toEnd = _isReversed ? Color.Parse("#303030") : Colors.White;
 
-        const int steps = 80;
+        const int steps = 150;
         var easing = new SineEaseInOut();
-        var duration = TimeSpan.FromSeconds(0.25);
+        var duration = TimeSpan.FromSeconds(1);
         var delay = duration.TotalMilliseconds / steps;
 
         for (var i = 0; i <= steps; i++)
