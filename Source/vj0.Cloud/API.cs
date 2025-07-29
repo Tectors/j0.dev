@@ -87,8 +87,6 @@ public partial class CloudWebAPI : ObservableObject
             IsRunning = true;
             
             await app.RunAsync(URL);
-            
-            OnInitialized?.Invoke(URL);
         }
         catch (IOException ex) when (ex.Message.Contains("address already in use", StringComparison.OrdinalIgnoreCase))
         {

@@ -14,7 +14,9 @@
 
     mc:Ignorable="d"
     d:DesignWidth="700"
-    d:DesignHeight="600">
+    d:DesignHeight="600"
+    
+    FontFamily="Inter">
     
     <Grid RowDefinitions="*,5,*">
         <!-- Top -->
