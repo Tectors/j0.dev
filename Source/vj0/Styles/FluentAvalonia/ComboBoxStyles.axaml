@@ -7,9 +7,9 @@
         <Border Padding="50">
             <StackPanel Spacing="5">
                 <ComboBox>
-                    <ComboBoxItem Content="Item1" />
-                    <ComboBoxItem Content="Item2" />
-                    <ComboBoxItem Content="Item3" />
+                    <ComboBoxItem Content="aaaaaaaaa" />
+                    <ComboBoxItem Content="a" />
+                    <ComboBoxItem Content="a" />
                 </ComboBox>
                 <ComboBox PlaceholderText="Placeholder">
                     <ComboBoxItem Content="Item1" />
@@ -142,7 +142,6 @@
 
                         <Border x:Name="DropDownOverlay"
                                 Grid.Row="1"
-                                Cursor="Hand"
                                 Grid.Column="1"
                                 Background="Transparent"
                                 Margin="-4,4,4,4"
@@ -175,6 +174,7 @@
                                InheritsTransform="True">
                             <Border x:Name="PopupBorder"
                                     Background="#262626"
+                                    Margin="0 1 0 0"
                                     BorderBrush="#3b3c3c"
                                     BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
                                     Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
@@ -182,7 +182,7 @@
                                     CornerRadius="{DynamicResource OverlayCornerRadius}"
                                     BackgroundSizing="InnerBorderEdge">
                                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" Margin="5"
                                               IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
                                                     Margin="{DynamicResource ComboBoxDropdownContentMargin}"
@@ -279,11 +279,14 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        Margin="5,2,5,2"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         TemplatedControl.IsTemplateFocusTarget="True">
-                    <Panel>
-                        <avalonia:MaterialIcon Opacity="0.5" HorizontalAlignment="Right" IsVisible="{TemplateBinding IsSelected}" Margin="55 0 10 0" Kind="Check"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
                         <ContentPresenter Name="ContentPresenter"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -296,7 +299,9 @@
                                           BorderBrush="{x:Null}"
                                           CornerRadius="{TemplateBinding CornerRadius}"
                                           BorderThickness="0"/>
-                    </Panel>
+                        
+                        <avalonia:MaterialIcon Grid.Column="1" Opacity="0.5" HorizontalAlignment="Right" IsVisible="{TemplateBinding IsSelected}" Margin="5 0 7 0" Kind="Check"/>
+                    </Grid>
 
                 </Border>
             </ControlTemplate>
@@ -386,8 +391,5 @@
                 <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForegroundSelectedPressed}" />
             </Style>
         </Style>
-
-        <!-- WinUI styles not implemented: All InputModeStates  -->
-
     </ControlTheme>
 </ResourceDictionary>

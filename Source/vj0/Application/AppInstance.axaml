@@ -145,8 +145,8 @@
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#235fe8"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#235fe8"/>
       
-      <SolidColorBrush x:Key="ExpanderBackground" Color="#121212"/>
-      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="ExpanderBackground" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="CommandBarFlyoutButtonBackground" Color="#161616"/>
       <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackground" Color="#161616"/>
