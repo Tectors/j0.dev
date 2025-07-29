@@ -200,6 +200,7 @@
           <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
             <StackPanel Grid.Column="0" Spacing="7" Orientation="Horizontal" 
                         ToolTip.Tip="{Binding Profile.Display.LastUsed}"
+                        Background="Transparent" HorizontalAlignment="Left"
                         Margin="0,16,0,0">
               
               <controls:SymbolIcon

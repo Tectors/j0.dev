@@ -47,7 +47,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
 
         const int steps = 150;
         var easing = new SineEaseInOut();
-        var duration = TimeSpan.FromSeconds(1);
+        var duration = TimeSpan.FromSeconds(0.2);
         var delay = duration.TotalMilliseconds / steps;
 
         for (var i = 0; i <= steps; i++)

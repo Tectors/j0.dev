@@ -46,7 +46,7 @@ public class CloudService : IService
     {
         Dispatcher.UIThread.InvokeAsync(() =>
         {
-            Info.Message("Started API", URL, InfoBarSeverity.Success);
+            Info.Message("Started Cloud", URL, InfoBarSeverity.Success, closeTime: 0.5f);
         });
     }
 

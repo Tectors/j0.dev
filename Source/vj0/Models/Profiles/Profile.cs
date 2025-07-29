@@ -16,6 +16,7 @@ using CUE4Parse.UE4.IO;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.UE4.VirtualFileSystem;
 using CUE4Parse.Utils;
+using FluentAvalonia.UI.Controls;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using UE4Config.Parsing;
@@ -99,6 +100,7 @@ public class Profile : BaseProfileDisplay
         IsInitialized = true;
         
         Log.Information($"Initialized profile {Name} successfully");
+        Info.Message($"Loaded profile {Name} successfully", "", InfoBarSeverity.Success, closeTime: 0.95f);
         UpdateStatus(string.Empty);
         
         OnInitialized?.Invoke(this);
