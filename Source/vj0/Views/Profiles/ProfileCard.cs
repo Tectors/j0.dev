@@ -54,6 +54,7 @@ public partial class ProfileCard : UserControl, INotifyPropertyChanged
 
         ViewModel = viewModel;
         ViewModel.Initialize();
+        ViewModel.UpdateProfileProperties();
         
         ViewModel.PropertyChanged += (_, args) =>
         {
