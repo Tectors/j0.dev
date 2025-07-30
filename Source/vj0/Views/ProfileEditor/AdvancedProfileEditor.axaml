@@ -29,7 +29,7 @@
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
                                     <StackPanel>
-                                        <avalonia:FluentIcon HorizontalAlignment="Left" Opacity="0.8" Icon="DataScatter" FontSize="15"></avalonia:FluentIcon>
+                                        <avalonia:FluentIcon HorizontalAlignment="Left" Opacity="0.8" Icon="DataScatter" FontSize="15"/>
                                     </StackPanel>
                             
                                     <StackPanel Orientation="Vertical" Spacing="3">

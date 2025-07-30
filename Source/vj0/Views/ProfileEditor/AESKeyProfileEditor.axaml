@@ -16,52 +16,49 @@
     Focusable="True">
     
     <navigation:NavigationUnboundFrame>
-        <ScrollViewer Margin="0 0 14 0"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled"
-                      VerticalAlignment="Stretch" Padding="15 0 15 0"
-                      HorizontalAlignment="Stretch">
-            
-            <ItemsControl Margin="35" VerticalAlignment="Stretch"
-                          HorizontalAlignment="Stretch"
-                          ItemsSource="{Binding PakKeyEntries}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Spacing="8" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+        <Grid>
+            <ScrollViewer Margin="0 0 14 0"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          VerticalAlignment="Stretch" Padding="15 0 15 0"
+                          HorizontalAlignment="Stretch">
                 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical" Spacing="10">
-                            <Border BorderBrush="#3d3d3d" Background="{DynamicResource ExpanderHeaderBackground}" BorderThickness="1" CornerRadius="10">
-                                <Grid Margin="20">
-                                    <StackPanel Orientation="Vertical">
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="8">
-                                            <StackPanel>
-                                            </StackPanel>
-                            
-                                            <StackPanel Orientation="Vertical" Spacing="3" Margin="0 5 0 0">
+                <ItemsControl Margin="35" VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              ItemsSource="{Binding PakKeyEntries}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="15" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Spacing="10">
+                                <Border BorderBrush="#3d3d3d" Background="{DynamicResource ExpanderHeaderBackground}" BorderThickness="1" CornerRadius="20">
+                                    <Grid Margin="35">
+                                        <StackPanel Orientation="Vertical" Spacing="25" Margin="0">
+                                            <StackPanel Orientation="Vertical" Spacing="7">
                                                 <TextBlock Text="{Binding FileName}" FontSize="16" VerticalAlignment="Center"/>
-                                                <TextBlock Text="{Binding Guid}" FontSize="13" Opacity="0.66" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Guid}" FontSize="13" Opacity="0.56" VerticalAlignment="Center"/>
                                             </StackPanel>
+                                    
+                                            <Grid ColumnDefinitions="*,Auto">
+                                                <TextBox
+                                                    Text="{Binding Key, Mode=TwoWay}"
+                                                    FontFamily="Consolas"
+                                                    FontSize="14"
+                                                    HorizontalAlignment="Stretch"
+                                                    Height="33"/>
+                                            </Grid>
                                         </StackPanel>
-                                
-                                        <Grid Margin="0 20 0 0" ColumnDefinitions="*,Auto">
-                                            <TextBox
-                                                FontFamily="Consolas"
-                                                FontSize="14"
-                                                HorizontalAlignment="Stretch"
-                                                Height="33"
-                                                Text="{Binding Key, Mode=TwoWay}"/>
-                                        </Grid>
-                                    </StackPanel>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </navigation:NavigationUnboundFrame>
 </UserControl>
