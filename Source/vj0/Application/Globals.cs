@@ -9,6 +9,10 @@ namespace vj0.Application;
 
 public static class Globals
 {
+    /* Format: 0.0.0 */
+    public const string VERSION = "1.0.0";
+    public const string COMMIT = "b846caa";
+    
     /* future. 🤫 */
     public static readonly bool IsReadyToExplore = false;
     
@@ -19,11 +23,9 @@ public static class Globals
     public static readonly FGuid ZERO_GUID = new();
     public const string EMPTY_CHAR = "0x0000000000000000000000000000000000000000000000000000000000000000";
     
-    public const string VERSION = "1.0.0";
-    public const string COMMIT = "b846caa";
-    
     public const string DISCORD_LINK = "https://discord.gg/eV9DF6sBsz";
     public const string GITHUB_LINK = "https://github.com/Tectors/j0.dev";
+    public const string GITHUB_API_LINK = "https://api.github.com/repos/Tectors/j0.dev";
     public const string X_LINK = "https://x.com/t3ctor";
     public const string DONATE_LINK = "https://ko-fi.com/t4ctor";
     public const string DISCORD_ACTIVITY_ID = "1386505366061453533";
