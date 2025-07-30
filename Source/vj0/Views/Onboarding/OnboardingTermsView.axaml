@@ -77,9 +77,11 @@
             </controls:NavigationView>
         
             <Button
+                x:Name="ContinueButton"
                 Classes="BlueShine"
                 Height="40"
                 Cursor="Hand"
+                IsEnabled="False"
                 HorizontalAlignment="Center"
                 ClipToBounds="True"
                 IsDefault="True"

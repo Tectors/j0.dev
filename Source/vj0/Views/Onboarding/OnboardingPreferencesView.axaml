@@ -27,6 +27,7 @@
             <views:SettingsView Width="950" Height="400" IsOnboarding="True"/>
         
             <Button Classes="BlueShine"
+                x:Name="ContinueButton"
                 Height="40"
                 Cursor="Hand"
                 HorizontalAlignment="Center"
