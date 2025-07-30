@@ -114,7 +114,7 @@
             <Button IsVisible="True" FontFamily="Consolas" Height="25" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
                 <ToolTip.Tip>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock VerticalAlignment="Center">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="v{0}">
                                     <Binding Source="{x:Static application:Globals.VERSION}" />
@@ -122,7 +122,7 @@
                             </TextBlock.Text>
                         </TextBlock>
                         
-                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static application:Globals.COMMIT}"/>
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static application:Globals.COMMIT}"/>
                     </StackPanel>
                 </ToolTip.Tip>
                 
@@ -193,7 +193,14 @@
                     <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
 
                     <!-- Cloud Service -->
-                    <Button IsVisible="{Binding IsAPIServiceEnabled}" ToolTip.Tip="Cloud Service" Height="40" Background="Transparent" Opacity="1.0" CornerRadius="8">
+                    <Button IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" Opacity="1.0" CornerRadius="8">
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
+                                <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
+                                <TextBlock VerticalAlignment="Center" Opacity="0.5" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel Width="100" Spacing="8">

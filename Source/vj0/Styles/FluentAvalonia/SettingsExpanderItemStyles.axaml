@@ -75,6 +75,7 @@
 
                             <TextBlock Text="{TemplateBinding Description}"
                                        TextWrapping="Wrap"
+                                       Opacity="0.8"
                                        Theme="{StaticResource CaptionTextBlockStyle}"
                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                        Name="DescriptionText"

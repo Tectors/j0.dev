@@ -72,7 +72,7 @@
                             Background="#0095ff"
                             CornerRadius="4">
                         <fluent:FluentIcon
-                            Icon="HardDrive"
+                            Icon="Communication"
                             Foreground="White"/>
                     </Border>
                 </StackPanel>

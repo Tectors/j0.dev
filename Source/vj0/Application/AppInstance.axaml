@@ -101,6 +101,7 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/DataValidationErrorsStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TextBoxStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ComboBoxStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/SettingsExpanderItemStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TextBlockStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ListBoxStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/InfoBarStyles.axaml"/>

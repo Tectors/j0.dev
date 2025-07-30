@@ -76,7 +76,7 @@
                   
                   <Border IsVisible="{Binding Profile.IsAutoDetected}" ToolTip.Tip="Auto-detected" Padding="4" Width="24" Height="24" Background="#0095ff" HorizontalAlignment="Right" CornerRadius="4">
                     <avalonia:FluentIcon
-                      Icon="HardDrive"
+                      Icon="Communication"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       FontSize="20"/>
@@ -138,7 +138,7 @@
                                   FontSize="20"
                                   Width="18" />
                                 
-                                <TextBlock FontWeight="Medium" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     Settings
                                 </TextBlock>
                             </StackPanel>
@@ -230,6 +230,7 @@
             Foreground="White"
             IsEnabled="{Binding !IsRunning}"
             Height="50"
+            Opacity="0.95"
             Cursor="Hand"
             ClipToBounds="True"
             BorderThickness="0"
