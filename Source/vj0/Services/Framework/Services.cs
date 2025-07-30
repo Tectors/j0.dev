@@ -24,6 +24,7 @@ public static class AppServices
     public static SettingsService Settings => Services.GetRequiredService<SettingsService>();
     public static InfoService Info => Services.GetRequiredService<InfoService>();
     public static RestAPIService RestAPI => Services.GetRequiredService<RestAPIService>();
+    public static UpdateService Update => Services.GetRequiredService<UpdateService>();
     public static CloudService Cloud => Services.GetRequiredService<CloudService>();
     public static NavigationService Navigation => Services.GetRequiredService<NavigationService>();
     public static DiscordService Discord => Services.GetRequiredService<DiscordService>();

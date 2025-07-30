@@ -50,6 +50,7 @@ public class AppInstance : Avalonia.Application
             
             DispatcherTimer.RunOnce(() => AppServices.Cloud.Initialize(), TimeSpan.FromSeconds(0.5));
             DispatcherTimer.RunOnce(() => ExplorerVM.Initialize(), TimeSpan.FromSeconds(1.2));
+            DispatcherTimer.RunOnce(() => Update.Initialize(), TimeSpan.FromSeconds(1.2));
         }
 
         base.OnFrameworkInitializationCompleted();

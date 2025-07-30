@@ -15,7 +15,7 @@ public class RestAPIService : IService
 {
     public readonly CentralAPI Central;
     public readonly EpicGamesAPI EpicGames;
-    
+    public readonly GitHubAPI GitHub;
     private readonly RestClient _client;
 
     public RestAPIService()
@@ -27,6 +27,7 @@ public class RestAPIService : IService
         
         Central = new CentralAPI(_client);
         EpicGames = new EpicGamesAPI(_client);
+        GitHub = new GitHubAPI(_client);
     }
 
     public string GetUrl(RestRequest request) => _client.BuildUri(request).ToString();
