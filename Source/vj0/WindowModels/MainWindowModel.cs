@@ -340,10 +340,10 @@ public partial class MainWindowModel : WindowModelBase
             return;
         }
         
-        LastProfileCancellationTokenSource?.Cancel();
-        LastProfileCancellationTokenSource?.Dispose();
-        
+        var oldTokenSource = LastProfileCancellationTokenSource;
         LastProfileCancellationTokenSource = new CancellationTokenSource();
+        oldTokenSource?.Cancel();
+        oldTokenSource?.Dispose();
         
         SetCurrentProfile(profile);
         RefreshProfileProperties();

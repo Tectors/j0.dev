@@ -20,9 +20,12 @@ public partial class OnboardingWindowModel : WindowModelBase
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanGoBack))]
     [NotifyPropertyChangedFor(nameof(CanGoNext))]
+    [NotifyPropertyChangedFor(nameof(CurrentPageType))]
     private int _currentPageIndex;
 
-    public Type CurrentPageType => PageTypes[CurrentPageIndex];
+    public Type CurrentPageType => (CurrentPageIndex >= 0 && CurrentPageIndex < PageTypes.Count)
+        ? PageTypes[CurrentPageIndex]
+        : typeof(OnboardingWelcomeView);
 
     public bool CanGoBack => CurrentPageIndex > 0;
     public bool CanGoNext => CurrentPageIndex < PageTypes.Count - 1;

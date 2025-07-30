@@ -41,12 +41,12 @@
             </ScrollViewer>
             
             <StackPanel IsVisible="{Binding IsEmpty}" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="25">
-                <TextBlock FontSize="30" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock FontSize="30" LetterSpacing="-0.5" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock.Effect>
                         <DropShadowEffect
                             Color="#e3e3e3"
                             BlurRadius="99"
-                            Opacity="0.2"/>
+                            Opacity="0.4"/>
                     </TextBlock.Effect>
                     
                     Start creating your profiles!
@@ -90,7 +90,7 @@
                             HorizontalAlignment="Stretch"/>
 
                         <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Margin="0 1 0 0" Text="Create New Profile" FontSize="16" HorizontalAlignment="Center"/>
+                            <TextBlock Margin="0 1 0 0" Text="Create a New Profile" FontSize="16" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </Grid>
                 </Button>

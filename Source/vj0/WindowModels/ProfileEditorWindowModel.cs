@@ -90,6 +90,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
             {
                 version = parts[i - 2];
             }
+            
             break;
         }
 
