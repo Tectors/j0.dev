@@ -16,7 +16,7 @@ public class UpdateService : IService
         var latestVersion = new Version(latestRelease.Name);
         var currentVersion = new Version(Globals.VERSION);
         
-        if (true)
+        if (currentVersion < latestVersion)
         {
             var dialog = new ContentDialog
             {
