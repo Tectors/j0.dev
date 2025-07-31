@@ -123,8 +123,12 @@ public partial class MainWindowModel : WindowModelBase
         UpdateGradientBrush();
     }
 
+    [ObservableProperty] private bool _isExplorer;
+
     public void OnNavigationItemSelected(Type pageType)
     {
+        IsExplorer = pageType == typeof(ExplorerPlaceholder);
+        
         if (pageType == typeof(ProfileSelectionView))
         {
             CurrentToolbarContent = new ProfileSelectionViewToolbar();
@@ -143,8 +147,8 @@ public partial class MainWindowModel : WindowModelBase
     public void NavigateToExplorer()
     {
         if (!Globals.IsReadyToExplore || !IsProfileInitialized) return;
-        
-        Navigation.App.Open(typeof(ExplorerView));
+
+        Navigation.App.Open(typeof(ExplorerPlaceholder));
     }
 
     /* ~~~ Status Transitions ~~~ */

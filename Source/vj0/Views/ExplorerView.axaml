@@ -18,32 +18,116 @@
     
     FontFamily="Inter">
     
-    <Grid RowDefinitions="*,5,*">
-        <!-- Top -->
-        <Border Grid.Row="0"
-                BorderThickness="1 1 0 1" 
-                BorderBrush="{DynamicResource BorderBrush}" 
-                Background="{DynamicResource PanelBackgroundBrush}"
-                CornerRadius="12 0 0 12">
-            
-        </Border>
-        
-        <GridSplitter Grid.Row="1" 
-                      Height="5"
-                      Opacity="0"
-                      HorizontalAlignment="Stretch" 
-                      ResizeDirection="Rows" />
-        
-        <!-- Bottom -->
-        <Border Grid.Row="2" Margin="0 4 0 0">
-            <Grid ColumnDefinitions="*,Auto,*">
-                <!-- Folders -->
-                <Border Grid.Column="0"
-                        BorderThickness="1 1 1 0"
-                        Background="#0f0f0f"
-                        ClipToBounds="True"
-                        CornerRadius="8 8 0 0">
+    <Grid RowDefinitions="*">
+        <Grid ColumnDefinitions="*,Auto,*">
+            <!-- Folders -->
+            <Border Grid.Column="0"
+                    BorderThickness="1 1 1 0"
+                    Background="#0f0f0f"
+                    ClipToBounds="True"
+                    CornerRadius="8 8 0 0">
+                
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#1e1e1f" Offset="0" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                
+                <Grid>
+                    <!-- Background Glow -->
+                    <Border Width="150" Height="56" Margin="-100 -100 0 0" Opacity="0.1"
+                            HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="White" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        
+                        <Border.Effect>
+                            <BlurEffect Radius="250"/>
+                        </Border.Effect>
+                    </Border>
+
+                    <!-- Folder Tree -->
+                    <TreeView AttachedToVisualTree="TreeView_AttachedToVisualTree"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          x:Name="FileTree"
+                          SelectionChanged="FileTree_OnSelectionChanged"
+                          Padding="15" ItemsSource="{Binding TreeViewCollection}">
                     
+                        <TreeView.ItemContainerTheme>
+                            <ControlTheme x:DataType="Explorer:TreeItem" TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                <Setter Property="IsExpanded" Value="{Binding Expanded, Mode=TwoWay}" />
+                                <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
+                                
+                                <Style Selector="^:empty /template/ ToggleButton#PART_ExpandCollapseChevron">
+                                    <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
+                                </Style>
+                                
+                                <Style Selector="^:not(:empty) /template/ ToggleButton#PART_ExpandCollapseChevron">
+                                    <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
+                                </Style>
+                            </ControlTheme>
+                        </TreeView.ItemContainerTheme>
+                        
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate ItemsSource="{Binding FolderChildren}">
+                                <Grid IsHitTestVisible="False" ColumnDefinitions="*,Auto">
+                                    <!-- Left: Folder Icons + Name -->
+                                    <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
+                                        <Canvas Width="14" Height="14" Margin="0 3 8 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <Path
+                                                Data="M2.5,5.5 A1.5,1.5 0 0 1 4,4 H7.172 A1.5,1.5 0 0 1 8.232,4.44 L9.56,5.76 A1.5,1.5 0 0 0 10.62,6 H16 A1.5,1.5 0 0 1 17.5,7.5 V14.5 A1.5,1.5 0 0 1 16,16 H4 A1.5,1.5 0 0 1 2.5,14.5 V5.5 Z"
+                                                Stroke="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Converter={StaticResource ForegroundExpandedConverter}}"
+                                                StrokeThickness="1"
+                                                Fill="{Binding ItemBrush}"
+                                                Width="14"
+                                                Height="14"
+                                                Stretch="Uniform"/>
+                                        </Canvas>
+
+                                        <TextBlock Background="Transparent" ToolTip.ShowDelay="1000" FontSize="14" IsHitTestVisible="False" Text="{Binding Name}" VerticalAlignment="Center"/>
+                                        
+                                        <!-- Right: Asset Count -->
+                                        <StackPanel IsHitTestVisible="False" IsVisible="{Binding HasAssets}" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.5" Margin="9 0 9 0">
+                                            <TextBlock FontSize="12" Text="• " HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            <TextBlock FontSize="14" Text="{Binding AssetCount}" />
+                                            <TextBlock FontSize="14" Text=" files" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </Grid>
+            </Border>
+    
+            <GridSplitter Grid.Column="1" 
+                          Width="9"
+                          Opacity="0"
+                          VerticalAlignment="Stretch" 
+                          ResizeDirection="Columns" />
+    
+            <Grid Grid.Column="2" RowDefinitions="Auto, *">
+                <StackPanel Margin="4 0 0 5" Spacing="10">
+                    <controls:BreadcrumbBar
+                        Padding="5"
+                        ItemsSource="{Binding FileViewStack}"
+                        ItemClicked="OnBreadcrumbItemPressed">
+                        <controls:BreadcrumbBar.ItemTemplate>
+                            <DataTemplate DataType="Explorer:TreeItem">
+                                <controls:BreadcrumbBarItem Content="{Binding Name}" />
+                            </DataTemplate>
+                        </controls:BreadcrumbBar.ItemTemplate>
+                    </controls:BreadcrumbBar>
+                </StackPanel>
+
+                <Border
+                    Grid.Row="1"
+                    Background="#121212"
+                    BorderThickness="1 1 0 0"
+                    CornerRadius="8 0 0 0">
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                             <GradientStop Color="#1e1e1f" Offset="0" />
@@ -51,149 +135,47 @@
                     </Border.BorderBrush>
                     
                     <Grid>
-                        <!-- Background Glow -->
-                        <Border Width="150" Height="56" Margin="-100 -100 0 0" Opacity="0.1"
-                                HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                    <GradientStop Color="White" Offset="0"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            
-                            <Border.Effect>
-                                <BlurEffect Radius="250"/>
-                            </Border.Effect>
-                        </Border>
-
-                        <!-- Folder Tree -->
-                        <TreeView AttachedToVisualTree="TreeView_AttachedToVisualTree"
-                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                              ScrollViewer.VerticalScrollBarVisibility="Auto"
-                              x:Name="FileTree"
-                              SelectionChanged="FileTree_OnSelectionChanged"
-                              Padding="15" ItemsSource="{Binding TreeViewCollection}">
+                        <TextBlock IsVisible="{Binding !FilesInFolderView}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.45">No files in folder</TextBlock>
                         
-                            <TreeView.ItemContainerTheme>
-                                <ControlTheme x:DataType="Explorer:TreeItem" TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
-                                    <Setter Property="IsExpanded" Value="{Binding Expanded, Mode=TwoWay}" />
-                                    <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
-                                    
-                                    <Style Selector="^:empty /template/ ToggleButton#PART_ExpandCollapseChevron">
-                                        <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
+                        <ScrollViewer Margin="0 0 5 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <ListBox Margin="15" ItemsSource="{Binding FlatViewFiles}" 
+                                     SelectionMode="Multiple"
+                                     AutoScrollToSelectedItem="True"
+                                     DoubleTapped="OnFileItemDoubleTapped">
+                                
+                                <ListBox.Styles>
+                                    <Style Selector="ListBoxItem">
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0"/>
                                     </Style>
-                                    
-                                    <Style Selector="^:not(:empty) /template/ ToggleButton#PART_ExpandCollapseChevron">
-                                        <Setter Property="IsVisible" Value="{Binding HasFolders}"/>
-                                    </Style>
-                                </ControlTheme>
-                            </TreeView.ItemContainerTheme>
-                            
-                            <TreeView.ItemTemplate>
-                                <TreeDataTemplate ItemsSource="{Binding FolderChildren}">
-                                    <Grid IsHitTestVisible="False" ColumnDefinitions="*,Auto">
-                                        <!-- Left: Folder Icons + Name -->
-                                        <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center">
-                                            <Canvas Width="14" Height="14" Margin="0 3 8 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </ListBox.Styles>
+                                
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="Explorer:FileTile">
+                                        <StackPanel Spacing="5" Margin="25 0 0 0"
+                                                    Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                            <Canvas Width="14" Height="14" Margin="0 0 4 0" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                 <Path
-                                                    Data="M2.5,5.5 A1.5,1.5 0 0 1 4,4 H7.172 A1.5,1.5 0 0 1 8.232,4.44 L9.56,5.76 A1.5,1.5 0 0 0 10.62,6 H16 A1.5,1.5 0 0 1 17.5,7.5 V14.5 A1.5,1.5 0 0 1 16,16 H4 A1.5,1.5 0 0 1 2.5,14.5 V5.5 Z"
-                                                    Stroke="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Converter={StaticResource ForegroundExpandedConverter}}"
+                                                    Data="M4,2 H10 L14,6 V14 A2,2 0 0 1 12,16 H4 A2,2 0 0 1 2,14 V4 A2,2 0 0 1 4,2 Z M10,2 V6 H14"
+                                                    Stroke="White"
                                                     StrokeThickness="1"
-                                                    Fill="{Binding ItemBrush}"
+                                                    Fill="#0e91e8"
                                                     Width="14"
                                                     Height="14"
                                                     Stretch="Uniform"/>
                                             </Canvas>
-
-                                            <TextBlock Background="Transparent" ToolTip.ShowDelay="1000" FontSize="14" IsHitTestVisible="False" Text="{Binding Name}" VerticalAlignment="Center"/>
-                                            
-                                            <!-- Right: Asset Count -->
-                                            <StackPanel IsHitTestVisible="False" IsVisible="{Binding HasAssets}" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Opacity="0.5" Margin="9 0 9 0">
-                                                <TextBlock FontSize="12" Text="• " HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                <TextBlock FontSize="14" Text="{Binding AssetCount}" />
-                                                <TextBlock FontSize="14" Text=" files" />
-                                            </StackPanel>
+                                            <TextBlock Text="{Binding NameWithoutExtension}"
+                                                       FontSize="14"
+                                                       VerticalAlignment="Center"
+                                                       TextTrimming="CharacterEllipsis"/>
                                         </StackPanel>
-                                    </Grid>
-                                </TreeDataTemplate>
-                            </TreeView.ItemTemplate>
-                        </TreeView>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
                     </Grid>
                 </Border>
-        
-                <GridSplitter Grid.Column="1" 
-                              Width="9"
-                              Opacity="0"
-                              VerticalAlignment="Stretch" 
-                              ResizeDirection="Columns" />
-        
-                <Grid Grid.Column="2" RowDefinitions="Auto, *">
-                    <StackPanel Margin="4 0 0 5" Spacing="10">
-                        <controls:BreadcrumbBar
-                            Padding="5"
-                            ItemsSource="{Binding FileViewStack}"
-                            ItemClicked="OnBreadcrumbItemPressed">
-                            <controls:BreadcrumbBar.ItemTemplate>
-                                <DataTemplate DataType="Explorer:TreeItem">
-                                    <controls:BreadcrumbBarItem Content="{Binding Name}" />
-                                </DataTemplate>
-                            </controls:BreadcrumbBar.ItemTemplate>
-                        </controls:BreadcrumbBar>
-                    </StackPanel>
-
-                    <Border
-                        Grid.Row="1"
-                        Background="#121212"
-                        BorderThickness="1 1 0 0"
-                        CornerRadius="8 0 0 0">
-                        <Border.BorderBrush>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-                                <GradientStop Color="#1e1e1f" Offset="0" />
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
-                        
-                        <Grid>
-                            <TextBlock IsVisible="{Binding !FilesInFolderView}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.45">No files in folder</TextBlock>
-                            
-                            <ScrollViewer Margin="0 0 5 0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                                <ListBox Margin="15" ItemsSource="{Binding FlatViewFiles}" 
-                                         SelectionMode="Multiple"
-                                         AutoScrollToSelectedItem="True"
-                                         DoubleTapped="OnFileItemDoubleTapped">
-                                    
-                                    <ListBox.Styles>
-                                        <Style Selector="ListBoxItem">
-                                            <Setter Property="Padding" Value="0"/>
-                                            <Setter Property="Margin" Value="0"/>
-                                        </Style>
-                                    </ListBox.Styles>
-                                    
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate DataType="Explorer:FileTile">
-                                            <StackPanel Spacing="5" Margin="25 0 0 0"
-                                                        Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                <Canvas Width="14" Height="14" Margin="0 0 4 0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <Path
-                                                        Data="M4,2 H10 L14,6 V14 A2,2 0 0 1 12,16 H4 A2,2 0 0 1 2,14 V4 A2,2 0 0 1 4,2 Z M10,2 V6 H14"
-                                                        Stroke="White"
-                                                        StrokeThickness="1"
-                                                        Fill="#0e91e8"
-                                                        Width="14"
-                                                        Height="14"
-                                                        Stretch="Uniform"/>
-                                                </Canvas>
-                                                <TextBlock Text="{Binding NameWithoutExtension}"
-                                                           FontSize="14"
-                                                           VerticalAlignment="Center"
-                                                           TextTrimming="CharacterEllipsis"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </ScrollViewer>
-                        </Grid>
-                    </Border>
-                </Grid>
             </Grid>
-        </Border>
+        </Grid>
     </Grid>
 </UserControl>

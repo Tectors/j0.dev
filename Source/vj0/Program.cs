@@ -31,6 +31,12 @@ internal sealed class Program
             .Configure<AppInstance>()
             .UsePlatformDetect()
             .WithInterFont()
+            .UseSkia()
+            .With(new SkiaOptions
+            {
+                MaxGpuResourceSizeBytes = null,
+                UseOpacitySaveLayer = false,
+            })
             .LogToTrace();
     }
 }

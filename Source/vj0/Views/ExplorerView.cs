@@ -14,6 +14,8 @@ using vj0.ViewModels;
 
 namespace vj0.Views;
 
+public class ExplorerPlaceholder : ViewBase<ExplorerViewModel>;
+
 public partial class ExplorerView : ViewBase<ExplorerViewModel>
 {
     public ExplorerView() : base(ExplorerVM)

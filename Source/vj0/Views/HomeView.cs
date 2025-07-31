@@ -104,6 +104,6 @@ public partial class HomeView : ViewBase<HomeViewModel>
 
     private void ExploreFiles(object? sender, RoutedEventArgs e)
     {
-        Navigation.App.Open(typeof(ExplorerView));
+        MainWM.NavigateToExplorer();
     }
 }
