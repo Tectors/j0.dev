@@ -18,6 +18,8 @@ public partial class ApplicationSettingsViewModel : ViewModelBase
     [ObservableProperty] private ELanguage _gameLanguage = ELanguage.English;
     [ObservableProperty] private bool _useTabTransitions = true;
     
+    [ObservableProperty] private bool _showDebugData = true;
+    
     [ObservableProperty] private EpicAuthResponse? _epicAuth;
 
     [JsonIgnore] public NavigationTransitionInfo Transition => UseTabTransitions

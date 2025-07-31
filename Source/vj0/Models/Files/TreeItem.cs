@@ -50,6 +50,8 @@ public partial class TreeItem : ObservableObject
             "TimeOfDay" or "TODM" => new SolidColorBrush(Color.Parse("#006eff")),
             "UI" => new SolidColorBrush(Color.Parse("#ffc400")),
             "Sounds" => new SolidColorBrush(Color.Parse("#ff3300")),
+            "BRCosmetics" => new SolidColorBrush(Color.Parse("#6e6e6e")),
+            "GameFeatures" => new SolidColorBrush(Color.Parse("#6e6e6e")),
             "Animation" => new SolidColorBrush(Color.Parse("#91ff00")),
             _ => new SolidColorBrush(Color.Parse("#0e91e8"))
         };
@@ -166,6 +168,8 @@ public partial class TreeItem : ObservableObject
             return _assetCount.Value;
         }
     }
+    
+    public string AssetCountText => HasAssets ? $"• {AssetCount} files" : string.Empty;
     
     [ObservableProperty]
     private bool _isSorted;

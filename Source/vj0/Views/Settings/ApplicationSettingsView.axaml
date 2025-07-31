@@ -46,6 +46,14 @@
                     <ToggleSwitch IsChecked="{Binding UseTabTransitions}" Cursor="Hand"/>
                 </controls:SettingsExpander.Footer>
             </controls:SettingsExpander>
+            
+            <TextBlock Margin="0 5">Advanced</TextBlock>
+            
+            <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
+                <controls:SettingsExpander.Footer>
+                    <ToggleSwitch IsChecked="{Binding ShowDebugData}" Cursor="Hand"/>
+                </controls:SettingsExpander.Footer>
+            </controls:SettingsExpander>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

@@ -44,7 +44,7 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
         var item = visual.GetVisualAncestors().OfType<TreeViewItem>().FirstOrDefault();
         if (item?.DataContext is not TreeItem treeItem) return;
-        
+        ViewModel.SelectFolder(treeItem);
 
         var now = DateTime.UtcNow;
         if (_lastClickedItem == treeItem && now - _lastClickTime < DoubleClickThreshold)

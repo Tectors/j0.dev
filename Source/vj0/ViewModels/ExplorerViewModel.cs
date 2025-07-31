@@ -316,10 +316,11 @@ public partial class ExplorerViewModel : ViewModelBase
 
         FileViewCollection = new ObservableCollection<TreeItem>(sortedChildren);
     }
-
     
     public void SelectFolder(TreeItem item)
     {
+        SelectedItemArchive = item.Archive;
+        SelectedItemMountPoint = item.MountPoint;
     }
     
     public void LoadTreeItems(TreeItem item)
