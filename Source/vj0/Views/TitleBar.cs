@@ -34,6 +34,6 @@ public partial class TitleBar : UserControl
     
     public void OpenGitHubLink(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.GITHUB_LINK);
+        AppService.OpenLink(Globals.GITHUB_RELEASES_LINK);
     }
 }

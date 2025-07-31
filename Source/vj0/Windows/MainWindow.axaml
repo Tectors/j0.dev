@@ -136,7 +136,7 @@
 
                 <Grid Background="#0a0a0a">
                     <!-- Content Frame -->
-                    <controls:Frame Background="#0a0a0a" x:Name="ContentFrame"/>
+                    <controls:Frame UseLayoutRounding="True" Background="#0a0a0a" x:Name="ContentFrame"/>
                     
                     <!-- Notifications -->
                      <ItemsControl Margin="0 10" VerticalAlignment="Bottom" ItemsSource="{Binding Info.Messages}">

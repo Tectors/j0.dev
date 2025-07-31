@@ -41,7 +41,7 @@
             
             <!-- App Icon / Profile Name Display -->
             <Grid Height="{DynamicResource TitleBarHeight}">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10" Margin="15,0,0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="12" Margin="15,0,0,0">
                     <Image IsHitTestVisible="False" Source="/Assets/Icon/Scaled/App.Icon.32.png"
                            Width="20"
                            IsVisible="{Binding Profile.IsNameEmpty}"

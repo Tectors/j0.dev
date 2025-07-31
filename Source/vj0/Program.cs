@@ -31,10 +31,6 @@ internal sealed class Program
             .Configure<AppInstance>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace()
-            .With(new Win32PlatformOptions
-            {
-                CompositionMode = [Win32CompositionMode.WinUIComposition]
-            });
+            .LogToTrace();
     }
 }

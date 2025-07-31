@@ -50,7 +50,7 @@
                 
                 Does not look good at higher opacities
                 -->
-                <Grid Opacity="0.2" Name="TitleBarGradient">
+                <Grid Opacity="0.25" Name="TitleBarGradient">
                     <Border Margin="15 0 15 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="40">
                         <Border.Effect>
                             <BlurEffect Radius="50"/>
@@ -65,13 +65,6 @@
                             <Grid Width="170">
                                 <StackPanel Spacing="8">
                                     <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="35" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                        
                                         <ToolTip.Tip>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
@@ -100,7 +93,7 @@
                     </Button.Resources>
                     
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
-                        <profiles:ProfileSplashControl Radius="13" SplashScale="1.08" DataContext="{Binding CurrentProfile}"/>
+                        <profiles:ProfileSplashControl Radius="13" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
                         <!-- Display Name -->
                         <TextBlock Name="ProfileName" MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Foreground="White" Text="{Binding ProfileDisplayName}" FontSize="14" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -147,10 +140,10 @@
                                 </Button.Resources>
                                 
                                 <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <avalonia1:MaterialIcon FontSize="20" Kind="Github"/>
+                                    <avalonia1:MaterialIcon FontSize="20" Kind="Radar"/>
                                     
                                     <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        GitHub
+                                        View Releases
                                     </TextBlock>
                                 </StackPanel>
                             </Button>
@@ -193,11 +186,11 @@
                     <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
 
                     <!-- Cloud Service -->
-                    <Button IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" Opacity="1.0" CornerRadius="8">
+                    <Button IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8">
                         <ToolTip.Tip>
                             <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
                                 <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
-                                <TextBlock VerticalAlignment="Center" Opacity="0.5" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
+                                <TextBlock VerticalAlignment="Center" FontWeight="Medium" Opacity="0.5" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
                             </StackPanel>
                         </ToolTip.Tip>
                         
@@ -205,13 +198,6 @@
                             <Flyout>
                                 <StackPanel Width="100" Spacing="8">
                                     <Button Click="RestartAPI" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="40" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                    
                                         <StackPanel Orientation="Horizontal" Spacing="8">
                                             <avalonia:FluentIcon FontSize="20" Icon="Pulse"/>
                                         

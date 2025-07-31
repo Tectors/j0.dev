@@ -67,7 +67,7 @@ public class ProfileSplash : ObservableObject
             }
 
             var scaled = original.CreateScaledBitmap(
-                new PixelSize(55, 60)
+                new PixelSize(150, 150)
             );
 
             return scaled;
