@@ -104,7 +104,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
         AppService.OpenLink(Globals.GITHUB_LINK);
     }
 
-    private void OpenTwitterAccount(object? sender, RoutedEventArgs e)
+    private void OpenXAccount(object? sender, RoutedEventArgs e)
     {
         AppService.OpenLink(Globals.X_LINK);
     }

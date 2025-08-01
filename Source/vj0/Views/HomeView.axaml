@@ -129,14 +129,14 @@
                                 </StackPanel>
                             </Button>
                             
-                            <!-- Twitter button -->
-                            <Button Click="OpenTwitterAccount" Cursor="Hand" ToolTip.Tip="Twitter"
+                            <!-- X (Twitter) button -->
+                            <Button Click="OpenXAccount" Cursor="Hand" ToolTip.Tip="X"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <avalonia:MaterialIcon Width="20" Kind="Twitter"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <Image Source="/Assets/Brands/Scaled/X.25px.png"
+                                           Width="20" IsHitTestVisible="False"/>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
