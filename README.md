@@ -54,3 +54,9 @@ git fetch
 git checkout master
 git pull
 ```
+
+### Update Lisence After Changes
+
+```
+python .github/Licensing/main.py
+```
