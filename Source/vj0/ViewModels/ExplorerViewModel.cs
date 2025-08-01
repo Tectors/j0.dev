@@ -62,6 +62,15 @@ public partial class ExplorerViewModel : ViewModelBase
     [ObservableProperty]
     private string _selectedItemOffset = "";
     
+    [ObservableProperty]
+    private string _selectedItemSize = "";
+    
+    [ObservableProperty]
+    private string _selectedItemCompressionMethod = "";
+    
+    [ObservableProperty]
+    private string _selectedItemIsEncrypted = "";
+    
     public override Task Initialize()
     {
         if (!Globals.IsReadyToExplore) return base.Initialize();
@@ -99,7 +108,7 @@ public partial class ExplorerViewModel : ViewModelBase
             .AsParallel()
             .WithCancellation(CancellationToken.None)
             .Where(pair => IsValidAssetPath(pair.Key) && !pair.Value.IsUePackagePayload)
-            .Select(pair => new FileTile(pair.Key))
+            .Select(pair => new FileTile(pair.Key, pair.Value))
             .ToList();
         
         _viewAssetCache.Edit(updater =>
@@ -209,6 +218,9 @@ public partial class ExplorerViewModel : ViewModelBase
             {
                 child = new TreeItem(name, isFile ? ENodeType.File : ENodeType.Folder, fullPath, parent, gameFile);
                 parent.AddChild(name, child);
+                
+                parent.GameFile = gameFile;
+                parent.ReCache();
             }
 
             if (isFile)
@@ -262,6 +274,7 @@ public partial class ExplorerViewModel : ViewModelBase
     public void FlatViewJumpTo(string directory)
     {
         if (!directory.EndsWith("/"))
+        {
             directory += "/";
         }
 
