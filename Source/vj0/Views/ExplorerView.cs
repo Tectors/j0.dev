@@ -6,10 +6,12 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
+using CUE4Parse.UE4.VirtualFileSystem;
 using DynamicData;
 using FluentAvalonia.UI.Controls;
 using vj0.Framework.Models;
 using vj0.Models.Files;
+using vj0.Shared.Extensions;
 using vj0.ViewModels;
 
 namespace vj0.Views;
@@ -44,6 +46,11 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
         var item = visual.GetVisualAncestors().OfType<TreeViewItem>().FirstOrDefault();
         if (item?.DataContext is not TreeItem treeItem) return;
+        if (e.GetCurrentPoint(null).Properties.IsRightButtonPressed)
+        {
+            return;
+        }
+        
         ViewModel.SelectFolder(treeItem);
 
         var now = DateTime.UtcNow;
@@ -106,6 +113,34 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
         if (sender is TreeView treeView && treeView.SelectedItem is TreeItem selectedItem)
         {
             ViewModel.FlatViewJumpTo(selectedItem.FilePath);
+        }
+    }
+    
+    private void OnFileSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        if (sender is not ListBox listBox)
+        {
+            return;
+        }
+
+        var selectedItems = listBox.SelectedItems;
+    
+        foreach (var item in selectedItems)
+        {
+            if (item is FileTile treeView)
+            {
+                if (treeView.GameFile is VfsEntry vfsEntry)
+                {
+                    ViewModel.SelectedItemArchive = vfsEntry.Vfs.Name;
+                    ViewModel.SelectedItemArchiveVersion = vfsEntry.Vfs.Ver.ToString();
+                    ViewModel.SelectedItemMountPoint = vfsEntry.Vfs.MountPoint;
+                    
+                    ViewModel.SelectedItemOffset = $"0x{vfsEntry.Offset:X}";
+                    ViewModel.SelectedItemSize = StringExtensions.GetReadableSize(treeView.GameFile.Size);
+                    ViewModel.SelectedItemCompressionMethod = treeView.GameFile.CompressionMethod.ToString();
+                    ViewModel.SelectedItemIsEncrypted = treeView.GameFile.IsEncrypted.ToString();
+                }
+            }
         }
     }
 }

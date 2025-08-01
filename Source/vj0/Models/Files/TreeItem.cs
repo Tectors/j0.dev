@@ -26,6 +26,9 @@ public partial class TreeItem : ObservableObject
     private string _archive = null!;
     
     [ObservableProperty]
+    private string _archiveVersion = null!;
+    
+    [ObservableProperty]
     private string _mountPoint = null!;
     
     [ObservableProperty]
@@ -184,10 +187,16 @@ public partial class TreeItem : ObservableObject
         FilePath = filePath;
         Parent = parent;
         GameFile = gameFile;
-        
+
+        ReCache();
+    }
+
+    public void ReCache()
+    {
         if (GameFile is VfsEntry vfsEntry)
         {
             Archive = vfsEntry.Vfs.Name;
+            ArchiveVersion = vfsEntry.Vfs.Ver.ToString();
             MountPoint = vfsEntry.Vfs.MountPoint;
         }
     }

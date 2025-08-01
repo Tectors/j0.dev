@@ -166,8 +166,8 @@
       <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#08FFFFFF"/>
-      <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#24FFFFFF"/>
-      <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#1AFFFFFF"/>
+      <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#0AFFFFFF"/>
+      <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#0DFFFFFF"/>
 
       <!-- ComboBox Brushes -->
       <SolidColorBrush x:Key="ComboBoxBackground" Color="#121212"/>

@@ -10,11 +10,15 @@ public class UpdateService : IService
 {
     public async void Initialize()
     {
+        if (!Version.TryParse(Globals.VERSION, out var currentVersion))
+        {
+            return;
+        }
+        
         var latestRelease = await RestAPI.GitHub.GetLatestRelease();
         if (latestRelease is null) return;
 
         var latestVersion = new Version(latestRelease.Name);
-        var currentVersion = new Version(Globals.VERSION);
         
         if (currentVersion < latestVersion)
         {

@@ -34,6 +34,11 @@ public partial class TitleBar : UserControl
     
     public void OpenGitHubLink(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.GITHUB_RELEASES_LINK);
+        AppService.OpenLink($"{Globals.GITHUB_COMMIT_LINK}/{Globals.COMMIT}");
+    }
+
+    private void CopyGitCloneCommand(object? sender, RoutedEventArgs e)
+    {
+        App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git checkout {Globals.COMMIT} && git submodule update --init --recursive\n");
     }
 }

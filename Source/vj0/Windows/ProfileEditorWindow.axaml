@@ -227,7 +227,7 @@
                         <Button.Resources>
                             <ResourceDictionary>
                                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#242424</SolidColorBrush>
-                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#34373a</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#1f1f1f</SolidColorBrush>
                                 <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                 <SolidColorBrush x:Key="ButtonBorderBrush">#4e5157</SolidColorBrush>
                                 <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#4e5157</SolidColorBrush>

@@ -54,7 +54,13 @@ public partial class ExplorerViewModel : ViewModelBase
     private string _selectedItemArchive = "";
     
     [ObservableProperty]
+    private string _selectedItemArchiveVersion = "";
+    
+    [ObservableProperty]
     private string _selectedItemMountPoint = "";
+    
+    [ObservableProperty]
+    private string _selectedItemOffset = "";
     
     public override Task Initialize()
     {
@@ -257,6 +263,7 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         if (!directory.EndsWith("/"))
             directory += "/";
+        }
 
         var parts = directory.Split('/', StringSplitOptions.RemoveEmptyEntries);
         var rootName = parts[0];
@@ -321,6 +328,7 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         SelectedItemArchive = item.Archive;
         SelectedItemMountPoint = item.MountPoint;
+        SelectedItemArchiveVersion = item.ArchiveVersion;
     }
     
     public void LoadTreeItems(TreeItem item)

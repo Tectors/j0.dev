@@ -114,7 +114,7 @@
               x:Name="MoreOptionsButton"
               Width="32"
               Height="32"
-              CornerRadius="5"
+              CornerRadius="10"
               Background="Transparent"
               Focusable="False"
               Margin="0 -5 0 0">
@@ -123,13 +123,6 @@
                 <Flyout>
                     <StackPanel Width="150" Spacing="2">
                         <Button Click="EditButton_Click" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="40" Background="Transparent" CornerRadius="7" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                          <Button.Resources>
-                            <ResourceDictionary>
-                              <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                              <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
-                            </ResourceDictionary>
-                          </Button.Resources>
-                            
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <controls:SymbolIcon
                                   Height="18"
@@ -305,6 +298,7 @@
             HorizontalAlignment="Stretch">
             <Button.Resources>
               <ResourceDictionary>
+                <SolidColorBrush x:Key="ButtonBackgroundPressed">#1c1c1c</SolidColorBrush>
                 <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#b3b3b3</SolidColorBrush>
                 <SolidColorBrush x:Key="ButtonBorderBrushPressed">#b3b3b3</SolidColorBrush>
               </ResourceDictionary>

@@ -75,4 +75,9 @@ public class AppService : IService
             Debug.WriteLine($"Failed to open link: {ex.Message}");
         }
     }
+    
+    public Task CopyText(string Text)
+    {
+        return App.Clipboard.SetTextAsync(Text);
+    }
 }

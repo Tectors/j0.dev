@@ -29,10 +29,10 @@
 
         <!-- Left Side -->
         <StackPanel Name="Left"
-            Margin="14 0 0 0"
+            Margin="20 0 0 0"
             Orientation="Horizontal"
             VerticalAlignment="Center"
-            Spacing="8">
+            Spacing="12">
             
             <!-- Icon -->
             <Image Name="Icon"
@@ -41,7 +41,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 IsHitTestVisible="False"
-                Margin="4 0 10 0"/>
+                Margin="0 0 10 0"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}">
                 <!-- 
@@ -59,7 +59,7 @@
                 </Grid>
                 
                 <!-- Profile Button -->
-                <Button Margin="3 0 4 0" Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
+                <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
                     <Button.Flyout>
                         <Flyout>
                             <Grid Width="170">
@@ -85,13 +85,6 @@
                         </Flyout>
                     </Button.Flyout>
                     
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#10FFFFFF"/>
-                        </ResourceDictionary>
-                    </Button.Resources>
-                    
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
                         <profiles:ProfileSplashControl Radius="13" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
@@ -104,21 +97,7 @@
             </Grid>
             
             <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" FontFamily="Consolas" Height="25" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
-                <ToolTip.Tip>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock VerticalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="v{0}">
-                                    <Binding Source="{x:Static application:Globals.VERSION}" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                        
-                        <TextBlock VerticalAlignment="Center" Text="{x:Static application:Globals.COMMIT}"/>
-                    </StackPanel>
-                </ToolTip.Tip>
-                
+            <Button IsVisible="True" FontFamily="Consolas" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
@@ -130,21 +109,79 @@
                 
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
-                        <StackPanel Spacing="5">
-                            <Button Click="OpenGitHubLink" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="35" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                        <StackPanel Spacing="15" Margin="5">
+                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 0 5 0">
+                                <Border Width="40" Height="40" CornerRadius="5" Background="Black">
+                                    <Image
+                                        Source="/Assets/Views/Version.png"
+                                        Width="30"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        IsHitTestVisible="False"
+                                        Height="15"
+                                        Margin="0 2 0 0"/>
+                                </Border>
+
+                                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
+                                    <TextBlock FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static application:Globals.VERSION}"/>
+                                    <TextBlock IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static application:Globals.COMMIT}"/>
+                                </StackPanel>
+                                
+                                <Button ToolTip.Tip="View Commit" Cursor="Hand" IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Width="30" Height="30">
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#212121"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1c1c1c"/>
+                                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3b3b3b"/>
+                                            <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3b3b3b"/>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+
+                                    <avalonia1:MaterialIcon Kind="Github"/>
+                                </Button>
+                            </StackPanel>
+                            
+                            <Button Click="CopyGitCloneCommand" Cursor="Hand" IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}"
+                                    HorizontalAlignment="Stretch"
+                                    BorderThickness="1"
+                                    Padding="10"
+                                    FontWeight="SemiBold"
+                                    Background="Transparent"
+                                    BorderBrush="#1f2023"
+                                    CornerRadius="8">
+                                
+                                <ToolTip.Tip>
+                                    <StackPanel MaxWidth="250">
+                                        <TextBlock>
+                                            Copies a one-line Git command that:
+                                        </TextBlock>
+                                        <TextBlock>
+                                            - Clones this repo
+                                        </TextBlock>
+                                        <TextBlock>
+                                            - Checks out this commit
+                                        </TextBlock>
+                                        <TextBlock>
+                                            - Initializes submodules
+                                        </TextBlock>
+                                    </StackPanel>
+                                </ToolTip.Tip>
+                                
                                 <Button.Resources>
                                     <ResourceDictionary>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">Transparent</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
                                     </ResourceDictionary>
                                 </Button.Resources>
-                                
+
                                 <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <avalonia1:MaterialIcon FontSize="20" Kind="Radar"/>
+                                    <avalonia1:MaterialIcon Kind="Git"/>
                                     
-                                    <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        View Releases
-                                    </TextBlock>
+                                    <TextBlock>Clone Commit</TextBlock>
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -213,7 +250,7 @@
                         <Button.Resources>
                             <ResourceDictionary>
                                 <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#292929"/>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1f1f1f"/>
                             </ResourceDictionary>
                         </Button.Resources>
                     
