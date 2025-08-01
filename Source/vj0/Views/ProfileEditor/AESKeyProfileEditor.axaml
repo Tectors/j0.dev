@@ -35,7 +35,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Spacing="10">
-                                <Border BorderBrush="#3d3d3d" Background="{DynamicResource ExpanderHeaderBackground}" BorderThickness="1" CornerRadius="20">
+                                <Border BorderBrush="#3d3d3d" Background="{DynamicResource ExpanderHeaderBackground}" BorderThickness="1" CornerRadius="12">
                                     <Grid Margin="25">
                                         <StackPanel Orientation="Vertical" Spacing="25" Margin="0">
                                             <StackPanel Orientation="Vertical" Spacing="7">

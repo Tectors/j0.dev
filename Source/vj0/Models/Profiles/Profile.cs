@@ -54,7 +54,10 @@ public class Profile : BaseProfileDisplay
         }
 
         CheckStatusNotifies();
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
 
         Status.SetState(EProfileStatus.Active);
         
@@ -65,14 +68,23 @@ public class Profile : BaseProfileDisplay
 
         UpdateStatus("Loading Files");
         
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
         await InitializeProvider();
         
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
         await InitializeTextureStreaming();
         InitializeCache();
 
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
         await LoadKeys(cancellationToken);
         
         if (Provider is not null && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count > 0)
@@ -95,10 +107,16 @@ public class Profile : BaseProfileDisplay
         {
             Provider.LoadVirtualPaths();
             
-            cancellationToken.ThrowIfCancellationRequested();
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
             await Provider.MountAsync();
             
-            cancellationToken.ThrowIfCancellationRequested();
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
             Provider.PostMount();
 
             SetLanguage(Settings.Application.GameLanguage);
@@ -106,12 +124,18 @@ public class Profile : BaseProfileDisplay
 
         LoadMappings(cancellationToken);
         
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
         await ExplorerVM.FinalizeWhenProviderExplorerReady();
 
         IsInitialized = true;
         
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
         
         Log.Information($"Initialized profile {Name} successfully");
         Info.Message($"Loaded profile {Name} successfully", "", InfoBarSeverity.Success, closeTime: 0.95f);
@@ -229,7 +253,10 @@ public class Profile : BaseProfileDisplay
             await Provider.SubmitKeyAsync(Globals.ZERO_GUID, Encryption.MainAESKey);
             Log.Information($"Submitted AES Key: {Encryption.MainAESKey}");
             
-            cancellationToken.ThrowIfCancellationRequested();
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
 
             if (Encryption.HasKeys && Provider is not null)
             {
@@ -239,7 +266,10 @@ public class Profile : BaseProfileDisplay
                     {
                         if (Provider is null) continue;
                         
-                        cancellationToken.ThrowIfCancellationRequested();
+                        if (cancellationToken.IsCancellationRequested)
+                        {
+                            return;
+                        }
                         
                         await Provider.SubmitKeyAsync(vfs.EncryptionKeyGuid, extraKey.AESKey);
                         Log.Information($"Submitted Dynamic AES Key: {extraKey.AESKey}");
@@ -254,8 +284,11 @@ public class Profile : BaseProfileDisplay
         var mapping = await RestAPI.Central.FetchMappingAsync();
 
         if (Provider is null) return;
-        
-        cancellationToken.ThrowIfCancellationRequested();
+
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
 
         var MappingFile = MappingsContainer.Path;
 
@@ -271,7 +304,10 @@ public class Profile : BaseProfileDisplay
             }
         }
         
-        cancellationToken.ThrowIfCancellationRequested();
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
 
         if (MappingFile is not null && File.Exists(MappingFile))
         {
@@ -304,7 +340,10 @@ public class Profile : BaseProfileDisplay
             var assetArchive = await file.SafeCreateReaderAsync();
             if (assetArchive is null) continue;
 
-            cancellationToken.ThrowIfCancellationRequested();
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
 
             try
             {

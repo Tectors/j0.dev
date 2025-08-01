@@ -57,6 +57,11 @@ public partial class ProfileSelectionViewModel : ViewModelBase
             hasAttemptedRecentProfileLoad = true;
         }
 
+        if (!AppServices.Settings.Application.LoadRecentProfileOnLaunch)
+        {
+            hasAttemptedRecentProfileLoad = true;
+        }
+
         CardMap.Clear();
         ViewModelMap.Clear();
 

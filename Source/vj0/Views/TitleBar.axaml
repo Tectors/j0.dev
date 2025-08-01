@@ -11,6 +11,7 @@
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:application="clr-namespace:vj0.Application"
     xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:framework="clr-namespace:vj0.Services.Framework"
 
     x:Class="vj0.Views.TitleBar"
     x:DataType="windowModels:MainWindowModel"
@@ -22,7 +23,7 @@
     <Grid ClipToBounds="True" Height="{DynamicResource TitleBarHeight}">
         <!-- Background -->
         <Border
-            Background="#0a0a0a"
+            Background="{DynamicResource BackgroundBrush}"
             IsHitTestVisible="False"/>
         
         <controls1:CursorEffectControl/>
@@ -61,25 +62,37 @@
                 <!-- Profile Button -->
                 <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
                     <Button.Flyout>
-                        <Flyout>
-                            <Grid Width="170">
+                        <Flyout HorizontalOffset="15">
+                            <Grid>
                                 <StackPanel Spacing="8">
-                                    <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="35" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                                        <ToolTip.Tip>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
-                                                <controls1:KeybindDisplay Keybind="Ctrl+E" />
-                                            </StackPanel>
-                                        </ToolTip.Tip>
-                                        
-                                        <StackPanel Orientation="Horizontal" Spacing="10">
-                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="21" IconVariant="Regular"/>
-                                             
-                                            <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                Settings
-                                            </TextBlock>
+                                    <Grid Margin="10 10 5 10" ColumnDefinitions="Auto,*,Auto">
+                                        <profiles:ProfileSplashControl Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=ProfileButtonOpacity}" Grid.Column="0" Radius="8" SplashScale="1.2" DataContext="{Binding CurrentProfile}"/>
+
+                                        <StackPanel Margin="12 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
+                                            <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" FontSize="16" Text="{Binding ProfileDisplayName}"/>
+                                            <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="Current"/>
                                         </StackPanel>
-                                    </Button>
+                                        
+                                        <Button VerticalAlignment="Center" Grid.Column="2" Margin="35 0 5 0" Cursor="Hand" Click="EditProfile">
+                                            <ToolTip.Tip>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
+                                                    <controls1:KeybindDisplay Keybind="Ctrl+E" />
+                                                </StackPanel>
+                                            </ToolTip.Tip>
+                                            
+                                            <Button.Resources>
+                                                <ResourceDictionary>
+                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#212121"/>
+                                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1c1c1c"/>
+                                                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3b3b3b"/>
+                                                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3b3b3b"/>
+                                                </ResourceDictionary>
+                                            </Button.Resources>
+
+                                            <avalonia:FluentIcon Opacity="1" Icon="Settings"/>
+                                        </Button>
+                                    </Grid>
                                 </StackPanel>
                             </Grid>
                         </Flyout>
@@ -118,13 +131,14 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         IsHitTestVisible="False"
-                                        Height="15"
+                                        Height="16"
                                         Margin="0 2 0 0"/>
                                 </Border>
 
                                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
                                     <TextBlock FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static application:Globals.VERSION}"/>
                                     <TextBlock IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static application:Globals.COMMIT}"/>
+                                    <TextBlock IsVisible="{x:Static application:Globals.IS_COMMIT_UNAVAILABLE}" FontSize="12" Opacity="0.5" Text="no commit available"/>
                                 </StackPanel>
                                 
                                 <Button ToolTip.Tip="View Commit" Cursor="Hand" IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Width="30" Height="30">
@@ -143,10 +157,10 @@
                             
                             <Button Click="CopyGitCloneCommand" Cursor="Hand" IsVisible="{x:Static application:Globals.IS_COMMIT_AVAILABLE}"
                                     HorizontalAlignment="Stretch"
-                                    BorderThickness="1"
                                     Padding="10"
-                                    FontWeight="SemiBold"
-                                    Background="Transparent"
+                                    FontWeight="Normal"
+                                    Opacity="0.95"
+                                    Background="#0f0f0f"
                                     BorderBrush="#1f2023"
                                     CornerRadius="8">
                                 
@@ -169,8 +183,8 @@
                                 
                                 <Button.Resources>
                                     <ResourceDictionary>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">Transparent</SolidColorBrush>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#262626</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#0d0d0d</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>

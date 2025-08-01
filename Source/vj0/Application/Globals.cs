@@ -11,9 +11,10 @@ namespace vj0.Application;
 public static class Globals
 {
     /* Format: 0.0.0 */
-    public const string VERSION = "1.0.0";
-    public const string COMMIT = "5489e7c";
+    public const string VERSION = "dev";
+    public const string COMMIT = "";
     public static bool IS_COMMIT_AVAILABLE => !COMMIT.IsNullOrEmpty();
+    public static bool IS_COMMIT_UNAVAILABLE => !IS_COMMIT_AVAILABLE;
     
     /* future. 🤫 */
     public const bool IsReadyToExplore = true;

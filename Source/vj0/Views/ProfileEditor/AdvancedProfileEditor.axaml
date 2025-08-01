@@ -41,6 +41,7 @@
                                 <Grid Margin="0 20 0 0" ColumnDefinitions="*,Auto" IsVisible="{Binding Profile.MappingsContainer.Override, Mode=TwoWay, FallbackValue=''}">
                                     <TextBox Grid.Column="0"
                                              HorizontalAlignment="Stretch"
+                                             Classes="clearButton"
                                              Text="{Binding Profile.MappingsContainer.Path}"/>
                         
                                     <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseMappingsPathFile}">

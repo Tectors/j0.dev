@@ -136,7 +136,7 @@
       <SolidColorBrush x:Key="ContentDialogBorderBrush" Color="#282828"/>
 
       <!-- Brushes grouped logically -->
-      <SolidColorBrush x:Key="BackgroundBrush" Color="#0d0d0d"/>
+      <SolidColorBrush x:Key="BackgroundBrush" Color="Black"/>
       
       <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="White"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="#198cff"/>
@@ -146,8 +146,8 @@
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#235fe8"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#235fe8"/>
       
-      <SolidColorBrush x:Key="ExpanderBackground" Color="#800a0a0a"/>
-      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#800a0a0a"/>
+      <SolidColorBrush x:Key="ExpanderBackground" Color="#80000000"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBackground" Color="#80000000"/>
       
       <SolidColorBrush x:Key="CommandBarFlyoutButtonBackground" Color="#161616"/>
       <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackground" Color="#161616"/>
@@ -158,7 +158,7 @@
       <SolidColorBrush x:Key="BorderBrush" Color="#1f2023"/>
       <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
       
-      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#0d0d0d"/>
+      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#0a0a0a"/>
       
       <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>

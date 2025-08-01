@@ -1,10 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-    x:CompileBindings="True">
-    <!--This project includes components from FluentAvalonia, which is licensed under the MIT License.
-    https://github.com/amwx/FluentAvalonia-->
-    
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+                    x:CompileBindings="True">
     <Design.PreviewWith>
         <Border Padding="50">
             <StackPanel Spacing="5">
@@ -25,7 +22,6 @@
 
     <ControlTheme TargetType="Button" x:Key="TextBoxDeleteButtonStyle">
         <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForeground}" />
-        <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
@@ -169,9 +165,11 @@
                         <Border Margin="{TemplateBinding BorderThickness}">
                             <Grid ColumnDefinitions="Auto,*,Auto" >
                                 <ContentPresenter Grid.Column="0"
+                                                  Grid.ColumnSpan="1"
                                                   Content="{TemplateBinding InnerLeftContent}"/>
                                 <DockPanel x:Name="PART_InnerDockPanel"
                                            Grid.Column="1"
+                                           Grid.ColumnSpan="1"
                                            Cursor="IBeam"
                                            Margin="{TemplateBinding Padding}">
                                     <TextBlock Name="PART_FloatingWatermark"
@@ -219,6 +217,7 @@
                                     </ScrollViewer>
                                 </DockPanel>
                                 <ContentPresenter Grid.Column="2"
+                                                  Grid.ColumnSpan="1"
                                                   Content="{TemplateBinding InnerRightContent}"/>
                             </Grid>
                         </Border>
@@ -266,7 +265,7 @@
             <Style Selector="^ /template/ Border#PART_BorderElement">
                 <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}"/>
-                <Setter Property="BorderThickness" Value="{DynamicResource TextControlBorderThemeThicknessFocused}" />
+                <Setter Property="BorderThickness" Value="1 1 1 2" />
             </Style>
         </Style>
 
@@ -298,16 +297,40 @@
         <Style Selector="^.clearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
-                    <Button Theme="{StaticResource TextBoxDeleteButtonStyle}"
+                    <Button
                             Command="{Binding $parent[TextBox].Clear}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{DynamicResource ControlCornerRadius}"
                             Padding="{StaticResource HelperButtonThemePadding}"
                             IsTabStop="False"
                             Focusable="False"
+                            Foreground="#808080"
+                            Cursor="Hand"
+                            Margin="5"
                             FontSize="{TemplateBinding FontSize}"
                             Width="30"
-                            VerticalAlignment="Stretch" />
+                            VerticalAlignment="Stretch">
+                        <Button.Resources>
+                            <ResourceDictionary>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#262626</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3e3e3e</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPointerOver">#bdbdbd</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#262626</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPressed">#00a2ff</SolidColorBrush>
+                                                        
+                                <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3e3e3e</SolidColorBrush>
+                            </ResourceDictionary>
+                        </Button.Resources>
+                        
+                        <Border Name="ButtonLayoutGrid"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <ui:SymbolIcon
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontSize="{StaticResource TextBoxIconFontSize}"
+                                           Symbol="Dismiss"
+                                           Name="Glyph"/>
+                        </Border>
+                    </Button>
                 </Template>
             </Setter>
         </Style>

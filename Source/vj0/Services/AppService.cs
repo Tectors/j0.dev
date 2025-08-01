@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input.Platform;
 using Avalonia.Platform.Storage;
+using FluentAvalonia.UI.Controls;
 using vj0.Framework;
 
 namespace vj0.Services;
@@ -76,8 +77,9 @@ public class AppService : IService
         }
     }
     
-    public Task CopyText(string Text)
+    public void CopyText(string Text)
     {
-        return App.Clipboard.SetTextAsync(Text);
+        Info.Message($"Copied to Clipboard", "", InfoBarSeverity.Success, closeTime: 0.35f);
+        App.Clipboard.SetTextAsync(Text);
     }
 }

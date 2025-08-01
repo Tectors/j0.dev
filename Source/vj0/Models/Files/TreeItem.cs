@@ -230,9 +230,9 @@ public partial class TreeItem : ObservableObject
     }
 
     [RelayCommand]
-    private Task CopyPath()
+    private void CopyPath()
     {
-        return App.Clipboard.SetTextAsync(FilePath);
+        App.CopyText(FilePath);
     }
     
     public void Refresh()

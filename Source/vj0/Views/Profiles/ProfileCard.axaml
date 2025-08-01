@@ -9,6 +9,7 @@
     xmlns:profiles="clr-namespace:vj0.ViewModels.Profiles"
     xmlns:profilesControls="clr-namespace:vj0.Controls.Profiles"
     xmlns:profilesViews="clr-namespace:vj0.Views.Profiles"
+    xmlns:framework="clr-namespace:vj0.Services.Framework"
 
     x:Class="vj0.Views.Profiles.ProfileCard"
     x:DataType="profiles:ProfileCardViewModel"
@@ -34,7 +35,7 @@
     
     <Grid MinWidth="400" Height="225" HorizontalAlignment="Stretch" Background="Transparent">
       <!-- Splash Glow Brush -->
-      <Border Opacity="0.5" Background="{Binding Profile.Display.GradientBrush}" Margin="30 -100 0 0" Width="50" Height="50" HorizontalAlignment="Left">
+      <Border Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=TitleBarOpacity}" IsVisible="{Binding IsRunning}" Background="{Binding Profile.Display.GradientBrush}" Margin="30 -100 0 0" Width="50" Height="50" HorizontalAlignment="Left">
         <Border.Effect>
           <BlurEffect Radius="50"/>
         </Border.Effect>

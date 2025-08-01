@@ -111,7 +111,7 @@
                     -->
                     <Panel>
                         <!-- use separate border for Background b/c no margin -->
-                        <Border Background="#0d0d0d"
+                        <Border Background="#080808"
                                 CornerRadius="{TemplateBinding CornerRadius}"/>
                         <Grid HorizontalAlignment="Stretch"
                               MinHeight="{DynamicResource InfoBarMinHeight}"

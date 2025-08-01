@@ -11,7 +11,7 @@
     x:Class="vj0.Views.ExplorerView"
     x:DataType="viewModels1:ExplorerViewModel"
     
-    Background="#0a0a0a"
+    Background="{DynamicResource BackgroundBrush}"
 
     mc:Ignorable="d"
     d:DesignWidth="700"
@@ -59,7 +59,7 @@
                 <Border
                     Grid.Row="1"
                     BorderThickness="1 1 1 0"
-                    Background="#0f0f0f"
+                    Background="#0a0a0a"
                     ClipToBounds="True"
                     CornerRadius="8 8 0 0">
                     
@@ -161,14 +161,14 @@
                     </controls:BreadcrumbBar>
                 </StackPanel>
 
-                <Grid Grid.Row="1" Height="145" IsVisible="{Binding Source={x:Static framework:AppServices.Settings}, Path=Application.ShowDebugData}">
+                <Grid Margin="0 0 10 0" Grid.Row="1" IsVisible="{Binding Source={x:Static framework:AppServices.Settings}, Path=Application.ShowDebugData}">
                     <Border
-                        BorderThickness="1 1 1 0"
-                        Background="#0d0d0d"
+                        BorderThickness="1"
+                        Background="#0a0a0a"
                         ClipToBounds="True"
+                        Margin="0 0 0 5"
                         Padding="15"
-                        Margin="5 0 5 -50"
-                        CornerRadius="8 8 0 0">
+                        CornerRadius="8">
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
                                 <GradientStop Color="#1e1e1f" Offset="0" />
@@ -180,19 +180,44 @@
                                 <TextBlock FontSize="12">Vfs</TextBlock>
                                 <TextBlock FontSize="12">Mount Point</TextBlock>
                                 <TextBlock FontSize="12">Version</TextBlock>
-                                
-                                <TextBlock FontSize="12" Margin="0 10 0 0">Offset</TextBlock>
+                            </StackPanel>
+                            
+                            <StackPanel Opacity="1" HorizontalAlignment="Right" Background="#0a0a0a">
+                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemArchive}"/>
+                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemMountPoint}"/>
+                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemArchiveVersion}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border
+                        Grid.Row="1" BorderThickness="1"
+                        Background="#0a0a0a"
+                        Margin="0 0 0 5"
+                        ClipToBounds="True"
+                        Padding="15"
+                        CornerRadius="8">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                                <GradientStop Color="#1e1e1f" Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        
+                        <Grid>
+                            <StackPanel Opacity="0.75">
+                                <TextBlock FontSize="12">Offset</TextBlock>
                                 <TextBlock FontSize="12">Size</TextBlock>
                                 <TextBlock FontSize="12">Compression Method</TextBlock>
                                 <TextBlock FontSize="12">Is Encrypted</TextBlock>
                             </StackPanel>
                             
                             <StackPanel Opacity="1" HorizontalAlignment="Right" Background="#0d0d0d">
-                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemArchive}"/>
-                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemMountPoint}"/>
-                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemArchiveVersion}"/>
-                                
-                                <TextBlock FontSize="12" Margin="0 10 0 0" TextAlignment="Right" Text="{Binding SelectedItemOffset}"/>
+                                <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemOffset}"/>
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemSize}"/>
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemCompressionMethod}"/>
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemIsEncrypted}"/>
@@ -203,7 +228,7 @@
                 
                 <Grid Grid.Row="2">
                     <Border
-                        Background="#121212"
+                        Background="Black"
                         BorderThickness="1 1 0 0"
                         CornerRadius="8 0 0 0">
                         <Border.BorderBrush>

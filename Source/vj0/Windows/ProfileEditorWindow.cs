@@ -90,14 +90,14 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
         Close();
     }
 
-    private static void SaveProfileToDisk(Profile originalProfile, Profile newProfile)
+    private static void SaveProfileToDisk(Profile originalProfile, Profile profile)
     {
-        originalProfile.CopyFrom(newProfile);
+        originalProfile.CopyFrom(profile);
         _ = originalProfile.Save();
         
-        Log.Information($"Saved Profile {newProfile.Name}");
+        Log.Information($"Saved Profile {profile.Name}");
         
-        Info.Message($"Saved {newProfile.Name}", "", InfoBarSeverity.Success, closeTime: 0.75f);
+        Info.Message($"Successfully saved '{profile.Name}'", "All changes are now in place.", InfoBarSeverity.Success, closeTime: 0.75f);
     }
 
     private void UpdateMainWindowProfileState(Profile originalProfile, bool isUncompleted, bool hasChanged, bool hasVisuallyChanged)

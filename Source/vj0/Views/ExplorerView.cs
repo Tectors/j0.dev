@@ -125,7 +125,7 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
         var selectedItems = listBox.SelectedItems;
     
-        foreach (var item in selectedItems)
+        foreach (var item in selectedItems!)
         {
             if (item is FileTile treeView)
             {

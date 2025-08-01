@@ -19,8 +19,8 @@ public partial class FileTile : ObservableObject
     }
     
     [RelayCommand]
-    private async Task CopyPath()
+    private void CopyPath()
     {
-        await App.Clipboard.SetTextAsync(Path);
+        App.CopyText(Path);
     }
 }

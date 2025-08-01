@@ -80,7 +80,7 @@
                     </StackPanel>
 
                     <Grid ColumnDefinitions="*,Auto">
-                        <TextBox Grid.Column="0"
+                        <TextBox Grid.Column="0" Classes="clearButton"
                                  HorizontalAlignment="Stretch"
                                  Text="{Binding Profile.ArchiveDirectory}"/>
                         <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseArchiveDirectoryPath}">
@@ -103,6 +103,7 @@
                              Text="{Binding Profile.Encryption.MainKey, Mode=TwoWay}"
                              HorizontalAlignment="Stretch"
                              FontSize="14"
+                             Classes="clearButton"
                              Padding="10 6"
                              Height="33"/>
                 </StackPanel>

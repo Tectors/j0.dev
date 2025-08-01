@@ -48,7 +48,7 @@
                 IsBackButtonVisible="False" IsPaneToggleButtonVisible="False"
                 SelectionFollowsFocus="True"
                 
-                Background="#0a0a0a"
+                Background="{DynamicResource BackgroundBrush}"
                 Margin="3 0 0 0"
 
                 x:Name="MainNavigationView">
@@ -134,9 +134,9 @@
                     </controls:NavigationViewItem>
                 </controls:NavigationView.FooterMenuItems>
 
-                <Grid Background="#0a0a0a">
+                <Grid Background="{DynamicResource BackgroundBrush}">
                     <!-- Content Frame -->
-                    <controls:Frame UseLayoutRounding="True" Background="#0a0a0a" x:Name="ContentFrame"/>
+                    <controls:Frame UseLayoutRounding="True" Background="{DynamicResource BackgroundBrush}" x:Name="ContentFrame"/>
                     
                     <!-- Expensive to animate -->
                     <Grid IsVisible="{Binding IsExplorer}">
