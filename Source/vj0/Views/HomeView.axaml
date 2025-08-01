@@ -16,8 +16,8 @@
     
     <UserControl.Resources>
         <LinearGradientBrush x:Key="AnimatingTextBrush" StartPoint="0%,0%" EndPoint="100%,0%">
-            <GradientStop Color="White" Offset="0"/>
-            <GradientStop Color="#767676" Offset="1"/>
+            <GradientStop Color="#767676" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
     </UserControl.Resources>
 

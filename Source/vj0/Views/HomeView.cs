@@ -18,7 +18,7 @@ public partial class HomeView : ViewBase<HomeViewModel>
         InitializeComponent();
         StartLoopingGradientAnimation();
         
-        ViewModel.StartRotation(ViewModel.TagLines, 3000, RotatingTaglineText, useRandom: true);
+        ViewModel.StartRotation(ViewModel.TagLines, 2700, RotatingTaglineText, useRandom: true);
         ViewModel.StartRotation(ViewModel.Tips, 8000, TipText, TipContainer, true);
     }
     
@@ -39,30 +39,47 @@ public partial class HomeView : ViewBase<HomeViewModel>
             }
         }
 
-        var fromStart = _isReversed ? Color.Parse("#303030") : Colors.White;
-        var fromEnd = _isReversed ? Colors.White : Color.Parse("#303030");
-
-        var toStart = _isReversed ? Colors.White : Color.Parse("#303030");
-        var toEnd = _isReversed ? Color.Parse("#303030") : Colors.White;
-
-        const int steps = 150;
+        var darkColor = Color.Parse("#303030");
+        var lightColor = Colors.White;
+        
+        var startColor = _isReversed ? lightColor : darkColor;
+        var endColor = _isReversed ? darkColor : lightColor;
+        
+        _branchBrush.GradientStops[0].Color = startColor;
+        _branchBrush.GradientStops[1].Color = startColor;
+        
+        const float duration_full = 0.5f;
+        
+        const int steps = 100;
         var easing = new SineEaseInOut();
-        var duration = TimeSpan.FromSeconds(0.2);
+        var duration = TimeSpan.FromSeconds(duration_full);
         var delay = duration.TotalMilliseconds / steps;
-
+        
         for (var i = 0; i <= steps; i++)
         {
-            var time = easing.Ease(i / (double)steps);
-
-            var lerpedStart = InterpolateColor(fromStart, toStart, time);
-            var lerpedEnd = InterpolateColor(fromEnd, toEnd, time);
-
-            _branchBrush.GradientStops[0].Color = lerpedStart;
-            _branchBrush.GradientStops[1].Color = lerpedEnd;
-
+            var progress = easing.Ease(i / (double)steps);
+            
+            if (progress <= 0.5)
+            {
+                var localProgress = progress * 2;
+                _branchBrush.GradientStops[0].Color = InterpolateColor(startColor, endColor, localProgress);
+                _branchBrush.GradientStops[1].Color = startColor;
+            }
+            else
+            {
+                var localProgress = (progress - 0.5) * 2;
+                _branchBrush.GradientStops[0].Color = endColor;
+                _branchBrush.GradientStops[1].Color = InterpolateColor(startColor, endColor, localProgress);
+            }
+            
             await Task.Delay((int)delay);
         }
-
+        
+        _branchBrush.GradientStops[0].Color = endColor;
+        _branchBrush.GradientStops[1].Color = endColor;
+        
+        await Task.Delay((int)(duration_full / 2 * 1000));
+        
         _isReversed = !_isReversed;
         StartLoopingGradientAnimation();
     }

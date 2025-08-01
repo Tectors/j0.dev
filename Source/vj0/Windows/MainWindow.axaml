@@ -98,7 +98,7 @@
                     <!-- Profiles -->
                     <controls:NavigationViewItem ToolTip.Tip="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
                         <controls:NavigationViewItem.InfoBadge>
-                            <controls:InfoBadge Background="#03d7fc" Margin="0 5 8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
+                            <controls:InfoBadge Background="#03d7fc" Margin="0 5 -8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
                         </controls:NavigationViewItem.InfoBadge>
                         
                         <fluent:SymbolIcon Symbol="Agents"/>

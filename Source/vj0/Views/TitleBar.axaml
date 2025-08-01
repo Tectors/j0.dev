@@ -159,7 +159,7 @@
                                     Padding="10"
                                     FontWeight="Normal"
                                     Opacity="0.95"
-                                    Background="#0f0f0f"
+                                    Background="#212121"
                                     BorderBrush="#1f2023"
                                     CornerRadius="8">
                                 
@@ -183,7 +183,7 @@
                                 <Button.Resources>
                                     <ResourceDictionary>
                                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#262626</SolidColorBrush>
-                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#0d0d0d</SolidColorBrush>
+                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#454545</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
                                         <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
