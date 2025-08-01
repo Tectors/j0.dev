@@ -59,7 +59,7 @@
                 <Border
                     Grid.Row="1"
                     BorderThickness="1 1 1 0"
-                    Background="#0a0a0a"
+                    Background="#0d0d0d"
                     ClipToBounds="True"
                     CornerRadius="8 8 0 0">
                     
@@ -139,7 +139,6 @@
                           Opacity="0"
                           VerticalAlignment="Stretch" 
                           ResizeDirection="Columns" />
-    
             
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -216,7 +215,7 @@
                                 <TextBlock FontSize="12">Is Encrypted</TextBlock>
                             </StackPanel>
                             
-                            <StackPanel Opacity="1" HorizontalAlignment="Right" Background="#0d0d0d">
+                            <StackPanel Opacity="1" HorizontalAlignment="Right" Background="#0a0a0a">
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemOffset}"/>
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemSize}"/>
                                 <TextBlock FontSize="12" TextAlignment="Right" Text="{Binding SelectedItemCompressionMethod}"/>
@@ -228,7 +227,7 @@
                 
                 <Grid Grid.Row="2">
                     <Border
-                        Background="Black"
+                        Background="#0d0d0d"
                         BorderThickness="1 1 0 0"
                         CornerRadius="8 0 0 0">
                         <Border.BorderBrush>

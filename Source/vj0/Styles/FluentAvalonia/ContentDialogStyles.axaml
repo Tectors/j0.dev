@@ -13,7 +13,7 @@
 
     <ControlTheme x:Key="{x:Type ui:ContentDialog}" TargetType="ui:ContentDialog">
         <Setter Property="Foreground" Value="{DynamicResource ContentDialogForeground}"/>
-        <Setter Property="Background" Value="#0a0a0a"/>
+        <Setter Property="Background" Value="Black"/>
         <Setter Property="BorderBrush" Value="#222323"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="15" />

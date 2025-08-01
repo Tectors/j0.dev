@@ -11,7 +11,6 @@
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:application="clr-namespace:vj0.Application"
     xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-    xmlns:framework="clr-namespace:vj0.Services.Framework"
 
     x:Class="vj0.Views.TitleBar"
     x:DataType="windowModels:MainWindowModel"
@@ -63,36 +62,36 @@
                 <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
                     <Button.Flyout>
                         <Flyout HorizontalOffset="15">
-                            <Grid>
+                            <Grid Margin="2">
                                 <StackPanel Spacing="8">
-                                    <Grid Margin="10 10 5 10" ColumnDefinitions="Auto,*,Auto">
-                                        <profiles:ProfileSplashControl Opacity="{Binding Source={x:Static framework:AppServices.MainWM}, Path=ProfileButtonOpacity}" Grid.Column="0" Radius="8" SplashScale="1.2" DataContext="{Binding CurrentProfile}"/>
-
-                                        <StackPanel Margin="12 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
-                                            <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" FontSize="16" Text="{Binding ProfileDisplayName}"/>
-                                            <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="Current"/>
-                                        </StackPanel>
+                                    <Button Margin="2" Cursor="Hand" Click="EditProfile" Foreground="#e8e8e8">
+                                        <ToolTip.Tip>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
+                                                <controls1:KeybindDisplay Keybind="Ctrl+E" />
+                                            </StackPanel>
+                                        </ToolTip.Tip>
                                         
-                                        <Button VerticalAlignment="Center" Grid.Column="2" Margin="35 0 5 0" Cursor="Hand" Click="EditProfile">
-                                            <ToolTip.Tip>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
-                                                    <controls1:KeybindDisplay Keybind="Ctrl+E" />
-                                                </StackPanel>
-                                            </ToolTip.Tip>
-                                            
-                                            <Button.Resources>
-                                                <ResourceDictionary>
-                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#212121"/>
-                                                    <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1c1c1c"/>
-                                                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3b3b3b"/>
-                                                    <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3b3b3b"/>
-                                                </ResourceDictionary>
-                                            </Button.Resources>
+                                        <Button.Resources>
+                                            <ResourceDictionary>
+                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#ffffff"/>
+                                                <SolidColorBrush x:Key="ButtonForeground" Color="#e8e8e8"/>
+                                            </ResourceDictionary>
+                                        </Button.Resources>
+                                        
+                                        <Grid ColumnDefinitions="Auto,*,Auto">
+                                            <profiles:ProfileSplashControl Grid.Column="0" Radius="8" SplashScale="1.2" DataContext="{Binding CurrentProfile}"/>
 
-                                            <avalonia:FluentIcon Opacity="1" Icon="Settings"/>
-                                        </Button>
-                                    </Grid>
+                                            <StackPanel Margin="12 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
+                                                <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" FontSize="16" Text="{Binding ProfileDisplayName}"/>
+                                                <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="Current"/>
+                                            </StackPanel>
+                                            
+                                            <StackPanel VerticalAlignment="Center" Grid.Column="2" Margin="35 0 10 0">
+                                                <avalonia:FluentIcon Opacity="1" Icon="Settings"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Button>
                                 </StackPanel>
                             </Grid>
                         </Flyout>
