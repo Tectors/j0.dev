@@ -436,9 +436,21 @@ public partial class MainWindowModel : WindowModelBase
         }
     }
     
+    public static string LoadedFilesDisplayWithoutDash
+    {
+        get
+        {
+            var count = ExplorerVM.AssetCount;
+            var formattedNumber = FormatNumber(count);
+            
+            return $"{formattedNumber} assets";
+        }
+    }
+    
     public void UpdateLoadedFilesDisplay()
     {
         OnPropertyChanged(nameof(LoadedFilesDisplay));
+        OnPropertyChanged(nameof(LoadedFilesDisplayWithoutDash));
     }
     
     private static string FormatNumber(long number)

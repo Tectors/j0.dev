@@ -108,7 +108,6 @@
                                 <Setter Property="BorderThickness" Value="{DynamicResource BreadcrumbBarEllipsisFlyoutPresenterBorderThemeThickness}" />
                                 <Setter Property="Padding" Value="0,2" />
                                 <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-                                <Setter Property="MaxWidth" Value="{DynamicResource FlyoutThemeMaxWidth}" />
                                 <Setter Property="MinHeight" Value="40" />
                                 <Setter Property="CornerRadius" Value="{DynamicResource OverlayCornerRadius}" />
                                 <Setter Property="Template">
@@ -122,12 +121,10 @@
                                             <Grid>
                                                 <ScrollViewer Name="FlyoutPresenterScrollViewer"
                                                               AutomationProperties.AccessibilityView="Raw"
-                                                              Margin="{TemplateBinding Padding}"
                                                               HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
                                                               VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
                                                               IsScrollChainingEnabled="{TemplateBinding ScrollViewer.IsScrollChainingEnabled}"
                                                               Content="{TemplateBinding Content}" />
-
                                             </Grid>
                                         </Border>
                                     </ControlTemplate>

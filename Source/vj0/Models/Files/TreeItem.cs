@@ -259,4 +259,19 @@ public partial class TreeItem : ObservableObject
         OnPropertyChanged(nameof(HasAssets));
         OnPropertyChanged(nameof(HasFolders));
     }
+    
+    public string GetFullPath()
+    {
+        var segments = new List<string>();
+        var current = this;
+
+        while (current is not null)
+        {
+            segments.Add(current.Name);
+            current = current.Parent;
+        }
+
+        segments.Reverse();
+        return string.Join('/', segments) + '/';
+    }
 }

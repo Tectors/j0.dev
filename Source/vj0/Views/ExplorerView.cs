@@ -51,8 +51,6 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
             return;
         }
         
-        ViewModel.SelectFolder(treeItem);
-
         var now = DateTime.UtcNow;
         if (_lastClickedItem == treeItem && now - _lastClickTime < DoubleClickThreshold)
         {
@@ -122,13 +120,18 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
         {
             return;
         }
-
+        
         var selectedItems = listBox.SelectedItems;
     
         foreach (var item in selectedItems!)
         {
             if (item is FileTile treeView)
             {
+                if (e.RemovedItems.Contains(item))
+                {
+                    continue;
+                }
+                
                 if (treeView.GameFile is VfsEntry vfsEntry)
                 {
                     ViewModel.SelectedItemArchive = vfsEntry.Vfs.Name;

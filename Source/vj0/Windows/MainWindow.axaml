@@ -49,7 +49,6 @@
                 SelectionFollowsFocus="True"
                 
                 Background="{DynamicResource BackgroundBrush}"
-                Margin="3 0 0 0"
 
                 x:Name="MainNavigationView">
 
@@ -97,40 +96,19 @@
 
                 <controls:NavigationView.FooterMenuItems>
                     <!-- Profiles -->
-                    <controls:NavigationViewItem Content="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
+                    <controls:NavigationViewItem ToolTip.Tip="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
                         <controls:NavigationViewItem.InfoBadge>
                             <controls:InfoBadge Background="#03d7fc" Margin="0 5 8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
                         </controls:NavigationViewItem.InfoBadge>
                         
-                        <controls:NavigationViewItem.Styles>
-                            <Style Selector="controls|NavigationViewItem">
-                                <Setter Property="IconSource">
-                                    <Setter.Value>
-                                        <fluent:SymbolIconSource Symbol="Agents" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-
-                            <Style Selector="controls|NavigationViewItem:selected">
-                                <Setter Property="IconSource">
-                                    <Setter.Value>
-                                        <fluent:SymbolIconSource Symbol="Agents" IconVariant="Filled" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </controls:NavigationViewItem.Styles>
+                        <fluent:SymbolIcon Symbol="Agents"/>
                     </controls:NavigationViewItem>
                     
                     <controls:NavigationViewItemSeparator/>
                     
                     <!-- Settings -->
-                    <controls:NavigationViewItem Margin="0 2 0 0" Content="Settings" Tag="{x:Type views:SettingsView}">
-                        <controls:NavigationViewItem.IconSource>
-                            <fluent:FluentIconSource
-                                Icon="Settings"
-                                IconSize="Size32"
-                                IconVariant="Regular"/>
-                        </controls:NavigationViewItem.IconSource>
+                    <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:SettingsView}">
+                        <fluent:FluentIcon Width="20" Icon="Settings" Margin="0 0 2 0" />
                     </controls:NavigationViewItem>
                 </controls:NavigationView.FooterMenuItems>
 

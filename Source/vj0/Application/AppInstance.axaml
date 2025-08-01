@@ -78,7 +78,11 @@
     
     <Style Selector="ui|NavigationViewItemSeparator">
       <Setter Property="Margin" Value="0 4 0 4"/>
-      <Setter Property="Opacity" Value="0.08"/>
+      <Setter Property="Opacity" Value="0.125"/>
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem">
+      <Setter Property="Margin" Value="3 0 0 0"/>
     </Style>
     
     <Style Selector="ScrollBar">

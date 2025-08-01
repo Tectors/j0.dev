@@ -84,7 +84,7 @@
 
                                             <StackPanel Margin="12 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
                                                 <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" FontSize="16" Text="{Binding ProfileDisplayName}"/>
-                                                <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="Current"/>
+                                                <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="{Binding LoadedFilesDisplayWithoutDash}"/>
                                             </StackPanel>
                                             
                                             <StackPanel VerticalAlignment="Center" Grid.Column="2" Margin="35 0 10 0">
@@ -121,7 +121,7 @@
                 
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
-                        <StackPanel Spacing="15" Margin="5">
+                        <StackPanel Spacing="20" Margin="5">
                             <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 0 5 0">
                                 <Border Width="40" Height="40" CornerRadius="5" Background="Black">
                                     <Image

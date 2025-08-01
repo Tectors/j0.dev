@@ -76,23 +76,22 @@ public partial class ExplorerViewModel : ViewModelBase
         if (!Globals.IsReadyToExplore) return base.Initialize();
 
         var assetFilter = this
-            .WhenAnyValue<ExplorerViewModel, (string filter, bool regex), string, bool>(x => x.SearchFilter, x => x.UseRegex, (filter, regex) => (filter, regex))
+            .WhenAnyValue(x => x.SearchFilter, x => x.UseRegex)
             .Throttle(TimeSpan.FromMilliseconds(150))
             .DistinctUntilChanged()
-            .Select(CreateAssetFilter);
+            .Select(tuple => CreateAssetFilter(tuple.Item1, tuple.Item2));
 
         _initialFilterCompletion = new TaskCompletionSource();
 
         _viewAssetCache.Connect()
             .Filter(assetFilter)
-            .SortAndBind(out var flatCollection, SortExpressionComparer<FileTile>.Ascending(x => x.Path))
+            .Sort(SortExpressionComparer<FileTile>.Ascending(x => x.Path))
+            .Bind(out var flatCollection)
             .ObserveOn(RxApp.MainThreadScheduler)
             .Subscribe(_ =>
             {
                 if (!_initialFilterCompletion!.Task.IsCompleted)
-                {
                     _initialFilterCompletion.SetResult();
-                }
             });
 
         ViewCollection = flatCollection;
@@ -239,21 +238,17 @@ public partial class ExplorerViewModel : ViewModelBase
                !path.Contains("/_verse/");
     }
 
-    private Func<FileTile, bool> CreateAssetFilter((string filter, bool useRegex) input)
+    private Func<FileTile, bool> CreateAssetFilter(string filter, bool useRegex)
     {
-        var (filter, useRegex) = input;
-
         if (string.IsNullOrWhiteSpace(filter))
-        {
             return _ => true;
-        }
 
         if (useRegex)
         {
             try
             {
                 var regex = new Regex(filter, RegexOptions.IgnoreCase | RegexOptions.Compiled);
-                return asset => regex.IsMatch(asset.Path);
+                return asset => regex.IsMatch(asset.NameWithoutExtension);
             }
             catch
             {
@@ -262,7 +257,7 @@ public partial class ExplorerViewModel : ViewModelBase
         }
 
         var lowerFilter = filter.ToLowerInvariant();
-        return asset => asset.Path.Contains(lowerFilter, StringComparison.OrdinalIgnoreCase);
+        return asset => asset.NameWithoutExtension.Contains(lowerFilter, StringComparison.OrdinalIgnoreCase);
     }
 
     public void Reset()
@@ -315,10 +310,37 @@ public partial class ExplorerViewModel : ViewModelBase
 
         FileViewStack = new ObservableCollection<TreeItem>(newStack);
 
+        ApplyFlatFolderFilter();
+    }
+    
+    partial void OnSearchFilterChanged(string value)
+    {
+        ApplyFlatFolderFilter();
+    }
+
+    partial void OnUseRegexChanged(bool value)
+    {
+        ApplyFlatFolderFilter();
+    }
+
+    private void ApplyFlatFolderFilter()
+    {
+        if (FileViewStack.Count == 0)
+        {
+            FlatViewFiles = [];
+            return;
+        }
+
+        var currentFolder = FileViewStack[^1];
+        var dir = currentFolder.GetFullPath();
+
+        var filter = CreateAssetFilter(SearchFilter, UseRegex);
+
         var matchingFiles = _viewAssetCache.Items
             .Where(tile =>
-                tile.Path.StartsWith(directory, StringComparison.OrdinalIgnoreCase) &&
-                !tile.Path.Substring(directory.Length).Contains('/'))
+                tile.Path.StartsWith(dir, StringComparison.OrdinalIgnoreCase) &&
+                !tile.Path.Substring(dir.Length).Contains('/'))
+            .Where(filter)
             .OrderBy(tile =>
             {
                 var lastSlash = tile.Path.LastIndexOf('/');
@@ -328,20 +350,18 @@ public partial class ExplorerViewModel : ViewModelBase
 
         FlatViewFiles = new ObservableCollection<FileTile>(matchingFiles);
         FilesInFolderView = FlatViewFiles.Count > 0;
-        
-        var sortedChildren = current.AllChildren
-            .OrderBy(x => x.Type)
-            .ThenBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-            .ToArray();
-
-        FileViewCollection = new ObservableCollection<TreeItem>(sortedChildren);
     }
-    
+
     public void SelectFolder(TreeItem item)
     {
         SelectedItemArchive = item.Archive;
         SelectedItemMountPoint = item.MountPoint;
         SelectedItemArchiveVersion = item.ArchiveVersion;
+        
+        SelectedItemOffset = "0x0";
+        SelectedItemSize = "0";
+        SelectedItemCompressionMethod = "None";
+        SelectedItemIsEncrypted = "False";
     }
     
     public void LoadTreeItems(TreeItem item)
