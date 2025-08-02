@@ -87,7 +87,7 @@ public class Profile : BaseProfileDisplay
         }
         await LoadKeys(cancellationToken);
         
-        if (Provider is not null && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count > 0)
+        if (Provider is not null && Provider.Files.Count == 0 && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count == 0)
         {
             Status.OnFailure("Please enter a valid AES encryption key in the profile settings.");
             OnInitializationFailure?.Invoke(this);
@@ -111,13 +111,12 @@ public class Profile : BaseProfileDisplay
             {
                 return;
             }
-            await Provider.MountAsync();
+            // ? await Provider.MountAsync();
             
             if (cancellationToken.IsCancellationRequested)
             {
                 return;
             }
-            Provider.PostMount();
 
             SetLanguage(Settings.Application.GameLanguage);
         }
@@ -257,12 +256,12 @@ public class Profile : BaseProfileDisplay
             {
                 return;
             }
-
+            
             if (Encryption.HasKeys && Provider is not null)
             {
                 foreach (var vfs in Provider.UnloadedVfs.ToArray())
                 {
-                    foreach (var extraKey in Encryption.Keys.Where(extraKey => extraKey.IsValid && extraKey.Key != "").Where(extraKey => vfs.TestAesKey(extraKey.AESKey)))
+                    foreach (var extraKey in Encryption.Keys.Where(extraKey => extraKey.IsValid && extraKey.Key != ""))
                     {
                         if (Provider is null) continue;
                         
@@ -276,6 +275,15 @@ public class Profile : BaseProfileDisplay
                     }
                 }
             }
+            
+            if (Provider is null) return;
+            
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return;
+            }
+            
+            Provider.PostMount();
         }
     }
     

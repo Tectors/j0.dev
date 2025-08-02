@@ -51,6 +51,7 @@ public class ProfileSplash : ObservableObject
 
         var splashPath = Path.Combine(ContentFolder, "Splash", "Splash.bmp");
 
+        if (!File.Exists(splashPath)) splashPath = Path.Combine(ContentFolder, "Splash", "Splash.png");
         if (!File.Exists(splashPath)) return null;
         
         try
