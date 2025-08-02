@@ -261,7 +261,7 @@ public class Profile : BaseProfileDisplay
             {
                 foreach (var vfs in Provider.UnloadedVfs.ToArray())
                 {
-                    foreach (var extraKey in Encryption.Keys.Where(extraKey => extraKey.IsValid && extraKey.Key != ""))
+                    foreach (var extraKey in Encryption.Keys.Where(extraKey => extraKey.IsValid && extraKey.Key != "").Where(extraKey => vfs.TestAesKey(extraKey.AESKey)))
                     {
                         if (Provider is null) continue;
                         
