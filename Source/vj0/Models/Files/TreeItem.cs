@@ -49,14 +49,14 @@ public partial class TreeItem : ObservableObject
             "Plugins" => new SolidColorBrush(Color.Parse("#ff5959")),
             "Environments" => new SolidColorBrush(Color.Parse("#35fc46")),
             "Athena" => new SolidColorBrush(Color.Parse("#6500ff")),
-            "Blueprints" or "Blueprint" => new SolidColorBrush(Color.Parse("#0059ff")),
+            "Blueprints" or "Blueprint" => new SolidColorBrush(Color.Parse("#0ee1e8")),
             "TimeOfDay" or "TODM" => new SolidColorBrush(Color.Parse("#006eff")),
             "UI" => new SolidColorBrush(Color.Parse("#ffc400")),
             "Sounds" => new SolidColorBrush(Color.Parse("#ff3300")),
             "BRCosmetics" => new SolidColorBrush(Color.Parse("#6e6e6e")),
             "GameFeatures" => new SolidColorBrush(Color.Parse("#6e6e6e")),
             "Animation" => new SolidColorBrush(Color.Parse("#91ff00")),
-            _ => new SolidColorBrush(Color.Parse("#0e91e8"))
+            _ => new SolidColorBrush(Color.Parse("#0e98e8"))
         };
     }
 
