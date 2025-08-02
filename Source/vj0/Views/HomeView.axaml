@@ -42,7 +42,7 @@
                 <!-- Background image -->
                 <Border x:Name="BackgroundImage" ClipToBounds="True">
                     <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill"
-                           Margin="0 0" Opacity="0.40">
+                           Opacity="0.525">
                         <Image.OpacityMask>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,55%">
                                 <GradientStop Color="#FF000000" Offset="0" />

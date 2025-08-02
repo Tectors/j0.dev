@@ -265,7 +265,7 @@
             <Style Selector="^ /template/ Border#PART_BorderElement">
                 <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}"/>
                 <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushFocused}"/>
-                <Setter Property="BorderThickness" Value="1 1 1 2" />
+                <Setter Property="BorderThickness" Value="1 1 1 1" />
             </Style>
         </Style>
 

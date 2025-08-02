@@ -61,10 +61,10 @@
                 <!-- Profile Button -->
                 <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="8">
                     <Button.Flyout>
-                        <Flyout HorizontalOffset="15">
-                            <Grid Margin="2">
+                        <Flyout>
+                            <Grid Margin="3">
                                 <StackPanel Spacing="8">
-                                    <Button Margin="2" Cursor="Hand" Click="EditProfile" Foreground="#e8e8e8">
+                                    <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="35" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
                                         <ToolTip.Tip>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
@@ -72,25 +72,13 @@
                                             </StackPanel>
                                         </ToolTip.Tip>
                                         
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="#ffffff"/>
-                                                <SolidColorBrush x:Key="ButtonForeground" Color="#e8e8e8"/>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                        
-                                        <Grid ColumnDefinitions="Auto,*,Auto">
-                                            <profiles:ProfileSplashControl Grid.Column="0" Radius="8" SplashScale="1.2" DataContext="{Binding CurrentProfile}"/>
-
-                                            <StackPanel Margin="12 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
-                                                <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontWeight="DemiBold" FontSize="16" Text="{Binding ProfileDisplayName}"/>
-                                                <TextBlock IsVisible="True" FontSize="12" Opacity="0.5" Text="{Binding LoadedFilesDisplayWithoutDash}"/>
-                                            </StackPanel>
-                                            
-                                            <StackPanel VerticalAlignment="Center" Grid.Column="2" Margin="35 0 10 0">
-                                                <avalonia:FluentIcon Opacity="1" Icon="Settings"/>
-                                            </StackPanel>
-                                        </Grid>
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="21" IconVariant="Regular"/>
+                                             
+                                            <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                Settings
+                                            </TextBlock>
+                                        </StackPanel>
                                     </Button>
                                 </StackPanel>
                             </Grid>
