@@ -48,6 +48,8 @@ public class ProfileSplash : ObservableObject
         }
         
         var ContentFolder = Profile.FindContentFolder();
+        
+        if (ContentFolder is null) return null;
 
         var splashPath = Path.Combine(ContentFolder, "Splash", "Splash.bmp");
 

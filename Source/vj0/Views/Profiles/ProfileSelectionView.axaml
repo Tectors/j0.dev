@@ -46,7 +46,7 @@
                         <DropShadowEffect
                             Color="#e3e3e3"
                             BlurRadius="99"
-                            Opacity="0.4"/>
+                            Opacity="0.2"/>
                     </TextBlock.Effect>
                     
                     Start creating your profiles!

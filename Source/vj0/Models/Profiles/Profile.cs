@@ -111,7 +111,7 @@ public class Profile : BaseProfileDisplay
             {
                 return;
             }
-            // ? await Provider.MountAsync();
+            await Provider.MountAsync();
             
             if (cancellationToken.IsCancellationRequested)
             {
@@ -275,21 +275,12 @@ public class Profile : BaseProfileDisplay
                     }
                 }
             }
-            
-            if (Provider is null) return;
-            
-            if (cancellationToken.IsCancellationRequested)
-            {
-                return;
-            }
-            
-            Provider.PostMount();
         }
     }
     
     private async void LoadMappings(CancellationToken cancellationToken = default)
     {
-        var mapping = await RestAPI.Central.FetchMappingAsync();
+        var mapping = await RestAPI.Central.FetchMappingAsync(token: cancellationToken);
 
         if (Provider is null) return;
 
@@ -419,11 +410,11 @@ public class Profile : BaseProfileDisplay
             Version = Version,
             FileName = FileName,
             AutoDetectedGameId = AutoDetectedGameId,
-            PakFileEntries = new List<BasePakFileEntry>(PakFileEntries),
+            PakFileEntries = [..PakFileEntries],
             Display = Display.Clone(),
             Status = Status,
             IsInitialized = true,
-            SecondaryAssetTypes = new List<string>(SecondaryAssetTypes),
+            SecondaryAssetTypes = [..SecondaryAssetTypes],
             EnableDisplayLinks = true
         };
     }

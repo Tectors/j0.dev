@@ -53,6 +53,8 @@ public partial class BaseProfileDisplay : BaseProfile {
     /* Helper */
     public string FindContentFolder()
     {
+        if (ArchiveDirectory is null) return null!;
+        
         var index = ArchiveDirectory.IndexOf("Content", StringComparison.OrdinalIgnoreCase);
         if (index > 0) return ArchiveDirectory[..(index + "Content".Length)];
         
