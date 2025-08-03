@@ -8,6 +8,7 @@
     xmlns:framework="clr-namespace:vj0.Services.Framework"
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:application="clr-namespace:vj0.Application"
+    xmlns:properties="clr-namespace:vj0.Extensions.Animations.Properties"
     x:Class="vj0.Views.HomeView"
     x:DataType="viewModels:HomeViewModel"
     mc:Ignorable="d"
@@ -79,6 +80,12 @@
                                        LetterSpacing="-0.4"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
+                                       
+                                       properties:GradientAnimationService.IsAnimated="True"
+                                       properties:GradientAnimationService.AnimationStartColor="#303030"
+                                       properties:GradientAnimationService.AnimationEndColor="White"
+                                       properties:GradientAnimationService.AnimationDuration="0.5"
+                                       
                                        VerticalAlignment="Center"
                                        Text="the ultimate datamining experience"
                                        Opacity="0"
