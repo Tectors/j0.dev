@@ -21,14 +21,8 @@
     <Grid RowDefinitions="*">
         <Grid ColumnDefinitions="*,Auto,*">
             <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
                 <!-- Folders -->
                 <Border
-                    Grid.Row="1"
                     BorderThickness="1"
                     Background="#0d0d0d"
                     ClipToBounds="True"
@@ -37,7 +31,9 @@
                     
                     <Border.BorderBrush>
                         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-                            <GradientStop Color="#1e1e1f" Offset="0" />
+                            <GradientStop Color="#2f2f30" Offset="0" />
+                            <GradientStop Color="#2e2e2e" Offset="0.5" />
+                            <GradientStop Color="#171717" Offset="1" />
                         </LinearGradientBrush>
                     </Border.BorderBrush>
                     
@@ -54,6 +50,7 @@
                                 <ControlTheme x:DataType="Explorer:TreeItem"
                                               TargetType="TreeViewItem"
                                               BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                    
                                     <Setter Property="IsExpanded" Value="{Binding Expanded, Mode=TwoWay}" />
                                     <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
                                 </ControlTheme>
@@ -131,7 +128,7 @@
                 </StackPanel>
                 
                 <Grid Grid.Row="1" Margin="3 2 10 10">
-                    <TextBox BorderBrush="#1e1e1f" MinWidth="0" Text="{Binding SearchFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Search"></TextBox>
+                    <TextBox BorderBrush="#2f2f30" MinWidth="0" Text="{Binding SearchFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Watermark="Search"></TextBox>
                 </Grid>
                 
                 <Grid Grid.Row="2">
@@ -142,7 +139,9 @@
                         CornerRadius="12">
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-                                <GradientStop Color="#1e1e1f" Offset="0" />
+                                <GradientStop Color="#2f2f30" Offset="0" />
+                                <GradientStop Color="#2e2e2e" Offset="0.5" />
+                                <GradientStop Color="#171717" Offset="1" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                         
@@ -165,9 +164,9 @@
                                     
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="Explorer:FileTile">
-                                            <StackPanel Spacing="5" Margin="25 0 0 0"
+                                            <StackPanel Spacing="5" Margin="10 0 0 0"
                                                         Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                <fluent:FluentIcon Icon="Document" IconVariant="Filled" Foreground="#0e98e8"/>
+                                                <fluent:FluentIcon FontSize="16" Icon="Document" IconVariant="Filled" Foreground="#0e98e8"/>
 
                                                 <TextBlock Text="{Binding NameWithoutExtension}"
                                                            FontSize="14"
@@ -182,7 +181,7 @@
                     </Border>
                 </Grid>
                 
-                <Grid Margin="0 0 10 5" Grid.Row="3" IsVisible="{Binding Source={x:Static framework:AppServices.Settings}, Path=Application.ShowDebugData}">
+                <Grid Margin="0 -3 10 5" Grid.Row="3" IsVisible="{Binding Source={x:Static framework:AppServices.Settings}, Path=Application.ShowDebugData}">
                     <Border
                         BorderThickness="1"
                         Background="#0a0a0a"

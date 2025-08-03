@@ -45,6 +45,9 @@ public partial class TreeItem : ObservableObject
         return Name switch
         {
             "Engine" => new SolidColorBrush(Color.Parse("#e86c0e")),
+            "Localization" => new SolidColorBrush(Color.Parse("#575757")),
+            "Movies" => new SolidColorBrush(Color.Parse("#edde11")),
+            "Weapons" => new SolidColorBrush(Color.Parse("#e3496a")),
             "Config" or "Slate" => new SolidColorBrush(Color.Parse("#6e6e6e")),
             "Plugins" => new SolidColorBrush(Color.Parse("#ff5959")),
             "Environments" => new SolidColorBrush(Color.Parse("#35fc46")),

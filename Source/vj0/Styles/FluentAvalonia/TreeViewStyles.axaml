@@ -93,7 +93,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource TreeViewItemBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#a3a3a3"/>
-        <Setter Property="MinHeight" Value="21"/>
+        <Setter Property="MinHeight" Value="20"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Template">
@@ -140,7 +140,7 @@
                                                   HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"
                                                   Margin="{TemplateBinding Padding}"
-                                                  Foreground="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ForegroundExpandedConverter}}"/>
+                                                  Foreground="White"/>
                             </Grid>
                         </Panel>
                     </Border>

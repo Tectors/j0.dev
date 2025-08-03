@@ -47,7 +47,7 @@
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#ButtonLayoutGrid">
                 <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPointerOver}" />
+                <Setter Property="BorderBrush" Value="#616161" />
             </Style>
 
             <Style Selector="^ /template/ ui|SymbolIcon#Glyph">
@@ -99,7 +99,7 @@
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#ButtonLayoutGrid">
                 <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="{DynamicResource TextControlButtonBorderBrushPointerOver}" />
+                <Setter Property="BorderBrush" Value="#616161" />
             </Style>
 
             <Style Selector="^ /template/ ui|FontIcon#Glyph">
@@ -245,7 +245,7 @@
             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
 
             <Style Selector="^ /template/ Border#PART_BorderElement">
-                <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrushPointerOver}"/>
+                <Setter Property="BorderBrush" Value="#b3b3b3"/>
                 <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
             </Style>
 
