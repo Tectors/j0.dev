@@ -61,13 +61,14 @@
         <Setter Property="FontFamily" Value="{DynamicResource ContentControlThemeFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="Background" Value="{DynamicResource ListViewItemBackground}" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Foreground" Value="{DynamicResource ListViewItemForeground}" />
+        <Setter Property="CornerRadius" Value="1" />
+        <Setter Property="Foreground" Value="#f2f2f2" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Padding" Value="16,0,12,0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinWidth" Value="{DynamicResource ListViewItemMinWidth}" />
-        <Setter Property="MinHeight" Value="22" />
+        <Setter Property="MinHeight" Value="23" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel>
@@ -75,7 +76,6 @@
                                       Background="{TemplateBinding Background}"
                                       BorderBrush="{TemplateBinding BorderBrush}"
                                       BorderThickness="{TemplateBinding BorderThickness}"
-                                      FontFamily="Inter"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       Content="{TemplateBinding Content}"
                                       Padding="{TemplateBinding Padding}"

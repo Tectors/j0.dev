@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using Serilog;
-using vj0.Application;
 using vj0.Models.API.Base;
 using vj0.Models.API.Responses;
 

@@ -3,7 +3,6 @@ using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using Serilog;
-using vj0.Application;
 using vj0.Framework;
 using vj0.ViewModels.Settings;
 using vj0.ViewModels.Settings.View;

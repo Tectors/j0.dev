@@ -391,5 +391,4 @@
             <Setter Property="Margin" Value="4 0 0 0" />
         </Style>
     </ControlTheme>
-
 </ResourceDictionary>

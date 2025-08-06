@@ -5,7 +5,6 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CUE4Parse.UE4.Objects.Core.Misc;
-using vj0.Application;
 using vj0.Shared.Framework.Base;
 
 namespace vj0.Models.Profiles.Display;

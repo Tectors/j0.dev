@@ -8,6 +8,7 @@
     xmlns:views="clr-namespace:vj0.Views.Settings"
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:application="clr-namespace:vj0.Application"
+    xmlns:vj0="clr-namespace:vj0"
 
     x:Class="vj0.Views.SettingsView"
     
@@ -31,9 +32,9 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItemHeader IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Exports"></controls:NavigationViewItemHeader>
+                <controls:NavigationViewItemHeader IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Content="Exports"></controls:NavigationViewItemHeader>
                 
-                <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Models" Tag="{x:Type views:ModelSettingsView}">
+                <controls:NavigationViewItem IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Content="Models" Tag="{x:Type views:ModelSettingsView}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Cube" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>

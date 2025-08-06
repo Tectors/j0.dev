@@ -21,11 +21,11 @@
   <Border
     CornerRadius="12"
     x:Name="ProfileCardBackground"
-    Background="#B3141415"
+    Background="#B3131314"
     PointerEntered="OnCardPointerEntered"
     PointerExited="OnCardPointerExited"
     ClipToBounds="True"
-    BorderBrush="#28292e"
+    BorderBrush="#232526"
     BorderThickness="1"
     Margin="14 6 14 28" HorizontalAlignment="Stretch" VerticalAlignment="Center">
     

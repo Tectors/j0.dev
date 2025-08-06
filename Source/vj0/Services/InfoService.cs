@@ -10,7 +10,6 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
-using vj0.Application;
 using vj0.Framework;
 using vj0.Models.Information;
 using vj0.Shared.Extensions;

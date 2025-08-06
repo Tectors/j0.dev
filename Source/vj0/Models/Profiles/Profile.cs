@@ -21,7 +21,6 @@ using FluentAvalonia.UI.Controls;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using UE4Config.Parsing;
-using vj0.Application;
 using vj0.Extensions;
 using vj0.Models.Profiles.Display;
 using vj0.Shared.Extensions;
@@ -87,7 +86,7 @@ public class Profile : BaseProfileDisplay
         }
         await LoadKeys(cancellationToken);
         
-        if (Provider is not null && Provider.Files.Count == 0 && Provider.Keys.Count == 0 && Provider.RequiredKeys.Count == 0)
+        if (Provider is not null && Provider.Files.Count == 0 && Encryption.MainKey == Globals.EMPTY_CHAR && Provider.Keys.Count == 0)
         {
             Status.OnFailure("Please enter a valid AES encryption key in the profile settings.");
             OnInitializationFailure?.Invoke(this);
@@ -127,7 +126,8 @@ public class Profile : BaseProfileDisplay
         {
             return;
         }
-        await ExplorerVM.FinalizeWhenProviderExplorerReady();
+        
+        _ = ExplorerVM.FinalizeWhenProviderExplorerReady();
 
         IsInitialized = true;
         

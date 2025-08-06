@@ -1,9 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Avalonia.Animation.Easings;
-using Avalonia.Interactivity;
-using Avalonia.Media;
-using vj0.Application;
+﻿using Avalonia.Interactivity;
 using vj0.Framework.Models;
 using vj0.Services;
 using vj0.ViewModels;

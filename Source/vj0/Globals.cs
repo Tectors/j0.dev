@@ -1,12 +1,11 @@
 ﻿global using static vj0.Services.Framework.AppServices;
-
 using System;
 using System.IO;
 using Avalonia.Platform.Storage;
 using CUE4Parse.UE4.Objects.Core.Misc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace vj0.Application;
+namespace vj0;
 
 public static class Globals
 {

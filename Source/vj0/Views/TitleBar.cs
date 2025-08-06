@@ -1,7 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using vj0.Application;
 using vj0.Services;
 using vj0.Services.Framework;
 using vj0.Windows;
@@ -36,9 +35,21 @@ public partial class TitleBar : UserControl
     {
         AppService.OpenLink($"{Globals.GITHUB_COMMIT_LINK}/{Globals.COMMIT}");
     }
+    
+    public void OpenGitHubLicense(object? sender, RoutedEventArgs e)
+    {
+        AppService.OpenLink($"{Globals.GITHUB_LINK}/blob/main/LICENSE");
+    }
 
     private void CopyGitCloneCommand(object? sender, RoutedEventArgs e)
     {
-        App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git checkout {Globals.COMMIT} && git submodule update --init --recursive\n");
+        if (Globals.IS_COMMIT_AVAILABLE)
+        {
+            App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git checkout {Globals.COMMIT} && git submodule update --init --recursive\n");
+        }
+        else
+        {
+            App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git submodule update --init --recursive\n");
+        }
     }
 }

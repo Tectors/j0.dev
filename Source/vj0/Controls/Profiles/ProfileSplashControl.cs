@@ -26,4 +26,11 @@ public partial class ProfileSplashControl : UserControl
     {
         InitializeComponent();
     }
+    
+    public ProfileSplashControl(float splashScale)
+    {
+        InitializeComponent();
+        
+        SplashScale = splashScale;
+    }
 }

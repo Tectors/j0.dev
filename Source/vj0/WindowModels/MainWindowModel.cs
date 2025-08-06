@@ -3,13 +3,15 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FluentAvalonia.UI.Controls;
-using vj0.Application;
 using vj0.Cloud.Controllers;
+using vj0.Controls.Profiles;
 using vj0.Framework.Models;
 using vj0.Models.Enums;
 using vj0.Models.Profiles;
@@ -146,7 +148,7 @@ public partial class MainWindowModel : WindowModelBase
     
     public void NavigateToExplorer()
     {
-        if (!Globals.IsReadyToExplore || !IsProfileInitialized) return;
+        if (!ExplorerVM.Loading || !IsProfileInitialized) return;
 
         Navigation.App.Open(typeof(ExplorerPlaceholder));
     }
@@ -314,9 +316,9 @@ public partial class MainWindowModel : WindowModelBase
     }
     
     public static bool IsAPIServiceEnabled => Settings is not null && Settings.Cloud.RunHostedAPI;
-    public static bool IsAPIServiceRunning => AppServices.Cloud.API is not null && AppServices.Cloud.API!.IsRunning;
+    public static bool IsAPIServiceRunning => AppServices.Cloud.API is not null && AppServices.Cloud.API!.IsRunning && !AppServices.Cloud.API!.HasErrored;
     public static bool IsAPIServiceErrored => AppServices.Cloud.API is not null && AppServices.Cloud.API!.HasErrored;
-
+    
     public void UpdateAPIServiceEnabled()
     {
         OnPropertyChanged(nameof(IsAPIServiceEnabled));
@@ -402,7 +404,24 @@ public partial class MainWindowModel : WindowModelBase
             
             var dialog = new ContentDialog
             {
-                Title = $"{inProfile.Name} failed to load",
+                Title = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Spacing = 12,
+                    Children =
+                    {
+                        new ProfileSplashControl(1.5f)
+                        {
+                            DataContext = inProfile
+                        },
+                        new TextBlock
+                        {
+                            Text = $"{inProfile.Name} failed to load",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Thickness(0, 0, 0, 5)
+                        }
+                    }
+                },
                 Content = inProfile.Status.FailureReason,
                 CloseButtonText = "Dismiss",
                 PrimaryButtonText = "Edit Profile",

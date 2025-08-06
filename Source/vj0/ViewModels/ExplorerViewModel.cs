@@ -13,7 +13,6 @@ using CUE4Parse.FileProvider.Objects;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
-using vj0.Application;
 using vj0.Framework.Models;
 using vj0.Models.Files;
 using vj0.Shared.Framework.Base;
@@ -43,6 +42,9 @@ public partial class ExplorerViewModel : ViewModelBase
     
     [ObservableProperty]
     bool _filesInFolderView;
+    
+    [ObservableProperty]
+    private bool _loading = true;
     
     [ObservableProperty]
     private int _selectedItemPackageCount;
@@ -103,6 +105,8 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         if (!Globals.IsReadyToExplore) return;
 
+        Loading = true;
+
         var fileTiles = Provider.Files
             .AsParallel()
             .WithCancellation(CancellationToken.None)
@@ -117,6 +121,8 @@ public partial class ExplorerViewModel : ViewModelBase
         });
         
         await BuildTreeAsync();
+        
+        Loading = false;
     }
 
     public async Task BuildTreeAsync(IReadOnlyDictionary<string, GameFile> files = null!)
@@ -264,6 +270,7 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         SearchFilter = string.Empty;
         UseRegex = false;
+        Loading = true;
     }
 
     public void FlatViewJumpTo(string directory)

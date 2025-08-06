@@ -12,13 +12,15 @@
     xmlns:profiles="clr-namespace:vj0.Views.Profiles"
     xmlns:controls1="clr-namespace:vj0.Controls"
     xmlns:application="clr-namespace:vj0.Application"
+    xmlns:framework="clr-namespace:vj0.Services.Framework"
+    xmlns:vj0="clr-namespace:vj0"
 
     x:Class="vj0.Windows.MainWindow"
     x:DataType="windowModels:MainWindowModel"
     
     Title="{Binding Title}"
 
-    Width="1425" Height="840"
+    Width="1425" Height="853"
     MinWidth="945" MinHeight="680"
     
     mc:Ignorable="d"
@@ -58,10 +60,10 @@
                         <fluent:SymbolIcon Symbol="Home" IconVariant="Filled" FontSize="18" />
                     </controls:NavigationViewItem>
                     
-                    <controls:NavigationViewItemSeparator IsVisible="{x:Static application:Globals.IsReadyToExplore}"/>
+                    <controls:NavigationViewItemSeparator IsVisible="{x:Static vj0:Globals.IsReadyToExplore}"/>
                     
                     <!-- Explorer -->
-                    <controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding IsProfileInitialized}">
+                    <controls:NavigationViewItem IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
                         <ToolTip.Tip>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
@@ -69,29 +71,16 @@
                             </StackPanel>
                         </ToolTip.Tip>
                         
-                        <avalonia:MaterialIcon Width="20" Kind="Folder" Margin="0 0 2 0" />
+                        <Grid>
+                            <avalonia:MaterialIcon Width="20" Kind="Folder" Margin="0 0 2 0" />
+                            
+                            <Grid IsVisible="{Binding DoesProfileExist}">
+                                <Border Margin="0 0 2 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=Loading}">
+                                    <controls:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </Grid>
                     </controls:NavigationViewItem>
-                    
-                    <!-- Scope -->
-                    <!--<controls:NavigationViewItem IsVisible="{x:Static application:Globals.IsReadyToExplore}" Content="Scope" Tag="{x:Type views:ScopeView}" IsEnabled="{Binding DoesProfileExist}">
-                        <controls:NavigationViewItem.Styles>
-                            <Style Selector="controls|NavigationViewItem">
-                                <Setter Property="IconSource">
-                                    <Setter.Value>
-                                        <fluent:SymbolIconSource Symbol="Filter" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-
-                            <Style Selector="controls|NavigationViewItem:selected">
-                                <Setter Property="IconSource">
-                                    <Setter.Value>
-                                        <fluent:SymbolIconSource Symbol="Filter" IconVariant="Filled" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </controls:NavigationViewItem.Styles>
-                    </controls:NavigationViewItem>-->
                 </controls:NavigationView.MenuItems>
 
                 <controls:NavigationView.FooterMenuItems>

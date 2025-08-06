@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
-using vj0.Application;
 using vj0.Framework.Models;
 using vj0.Models;
 using vj0.Models.Profiles;

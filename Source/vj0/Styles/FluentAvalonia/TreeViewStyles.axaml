@@ -95,7 +95,7 @@
         <Setter Property="Foreground" Value="#a3a3a3"/>
         <Setter Property="MinHeight" Value="20"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="CornerRadius" Value="1"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <StackPanel>
@@ -130,6 +130,7 @@
                                     <ToggleButton Name="PART_ExpandCollapseChevron"
                                                   Theme="{StaticResource TreeViewChevronButton}"
                                                   Focusable="False"
+                                                  Cursor="Hand"
                                                   IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}"/>
                                 </Panel>
                                 <ContentPresenter Name="PART_HeaderPresenter"

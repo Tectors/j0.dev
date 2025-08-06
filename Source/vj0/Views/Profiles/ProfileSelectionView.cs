@@ -6,6 +6,7 @@ using Avalonia.Layout;
 using Avalonia.VisualTree;
 using CommunityToolkit.Mvvm.Input;
 using FluentAvalonia.UI.Controls;
+using vj0.Controls.Profiles;
 using vj0.Framework.Models;
 using vj0.Models.Enums;
 using vj0.ViewModels.Profiles;
@@ -108,7 +109,24 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
             
             var dialog = new ContentDialog
             {
-                Title = $"Delete {profile.Name}?",
+                Title = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Spacing = 12,
+                    Children =
+                    {
+                        new ProfileSplashControl(1.5f)
+                        {
+                            DataContext = profile
+                        },
+                        new TextBlock
+                        {
+                            Text = $"Delete {profile.Name}?",
+                            VerticalAlignment = VerticalAlignment.Center,
+                            Margin = new Thickness(0, 0, 0, 5)
+                        }
+                    }
+                },
                 Content = $"'{profile.Name}' will be permanently removed and cannot be restored.",
                 CloseButtonText = "Cancel",
                 PrimaryButtonText = "Delete",

@@ -9,6 +9,7 @@
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:application="clr-namespace:vj0.Application"
     xmlns:properties="clr-namespace:vj0.Extensions.Animations.Properties"
+    xmlns:vj0="clr-namespace:vj0"
     x:Class="vj0.Views.HomeView"
     x:DataType="viewModels:HomeViewModel"
     mc:Ignorable="d"
@@ -70,7 +71,7 @@
                         
                         <!-- Fixed container for tagline text to prevent layout shifts -->
                         <Border HorizontalAlignment="Center" 
-                                Height="35" 
+                                Height="35"
                                 MinWidth="400">
                             
                             <TextBlock x:Name="RotatingTaglineText"
@@ -166,7 +167,7 @@
                                 </StackPanel>
                             </Button>
                             
-                            <Grid IsVisible="{x:Static application:Globals.IsReadyToExplore}">
+                            <Grid IsVisible="{x:Static vj0:Globals.IsReadyToExplore}">
                                 <!-- Explore Files button -->
                                 <Button Click="ExploreFiles"
                                         Classes="White"
