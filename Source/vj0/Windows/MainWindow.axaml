@@ -11,7 +11,6 @@
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
     xmlns:profiles="clr-namespace:vj0.Views.Profiles"
     xmlns:controls1="clr-namespace:vj0.Controls"
-    xmlns:application="clr-namespace:vj0.Application"
     xmlns:framework="clr-namespace:vj0.Services.Framework"
     xmlns:vj0="clr-namespace:vj0"
 
