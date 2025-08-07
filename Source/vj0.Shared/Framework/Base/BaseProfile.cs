@@ -64,7 +64,11 @@ public partial class BaseProfile : ObservableValidator
     
     [ObservableProperty] private EAudioFormatType _audioFormat = EAudioFormatType.Decompressed;
     
-    [ObservableProperty] private string _fileName = "";
+    [ObservableProperty] 
+    [NotifyPropertyChangedFor(nameof(FileID))]
+    private string _fileName = "";
+
+    [JsonIgnore] public string FileID => FileName.Split(".json")[0];
     
     /* Detection ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     [ObservableProperty]

@@ -19,6 +19,8 @@
     Width="900" Height="750"
     MinWidth="860" MinHeight="550"
     
+    CanResize="False"
+    
     Background="{DynamicResource BackgroundBrush}"
     FontWeight="Light"
     
@@ -171,7 +173,21 @@
                 
                 <StackPanel Orientation="Horizontal"
                             Height="60"
-                            Margin="0 5 15 5"
+                            Margin="25 5 0 5"
+                            HorizontalAlignment="Left"
+                            Spacing="10"
+                            VerticalAlignment="Bottom">
+                    <StackPanel Opacity="0.11" IsVisible="{Binding !IsUncompletedProfile}" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Margin="0 0 5 0">Saved to</TextBlock>
+                        <Button Cursor="Hand" Classes="Empty" Padding="0" Command="{Binding Profile.OpenInFileExplorer}">
+                            <TextBlock Text="{Binding Profile.FileID}"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal"
+                            Height="60"
+                            Margin="0 5 25 5"
                             HorizontalAlignment="Right"
                             Spacing="10"
                             VerticalAlignment="Bottom">

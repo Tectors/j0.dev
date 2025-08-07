@@ -62,9 +62,20 @@
                 <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="10">
                     <Button.Flyout>
                         <Flyout>
-                            <Grid Margin="3">
-                                <StackPanel Spacing="8">
-                                    <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="35" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                            <Grid Margin="5">
+                                <StackPanel Spacing="15">
+                                    <StackPanel Orientation="Horizontal" Spacing="12" Margin="0 0 20 0">
+                                        <profiles:ProfileSplashControl Radius="12" SplashScale="1.5" DataContext="{Binding CurrentProfile}"/>
+
+                                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="0">
+                                            <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding ProfileDisplayName}"/>
+                                            <TextBlock FontFamily="Consolas" FontSize="14" Opacity="0.5" Text="{Binding CurrentProfile.FileID}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    
+                                    <Border Background="White" Height="1" Opacity="0.06" Margin="-50 5 -50 0"></Border>
+                                    
+                                    <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="45" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
                                         <ToolTip.Tip>
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
@@ -73,9 +84,9 @@
                                         </ToolTip.Tip>
                                         
                                         <StackPanel Orientation="Horizontal" Spacing="12" Opacity="1">
-                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="17" IconVariant="Regular"/>
+                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="19" IconVariant="Regular"/>
                                              
-                                            <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontWeight="Light" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 Settings
                                             </TextBlock>
                                         </StackPanel>
@@ -110,7 +121,7 @@
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
                         <StackPanel Spacing="15" Margin="5">
-                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 0 10 0">
+                            <StackPanel Orientation="Horizontal" Spacing="12" Margin="0 0 10 0">
                                 <Border Width="40" Height="40" CornerRadius="10" Background="Black">
                                     <Image
                                         Source="/Assets/Views/Version.png"
@@ -118,7 +129,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         IsHitTestVisible="False"
-                                        Height="16"
+                                        Height="17"
                                         Margin="0 2 0 0"/>
                                 </Border>
 
@@ -132,10 +143,11 @@
                             <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
                                 <Button Click="CopyGitCloneCommand" Cursor="Hand"
                                         HorizontalAlignment="Stretch"
-                                        Padding="10"
                                         FontWeight="Normal"
                                         Opacity="0.95"
                                         Background="Black"
+                                        Height="30"
+                                        BorderThickness="1"
                                         BorderBrush="#1f2023"
                                         CornerRadius="15">
                                     
@@ -170,7 +182,7 @@
                                     <avalonia1:MaterialIcon Kind="Git"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
+                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
                                     <Button.Resources>
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
@@ -185,7 +197,7 @@
                                     <avalonia1:MaterialIcon Kind="Github"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" ToolTip.Tip="View License" Background="Black" CornerRadius="15" Cursor="Hand" Click="OpenGitHubLicense" Height="30">
+                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View License" Background="Black" CornerRadius="15" Cursor="Hand" Click="OpenGitHubLicense" Height="30">
                                     <Button.Resources>
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>

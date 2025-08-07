@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -758,4 +759,13 @@ public class Profile : BaseProfileDisplay
     }
     
     public static IRelayCommand<Window> CreateNewProfileCommand { get; } = new RelayCommand<Window>(CreateNewProfile!);
+    
+    public void OpenInFileExplorer(Window window = null!)
+    {
+        if (File.Exists(SavedFilePath))
+        {
+            var argument = $"/select,\"{SavedFilePath}\"";
+            Process.Start(new ProcessStartInfo("explorer.exe", argument) { UseShellExecute = true });
+        }
+    }
 }

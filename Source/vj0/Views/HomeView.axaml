@@ -7,7 +7,6 @@
     xmlns:viewModels="clr-namespace:vj0.ViewModels"
     xmlns:framework="clr-namespace:vj0.Services.Framework"
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
-    xmlns:application="clr-namespace:vj0.Application"
     xmlns:properties="clr-namespace:vj0.Extensions.Animations.Properties"
     xmlns:vj0="clr-namespace:vj0"
     x:Class="vj0.Views.HomeView"

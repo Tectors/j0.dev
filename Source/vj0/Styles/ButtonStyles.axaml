@@ -168,4 +168,46 @@
     <Style Selector="Button.BlueShine:disabled">
         <Setter Property="Opacity" Value="0.5" />
     </Style>
+    
+    <!-- Empty Button -->
+    <Style Selector="Button.Empty">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        Foreground="{TemplateBinding Foreground}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.Empty /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+    
+    <Style Selector="Button.Empty /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    
+    <Style Selector="Button.Empty:pointerover">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    
+    <Style Selector="Button.Empty:pressed">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
 </Styles>
