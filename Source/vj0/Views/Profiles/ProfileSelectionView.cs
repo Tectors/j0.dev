@@ -9,6 +9,7 @@ using FluentAvalonia.UI.Controls;
 using vj0.Controls.Profiles;
 using vj0.Framework.Models;
 using vj0.Models.Enums;
+using vj0.Services.Framework;
 using vj0.ViewModels.Profiles;
 using vj0.WindowModels;
 using vj0.Windows;

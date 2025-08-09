@@ -74,10 +74,7 @@
                                 MinWidth="400">
                             
                             <TextBlock x:Name="RotatingTaglineText"
-                                       FontFamily="Consolas"
                                        Foreground="{DynamicResource AnimatingTextBrush}"
-                                       FontWeight="Medium"
-                                       LetterSpacing="-0.4"
                                        FontSize="25"
                                        HorizontalAlignment="Center"
                                        
@@ -110,7 +107,7 @@
                                                               OffsetX="0" OffsetY="0" Opacity="0.3"/>
                                         </Viewbox.Effect>
                                     </Viewbox>
-                                    <TextBlock Foreground="White" FontWeight="Bold" FontSize="19">Donate</TextBlock>
+                                    <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="19">Donate</TextBlock>
                                 </StackPanel>
                             </Button>
                             

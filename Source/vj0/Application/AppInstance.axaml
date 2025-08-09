@@ -167,7 +167,7 @@
       <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>
       
-      <SolidColorBrush x:Key="GuideBackgroundBrush" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="GuideBackgroundBrush" Color="Transparent"/>
       
       <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="#08FFFFFF"/>
       <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#0AFFFFFF"/>

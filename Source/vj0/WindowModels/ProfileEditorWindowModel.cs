@@ -97,6 +97,9 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         if (version is not null)
         {
             Profile.Name = version;
+
+            Profile.Version = Profile.PredictBaseUEVersion(Profile.Name);
+            SelectedVersionName = Profile.Version.ToString()[5..];
         }
     }
 

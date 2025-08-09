@@ -362,6 +362,11 @@ public class Profile : BaseProfileDisplay
     /* File IO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public async Task Save()
     {
+        if (Globals.HideAllProfileCardInformation)
+        {
+            return;
+        }
+        
         Directory.CreateDirectory(Globals.ProfilesFolder.ToString());
 
         if (IsAutoDetected)
@@ -568,20 +573,9 @@ public class Profile : BaseProfileDisplay
         
         /* Only for Fortnite */
         if (!ArchiveDirectory.Contains("Fortnite")) return;
-        
-        var normalized = Name;
-        if (Name.Count(c => c == '.') == 2)
-        {
-            var parts = Name.Split('.');
-            if (parts.Length == 3)
-            {
-                normalized = parts[0] + "." + parts[1] + parts[2];
-            }
-        }
 
-        if (!double.TryParse(normalized, NumberStyles.Float, CultureInfo.InvariantCulture, out var value))
+        if (!TryParseProfileName(Name, out var value))
         {
-            Log.Information($"Could not parse Profile Name {Name}");
             return;
         }
 
@@ -611,6 +605,80 @@ public class Profile : BaseProfileDisplay
         Validate();
         
         DisposeProvider(false);
+    }
+    
+    public bool TryParseProfileName(string name, out double value)
+    {
+        var normalized = name;
+
+        if (name.Count(c => c == '.') == 2)
+        {
+            var parts = name.Split('.');
+            if (parts.Length == 3)
+            {
+                normalized = parts[0] + "." + parts[1] + parts[2];
+            }
+        }
+
+        if (!double.TryParse(normalized, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
+        {
+            Log.Information($"Could not parse Profile Name {name}");
+            return false;
+        }
+
+        return true;
+    }
+    
+    public EGame PredictBaseUEVersion(string name)
+    {
+        if (!TryParseProfileName(name, out var version))
+        {
+            return EGame.GAME_UE5_7;
+        }
+
+        var major = Math.Floor(version);
+
+        switch (major)
+        {
+            case < 1.10:
+            {
+                return EGame.GAME_UE4_16;
+            }
+            case < 2.5:
+            {
+                return EGame.GAME_UE4_19;
+            }
+            case < 7.0:
+            {
+                return EGame.GAME_UE4_21;
+            }
+            case < 8.1:
+            {
+                return EGame.GAME_UE4_22;
+            }
+            case < 13.0:
+            {
+                return EGame.GAME_UE4_23;
+            }
+        }
+
+        const double minVersion = 1.0;
+        const double maxVersion = 36.30;
+        var t = Math.Clamp((version - minVersion) / (maxVersion - minVersion), 0.0, 1.0);
+
+        var baseGames = Enum.GetValues(typeof(EGame))
+            .Cast<EGame>()
+            .Where(g => ((uint)g & 0xFFFF) == 0) 
+            .Select(g => (uint)g)
+            .OrderBy(v => v)
+            .ToArray();
+
+        var startGame = baseGames.First();
+        var endGame = baseGames.Last();
+        var lerped = startGame + (endGame - startGame) * t;
+        var snapped = baseGames.OrderBy(v => Math.Abs(v - lerped)).First();
+
+        return (EGame)snapped;
     }
     
     public async Task FetchEncryptionKeysAsync(string url = null!, bool isUnknown = false)

@@ -209,10 +209,36 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         
         if (Globals.HideAllProfileCardInformation)
         {
+            var funnyNames = new[]
+            {
+                "Turbo Bread",
+                "Moist Duck",
+                "Sock Blast",
+                "Pogo Ants",
+                "Lawn Rage",
+                "Toast Jam",
+                "Glue Hero",
+                "Beef Quest",
+                "Chonk Run",
+                "Crab Life",
+                "Fork Jam",
+                "Dust Wars",
+                "Biscuit X",
+                "Rat Punch",
+                "Bean Raid",
+                "Puff Tank",
+                "Mug Rush",
+                "Worm Golf",
+                "Kelp Gun",
+                "Yarn Pit"
+            };
+            
             var newProfile = profile.LazyClone();
+            var random = new Random();
+            
+            newProfile.Name = funnyNames[random.Next(funnyNames.Length)];
             newProfile.Display.SetRandomGradient();
             newProfile.ArchiveDirectory = @"D:\Builds\Tropical\Game\Content\Paks";
-            newProfile.Name = "Game";
             
             vm = GetOrCreateProfileViewModel(newProfile);
         }

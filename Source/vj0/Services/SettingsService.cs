@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Serilog;
 using vj0.Framework;
 using vj0.ViewModels.Settings;
-using vj0.ViewModels.Settings.View;
 
 namespace vj0.Services;
 
@@ -19,9 +18,6 @@ public partial class SettingsService : ObservableObject, IService
     
     [ObservableProperty] private DebugSettingsViewModel _debug = new();
     
-    /* Tab Specific */
-    [ObservableProperty] private ExplorerViewSettingsViewModel _explorerView = new();
-    
     private static readonly DirectoryInfo DirectoryPath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         Globals.CODENAME));
@@ -30,7 +26,7 @@ public partial class SettingsService : ObservableObject, IService
     private static readonly FileInfo FilePath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         Globals.CODENAME,
-        "Settings_Debug.json"));
+        "Settings.Debug.json"));
 #else
     private static readonly FileInfo FilePath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),

@@ -10,6 +10,7 @@
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
     xmlns:profileEditor="clr-namespace:vj0.Views.ProfileEditor"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
+    xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
 
     x:Class="vj0.Windows.ProfileEditorWindow"
     x:DataType="windowModels:ProfileEditorWindowModel"
@@ -43,7 +44,7 @@
             
             <!-- App Icon / Profile Name Display -->
             <Grid Height="{DynamicResource TitleBarHeight}">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="12" Margin="15,0,0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="12" Margin="20, 0, 0, 0">
                     <Image IsHitTestVisible="False" Source="/Assets/Icon/Scaled/App.Icon.32.png"
                            Width="20"
                            IsVisible="{Binding Profile.IsNameEmpty}"
@@ -84,7 +85,7 @@
             <StackPanel Margin="0 0 0 0" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
                 <Button Cursor="Hand"
                         IsVisible="{Binding Profile.IsArchivedGame}"
-                        Height="30"
+                        Height="35"
                         Width="45"
                         HorizontalAlignment="Right"
                         Click="Button_FetchFromDataBase"
@@ -94,7 +95,7 @@
                         FontWeight="SemiBold"
                         Background="Transparent"
                         BorderBrush="#1f2023"
-                        CornerRadius="4">
+                        CornerRadius="10">
                     <Button.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
@@ -106,6 +107,32 @@
                     </Button.Resources>
 
                     <avalonia:FluentIcon FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="CloudArrowDown"></avalonia:FluentIcon>
+                </Button>
+                
+                <Button Cursor="Hand"
+                        Width="45"
+                        Height="35"
+                        HorizontalAlignment="Right"
+                        Command="{Binding Profile.OpenInFileExplorer}"
+                        ToolTip.Tip="Open In File Explorer"
+                        BorderThickness="1"
+                        IsVisible="{Binding !IsUncompletedProfile}"
+                        Padding="10 0"
+                        FontWeight="SemiBold"
+                        Background="Transparent"
+                        BorderBrush="#1f2023"
+                        CornerRadius="10">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
+                        </ResourceDictionary>
+                    </Button.Resources>
+
+                    <avalonia1:MaterialIcon FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="OpenInBrowser"></avalonia1:MaterialIcon>
                 </Button>
                 
                 <CaptionButtons Margin="4 0 0 0" Name="captionButtons"/>
@@ -177,12 +204,6 @@
                             HorizontalAlignment="Left"
                             Spacing="10"
                             VerticalAlignment="Bottom">
-                    <StackPanel Opacity="0.11" IsVisible="{Binding !IsUncompletedProfile}" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock Margin="0 0 5 0">Saved to</TextBlock>
-                        <Button Cursor="Hand" Classes="Empty" Padding="0" Command="{Binding Profile.OpenInFileExplorer}">
-                            <TextBlock Text="{Binding Profile.FileID}"/>
-                        </Button>
-                    </StackPanel>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal"

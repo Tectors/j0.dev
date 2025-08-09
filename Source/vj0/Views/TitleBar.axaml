@@ -62,19 +62,8 @@
                 <Button Name="Profile" ClipToBounds="True" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 0 10 0" Background="Transparent" Height="45" CornerRadius="10">
                     <Button.Flyout>
                         <Flyout>
-                            <Grid Margin="5">
+                            <Grid Margin="2">
                                 <StackPanel Spacing="15">
-                                    <StackPanel Orientation="Horizontal" Spacing="12" Margin="0 0 20 0">
-                                        <profiles:ProfileSplashControl Radius="12" SplashScale="1.5" DataContext="{Binding CurrentProfile}"/>
-
-                                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="0">
-                                            <TextBlock MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding ProfileDisplayName}"/>
-                                            <TextBlock FontFamily="Consolas" FontSize="14" Opacity="0.5" Text="{Binding CurrentProfile.FileID}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                    
-                                    <Border Background="White" Height="1" Opacity="0.06" Margin="-50 5 -50 0"></Border>
-                                    
                                     <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10 0" Height="45" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
                                         <ToolTip.Tip>
                                             <StackPanel Orientation="Horizontal">
@@ -84,9 +73,9 @@
                                         </ToolTip.Tip>
                                         
                                         <StackPanel Orientation="Horizontal" Spacing="12" Opacity="1">
-                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="19" IconVariant="Regular"/>
+                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="17" IconVariant="Regular"/>
                                              
-                                            <TextBlock FontWeight="Light" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock FontWeight="Light" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 Settings
                                             </TextBlock>
                                         </StackPanel>

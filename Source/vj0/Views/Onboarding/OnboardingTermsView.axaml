@@ -26,7 +26,7 @@
                 Key Terms
             </TextBlock>
         
-            <controls:NavigationView Width="950" Height="280" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+            <controls:NavigationView Width="1000" Height="280" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
                 <controls:NavigationView.MenuItems>
                     <controls:NavigationViewItem Content="Profiles?" Tag="{x:Type OnboardingGuide:OnboardingTermsProfilesView}" IsSelected="True">
                         <controls:NavigationViewItem.IconSource>

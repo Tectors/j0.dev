@@ -27,7 +27,7 @@
                             <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Padding="0" Margin="0">
                                 Profile Name
                             </TextBlock>
-                            <fluent:FluentIcon Icon="Rename" FontSize="15"></fluent:FluentIcon>
+                            <fluent:FluentIcon Icon="Rename" FontSize="15"/>
                         </StackPanel>
 
                         <TextBox
@@ -46,7 +46,7 @@
                             <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Padding="0" Margin="0">
                                 Game Engine
                             </TextBlock>
-                            <fluent:FluentIcon Icon="XboxController" FontSize="15"></fluent:FluentIcon>
+                            <fluent:FluentIcon Icon="XboxController" FontSize="15"/>
                         </StackPanel>
                         
                         <ComboBox
@@ -76,7 +76,7 @@
                             Directory
                         </TextBlock>
                         
-                        <fluent:FluentIcon Icon="Folder" FontSize="15"></fluent:FluentIcon>
+                        <fluent:FluentIcon Icon="Folder" FontSize="15"/>
                     </StackPanel>
 
                     <Grid ColumnDefinitions="*,Auto">
@@ -96,7 +96,7 @@
                             AES Key
                         </TextBlock>
                         
-                        <fluent:FluentIcon Icon="Key" FontSize="15"></fluent:FluentIcon>
+                        <fluent:FluentIcon Icon="Key" FontSize="15"/>
                     </StackPanel>
 
                     <TextBox FontFamily="Consolas"

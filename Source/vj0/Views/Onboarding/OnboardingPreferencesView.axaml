@@ -24,7 +24,7 @@
                 Adjust Your Preferences
             </TextBlock>
         
-            <views:SettingsView Width="950" Height="400" IsOnboarding="True"/>
+            <views:SettingsView Width="1000" Height="400" IsOnboarding="True"/>
         
             <Button Classes="BlueShine"
                 x:Name="ContinueButton"

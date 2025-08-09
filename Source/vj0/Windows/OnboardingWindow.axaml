@@ -7,7 +7,6 @@
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
-    xmlns:application="clr-namespace:vj0.Application"
     xmlns:vj0="clr-namespace:vj0"
 
     x:Class="vj0.Windows.OnboardingWindow"
@@ -16,7 +15,7 @@
     Title="Welcome"
     Background="{DynamicResource BackgroundBrush}"
 
-    Width="1000" MinWidth="1000"
+    Width="1150" MinWidth="1000"
     Height="660" MinHeight="660"
     
     mc:Ignorable="d"

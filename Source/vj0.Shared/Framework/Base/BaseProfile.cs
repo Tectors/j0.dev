@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Versions;
@@ -80,7 +81,10 @@ public partial class BaseProfile : ObservableValidator
     public bool IsAutoDetected => AutoDetectedGameId != EDetectedGameId.None;
     
     [JsonIgnore]
-    public bool IsArchivedGame => AutoDetectedGameId == EDetectedGameId.None && ArchiveDirectory.Contains("Fortnite");
+    public bool IsArchivedGame =>
+        !IsAutoDetected
+        && ArchiveDirectory.Contains("Fortnite")
+        && Regex.IsMatch(Name, @"^\d+\.\d+(\.\d+)?$");
     
     [JsonIgnore]
     public bool IsNameEmpty => string.IsNullOrEmpty(Name);

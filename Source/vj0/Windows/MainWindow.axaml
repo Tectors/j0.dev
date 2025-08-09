@@ -19,7 +19,7 @@
     
     Title="{Binding Title}"
 
-    Width="1425" Height="853"
+    Width="1425" Height="858"
     MinWidth="945" MinHeight="680"
     
     mc:Ignorable="d"
