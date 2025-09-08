@@ -46,13 +46,10 @@ To simplify distribution, all license texts have been consolidated into a single
 git clone https://github.com/Tectors/j0.dev --recursive
 ```
 
-### Update CUE4Parse
+### Update Libraries
 
 ```
-cd Source/Dependencies/CUE4Parse
-git fetch
-git checkout master
-git pull
+Source\Dependencies\update_libraries.bat
 ```
 
 ### Update Lisence After Changes
