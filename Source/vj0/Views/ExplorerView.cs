@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Linq;
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
+
 using CUE4Parse.UE4.VirtualFileSystem;
+
 using DynamicData;
+
 using FluentAvalonia.UI.Controls;
+
 using vj0.Framework.Models;
 using vj0.Models.Files;
 using vj0.Shared.Extensions;

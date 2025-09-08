@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using DiscordRPC;
+
 using Serilog;
+
 using vj0.Framework;
 
 namespace vj0.Services;

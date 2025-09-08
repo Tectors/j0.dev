@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using CUE4Parse.UE4.Objects.Meshes;
 using CUE4Parse.Utils;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 

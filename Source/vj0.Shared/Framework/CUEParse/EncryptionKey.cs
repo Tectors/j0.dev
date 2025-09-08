@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text.Json.Serialization;
+
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using CUE4Parse.Encryption.Aes;
 
 namespace vj0.Shared.Framework.CUEParse;

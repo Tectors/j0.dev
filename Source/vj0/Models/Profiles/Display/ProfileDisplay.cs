@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+
 using Avalonia;
 using Avalonia.Media;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace vj0.Models.Profiles.Display;

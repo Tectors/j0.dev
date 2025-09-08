@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Avalonia.Media;
 
 namespace vj0.Shared.Extensions;

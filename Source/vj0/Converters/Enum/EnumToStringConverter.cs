@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+
 using Avalonia.Data.Converters;
+
 using vj0.Shared.Extensions;
 
 namespace vj0.Converters.Enum;

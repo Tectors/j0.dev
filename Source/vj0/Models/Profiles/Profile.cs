@@ -9,8 +9,11 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Avalonia.Controls;
+
 using CommunityToolkit.Mvvm.Input;
+
 using CUE4Parse.MappingsProvider;
 using CUE4Parse.UE4.AssetRegistry;
 using CUE4Parse.UE4.AssetRegistry.Objects;
@@ -18,10 +21,15 @@ using CUE4Parse.UE4.IO;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.UE4.VirtualFileSystem;
 using CUE4Parse.Utils;
+
 using FluentAvalonia.UI.Controls;
+
 using Microsoft.IdentityModel.Tokens;
+
 using Serilog;
+
 using UE4Config.Parsing;
+
 using vj0.Extensions;
 using vj0.Models.Profiles.Display;
 using vj0.Shared.Extensions;

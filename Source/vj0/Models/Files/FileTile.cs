@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using CUE4Parse.FileProvider.Objects;
 
 namespace vj0.Models.Files;

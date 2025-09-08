@@ -7,7 +7,6 @@
     xmlns:Explorer="clr-namespace:vj0.Models.Files"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:framework="clr-namespace:vj0.Services.Framework"
-    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
 
     x:Class="vj0.Views.ExplorerView"
     x:DataType="viewModels1:ExplorerViewModel"

@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using System;
 using System.Threading;
+
 using vj0.Application;
 
 namespace vj0;
@@ -13,9 +14,7 @@ internal sealed class Program
     public static void Main(string[] args)
     {
         /* Stops the app being opened more than once */
-        const string mutexName = Globals.INSTANCE_NAME;
-
-        mutex = new Mutex(true, mutexName, out var isNewInstance);
+        mutex = new Mutex(true, Globals.INSTANCE_NAME, out var isNewInstance);
         if (!isNewInstance)
         {
             return;
@@ -34,7 +33,7 @@ internal sealed class Program
             .UseSkia()
             .With(new SkiaOptions
             {
-                MaxGpuResourceSizeBytes = null,
+                MaxGpuResourceSizeBytes = 144_691_200,
                 UseOpacitySaveLayer = false,
             })
             .LogToTrace();

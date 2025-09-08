@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json.Serialization;
+
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace vj0.Shared.Framework.Base;

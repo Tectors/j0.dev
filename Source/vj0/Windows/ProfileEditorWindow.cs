@@ -1,10 +1,14 @@
 using System;
 using System.Threading.Tasks;
+
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
+
 using FluentAvalonia.UI.Controls;
+
 using Serilog;
+
 using vj0.Framework.Models;
 using vj0.Models;
 using vj0.Models.Profiles;

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
+
 using DynamicData;
+
 using vj0.Framework.Models;
 using vj0.Models.Files;
 using vj0.ViewModels;

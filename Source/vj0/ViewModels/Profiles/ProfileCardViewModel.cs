@@ -1,7 +1,10 @@
 ﻿using System;
+
 using Avalonia.Media;
 using Avalonia.Threading;
+
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using vj0.Models;
 using vj0.ViewModels.Profiles.Framework;
 

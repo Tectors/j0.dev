@@ -1,10 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json.Serialization;
+
 using Avalonia;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
+
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using vj0.Shared.Utilities;
 
 namespace vj0.Models.Profiles.Display;
