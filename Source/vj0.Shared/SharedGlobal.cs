@@ -14,7 +14,8 @@ public static class SharedGlobal
 {
     /* Format: 0.0.0 */
     public const string VERSION = "0.0.2";
-    public const string COMMIT = "bd1ed7f";
+    public const string COMMIT = "ee588ad";
+    
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);
     public static bool IS_COMMIT_UNAVAILABLE => !IS_COMMIT_AVAILABLE;
 
