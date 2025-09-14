@@ -8,6 +8,7 @@
     xmlns:views="clr-namespace:vj0.Views.Settings"
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:vj0="clr-namespace:vj0"
+    xmlns:vj0.Shared="clr-namespace:vj0.Shared;assembly=vj0.Shared"
 
     x:Class="vj0.Views.SettingsView"
     
@@ -53,12 +54,11 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}" IsVisible="{Binding !IsOnboarding}">
+                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}" IsVisible="{x:Static vj0.Shared:SharedGlobal.IS_DEBUG}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Beaker" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
-                
             </controls:NavigationView.MenuItems>
             
             <controls:Frame x:Name="ContentFrame"/>

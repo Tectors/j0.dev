@@ -21,82 +21,84 @@
         <KeyBinding Gesture="Ctrl++" Command="{x:Static profiles1:Profile.CreateNewProfileCommand}" />
     </UserControl.KeyBindings>
 
-    <navigation:NavigationFrame>
-        <Grid>
-            <!-- Background image -->
-            <Border x:Name="BackgroundImage" ClipToBounds="True">
-                <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" 
-                       Margin="0 0" Opacity="0.265">
-                    <Image.OpacityMask>
-                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,76%">
-                            <GradientStop Color="#FF000000" Offset="0" />
-                            <GradientStop Color="#00000000" Offset="1" />
-                        </LinearGradientBrush>
-                    </Image.OpacityMask>
-                </Image>
-            </Border>
-            
-            <ScrollViewer x:Name="ProfileScrollViewer" IsScrollChainingEnabled="True" Margin="3 0 5 0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-                <WrapPanel x:Name="ProfileListPanel" LineSpacing="-16" Margin="8 8 8 -4" Orientation="Horizontal"/>
-            </ScrollViewer>
-            
-            <StackPanel IsVisible="{Binding IsEmpty}" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="25">
-                <TextBlock FontSize="30" LetterSpacing="-0.5" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock.Effect>
-                        <DropShadowEffect
-                            Color="#e3e3e3"
-                            BlurRadius="99"
-                            Opacity="0.2"/>
-                    </TextBlock.Effect>
+    <Grid>
+        <navigation:NavigationFrame>
+            <Grid>
+                <!-- Background image -->
+                <Border x:Name="BackgroundImage" ClipToBounds="True">
+                    <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" 
+                           Margin="0 0" Opacity="0.265">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,76%">
+                                <GradientStop Color="#FF000000" Offset="0" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                </Border>
+                
+                <ScrollViewer x:Name="ProfileScrollViewer" IsScrollChainingEnabled="True" Margin="3 0 5 0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+                    <WrapPanel x:Name="ProfileListPanel" LineSpacing="-16" Margin="8 8 8 -4" Orientation="Horizontal"/>
+                </ScrollViewer>
+                
+                <StackPanel IsVisible="{Binding IsEmpty}" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="25">
+                    <TextBlock FontSize="30" LetterSpacing="-0.5" Opacity="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                                Color="#e3e3e3"
+                                BlurRadius="99"
+                                Opacity="0.2"/>
+                        </TextBlock.Effect>
+                        
+                        Start creating your profiles!
+                    </TextBlock>
                     
-                    Start creating your profiles!
-                </TextBlock>
-                
-                <TextBlock FontSize="20" Opacity="0.7" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    This space will grow as you add new profiles.
-                </TextBlock>
-                
-                <Button
-                    Foreground="White"
-                    Background="#195bff"
-                    Height="40"
-                    Margin="0 9 0 0"
-                    Cursor="Hand"
-                    HorizontalAlignment="Center"
-                    Command="{x:Static profiles1:Profile.CreateNewProfileCommand}"
-                    ClipToBounds="True"
-                    BorderThickness="0"
-                    CornerRadius="12"
-                    IsDefault="True"
-                    Width="180">
-    
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                        </ResourceDictionary>
-                    </Button.Resources>
-    
-                    <Grid>
-                        <Border
-                            Background="White"
-                            Height="1.4"
-                            Opacity="0.1"
-                            CornerRadius="16 16 0 0"
-                            Margin="0 -5 0 0"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Stretch"/>
+                    <TextBlock FontSize="20" Opacity="0.7" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        This space will grow as you add new profiles.
+                    </TextBlock>
+                    
+                    <Button
+                        Foreground="White"
+                        Background="#195bff"
+                        Height="40"
+                        Margin="0 9 0 0"
+                        Cursor="Hand"
+                        HorizontalAlignment="Center"
+                        Command="{x:Static profiles1:Profile.CreateNewProfileCommand}"
+                        ClipToBounds="True"
+                        BorderThickness="0"
+                        CornerRadius="12"
+                        IsDefault="True"
+                        Width="180">
+        
+                        <Button.Resources>
+                            <ResourceDictionary>
+                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#195bff</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonBackgroundPressed">#306bff</SolidColorBrush>
+                                <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                            </ResourceDictionary>
+                        </Button.Resources>
+        
+                        <Grid>
+                            <Border
+                                Background="White"
+                                Height="1.4"
+                                Opacity="0.1"
+                                CornerRadius="16 16 0 0"
+                                Margin="0 -5 0 0"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Stretch"/>
 
-                        <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Margin="0 1 0 0" Text="Create a New Profile" FontSize="16" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Grid>
-                </Button>
-            </StackPanel>
-            
-            <controls:ScrollTopShadow x:Name="ScrollTopShadowRef" />
-        </Grid>
-    </navigation:NavigationFrame>
+                            <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Margin="0 1 0 0" Text="Create a New Profile" FontSize="16" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+                
+                <controls:ScrollTopShadow x:Name="ScrollTopShadowRef" />
+            </Grid>
+        </navigation:NavigationFrame>
+    </Grid>
 </UserControl>

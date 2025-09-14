@@ -101,8 +101,6 @@
                     Text="{Binding Profile.ArchiveDirectory}"
                     FontSize="14"
                     TextTrimming="CharacterEllipsis"
-                    LetterSpacing="-0.55"
-                    FontFamily="Consolas"
                     HorizontalAlignment="Stretch"
                     MaxWidth="{Binding DirectoryMaxWidth}"
                     VerticalAlignment="Center"/>

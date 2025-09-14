@@ -18,7 +18,7 @@ public enum EDetectedGameId
 {
     None,
     Fortnite,
-    Valorant,
+    Valorant
 }
 
 public enum EAudioFormatType

@@ -37,7 +37,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
             hasDetectedGames = true;
         
             await GameDetection.LoadAllAsync();
-            await GameDetection.DetectAllProfilesAsync();
+            GameDetection.DetectAllProfilesAsync();
         }
     }
     
@@ -78,7 +78,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         {
             foreach (var profile in sorted)
             {
-                profile.TryAutoFetchAesKeys();
+                _ = profile.ResolveDataFromArchives(false);
             }
         });
 

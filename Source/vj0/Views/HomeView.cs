@@ -19,22 +19,22 @@ public partial class HomeView : ViewBase<HomeViewModel>
 
     private void OpenDiscord(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.DISCORD_LINK);
+        AppService.OpenLink(DISCORD_LINK);
     }
 
     private void OpenGitHub(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.GITHUB_LINK);
+        AppService.OpenLink(GITHUB_LINK);
     }
 
     private void OpenXAccount(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.X_LINK);
+        AppService.OpenLink(X_LINK);
     }
 
     private void OpenKoFi(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.DONATE_LINK);
+        AppService.OpenLink(DONATE_LINK);
     }
 
     private void GetStarted(object? sender, RoutedEventArgs e)

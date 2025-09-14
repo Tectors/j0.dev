@@ -168,7 +168,7 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
 
     private async Task FetchUndetectedMetadataAsync()
     {
-        await WindowModel.Profile!.TryAutoFetchAesKeysUndetected();
+        await WindowModel.Profile!.ResolveDataFromArchives(true);
         
         WindowModel.GeneratePakFileEntries();
     }

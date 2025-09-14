@@ -70,11 +70,11 @@ public partial class OnboardingWindow : WindowBase<OnboardingWindowModel>
         
     private void OpenDonateLink(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.DONATE_LINK);
+        AppService.OpenLink(DONATE_LINK);
     }
     
     private void OpenDiscordLink(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink(Globals.DISCORD_LINK);
+        AppService.OpenLink(DISCORD_LINK);
     }
 }

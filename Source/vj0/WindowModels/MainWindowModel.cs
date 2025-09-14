@@ -32,7 +32,7 @@ public partial class MainWindowModel : WindowModelBase
 {
     public static InfoService Info => AppServices.Info;
     
-    public string Title => CurrentProfile is not null ? $"{CurrentProfile.Name} - {Globals.APP_NAME}" : $"{Globals.APP_NAME} ({Globals.VERSION})";
+    public string Title => CurrentProfile is not null ? $"{CurrentProfile.Name} - {APP_NAME}" : $"{APP_NAME} ({VERSION})";
 
     /* ~~~ Observable State ~~~ */
     [ObservableProperty]

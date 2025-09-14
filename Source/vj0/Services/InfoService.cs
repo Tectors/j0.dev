@@ -17,6 +17,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 
 using vj0.Framework;
 using vj0.Models.Information;
+using vj0.Shared;
 using vj0.Shared.Extensions;
 
 namespace vj0.Services;
@@ -39,9 +40,9 @@ public partial class InfoService : ObservableObject, ILogEventSink, IService
 
     public void Create()
     {
-        Globals.LogsFolder.Create();
+        LogsFolder.Create();
         
-        LogFilePath = Path.Combine(Globals.LogsFolder.FullName, $"{Globals.CODENAME}-{DateTime.Now:yyyy-MM-dd-hh-mm-ss}.log");
+        LogFilePath = Path.Combine(LogsFolder.FullName, $"{CODENAME}-{DateTime.Now:yyyy-MM-dd-hh-mm-ss}.log");
         var loggerConfiguration = new LoggerConfiguration();
 
         loggerConfiguration.WriteTo.Console(theme: AnsiConsoleTheme.Literate)

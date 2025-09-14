@@ -32,6 +32,11 @@ using UE4Config.Parsing;
 
 using vj0.Extensions;
 using vj0.Models.Profiles.Display;
+using vj0.Plugins;
+using vj0.Plugins.Interfaces;
+using vj0.Plugins.Resolvers;
+using vj0.Services.Framework;
+using vj0.Shared;
 using vj0.Shared.Extensions;
 using vj0.Shared.Framework.Base;
 using vj0.Shared.Framework.CUEParse;
@@ -41,6 +46,47 @@ namespace vj0.Models.Profiles;
 
 public class Profile : BaseProfileDisplay
 {
+    [JsonIgnore] public List<IPlugin> Plugins = [];
+
+    public void ResolvePluginHandler()
+    {
+        Plugins = [];
+
+        foreach (var Plugin in AppServices.Plugins.List)
+        {
+            if (Plugin is not IGamePlugin GamePlugin) continue;
+            if (!GamePlugin.Match(this, out var reason)) continue;
+            
+            Plugins.Add(Plugin);
+            Log.Information($"{Name}: Added Plugin \"{Plugin.Name}\" [{reason}]");
+        }
+    }
+
+    public async Task ResolveDataFromArchives(bool Voluntary)
+    {
+        ResolvePluginHandler();
+        
+        foreach (var Plugin in Plugins)
+        {
+            if (Plugin is not (IArchiveResolverPlugin archiveResolverPlugin and IGamePlugin gamePlugin)) continue;
+
+            if (gamePlugin.DoesInherentlyMatch(this) || Voluntary)
+            {
+                await archiveResolverPlugin.Resolve(this);
+            }
+        }
+
+        if (Voluntary)
+        {
+            await InitializeProvider();
+            InitializeCache(false);
+        
+            Validate();
+        
+            DisposeProvider(false);
+        }
+    }
+    
     [JsonIgnore] public readonly List<FAssetData> AssetRegistry = [];
     [JsonIgnore] public Action<Profile>? OnInitialized { get; set; }
     [JsonIgnore] public Action<Profile>? OnInitializationFailure { get; set; }
@@ -62,6 +108,7 @@ public class Profile : BaseProfileDisplay
         }
 
         CheckStatusNotifies();
+        
         if (cancellationToken.IsCancellationRequested)
         {
             return;
@@ -95,7 +142,7 @@ public class Profile : BaseProfileDisplay
         }
         await LoadKeys(cancellationToken);
         
-        if (Provider is not null && Provider.Files.Count == 0 && Encryption.MainKey == Globals.EMPTY_CHAR && Provider.Keys.Count == 0)
+        if (Provider is not null && Provider.Files.Count == 0 && Encryption.MainKey == EMPTY_CHAR && Provider.Keys.Count == 0)
         {
             Status.OnFailure("Please enter a valid AES encryption key in the profile settings.");
             OnInitializationFailure?.Invoke(this);
@@ -220,7 +267,7 @@ public class Profile : BaseProfileDisplay
             Provider = new BaseProvider(ArchiveDirectory, new VersionContainer(Version, TexturePlatform));
         }
 
-        if (!Encryption.IsValid) Encryption.MainKey = Globals.EMPTY_CHAR;
+        if (!Encryption.IsValid) Encryption.MainKey = EMPTY_CHAR;
         
         Provider.VfsMounted += (sender, _) =>
         {
@@ -258,7 +305,7 @@ public class Profile : BaseProfileDisplay
     {
         if (Provider is not null)
         {
-            await Provider.SubmitKeyAsync(Globals.ZERO_GUID, Encryption.MainAESKey);
+            await Provider.SubmitKeyAsync(ZERO_GUID, Encryption.MainAESKey);
             Log.Information($"Submitted AES Key: {Encryption.MainAESKey}");
             
             if (cancellationToken.IsCancellationRequested)
@@ -280,6 +327,7 @@ public class Profile : BaseProfileDisplay
                         }
                         
                         await Provider.SubmitKeyAsync(vfs.EncryptionKeyGuid, extraKey.AESKey);
+                        
                         Log.Information($"Submitted Dynamic AES Key: {extraKey.AESKey}");
                     }
                 }
@@ -327,12 +375,12 @@ public class Profile : BaseProfileDisplay
     
     private static string? GetLocallyRecentCreatedMappings()
     {
-        if (!Globals.MappingsFolder.Exists)
+        if (!MappingsFolder.Exists)
         {
             return null;
         }
         
-        var usmapFiles = Globals.MappingsFolder.GetFiles("*.usmap");
+        var usmapFiles = MappingsFolder.GetFiles("*.usmap");
         return usmapFiles.Length <= 0 ? null : usmapFiles.MaxBy(x => x.CreationTime)?.FullName;
     }
     
@@ -375,7 +423,7 @@ public class Profile : BaseProfileDisplay
             return;
         }
         
-        Directory.CreateDirectory(Globals.ProfilesFolder.ToString());
+        Directory.CreateDirectory(ProfilesFolder.ToString());
 
         if (IsAutoDetected)
         {
@@ -390,7 +438,7 @@ public class Profile : BaseProfileDisplay
         }
 
         var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
-        await File.WriteAllTextAsync(Path.Combine(Globals.ProfilesFolder.ToString(), FileName), json);
+        await File.WriteAllTextAsync(Path.Combine(ProfilesFolder.ToString(), FileName), json);
     }
 
     public void Delete()
@@ -500,9 +548,9 @@ public class Profile : BaseProfileDisplay
     
     public static async Task<List<Profile>> LoadAllAsync()
     {
-        Directory.CreateDirectory(Globals.ProfilesFolder.ToString());
+        Directory.CreateDirectory(ProfilesFolder.ToString());
 
-        var profileFiles = Directory.GetFiles(Globals.ProfilesFolder.ToString(), "*.json");
+        var profileFiles = Directory.GetFiles(ProfilesFolder.ToString(), "*.json");
 
         var tasks = profileFiles.Select(async file =>
         {
@@ -537,82 +585,6 @@ public class Profile : BaseProfileDisplay
 
         var results = await Task.WhenAll(tasks);
         return results.Where(profile => profile is not null).ToList()!;
-    }
-    
-    public async void TryAutoFetchAesKeys()
-    {
-        if (AutoDetectedGameId != EDetectedGameId.Fortnite)
-        {
-            return;
-        }
-
-        try
-        {
-            await FetchEncryptionKeysAsync("https://fortnitecentral.genxgames.gg/api/v1/aes");
-            
-            _ = Save();
-        }
-        catch (Exception ex)
-        {
-            Log.Error($"[TryAutoFetchAesKeys] Failed to fetch AES keys: {ex.Message}");
-        }
-    }
-
-    public async Task TryAutoFetchAesKeysUndetected()
-    {
-        var GEN_API_URL = $"https://fortnitecentral.genxgames.gg/api/v1/aes?version={Name}";
-        var GIT_ARCHIVE_URL = $"https://raw.githubusercontent.com/Tectors/fortnite-aes-archive/refs/heads/master/api/archive/{Name}.json";
-        
-        /*
-         * Quick Notes about AES Keys and fetching them
-         *
-         * GMatrix API: https://fortnitecentral.genxgames.gg/api/v1/aes?version={...}
-         * . Contains all versions above 18.00 (as of June 30th, 2025)
-         *
-         * dippyshere/fortnite-aes-archive: https://github.com/Tectors/fortnite-aes-archive
-         *          https://raw.githubusercontent.com/Tectors/fortnite-aes-archive/refs/heads/master/api/archive/{...}.json
-         * . Has versions below 18.00 (reliable), but above that is unreliable
-         *
-         * Solution?
-         *
-         * Use fortnite-aes-archive if below 18.00
-         * Use GM API if above version 18.00
-         */
-        
-        /* Only for Fortnite */
-        if (!ArchiveDirectory.Contains("Fortnite")) return;
-
-        if (!TryParseProfileName(Name, out var value))
-        {
-            return;
-        }
-
-        var useGenAPI = value >= 18.00;
-        var API_URL = useGenAPI ? GEN_API_URL :  GIT_ARCHIVE_URL;
-        
-        Encryption.Keys.Clear();
-        
-        Log.Information($"TryAutoFetchAesKeysUndetected: API_URL {API_URL}");
-        
-        await FetchEncryptionKeysAsync(API_URL, true);
-
-        if (value >= 15.20)
-        {
-            var mapping = await RestAPI.Central.FetchMappingAsync(Name);
-        
-            if (mapping is { LocalPath: not null })
-            {
-                MappingsContainer.Override = true;
-                MappingsContainer.Path = mapping.LocalPath;
-            }
-        }
-        
-        await InitializeProvider();
-        InitializeCache(false);
-        
-        Validate();
-        
-        DisposeProvider(false);
     }
     
     public bool TryParseProfileName(string name, out double value)
@@ -689,52 +661,6 @@ public class Profile : BaseProfileDisplay
         return (EGame)snapped;
     }
     
-    public async Task FetchEncryptionKeysAsync(string url = null!, bool isUnknown = false)
-    {
-        var aes = await RestAPI.Central.GetAesAsync(url, useBaseUrl: false);
-
-        if (aes is null)
-        {
-            Log.Information("FetchEncryptionKeysAsync Failed");
-            return;
-        }
-
-        if (!string.IsNullOrWhiteSpace(aes.MainKey))
-        {
-            Encryption.MainKey = aes.MainKey;
-        }
-
-        if (aes.DynamicKeys is not { Count: > 0 })
-        {
-            return;
-        }
-
-        var newKeys = new List<EncryptionKey>();
-        var dynamicGUIDs = new HashSet<string>();
-
-        foreach (var key in aes.DynamicKeys)
-        {
-            if (!EncryptionKey.IsValidKey(key.Key))
-            {
-                continue;
-            }
-
-            newKeys.Add(key);
-            dynamicGUIDs.Add(key.Guid);
-        }
-
-        if (isUnknown)
-        {
-            Encryption.UnknownKeys.AddRange(newKeys);
-        }
-        else
-        {
-            Encryption.Keys.RemoveAll(k => k is null);
-            Encryption.Keys.RemoveAll(k => dynamicGUIDs.Contains(k.Guid));
-            Encryption.Keys.AddRange(newKeys);
-        }
-    }
-    
     private async Task InitializeTextureStreaming()
     {
         if (!TexturesOnDemand || !IsAutoDetected) return;
@@ -745,7 +671,7 @@ public class Profile : BaseProfileDisplay
             if (string.IsNullOrEmpty(tocPath)) return;
 
             var tocName = tocPath.SubstringAfterLast("/");
-            var onDemandFile = new FileInfo(Path.Combine(Globals.OnDemandFolder.FullName, tocName));
+            var onDemandFile = new FileInfo(Path.Combine(OnDemandFolder.FullName, tocName));
             if (!onDemandFile.Exists || onDemandFile.Length == 0)
             {
                 await RestAPI.DownloadFileAsync($"https://download.epicgames.com/{tocPath}", onDemandFile.FullName);
@@ -754,7 +680,7 @@ public class Profile : BaseProfileDisplay
             var options = new IoStoreOnDemandOptions
             {
                 ChunkBaseUri = new Uri("https://download.epicgames.com/ias/fortnite/", UriKind.Absolute),
-                ChunkCacheDirectory = Globals.OnDemandFolder,
+                ChunkCacheDirectory = OnDemandFolder,
                 Authorization = new AuthenticationHeaderValue("Bearer", Settings.Application.EpicAuth?.Token),
                 Timeout = TimeSpan.FromSeconds(10)
             };

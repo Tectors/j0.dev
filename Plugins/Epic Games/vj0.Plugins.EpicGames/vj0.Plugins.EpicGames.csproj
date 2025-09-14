@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\vj0.Shared\vj0.Shared.csproj" />
+    <ProjectReference Include="..\..\vj0.Plugins\vj0.Plugins.csproj" />
+    
+    <!-- Licensed ~~~~~~~~~~~ -->
+    <PackageReference Include="JWT" Version="11.0.0-beta3" />
+    <PackageReference Include="RestSharp" Version="112.1.1-alpha.0.4" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.1-alpha.0.4" />
+    <!-- <- Licensed ~~~~~~~~~~~ -->
+  </ItemGroup>
+
+</Project>

@@ -22,7 +22,9 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
         <PackageReference Include="EpicManifestParser" Version="2.4.1" />
         <PackageReference Include="FluentAvaloniaUI" Version="2.4.0-preview1" />
+        <PackageReference Include="JWT" Version="11.0.0-beta3" />
         <PackageReference Include="RestSharp" Version="112.1.1-alpha.0.4" />
+        <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.1-alpha.0.4" />
         <!-- <- Licensed ~~~~~~~~~~~ -->
         
     </ItemGroup>

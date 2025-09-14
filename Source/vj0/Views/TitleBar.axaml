@@ -10,7 +10,7 @@
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-    xmlns:vj0="clr-namespace:vj0"
+    xmlns:vj0.Shared="clr-namespace:vj0.Shared;assembly=vj0.Shared"
 
     x:Class="vj0.Views.TitleBar"
     x:DataType="windowModels:MainWindowModel"
@@ -97,7 +97,7 @@
             </Grid>
             
             <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" FontFamily="Consolas" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
+            <Button IsVisible="True" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
@@ -123,9 +123,9 @@
                                 </Border>
 
                                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
-                                    <TextBlock FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static vj0:Globals.VERSION}"/>
-                                    <TextBlock FontFamily="Consolas" IsVisible="{x:Static vj0:Globals.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static vj0:Globals.COMMIT}"/>
-                                    <TextBlock FontFamily="Consolas" IsVisible="{x:Static vj0:Globals.IS_COMMIT_UNAVAILABLE}" FontSize="12" Opacity="0.5" Text="unknown commit"/>
+                                    <TextBlock FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static vj0.Shared:SharedGlobal.VERSION}"/>
+                                    <TextBlock IsVisible="{x:Static vj0.Shared:SharedGlobal.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static vj0.Shared:SharedGlobal.COMMIT}"/>
+                                    <TextBlock IsVisible="{x:Static vj0.Shared:SharedGlobal.IS_COMMIT_UNAVAILABLE}" FontSize="12" Opacity="0.5" Text="unknown commit"/>
                                 </StackPanel>
                             </StackPanel>
                             
@@ -148,7 +148,7 @@
                                             <TextBlock>
                                                 - Clones this repo
                                             </TextBlock>
-                                            <TextBlock IsVisible="{x:Static vj0:Globals.IS_COMMIT_AVAILABLE}">
+                                            <TextBlock IsVisible="{x:Static vj0.Shared:SharedGlobal.IS_COMMIT_AVAILABLE}">
                                                 - Checks out this commit
                                             </TextBlock>
                                             <TextBlock>
@@ -171,7 +171,7 @@
                                     <avalonia1:MaterialIcon Kind="Git"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
+                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0.Shared:SharedGlobal.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
                                     <Button.Resources>
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
@@ -212,10 +212,10 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            IsHitTestVisible="False"
-                           Height="8"
-                           Margin="0 2 0 0"/>
+                           Height="9"
+                           Margin="2 2 2 0"/>
                     
-                    <TextBlock Opacity="0.95" FontWeight="DemiBold" Text="{x:Static vj0:Globals.VERSION}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
+                    <TextBlock FontFamily="Consolas" FontWeight="DemiBold" Text="{x:Static vj0.Shared:SharedGlobal.VERSION}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
                     
                     <controls:SymbolIcon Symbol="ChevronDown"/>
                 </StackPanel>

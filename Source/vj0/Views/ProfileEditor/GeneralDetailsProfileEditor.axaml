@@ -49,9 +49,8 @@
                             <fluent:FluentIcon Icon="XboxController" FontSize="15"/>
                         </StackPanel>
                         
-                        <ComboBox
+                        <ComboBox FontFamily="Consolas"
                                   Height="32"
-                                  FontFamily="Consolas"
                                   FontSize="14"
                                   Focusable="True"
                                   ItemsSource="{Binding GameVersionOptions}"

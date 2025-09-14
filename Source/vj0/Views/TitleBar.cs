@@ -34,23 +34,23 @@ public partial class TitleBar : UserControl
     
     public void OpenGitHubLink(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink($"{Globals.GITHUB_COMMIT_LINK}/{Globals.COMMIT}");
+        AppService.OpenLink($"{GITHUB_COMMIT_LINK}/{COMMIT}");
     }
     
     public void OpenGitHubLicense(object? sender, RoutedEventArgs e)
     {
-        AppService.OpenLink($"{Globals.GITHUB_LINK}/blob/main/LICENSE");
+        AppService.OpenLink($"{GITHUB_LINK}/blob/main/LICENSE");
     }
 
     private void CopyGitCloneCommand(object? sender, RoutedEventArgs e)
     {
-        if (Globals.IS_COMMIT_AVAILABLE)
+        if (IS_COMMIT_AVAILABLE)
         {
-            App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git checkout {Globals.COMMIT} && git submodule update --init --recursive\n");
+            App.CopyText($"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git checkout {COMMIT} && git submodule update --init --recursive\n");
         }
         else
         {
-            App.CopyText($"git clone --recurse-submodules {Globals.GITHUB_LINK}.git && cd {Globals.GITHUB_REPO_NAME} && git submodule update --init --recursive\n");
+            App.CopyText($"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git submodule update --init --recursive\n");
         }
     }
 }

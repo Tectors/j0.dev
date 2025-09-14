@@ -3,13 +3,12 @@
 using RestSharp;
 
 using Serilog;
-
-using vj0.Models.API.Base;
 using vj0.Models.API.Responses;
+using vj0.Shared.Models.API.Base;
 
 namespace vj0.Models.API;
 
-public class GitHubAPI(RestClient client) : APIBase(client, Globals.GITHUB_API_LINK)
+public class GitHubAPI(RestClient client) : APIBase(client, GITHUB_API_LINK)
 {
     public async Task<GitHubReleaseResponse?> GetLatestRelease()
     {

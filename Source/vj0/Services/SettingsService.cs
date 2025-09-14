@@ -24,17 +24,17 @@ public partial class SettingsService : ObservableObject, IService
     
     private static readonly DirectoryInfo DirectoryPath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        Globals.CODENAME));
+        CODENAME));
     
 #if DEBUG
     private static readonly FileInfo FilePath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        Globals.CODENAME,
+        CODENAME,
         "Settings.Debug.json"));
 #else
     private static readonly FileInfo FilePath = new(Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        Globals.CODENAME,
+        CODENAME,
         "Settings.json"));
 #endif
 

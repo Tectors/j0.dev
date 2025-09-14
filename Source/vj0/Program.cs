@@ -14,7 +14,7 @@ internal sealed class Program
     public static void Main(string[] args)
     {
         /* Stops the app being opened more than once */
-        mutex = new Mutex(true, Globals.INSTANCE_NAME, out var isNewInstance);
+        mutex = new Mutex(true, INSTANCE_NAME, out var isNewInstance);
         if (!isNewInstance)
         {
             return;

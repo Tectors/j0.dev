@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
-    xmlns:vj0="clr-namespace:vj0"
+    xmlns:vj0.Shared="clr-namespace:vj0.Shared;assembly=vj0.Shared"
 
     x:Class="vj0.Windows.OnboardingWindow"
     x:DataType="windowModels:OnboardingWindowModel"
@@ -38,7 +38,7 @@
                     </Button>
                 </StackPanel>
                 
-                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0:Globals.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Shared:SharedGlobal.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
             </StackPanel>
 
             <!-- Discord Link -->

@@ -12,7 +12,7 @@ public class UpdateService : IService
 {
     public async void Initialize()
     {
-        if (!Version.TryParse(Globals.VERSION, out var currentVersion))
+        if (!Version.TryParse(VERSION, out var currentVersion))
         {
             return;
         }
@@ -27,7 +27,7 @@ public class UpdateService : IService
             var dialog = new ContentDialog
             {
                 Title = "New Version Available!",
-                Content = $"Get the latest features and improvements for {Globals.APP_NAME}.",
+                Content = $"Get the latest features and improvements for {APP_NAME}.",
                 CloseButtonText = "Dismiss",
                 PrimaryButtonText = "View Release Page",
                 PrimaryButtonCommand = new RelayCommand(() =>
@@ -45,7 +45,7 @@ public class UpdateService : IService
             var dialog = new ContentDialog
             {
                 Title = "Development Build",
-                Content = $"You are currently running a developmental build of {Globals.APP_NAME}.\n\nThis issued version may be unstable.",
+                Content = $"You are currently running a developmental build of {APP_NAME}.\n\nThis issued version may be unstable.",
                 CloseButtonText = "Dismiss"
             };
             

@@ -5,7 +5,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-
 using Serilog;
 
 using vj0.Services.Framework;
@@ -31,14 +30,16 @@ public class AppInstance : Avalonia.Application
         debugShowStartup = false;
 #endif
         
-        Log.Information($"vj0 version: {Globals.VERSION}");
-        _ = NativeLibraryLoader.Load(Globals.RuntimeFolder);
-        
         AppServices.Initialize();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             App.Initialize(desktop);
+            
+            Log.Information($"vj0 version: {VERSION}");
+            _ = NativeLibraryLoader.Load(RuntimeFolder);
+
+            AppServices.Plugins.Load();
 
             Desktop = desktop;
 
@@ -58,7 +59,7 @@ public class AppInstance : Avalonia.Application
 
         base.OnFrameworkInitializationCompleted();
     }
-    
+
     public void SpawnWindow(Window window)
     {
         if (window is MainWindow && Settings.Application.SaveWindowResolution)

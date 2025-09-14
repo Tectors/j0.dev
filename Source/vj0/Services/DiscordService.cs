@@ -21,7 +21,7 @@ public class DiscordService : IService
         {
             LargeImageKey = "logo",
             
-            SmallImageText = $"{Globals.VERSION} ({Globals.COMMIT})",
+            SmallImageText = $"{VERSION} ({COMMIT})",
             SmallImageKey = $"small_image",
         },
         Buttons =
@@ -29,12 +29,12 @@ public class DiscordService : IService
             new Button 
             { 
                 Label = "Join",
-                Url = Globals.DISCORD_LINK 
+                Url = DISCORD_LINK 
             },
             new Button 
             { 
                 Label = "Support us",
-                Url = Globals.DONATE_LINK 
+                Url = DONATE_LINK 
             }
         ]
     };
@@ -47,7 +47,7 @@ public class DiscordService : IService
         
         try
         {
-            _client = new DiscordRpcClient(Globals.DISCORD_ACTIVITY_ID);
+            _client = new DiscordRpcClient(DISCORD_ACTIVITY_ID);
             
             _isInitialized = true;
             
@@ -74,7 +74,7 @@ public class DiscordService : IService
             await Task.Delay(500);
             _client.SetPresence(DefaultPresence);
             
-            Log.Information("Button URL: {Url}", Globals.DISCORD_LINK);
+            Log.Information("Button URL: {Url}", DISCORD_LINK);
         }
         catch (Exception ex)
         {

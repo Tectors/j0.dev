@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using CUE4Parse.UE4.Objects.Core.Misc;
-
+using vj0.Shared;
 using vj0.Shared.Framework.Base;
 
 namespace vj0.Models.Profiles.Display;
@@ -22,7 +22,7 @@ public partial class BaseProfileDisplay : BaseProfile {
         _display = new ProfileDisplay(this);
     }
     
-    [JsonIgnore] protected string SavedFilePath => Path.Combine(Globals.ProfilesFolder.ToString(), FileName);
+    [JsonIgnore] protected string SavedFilePath => Path.Combine(ProfilesFolder.ToString(), FileName);
 
     public void Reload()
     {
@@ -76,7 +76,7 @@ public partial class BaseProfileDisplay : BaseProfile {
         }
 
         var filter = new Regex(@"^(?!global|pakchunk.+(optional|ondemand)-).+\.(pak|utoc)$", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        var seenGuids = new HashSet<FGuid> { Globals.ZERO_GUID };
+        var seenGuids = new HashSet<FGuid> { ZERO_GUID };
         var result = new List<BasePakFileEntry>();
 
         foreach (var vfs in Provider.UnloadedVfs)
@@ -86,7 +86,7 @@ public partial class BaseProfileDisplay : BaseProfile {
                 continue;
             }
 
-            if (vfs.EncryptionKeyGuid == Globals.ZERO_GUID || !seenGuids.Add(vfs.EncryptionKeyGuid))
+            if (vfs.EncryptionKeyGuid == ZERO_GUID || !seenGuids.Add(vfs.EncryptionKeyGuid))
             {
                 continue;
             }

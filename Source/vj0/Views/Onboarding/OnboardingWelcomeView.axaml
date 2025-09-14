@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vj0="clr-namespace:vj0"
+    xmlns:vj0.Shared="clr-namespace:vj0.Shared;assembly=vj0.Shared"
 
     x:Class="vj0.Views.Onboarding.OnboardingWelcomeView"
     
@@ -19,7 +19,7 @@
             
             <TextBlock LineSpacing="0" LetterSpacing="-1" HorizontalAlignment="Center" FontSize="30" FontWeight="SemiBold" Foreground="#f5f5f5">
                 Welcome to 
-                <TextBlock FontSize="35" FontFamily="Consolas" Margin="3 0 0 0" Text="{x:Static vj0:Globals.APP_NAME}"/>
+                <TextBlock FontSize="35" Margin="3 0 0 0" Text="{x:Static vj0.Shared:SharedGlobal.APP_NAME}"/>
             </TextBlock>
             <TextBlock HorizontalAlignment="Center" FontSize="20" Opacity="0.35">Created by Tector</TextBlock>
 

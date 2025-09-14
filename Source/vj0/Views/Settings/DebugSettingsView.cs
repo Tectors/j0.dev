@@ -22,7 +22,7 @@ public partial class DebugSettingsView : ViewBase<DebugSettingsViewModel>
 
     private void OpenLogsFolder(object? sender, RoutedEventArgs e)
     {
-        var folder = Globals.LogsFolder.FullName;
+        var folder = LogsFolder.FullName;
 
         if (Directory.Exists(folder))
         {

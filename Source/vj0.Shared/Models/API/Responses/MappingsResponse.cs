@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace vj0.Models.API.Responses;
+namespace vj0.Shared.Models.API.Responses;
 
 public class MappingsResponse
 {

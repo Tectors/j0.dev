@@ -9,6 +9,7 @@ using RestSharp.Serializers.NewtonsoftJson;
 
 using vj0.Framework;
 using vj0.Models.API;
+using vj0.Shared.Models.API;
 
 namespace vj0.Services;
 
@@ -23,7 +24,7 @@ public class RestAPIService : IService
     {
         _client = new RestClient(new RestClientOptions
         {
-            UserAgent = $"{Globals.APP_NAME}/{Globals.VERSION}"
+            UserAgent = $"{APP_NAME}/{VERSION}"
         }, configureSerialization: s => s.UseSerializer<JsonNetSerializer>());
         
         Central = new CentralAPI(_client);
