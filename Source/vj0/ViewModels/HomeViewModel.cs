@@ -21,7 +21,7 @@ public class HomeViewModel : ViewModelBase
         "bringing clarity to the chaos",
         "look closer.",
         "accidentally pushed into prod",
-        "developed with coffee ☕",
+        "developed with a LOT of coffee ☕",
         "powered by frustration and breakthroughs",
         "we speak fluent .uasset",
         "we lost the documentation years ago",
@@ -30,6 +30,8 @@ public class HomeViewModel : ViewModelBase
         "waking up at 3AM to fix one line",
         "open-source, open-minds",
         "the logs know everything...",
+        "todo: fix this - 1993",
+        "fix scheduled for Q3 1997",
     ];
     
     public string[] Tips =
@@ -38,7 +40,7 @@ public class HomeViewModel : ViewModelBase
         "Shortcuts make everything faster. Use them",
         "Keyboard shortcuts are your best friend",
         "This tool is community-driven — feedback matters!",
-        "Check the logs — they're full of secrets",
+        "Check the logs — they're full of secrets"
     ];
     
     public async void StartRotation(string[] phrases, int rotateTime, TextBlock textBlock, Control? fadingControl = null!, bool useRandom = false)
