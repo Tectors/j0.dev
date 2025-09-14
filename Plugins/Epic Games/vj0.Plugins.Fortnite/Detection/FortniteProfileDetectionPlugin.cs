@@ -13,18 +13,7 @@ public sealed class FortniteProfileDetectionPlugin : IEpicGamesDetection
     {
         await IEpicGamesDetection.TryDetectGameAsync(
             gameId: EDetectedGameId.Fortnite,
-            detectFunc: () =>
-            {
-                var latestVersion = EGame.GAME_UE5_LATEST;
-
-                /* ReSharper disable once ConditionIsAlwaysTrueOrFalse */
-                if (latestVersion == EGame.GAME_UE5_6)
-                {
-                    latestVersion = EGame.GAME_UE5_7;
-                }
-
-                return IEpicGamesDetection.DetectGame("Fortnite", @"\FortniteGame\Content\Paks", latestVersion, EDetectedGameId.Fortnite);
-            },
+            detectFunc: () => IEpicGamesDetection.DetectGame("Fortnite", @"\FortniteGame\Content\Paks", EGame.GAME_UE5_LATEST, EDetectedGameId.Fortnite),
             onDetected,
             LoadedProfiles
         );
