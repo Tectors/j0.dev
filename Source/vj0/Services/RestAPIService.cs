@@ -5,10 +5,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 using RestSharp;
-using RestSharp.Serializers.NewtonsoftJson;
 
 using vj0.Framework;
 using vj0.Models.API;
+using vj0.Shared;
 using vj0.Shared.Models.API;
 
 namespace vj0.Services;
@@ -18,15 +18,10 @@ public class RestAPIService : IService
     public readonly CentralAPI Central;
     public readonly EpicGamesAPI EpicGames;
     public readonly GitHubAPI GitHub;
-    private readonly RestClient _client;
+    private RestClient _client => SharedGlobal.RestClient;
 
     public RestAPIService()
     {
-        _client = new RestClient(new RestClientOptions
-        {
-            UserAgent = $"{APP_NAME}/{VERSION}"
-        }, configureSerialization: s => s.UseSerializer<JsonNetSerializer>());
-        
         Central = new CentralAPI(_client);
         EpicGames = new EpicGamesAPI(_client);
         GitHub = new GitHubAPI(_client);

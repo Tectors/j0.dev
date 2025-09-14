@@ -62,7 +62,7 @@ public static class SharedGlobal
         false;
 #endif
 
-    private static RestClient RestClient { get; } = new(
+    public static RestClient RestClient { get; } = new(
         new RestClientOptions
         {
             UserAgent = $"{APP_NAME}/{VERSION}"
