@@ -1,18 +1,17 @@
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using RestSharp;
-using Serilog;
-using vj0.Core.Models.API.Base;
-using vj0.Core.Models.API.Responses;
 
-namespace vj0.Core.Models.API;
+using RestSharp;
+
+using Serilog;
+
+using vj0.API.Models.Base;
+using vj0.API.UEDB.API.Responses;
+
+namespace vj0.API.UEDB.API;
 
 public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitecentral.genxgames.gg")
 {
-    private readonly string _mappingsFolder = Globals.MappingsFolder.FullName;
+    private readonly string _mappingsFolder = Core.Globals.MappingsFolder.FullName;
     
     public async Task<AesResponse?> GetAesAsync(string? url = null, string? version = null, bool useBaseUrl = true)
     {

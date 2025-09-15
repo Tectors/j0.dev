@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Libraries\Core\vj0.Core\vj0.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\..\..\Libraries\API\vj0.API.UEDB\vj0.API.UEDB.csproj" />
+    <ProjectReference Include="..\vj0.Plugins.EpicGames\vj0.Plugins.EpicGames.csproj" />
+  </ItemGroup>
+</Project>

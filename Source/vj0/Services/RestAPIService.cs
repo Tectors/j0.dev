@@ -8,21 +8,17 @@ using RestSharp;
 
 using vj0.Framework;
 using vj0.Models.API;
-using vj0.Core;
-using vj0.Core.Models.API;
 
 namespace vj0.Services;
 
 public class RestAPIService : IService
 {
-    public readonly CentralAPI Central;
     public readonly EpicGamesAPI EpicGames;
     public readonly GitHubAPI GitHub;
-    private RestClient _client => vj0.Core.Globals.RestClient;
+    private RestClient _client => API.Globals.RestClient;
 
     public RestAPIService()
     {
-        Central = new CentralAPI(_client);
         EpicGames = new EpicGamesAPI(_client);
         GitHub = new GitHubAPI(_client);
     }

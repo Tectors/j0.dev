@@ -36,7 +36,6 @@ using vj0.Plugins;
 using vj0.Plugins.Interfaces;
 using vj0.Plugins.Resolvers;
 using vj0.Services.Framework;
-using vj0.Core;
 using vj0.Core.Extensions;
 using vj0.Core.Framework.Base;
 using vj0.Core.Framework.CUEParse;
@@ -337,7 +336,7 @@ public class Profile : BaseProfileDisplay
     
     private async void LoadMappings(CancellationToken cancellationToken = default)
     {
-        var mapping = await RestAPI.Central.FetchMappingAsync(token: cancellationToken);
+        var mapping = await vj0.API.UEDB.Globals.API.FetchMappingAsync(token: cancellationToken);
 
         if (Provider is null) return;
 

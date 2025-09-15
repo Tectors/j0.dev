@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Libraries\Core\vj0.Core\vj0.Core.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\..\..\Libraries\Core\vj0.Core\vj0.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
     
     <!-- Licensed ~~~~~~~~~~~ -->
     <PackageReference Include="JWT" Version="11.0.0-beta3" />

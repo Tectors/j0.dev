@@ -1,10 +1,10 @@
-using System;
 using System.Net;
-using System.Threading.Tasks;
+
 using RestSharp;
+
 using Serilog;
 
-namespace vj0.Core.Models.API.Base;
+namespace vj0.API.Models.Base;
 
 public class APIBase
 {

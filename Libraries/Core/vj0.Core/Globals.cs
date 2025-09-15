@@ -6,8 +6,6 @@ using CUE4Parse.UE4.Objects.Core.Misc;
 using RestSharp;
 using RestSharp.Serializers.NewtonsoftJson;
 
-using vj0.Core.Models.API;
-
 namespace vj0.Core;
 
 public static class Globals
@@ -62,14 +60,4 @@ public static class Globals
 #else
         false;
 #endif
-
-    public static RestClient RestClient { get; } = new(
-        new RestClientOptions
-        {
-            UserAgent = $"{APP_NAME}/{VERSION}"
-        },
-        configureSerialization: s => s.UseSerializer<JsonNetSerializer>());
-    
-    /* API */
-    public static CentralAPI API_Central { get; } = new(RestClient);
 }

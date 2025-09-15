@@ -43,7 +43,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
             API_URL = useGenAPI ? GEN_API_URL + $"?version={Profile.Name}" : GIT_ARCHIVE_URL;
         }
         
-        var aes = await Globals.API_Central.GetAesAsync(API_URL, useBaseUrl: false);
+        var aes = await API.UEDB.Globals.API.GetAesAsync(API_URL, useBaseUrl: false);
 
         if (aes is null)
         {
@@ -103,7 +103,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
         
         if (value >= 15.20)
         {
-            var mapping = await Globals.API_Central.FetchMappingAsync(Profile.Name);
+            var mapping = await API.UEDB.Globals.API.FetchMappingAsync(Profile.Name);
         
             if (mapping is { LocalPath: not null })
             {
