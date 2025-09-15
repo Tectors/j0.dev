@@ -184,8 +184,6 @@
       <Thickness x:Key="ComboBoxDropdownBorderPadding">0</Thickness>
       <Thickness x:Key="ComboBoxDropdownContentMargin">0</Thickness>
       <Thickness x:Key="FrameBorderThickness">1 1 0 0</Thickness>
-      
-      <Thickness x:Key="FrameBorderMargin">0 0 10 10</Thickness>
 
       <!-- ToggleButton Brushes -->
       <SolidColorBrush x:Key="ToggleButtonBackground" Color="Transparent"/>

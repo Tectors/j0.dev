@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -25,8 +26,23 @@ public class PluginService : IService
     {
         try
         {
-            Assembly.Load("vj0.Plugins.Fortnite");
-            Assembly.Load("vj0.Plugins.Valorant");
+            string pluginsPath = Path.Combine(AppContext.BaseDirectory, "Plugins");
+
+            if (Directory.Exists(pluginsPath))
+            {
+                foreach (var pluginFile in Directory.GetFiles(pluginsPath, "vj0.Plugins.*.dll"))
+                {
+                    try
+                    {
+                        Assembly.LoadFrom(pluginFile);
+                        Log.Information($"Loaded plugin assembly: {Path.GetFileName(pluginFile)}");
+                    }
+                    catch (Exception innerEx)
+                    {
+                        Log.Warning($"Failed to load plugin assembly {pluginFile}: {innerEx.Message}");
+                    }
+                }
+            }
         }
         catch (Exception ex)
         {
