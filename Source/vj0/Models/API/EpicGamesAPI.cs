@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 using RestSharp;
 using vj0.Models.API.Responses;
-using vj0.Shared.Models.API.Base;
+using vj0.Core.Models.API.Base;
 
 namespace vj0.Models.API;
 

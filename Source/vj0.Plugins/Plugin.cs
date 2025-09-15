@@ -1,4 +1,4 @@
-﻿namespace vj0.Plugins;
+namespace vj0.Plugins;
 
 public interface IPlugin
 {

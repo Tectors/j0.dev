@@ -1,5 +1,5 @@
-﻿using Serilog;
-using vj0.Shared.Framework.Base;
+using Serilog;
+using vj0.Core.Framework.Base;
 
 namespace vj0.Plugins.Interfaces;
 

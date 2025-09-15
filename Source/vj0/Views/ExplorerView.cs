@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 using Avalonia;
@@ -16,7 +16,7 @@ using FluentAvalonia.UI.Controls;
 
 using vj0.Framework.Models;
 using vj0.Models.Files;
-using vj0.Shared.Extensions;
+using vj0.Core.Extensions;
 using vj0.ViewModels;
 
 namespace vj0.Views;

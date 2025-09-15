@@ -8,7 +8,7 @@ using Avalonia.Threading;
 using Serilog;
 
 using vj0.Services.Framework;
-using vj0.Shared.Models;
+using vj0.Core.Models;
 using vj0.Windows;
 
 namespace vj0.Application;

@@ -13,7 +13,7 @@ using vj0.Framework.Models;
 using vj0.Models;
 using vj0.Models.Profiles;
 using vj0.Services;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 using vj0.WindowModels;
 
 namespace vj0.Windows;

@@ -1,5 +1,5 @@
-﻿global using static vj0.Services.Framework.AppServices;
-global using static vj0.Shared.SharedGlobal;
+global using static vj0.Services.Framework.AppServices;
+global using static vj0.Core.SharedGlobal;
 
 using Avalonia.Platform.Storage;
 
@@ -7,7 +7,7 @@ namespace vj0;
 
 public static class Globals
 {
-    /* future. 🤫 */
+    /* future. ?? */
     public const bool IsReadyToExplore = false;
     public const bool IsReadyToMeshExport = false;
 

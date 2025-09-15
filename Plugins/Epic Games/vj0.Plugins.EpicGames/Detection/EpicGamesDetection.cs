@@ -1,9 +1,9 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 
 using CUE4Parse.UE4.Versions;
 
 using vj0.Plugins.Interfaces;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 
 namespace vj0.Plugins.EpicGames.Detection;
 

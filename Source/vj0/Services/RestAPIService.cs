@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -8,8 +8,8 @@ using RestSharp;
 
 using vj0.Framework;
 using vj0.Models.API;
-using vj0.Shared;
-using vj0.Shared.Models.API;
+using vj0.Core;
+using vj0.Core.Models.API;
 
 namespace vj0.Services;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
@@ -7,8 +7,8 @@ using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using CUE4Parse.UE4.Objects.Core.Misc;
-using vj0.Shared;
-using vj0.Shared.Framework.Base;
+using vj0.Core;
+using vj0.Core.Framework.Base;
 
 namespace vj0.Models.Profiles.Display;
 

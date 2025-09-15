@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Globalization;
 
 using Avalonia.Data.Converters;
 
-using vj0.Shared.Extensions;
+using vj0.Core.Extensions;
 
 namespace vj0.Converters.Enum;
 

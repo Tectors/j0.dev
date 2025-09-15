@@ -1,10 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using vj0.Framework.Models;
 using vj0.Models;
 using vj0.Models.Profiles;
-using vj0.Shared.Framework.Base;
-using vj0.Shared.Utilities;
+using vj0.Core.Framework.Base;
+using vj0.Core.Utilities;
 
 namespace vj0.ViewModels.Profiles.Framework;
 

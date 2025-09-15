@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Avalonia.Media;
 using Avalonia.Threading;

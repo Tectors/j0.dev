@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ using vj0.Models.Enums;
 using vj0.Models.Profiles;
 using vj0.Services;
 using vj0.Services.Framework;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 using vj0.Views;
 using vj0.Views.Profiles;
 
@@ -443,7 +443,7 @@ public partial class MainWindowModel : WindowModelBase
     {
         var details = IsProfileInitialized
             ? $"{CurrentProfile!.Name} {LoadedFilesDisplay}"
-            : $"{CurrentProfile!.Name} â€” Idling";
+            : $"{CurrentProfile!.Name} — Idling";
 
         Discord.UpdateDetails(details);
     }
@@ -455,7 +455,7 @@ public partial class MainWindowModel : WindowModelBase
             var count = ExplorerVM.AssetCount;
             var formattedNumber = FormatNumber(count);
             
-            return $"â€” {formattedNumber} assets";
+            return $"— {formattedNumber} assets";
         }
     }
     

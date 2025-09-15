@@ -1,13 +1,13 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 using Serilog;
 
 using vj0.Plugins.Interfaces;
 using vj0.Plugins.Resolvers;
-using vj0.Shared;
-using vj0.Shared.Extensions;
-using vj0.Shared.Framework.Base;
-using vj0.Shared.Framework.CUEParse;
+using vj0.Core;
+using vj0.Core.Extensions;
+using vj0.Core.Framework.Base;
+using vj0.Core.Framework.CUEParse;
 
 namespace vj0.Plugins.Fortnite.Resolvers;
 

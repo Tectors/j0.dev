@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:versions="clr-namespace:CUE4Parse.UE4.Versions;assembly=CUE4Parse"
-    xmlns:extensions="clr-namespace:vj0.Shared.Extensions;assembly=vj0.Shared"
+    xmlns:extensions="clr-namespace:vj0.Core.Extensions;assembly=vj0.Core"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
 
     x:Class="vj0.Views.Settings.ApplicationSettingsView"

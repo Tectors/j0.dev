@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using vj0.Models.Profiles;
 using vj0.Plugins.Interfaces;
 using vj0.Services.Framework;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 
 namespace vj0.Models;
 

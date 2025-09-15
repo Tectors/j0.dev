@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Source\vj0.Shared\vj0.Shared.csproj" />
+    <ProjectReference Include="..\..\..\Source\vj0.Core\vj0.Core.csproj" />
     <ProjectReference Include="..\..\..\Source\vj0.Plugins\vj0.Plugins.csproj" />
     
     <!-- Licensed ~~~~~~~~~~~ -->

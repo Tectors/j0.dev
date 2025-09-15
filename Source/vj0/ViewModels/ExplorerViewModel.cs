@@ -21,7 +21,7 @@ using ReactiveUI;
 
 using vj0.Framework.Models;
 using vj0.Models.Files;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 
 namespace vj0.ViewModels;
 

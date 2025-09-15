@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 using CUE4Parse_Conversion.Meshes;
 using CUE4Parse_Conversion.Textures;

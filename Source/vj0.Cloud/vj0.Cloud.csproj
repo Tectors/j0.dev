@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <AssemblyName>vj0.Cloud</AssemblyName>
 
@@ -21,7 +21,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj"/>
         <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj"/>
-        <ProjectReference Include="..\vj0.Shared\vj0.Shared.csproj"/>
+        <ProjectReference Include="..\vj0.Core\vj0.Core.csproj"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

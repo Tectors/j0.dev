@@ -1,4 +1,4 @@
-﻿namespace vj0.Models.Profiles.Paks;
+namespace vj0.Models.Profiles.Paks;
 
 public class PakKeyEntry
 {

@@ -1,4 +1,4 @@
-﻿using CUE4Parse_Conversion.Sounds;
+using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
@@ -12,8 +12,8 @@ using Newtonsoft.Json;
 
 using Serilog;
 
-using vj0.Shared.Convertors;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Convertors;
+using vj0.Core.Framework.Base;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* vj0 Cloud Controller */

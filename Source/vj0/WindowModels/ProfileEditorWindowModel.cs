@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -8,8 +8,8 @@ using Microsoft.IdentityModel.Tokens;
 
 using vj0.Converters.Enum;
 using vj0.Models.Profiles;
-using vj0.Shared.Framework.Base;
-using vj0.Shared.Framework.CUEParse;
+using vj0.Core.Framework.Base;
+using vj0.Core.Framework.CUEParse;
 using vj0.ViewModels.ProfileEditor;
 
 namespace vj0.WindowModels;

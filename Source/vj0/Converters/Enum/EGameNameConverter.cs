@@ -1,4 +1,4 @@
-﻿using CUE4Parse.UE4.Versions;
+using CUE4Parse.UE4.Versions;
 
 namespace vj0.Converters.Enum;
 

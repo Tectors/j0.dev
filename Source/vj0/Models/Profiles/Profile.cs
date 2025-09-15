@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -36,10 +36,10 @@ using vj0.Plugins;
 using vj0.Plugins.Interfaces;
 using vj0.Plugins.Resolvers;
 using vj0.Services.Framework;
-using vj0.Shared;
-using vj0.Shared.Extensions;
-using vj0.Shared.Framework.Base;
-using vj0.Shared.Framework.CUEParse;
+using vj0.Core;
+using vj0.Core.Extensions;
+using vj0.Core.Framework.Base;
+using vj0.Core.Framework.CUEParse;
 using vj0.Windows;
 
 namespace vj0.Models.Profiles;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text.Json.Serialization;
 
@@ -8,7 +8,7 @@ using Avalonia.Media.Imaging;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
-using vj0.Shared.Utilities;
+using vj0.Core.Utilities;
 
 namespace vj0.Models.Profiles.Display;
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -9,7 +9,7 @@ using CUE4Parse.UE4.Versions;
 
 using vj0.Converters.Enum;
 using vj0.Models.Profiles.Paks;
-using vj0.Shared.Framework.Base;
+using vj0.Core.Framework.Base;
 using vj0.ViewModels.Profiles.Framework;
 
 namespace vj0.ViewModels.ProfileEditor;
