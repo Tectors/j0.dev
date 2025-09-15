@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{764D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Plugins.Fortnite", "Plugins\Epic Games\vj0.Plugins.Fortnite\vj0.Plugins.Fortnite.csproj", "{C39827A7-DD4E-44F1-AFF9-EE4DD91C2A3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Plugins", "Source\vj0.Plugins\vj0.Plugins.csproj", "{0E55FE74-90AC-454C-88D6-E4986FF6D2A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Plugins", "Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj", "{0E55FE74-90AC-454C-88D6-E4986FF6D2A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Epic Games", "Epic Games", "{F95DB7B9-CFD6-4496-9414-40A75F30E3D0}"
 EndProject
@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Riot", "Riot", "{C7409AF6-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Plugins.Valorant", "Plugins\Riot\vj0.Plugins.Valorant\vj0.Plugins.Valorant.csproj", "{D15B1ED9-27BB-47AD-A3BB-7BBDBB77315D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Core", "Source\vj0.Core\vj0.Core.csproj", "{F259B542-3CB2-490E-B2C7-6CA6BCB6694E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Core", "Libraries\Core\vj0.Core\vj0.Core.csproj", "{F259B542-3CB2-490E-B2C7-6CA6BCB6694E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F2535732-5C74-48DA-953B-67010D753912}"
 EndProject

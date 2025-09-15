@@ -68,9 +68,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
     <ProjectReference Include="..\vj0.Cloud\vj0.Cloud.csproj" />
-    <ProjectReference Include="..\vj0.Core\vj0.Core.csproj"/>
+    <ProjectReference Include="..\..\Libraries\Core\vj0.Core\vj0.Core.csproj"/>
     <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj"/>
     <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj"/>
     <ProjectReference Include="..\..\Plugins\Epic Games\vj0.Plugins.Fortnite\vj0.Plugins.Fortnite.csproj"/>

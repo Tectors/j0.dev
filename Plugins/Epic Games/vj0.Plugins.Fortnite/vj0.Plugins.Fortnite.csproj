@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Source\vj0.Core\vj0.Core.csproj" />
-    <ProjectReference Include="..\..\..\Source\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Core\vj0.Core\vj0.Core.csproj" />
+    <ProjectReference Include="..\..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
     <ProjectReference Include="..\vj0.Plugins.EpicGames\vj0.Plugins.EpicGames.csproj" />
   </ItemGroup>
 
