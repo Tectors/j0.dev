@@ -49,7 +49,7 @@ git clone https://github.com/Tectors/j0.dev --recursive
 ### Update Libraries
 
 ```
-Source\Dependencies\update_libraries.bat
+Dependencies\update_libraries.bat
 ```
 
 ### Update Lisence After Changes
