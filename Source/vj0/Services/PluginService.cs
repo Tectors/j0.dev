@@ -26,6 +26,7 @@ public class PluginService : IService
         try
         {
             Assembly.Load("vj0.Plugins.Fortnite");
+            Assembly.Load("vj0.Plugins.Valorant");
         }
         catch (Exception ex)
         {
