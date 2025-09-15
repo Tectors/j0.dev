@@ -68,7 +68,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\Source\vj0.Plugins\vj0.Plugins.csproj" />
     <ProjectReference Include="..\vj0.Cloud\vj0.Cloud.csproj" />
     <ProjectReference Include="..\vj0.Shared\vj0.Shared.csproj"/>
     <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj"/>

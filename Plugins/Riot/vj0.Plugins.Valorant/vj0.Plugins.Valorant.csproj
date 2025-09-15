@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Source\vj0.Shared\vj0.Shared.csproj" />
-    <ProjectReference Include="..\..\vj0.Plugins\vj0.Plugins.csproj" />
+    <ProjectReference Include="..\..\..\Source\vj0.Plugins\vj0.Plugins.csproj" />
   </ItemGroup>
 
 </Project>
