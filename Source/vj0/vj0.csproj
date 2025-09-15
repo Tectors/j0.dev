@@ -75,7 +75,7 @@
       <ProjectReference Include="..\..\Libraries\API\vj0.API.UEDB\vj0.API.UEDB.csproj"/>
     <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj"/>
     <ProjectReference Include="..\..\Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj"/>
-    <ProjectReference Include="..\..\Plugins\Epic Games\vj0.Plugins.Fortnite\vj0.Plugins.Fortnite.csproj"/>
+    <ProjectReference Include="..\..\Plugins\Branded\Epic Games\vj0.Plugins.Fortnite\vj0.Plugins.Fortnite.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
