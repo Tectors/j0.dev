@@ -117,6 +117,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
                 {
                     Orientation = Orientation.Horizontal,
                     Spacing = 12,
+                    Margin = new Thickness(0, 0, 0, 5),
                     Children =
                     {
                         new ProfileSplashControl(1.5f)

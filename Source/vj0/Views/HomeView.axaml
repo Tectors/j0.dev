@@ -194,6 +194,6 @@
             </Grid>
         </navigation:NavigationFrame>
         
-        <Border Margin="0 0 13 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="90" Height="40"/>
+        <Border Margin="0 0 15 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="90" Height="40"/>
     </Grid>
 </UserControl>

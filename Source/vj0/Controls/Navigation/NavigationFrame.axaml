@@ -11,7 +11,7 @@
                 ClipToBounds="True"
                 BorderThickness="1" 
                 CornerRadius="12"
-                Margin="0 0 13 13"
+                Margin="0 0 15 15"
                 BorderBrush="{DynamicResource BorderBrush}" 
                 Background="{DynamicResource PanelBackgroundBrush}"
                 HorizontalAlignment="Stretch"

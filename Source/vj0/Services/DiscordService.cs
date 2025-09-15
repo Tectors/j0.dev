@@ -109,7 +109,7 @@ public class DiscordService : IService
         if (!_isInitialized || _client is null) return;
         
         var presence = DefaultPresence;
-        presence.Details = Details;
+        presence.Details = Details?.Length > 128 ? Details.Substring(0, 128) : Details;
         
         Log.Information($"Changing presence details to {presence.Details}");
         
