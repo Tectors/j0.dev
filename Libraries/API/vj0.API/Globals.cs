@@ -10,7 +10,7 @@ public static class Globals
     public static RestClient RestClient { get; } = new(
         new RestClientOptions
         {
-            UserAgent = $"{Core.Globals.APP_NAME}/{VERSION}"
+            UserAgent = $"{APP_NAME}/{VERSION}"
         },
         configureSerialization: s => s.UseSerializer<JsonNetSerializer>());
 }

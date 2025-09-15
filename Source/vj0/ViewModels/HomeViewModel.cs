@@ -34,13 +34,13 @@ public class HomeViewModel : ViewModelBase
         "fix scheduled for Q3 1997",
     ];
     
-    public string[] Tips =
+    public readonly string[] Tips =
     [
         "Hover over buttons to see if they have keybinds",
         "Shortcuts make everything faster. Use them",
         "Keyboard shortcuts are your best friend",
-        "This tool is community-driven � feedback matters!",
-        "Check the logs � they're full of secrets"
+        "This tool is community-driven — feedback matters!",
+        "Check the logs — they're full of secrets"
     ];
     
     public async void StartRotation(string[] phrases, int rotateTime, TextBlock textBlock, Control? fadingControl = null!, bool useRandom = false)

@@ -129,13 +129,8 @@ public partial class ScopeView : ViewBase<ScopeViewModel>
 
             if (temp.Count > 1)
             {
-                // ViewModel.SelectFolder(temp[1]);
                 temp[1].Selected = true;
             }
         });
-    }
-
-    private void OnFileItemDoubleTapped(object? sender, TappedEventArgs e)
-    {
     }
 }

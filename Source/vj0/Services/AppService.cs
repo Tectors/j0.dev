@@ -16,7 +16,7 @@ namespace vj0.Services;
 public class AppService : IService
 {
     private IClassicDesktopStyleApplicationLifetime Lifetime = null!;
-    public IClipboard Clipboard => Lifetime.MainWindow!.Clipboard!;
+    private IClipboard Clipboard => Lifetime.MainWindow!.Clipboard!;
 
     public void Initialize(IClassicDesktopStyleApplicationLifetime desktop)
     {

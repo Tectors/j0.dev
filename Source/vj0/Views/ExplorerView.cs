@@ -72,7 +72,7 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
     private static void HandleTreeItemDoubleClick(TreeItem item)
     {
-        if (item.Type == ENodeType.Folder && item.HasFolders)
+        if (item is { Type: ENodeType.Folder, HasFolders: true })
         {
             item.Expanded = !item.Expanded;
         }
@@ -92,11 +92,10 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
             ViewModel.TreeViewCollection.Clear();
             ViewModel.TreeViewCollection.AddRange(temp);
 
-            if (temp.Count > 1)
-            {
-                ViewModel.SelectFolder(temp[1]);
-                temp[1].Selected = true;
-            }
+            if (temp.Count <= 1) return;
+            
+            ViewModel.SelectFolder(temp[1]);
+            temp[1].Selected = true;
         });
     }
 
@@ -113,7 +112,7 @@ public partial class ExplorerView : ViewBase<ExplorerViewModel>
 
     private void FileTree_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
-        if (sender is TreeView treeView && treeView.SelectedItem is TreeItem selectedItem)
+        if (sender is TreeView { SelectedItem: TreeItem selectedItem })
         {
             ViewModel.FlatViewJumpTo(selectedItem.FilePath);
         }

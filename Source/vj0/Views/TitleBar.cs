@@ -44,13 +44,8 @@ public partial class TitleBar : UserControl
 
     private void CopyGitCloneCommand(object? sender, RoutedEventArgs e)
     {
-        if (IS_COMMIT_AVAILABLE)
-        {
-            App.CopyText($"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git checkout {COMMIT} && git submodule update --init --recursive\n");
-        }
-        else
-        {
-            App.CopyText($"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git submodule update --init --recursive\n");
-        }
+        App.CopyText(IS_COMMIT_AVAILABLE
+            ? $"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git checkout {COMMIT} && git submodule update --init --recursive\n"
+            : $"git clone --recurse-submodules {GITHUB_LINK}.git && cd {GITHUB_REPO_NAME} && git submodule update --init --recursive\n");
     }
 }

@@ -56,11 +56,7 @@ public class EnumToRecordConverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        var enumValue = value as Enum;
-        
-        if (enumValue is null) return null!;
-        
-        return new EnumRecord(enumValue, enumValue.GetDescription());
+        return value is not Enum enumValue ? null! : new EnumRecord(enumValue, enumValue.GetDescription());
     }
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -72,7 +68,7 @@ public class EnumToRecordConverter : IValueConverter
 
 public class EnumEqualsConverter : IValueConverter
 {
-    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         var enumValue = value as Enum;
         var compareValue = parameter as Enum;
@@ -80,7 +76,7 @@ public class EnumEqualsConverter : IValueConverter
         return enumValue!.Equals(compareValue);
     }
 
-    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         throw new NotImplementedException();
     }

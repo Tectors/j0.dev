@@ -22,7 +22,7 @@ public static class GradientAnimationService
     public static readonly AttachedProperty<double> AnimationDurationProperty =
         AvaloniaProperty.RegisterAttached<Control, double>("AnimationDuration", typeof(GradientAnimationService), 0.5, inherits: true);
 
-    public static readonly AttachedProperty<int> AnimationStepsProperty =
+    private static readonly AttachedProperty<int> AnimationStepsProperty =
         AvaloniaProperty.RegisterAttached<Control, int>("AnimationSteps", typeof(GradientAnimationService), 100, inherits: true);
     
     private static readonly AttachedProperty<GradientAnimator?> AnimatorInstanceProperty =
@@ -48,8 +48,8 @@ public static class GradientAnimationService
 
     public static double GetAnimationDuration(Control control) => control.GetValue(AnimationDurationProperty);
     public static void SetAnimationDuration(Control control, double value) => control.SetValue(AnimationDurationProperty, value);
-    
-    public static int GetAnimationSteps(Control control) => control.GetValue(AnimationStepsProperty);
+
+    private static int GetAnimationSteps(Control control) => control.GetValue(AnimationStepsProperty);
     public static void SetAnimationSteps(Control control, int value) => control.SetValue(AnimationStepsProperty, value);
 
     private static GradientAnimator? GetAnimatorInstance(Control control) => control.GetValue(AnimatorInstanceProperty);
@@ -105,34 +105,29 @@ public static class GradientAnimationService
     {
         if (GetAnimatorInstance(control) != null) return;
 
-        LinearGradientBrush? targetBrush = null;
-
-        if (control is TextBlock textBlock && textBlock.Foreground is LinearGradientBrush fgBrush)
+        var targetBrush = control switch
         {
-            targetBrush = fgBrush;
-        }
-        else if (control is TemplatedControl templated && templated.Background is LinearGradientBrush bgBrush)
+            TextBlock { Foreground: LinearGradientBrush fgBrush } => fgBrush,
+            TemplatedControl { Background: LinearGradientBrush bgBrush } => bgBrush,
+            _ => null
+        };
+
+        if (targetBrush == null) return;
+        
+        var startColor = GetAnimationStartColor(control);
+        var endColor = GetAnimationEndColor(control);
+        var duration = GetAnimationDuration(control);
+        var steps = GetAnimationSteps(control);
+
+        var animator = new GradientAnimator(targetBrush, startColor, endColor, duration, steps);
+        SetAnimatorInstance(control, animator);
+
+        control.AttachedToVisualTree += Control_AttachedToVisualTree;
+        control.DetachedFromVisualTree += Control_DetachedFromVisualTree;
+
+        if (control.GetVisualRoot() != null)
         {
-            targetBrush = bgBrush;
-        }
-
-        if (targetBrush != null)
-        {
-            var startColor = GetAnimationStartColor(control);
-            var endColor = GetAnimationEndColor(control);
-            var duration = GetAnimationDuration(control);
-            var steps = GetAnimationSteps(control);
-
-            var animator = new GradientAnimator(targetBrush, startColor, endColor, duration, steps);
-            SetAnimatorInstance(control, animator);
-
-            control.AttachedToVisualTree += Control_AttachedToVisualTree;
-            control.DetachedFromVisualTree += Control_DetachedFromVisualTree;
-
-            if (control.GetVisualRoot() != null)
-            {
-                animator.StartAnimation();
-            }
+            animator.StartAnimation();
         }
     }
 

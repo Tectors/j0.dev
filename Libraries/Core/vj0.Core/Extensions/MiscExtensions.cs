@@ -12,19 +12,13 @@ public static class MiscExtensions
         return filters.All(x => input.Contains(x, StringComparison.OrdinalIgnoreCase));
     }
     
-    public static int RemoveAll<T>(this IList<T> list, Predicate<T> predicate)
+    public static void RemoveAll<T>(this IList<T> list, Predicate<T> predicate)
     {
-        var count = 0;
-        
         for (var i = 0; i < list.Count; i++)
         {
             if (!predicate(list[i])) continue;
             
             list.RemoveAt(i);
-                
-            count++;
         }
-
-        return count;
     }
 }

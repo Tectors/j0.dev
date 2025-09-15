@@ -218,6 +218,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         ProfileCardViewModel vm;
         
         if (Globals.HideAllProfileCardInformation)
+#pragma warning disable CS0162 // Unreachable code detected
         {
             var funnyNames = new[]
             {
@@ -252,6 +253,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
             
             vm = GetOrCreateProfileViewModel(newProfile);
         }
+#pragma warning restore CS0162 // Unreachable code detected
         else
         {
             vm = GetOrCreateProfileViewModel(profile);

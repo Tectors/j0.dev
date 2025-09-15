@@ -656,12 +656,14 @@ public class Profile : BaseProfileDisplay
         return (EGame)snapped;
     }
     
-    private async Task InitializeTextureStreaming()
+    private Task InitializeTextureStreaming()
     {
-        if (!TexturesOnDemand) return;
+        if (!TexturesOnDemand) return Task.CompletedTask;
         
         var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
         onDemandPlugin?.Initialize(this);
+        
+        return Task.CompletedTask;
     }
     
     private async Task<string> GetTocPath()
@@ -705,10 +707,8 @@ public class Profile : BaseProfileDisplay
 
     public void OpenEditor(Window window = null!)
     {
-        if (window is null)
-        {
-            window = MainWM.Window;
-        }
+        /* ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract */
+        window ??= MainWM.Window;
 
         var win = new ProfileEditorWindow(this);
         win.CenterToScreen(window);

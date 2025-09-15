@@ -134,15 +134,8 @@ public partial class MainWindowModel : WindowModelBase
     public void OnNavigationItemSelected(Type pageType)
     {
         IsExplorer = pageType == typeof(ExplorerPlaceholder);
-        
-        if (pageType == typeof(ProfileSelectionView))
-        {
-            CurrentToolbarContent = new ProfileSelectionViewToolbar();
-        }
-        else
-        {
-            CurrentToolbarContent = null;
-        }
+
+        CurrentToolbarContent = pageType == typeof(ProfileSelectionView) ? new ProfileSelectionViewToolbar() : null;
     }
 
     public void RequestEditProfile()
@@ -352,7 +345,7 @@ public partial class MainWindowModel : WindowModelBase
         
         var oldTokenSource = LastProfileCancellationTokenSource;
         LastProfileCancellationTokenSource = new CancellationTokenSource();
-        oldTokenSource?.Cancel();
+        _ = oldTokenSource?.CancelAsync()!;
         oldTokenSource?.Dispose();
         
         SetCurrentProfile(profile);

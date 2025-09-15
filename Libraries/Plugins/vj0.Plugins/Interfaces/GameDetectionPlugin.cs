@@ -1,4 +1,5 @@
 using Serilog;
+
 using vj0.Core.Framework.Base;
 
 namespace vj0.Plugins.Interfaces;
@@ -14,14 +15,12 @@ public interface IGameDetectionPlugin : IPlugin
         List<BaseProfile> LoadedProfiles)
     {
         var detectedProfile = detectFunc();
-        if (detectedProfile is not null)
-        {
-            Log.Information($"Detected {detectedProfile.Name} at {detectedProfile.ArchiveDirectory}");
+        if (detectedProfile is null) return Task.CompletedTask;
+        
+        Log.Information($"Detected {detectedProfile.Name} at {detectedProfile.ArchiveDirectory}");
 
-            LoadedProfiles.Add(detectedProfile);
-
-            onDetected?.Invoke(detectedProfile);
-        }
+        LoadedProfiles.Add(detectedProfile);
+        onDetected?.Invoke(detectedProfile);
 
         return Task.CompletedTask;
     }

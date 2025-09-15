@@ -33,12 +33,15 @@ public partial class EncryptionContainer : ObservableValidator
         return new EncryptionContainer
         {
             MainKey = MainKey,
-            Keys = new List<EncryptionKey>(Keys.Select(k => new EncryptionKey
-            {
-                Name = k.Name,
-                Key = k.Key,
-                Guid = k.Guid
-            }))
+            Keys =
+            [
+                ..Keys.Select(k => new EncryptionKey
+                {
+                    Name = k.Name,
+                    Key = k.Key,
+                    Guid = k.Guid
+                })
+            ]
         };
     }
 

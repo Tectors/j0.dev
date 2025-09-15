@@ -18,7 +18,10 @@ public partial class CloudWebAPI : ObservableObject
     [ObservableProperty] private bool hasErrored;
     
     public event Action<string, string, string>? OnError;
+    
+#pragma warning disable CS0067 // Event is never used
     public event Action<string>? OnInitialized;
+#pragma warning restore CS0067 // Event is never used
     
     public async Task Run()
     {

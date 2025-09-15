@@ -44,7 +44,7 @@ public partial class TreeItem : ObservableObject
     private IBrush? _itemBrush;
     public IBrush ItemBrush => _itemBrush ??= GetItemBrush();
 
-    public IBrush GetItemBrush()
+    private IBrush GetItemBrush()
     {
         return Name switch
         {

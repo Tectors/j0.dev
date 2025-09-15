@@ -66,13 +66,8 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
         var newKeys = new List<EncryptionKey>();
         var dynamicGUIDs = new HashSet<string>();
 
-        foreach (var key in aes.DynamicKeys)
+        foreach (var key in aes.DynamicKeys.Where(key => EncryptionKey.IsValidKey(key.Key)))
         {
-            if (!EncryptionKey.IsValidKey(key.Key))
-            {
-                continue;
-            }
-
             newKeys.Add(key);
             dynamicGUIDs.Add(key.Guid);
         }

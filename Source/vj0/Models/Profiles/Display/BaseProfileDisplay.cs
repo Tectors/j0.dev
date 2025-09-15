@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using CUE4Parse.UE4.Objects.Core.Misc;
-using vj0.Core;
+
 using vj0.Core.Framework.Base;
 
 namespace vj0.Models.Profiles.Display;
@@ -66,7 +66,7 @@ public partial class BaseProfileDisplay : BaseProfile {
     }
     
     /* Used to display existing Pak Files */
-    public List<BasePakFileEntry> PakFileEntries { get; set; } = [];
+    public List<BasePakFileEntry> PakFileEntries { get; protected set; } = [];
 
     protected List<BasePakFileEntry> GetPakFiles()
     {

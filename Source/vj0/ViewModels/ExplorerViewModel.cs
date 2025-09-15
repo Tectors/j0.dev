@@ -83,6 +83,7 @@ public partial class ExplorerViewModel : ViewModelBase
     {
         if (!Globals.IsReadyToExplore) return base.Initialize();
 
+#pragma warning disable CS0162 // Unreachable code detected
         var assetFilter = this
             .WhenAnyValue(x => x.SearchFilter, x => x.UseRegex)
             .Throttle(TimeSpan.FromMilliseconds(150))
@@ -105,12 +106,14 @@ public partial class ExplorerViewModel : ViewModelBase
         ViewCollection = flatCollection;
 
         return base.Initialize();
+#pragma warning restore CS0162 // Unreachable code detected
     }
 
     public async Task FinalizeWhenProviderExplorerReady(Func<bool>? cancellationCheck = null)
     {
         if (!Globals.IsReadyToExplore) return;
 
+#pragma warning disable CS0162 // Unreachable code detected
         Loading = true;
 
         var fileTiles = Provider.Files
@@ -129,6 +132,7 @@ public partial class ExplorerViewModel : ViewModelBase
         await BuildTreeAsync();
         
         Loading = false;
+#pragma warning restore CS0162 // Unreachable code detected
     }
 
     public async Task BuildTreeAsync(IReadOnlyDictionary<string, GameFile> files = null!)

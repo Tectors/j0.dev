@@ -17,7 +17,7 @@ namespace vj0.ViewModels;
 
 public partial class ScopeViewModel : ViewModelBase
 {
-    public ObservableCollection<ScopeTile> Files { get; } = new();
+    public ObservableCollection<ScopeTile> Files { get; } = [];
     
     [ObservableProperty] private ObservableCollection<FileTile> _selectedItems = [];
     [ObservableProperty] private ObservableCollection<TreeItem> _selectedTreeItems = [];

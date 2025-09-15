@@ -8,7 +8,7 @@ namespace vj0.API.Models.Base;
 
 public class APIBase
 {
-    private string BaseURL = string.Empty;
+    private readonly string BaseURL = string.Empty;
 
     private readonly RestClient _client;
 

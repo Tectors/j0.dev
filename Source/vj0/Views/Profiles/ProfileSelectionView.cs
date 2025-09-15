@@ -138,7 +138,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
                 {
                     if (profile.FileName is not null && ViewModel.CardMap.TryGetValue(profile.FileName, out var cardToRemove))
                     {
-                        var border = Enumerable.OfType<Border>(ProfileListPanel!.Children).FirstOrDefault(c => c.Child == cardToRemove);
+                        var border = ProfileListPanel!.Children.OfType<Border>().FirstOrDefault(c => c.Child == cardToRemove);
                         if (border is not null)
                         {
                             ProfileListPanel.Children.Remove(border);

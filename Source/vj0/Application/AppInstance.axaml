@@ -92,7 +92,6 @@
   
   <Application.Resources>
     <ResourceDictionary>
-      <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
       <extensions:EnumToRecordConverter x:Key="EnumToRecord"/>
       <extensions:EnumEqualsConverter x:Key="EnumEquals" />
       <converters:MultiplyConverter x:Key="MultiplyConverter" />
@@ -235,7 +234,6 @@
       <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
       <SolidColorBrush x:Key="TopNavigationViewItemForegroundDisabled" Color="Transparent"/>
       <x:Double x:Key="NavigationViewItemOnLeftIconBoxHeight">20</x:Double>
-      <converters:ForegroundExpandedConverter x:Key="ForegroundExpandedConverter" />
       
       <LinearGradientBrush x:Key="TreeViewItemSelectedGradient" StartPoint="0%,0%" EndPoint="100%,0%">
         <GradientStop Color="#1f66ff" Offset="0.1"/>

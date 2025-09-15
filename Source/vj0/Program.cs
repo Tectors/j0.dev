@@ -1,4 +1,5 @@
 using Avalonia;
+
 using System;
 using System.Threading;
 

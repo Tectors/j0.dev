@@ -32,7 +32,7 @@ public interface IEpicGamesDetection : IGameDetectionPlugin
 
     private class LauncherInstalled
     {
-        public Installation[]? InstallationList { get; set; }
+        public Installation[]? InstallationList { get; init; }
     }
 
     /* ReSharper disable once ClassNeverInstantiated.Local */

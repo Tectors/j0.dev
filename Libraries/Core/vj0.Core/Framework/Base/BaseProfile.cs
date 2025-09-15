@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Text.RegularExpressions;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -28,7 +27,7 @@ public enum EAudioFormatType
 public partial class BaseProfile : ObservableValidator
 {
     /* The LATEST Schema Version */
-    public static int LatestSchemaVersion = 1;
+    private static readonly int LatestSchemaVersion = 1;
     
     /* This Profile's last saved Schema Version */
     [ObservableProperty] private int _schemaVersion = -1;
@@ -121,7 +120,7 @@ public partial class BaseProfile : ObservableValidator
     public bool IsNotInitializedAndIsActive => !IsInitialized && Status.State == EProfileStatus.Active;
     
     /* For using more than one profile */
-    [JsonIgnore] public List<string> SecondaryAssetTypes { get; init; } = [];
+    [JsonIgnore] public List<string> SecondaryAssetTypes { get; protected init; } = [];
 
     public void CheckStatusNotifies()
     {

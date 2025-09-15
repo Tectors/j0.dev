@@ -26,8 +26,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         OnClose?.Invoke();
     }
 
-    [ObservableProperty]
-    public bool _hasArchiveResolver = false;
+    [ObservableProperty] private bool _hasArchiveResolver;
 
     /* ~~~ Observable Properties ~~~ */
     [ObservableProperty] 

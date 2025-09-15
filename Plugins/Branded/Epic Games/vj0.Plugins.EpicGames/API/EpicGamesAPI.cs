@@ -1,4 +1,5 @@
 using RestSharp;
+
 using vj0.API.Models.Base;
 using vj0.Plugins.EpicGames.API.Responses;
 

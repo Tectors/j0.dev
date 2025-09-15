@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
+
 using Serilog;
 
 namespace vj0.Core.Extensions;
