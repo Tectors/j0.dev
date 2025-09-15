@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Libraries\API\vj0.API\vj0.API.csproj" />
     <ProjectReference Include="..\..\..\..\Libraries\Core\vj0.Core\vj0.Core.csproj" />
     <ProjectReference Include="..\..\..\..\Libraries\Plugins\vj0.Plugins\vj0.Plugins.csproj" />
     

@@ -43,10 +43,16 @@ public partial class ProfileSelectionViewModel : ViewModelBase
     }
     
     private bool hasAttemptedRecentProfileLoad;
+    private bool hasLoadedProfiles;
     
     public async Task RefreshAllAsync()
     {
-        await LoadAll();
+        if (!hasLoadedProfiles)
+        {
+            await LoadAll();
+            
+            hasLoadedProfiles = true;
+        }
         
         if (AppServices.Settings.Application.LoadRecentProfileOnLaunch && MainWM.CurrentProfile is null && !hasAttemptedRecentProfileLoad)
         {

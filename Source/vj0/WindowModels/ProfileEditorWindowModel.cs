@@ -48,9 +48,9 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         {
             if (e.PropertyName == nameof(Profile))
             {
-                OnProfileChanged(); }
+                OnProfileChanged();
+            }
         };
-        
     }
     
     /* ~~~ Events ~~~ */

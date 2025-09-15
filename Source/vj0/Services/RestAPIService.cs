@@ -13,13 +13,11 @@ namespace vj0.Services;
 
 public class RestAPIService : IService
 {
-    public readonly EpicGamesAPI EpicGames;
     public readonly GitHubAPI GitHub;
     private RestClient _client => API.Globals.RestClient;
 
     public RestAPIService()
     {
-        EpicGames = new EpicGamesAPI(_client);
         GitHub = new GitHubAPI(_client);
     }
 

@@ -443,7 +443,7 @@ public partial class MainWindowModel : WindowModelBase
     {
         var details = IsProfileInitialized
             ? $"{CurrentProfile!.Name} {LoadedFilesDisplay}"
-            : $"{CurrentProfile!.Name} — Idling";
+            : $"{CurrentProfile!.Name} â€” Idling";
 
         Discord.UpdateDetails(details);
     }
@@ -455,7 +455,7 @@ public partial class MainWindowModel : WindowModelBase
             var count = ExplorerVM.AssetCount;
             var formattedNumber = FormatNumber(count);
             
-            return $"— {formattedNumber} assets";
+            return $"â€” {formattedNumber} assets";
         }
     }
     

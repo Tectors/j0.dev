@@ -9,7 +9,6 @@ using CUE4Parse.UE4.Versions;
 using FluentAvalonia.UI.Media.Animation;
 
 using vj0.Framework.Models;
-using vj0.Models.API.Responses;
 
 namespace vj0.ViewModels.Settings;
 
@@ -25,8 +24,6 @@ public partial class ApplicationSettingsViewModel : ViewModelBase
     
     [ObservableProperty] private bool _showDebugData = true;
     
-    [ObservableProperty] private EpicAuthResponse? _epicAuth;
-
     [JsonIgnore] public NavigationTransitionInfo Transition => UseTabTransitions
         ? new SlideNavigationTransitionInfo()
         : new SuppressNavigationTransitionInfo();

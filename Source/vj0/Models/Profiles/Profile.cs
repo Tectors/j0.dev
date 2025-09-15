@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -17,10 +16,8 @@ using CommunityToolkit.Mvvm.Input;
 using CUE4Parse.MappingsProvider;
 using CUE4Parse.UE4.AssetRegistry;
 using CUE4Parse.UE4.AssetRegistry.Objects;
-using CUE4Parse.UE4.IO;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.UE4.VirtualFileSystem;
-using CUE4Parse.Utils;
 
 using FluentAvalonia.UI.Controls;
 
@@ -39,6 +36,7 @@ using vj0.Services.Framework;
 using vj0.Core.Extensions;
 using vj0.Core.Framework.Base;
 using vj0.Core.Framework.CUEParse;
+using vj0.Plugins.OnDemand;
 using vj0.Windows;
 
 namespace vj0.Models.Profiles;
@@ -63,7 +61,10 @@ public class Profile : BaseProfileDisplay
 
     public async Task ResolveDataFromArchives(bool Voluntary)
     {
-        ResolvePluginHandler();
+        if (Plugins.Count == 0)
+        {
+            ResolvePluginHandler();
+        }
         
         foreach (var Plugin in Plugins)
         {
@@ -101,9 +102,13 @@ public class Profile : BaseProfileDisplay
         ExplorerVM.Reset();
         ScopeVM.Reset();
 
-        if (AutoDetectedGameId == "Fortnite")
-        {
-            await RestAPI.EpicGames.VerifyAuthAsync();
+        if (TexturesOnDemand) {
+            var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
+
+            if (onDemandPlugin != null)
+            {
+                onDemandPlugin.PreInitialize();
+            }
         }
 
         CheckStatusNotifies();
@@ -200,14 +205,9 @@ public class Profile : BaseProfileDisplay
 
     public void SetLanguage(ELanguage language)
     {
-        if (!Provider.TryChangeCulture(Provider.GetLanguageCode(language)))
-        {
-            Log.Information($"Failed to load language \"{language.GetDescription()}\"");
-        }
-        else
-        {
-            Log.Information($"Changed profile's provider language to \"{language.GetDescription()}\"");
-        }
+        Log.Information(!Provider.TryChangeCulture(Provider.GetLanguageCode(language))
+            ? $"Failed to load language \"{language.GetDescription()}\""
+            : $"Changed profile's provider language to \"{language.GetDescription()}\"");
     }
 
     public void InitializeCache(bool shouldSave = true)
@@ -349,14 +349,7 @@ public class Profile : BaseProfileDisplay
 
         if (!MappingsContainer.Override && string.IsNullOrEmpty(MappingFile) || !File.Exists(MappingFile))
         {
-            if (mapping is { LocalPath: not null })
-            {
-                MappingFile = mapping.LocalPath;
-            }
-            else
-            {
-                MappingFile = GetLocallyRecentCreatedMappings();
-            }
+            MappingFile = mapping is { LocalPath: not null } ? mapping.LocalPath : GetLocallyRecentCreatedMappings();
         }
         
         if (cancellationToken.IsCancellationRequested)
@@ -418,9 +411,11 @@ public class Profile : BaseProfileDisplay
     public async Task Save()
     {
         if (Globals.HideAllProfileCardInformation)
+#pragma warning disable CS0162 // Unreachable code detected
         {
             return;
         }
+#pragma warning restore CS0162 // Unreachable code detected
         
         Directory.CreateDirectory(ProfilesFolder.ToString());
 
@@ -663,36 +658,10 @@ public class Profile : BaseProfileDisplay
     
     private async Task InitializeTextureStreaming()
     {
-        if (!TexturesOnDemand || !IsAutoDetected) return;
+        if (!TexturesOnDemand) return;
         
-        try
-        {
-            var tocPath = await GetTocPath();
-            if (string.IsNullOrEmpty(tocPath)) return;
-
-            var tocName = tocPath.SubstringAfterLast("/");
-            var onDemandFile = new FileInfo(Path.Combine(OnDemandFolder.FullName, tocName));
-            if (!onDemandFile.Exists || onDemandFile.Length == 0)
-            {
-                await RestAPI.DownloadFileAsync($"https://download.epicgames.com/{tocPath}", onDemandFile.FullName);
-            }
-
-            var options = new IoStoreOnDemandOptions
-            {
-                ChunkBaseUri = new Uri("https://download.epicgames.com/ias/fortnite/", UriKind.Absolute),
-                ChunkCacheDirectory = OnDemandFolder,
-                Authorization = new AuthenticationHeaderValue("Bearer", Settings.Application.EpicAuth?.Token),
-                Timeout = TimeSpan.FromSeconds(10)
-            };
-
-            var chunkToc = new IoChunkToc(onDemandFile);
-            await Provider.RegisterVfs(chunkToc, options);
-            await Provider.MountAsync();
-        }
-        catch (Exception)
-        {
-            Log.Information("Failed to Initialize Texture Streaming");
-        }
+        var onDemandPlugin = Plugins.OfType<IOnDemandPlugin>().FirstOrDefault();
+        onDemandPlugin?.Initialize(this);
     }
     
     private async Task<string> GetTocPath()

@@ -1,11 +1,8 @@
-using System.Threading.Tasks;
-
 using RestSharp;
-
 using vj0.API.Models.Base;
-using vj0.Models.API.Responses;
+using vj0.Plugins.EpicGames.API.Responses;
 
-namespace vj0.Models.API;
+namespace vj0.Plugins.EpicGames.API;
 
 public class EpicGamesAPI(RestClient client) : APIBase(client)
 {
@@ -26,12 +23,12 @@ public class EpicGamesAPI(RestClient client) : APIBase(client)
     {
         var auth = await ExecuteAsync<EpicAuthResponse>(OATH_VERIFY_URL, parameters:
         [
-            new HeaderParameter("Authorization", $"bearer {Settings.Application.EpicAuth?.Token}")
+            new HeaderParameter("Authorization", $"bearer {Globals.EpicAuth?.Token}")
         ]);
 
         if (auth is null)
         {
-            Settings.Application.EpicAuth = await GetAuthTokenAsync();
+            Globals.EpicAuth = await GetAuthTokenAsync();
         }
     }
 }

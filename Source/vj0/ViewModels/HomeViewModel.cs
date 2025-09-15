@@ -15,13 +15,13 @@ public class HomeViewModel : ViewModelBase
     public readonly string[] TagLines =
     [
         "the ultimate datamining experience",
-        "buy us some time (and coffee ?)",
+        "buy us some time (and coffee â˜•)",
         "developed by a dedicated community of contributors",
         "powered by Avalonia and CUEParse",
         "bringing clarity to the chaos",
         "look closer.",
         "accidentally pushed into prod",
-        "developed with a LOT of coffee ?",
+        "developed with a LOT of coffee â˜•",
         "powered by frustration and breakthroughs",
         "we speak fluent .uasset",
         "we lost the documentation years ago",
@@ -39,8 +39,8 @@ public class HomeViewModel : ViewModelBase
         "Hover over buttons to see if they have keybinds",
         "Shortcuts make everything faster. Use them",
         "Keyboard shortcuts are your best friend",
-        "This tool is community-driven — feedback matters!",
-        "Check the logs — they're full of secrets"
+        "This tool is community-driven ï¿½ feedback matters!",
+        "Check the logs ï¿½ they're full of secrets"
     ];
     
     public async void StartRotation(string[] phrases, int rotateTime, TextBlock textBlock, Control? fadingControl = null!, bool useRandom = false)
