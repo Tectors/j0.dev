@@ -9,7 +9,7 @@ namespace vj0.Plugins.EpicGames.Detection;
 
 public interface IEpicGamesDetection : IGameDetectionPlugin
 {
-    public static BaseProfile? DetectGame(string appName, string pakPath, EGame version, EDetectedGameId gameId)
+    public static BaseProfile? DetectGame(string appName, string pakPath, EGame version, string gameId)
     {
         var launcherPath = GetLauncherInstalledPath();
         if (launcherPath is null) return null;

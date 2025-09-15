@@ -38,6 +38,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         
             await GameDetection.LoadAllAsync();
             GameDetection.DetectAllProfilesAsync();
+            GameDetection.UpdateSchemaVersions();
         }
     }
     

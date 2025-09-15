@@ -4,7 +4,6 @@ using Serilog;
 
 using vj0.Plugins.Interfaces;
 using vj0.Plugins.Resolvers;
-using vj0.Core;
 using vj0.Core.Extensions;
 using vj0.Core.Framework.Base;
 using vj0.Core.Framework.CUEParse;
@@ -14,7 +13,7 @@ namespace vj0.Plugins.Fortnite.Resolvers;
 public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGameIdPlugin
 {
     public string Name => "Fortnite Archive Resolver";
-    public EDetectedGameId GameId => EDetectedGameId.Fortnite;
+    public string GameId => "Fortnite";
     
     public bool DoesCharacteristicsMatch(BaseProfile Profile)
     {

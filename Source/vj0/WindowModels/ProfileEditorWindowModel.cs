@@ -10,6 +10,7 @@ using vj0.Converters.Enum;
 using vj0.Models.Profiles;
 using vj0.Core.Framework.Base;
 using vj0.Core.Framework.CUEParse;
+using vj0.Plugins.Resolvers;
 using vj0.ViewModels.ProfileEditor;
 
 namespace vj0.WindowModels;
@@ -24,6 +25,9 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
     {
         OnClose?.Invoke();
     }
+
+    [ObservableProperty]
+    public bool _hasArchiveResolver = false;
 
     /* ~~~ Observable Properties ~~~ */
     [ObservableProperty] 
@@ -44,9 +48,9 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         {
             if (e.PropertyName == nameof(Profile))
             {
-                OnProfileChanged();
-            }
+                OnProfileChanged(); }
         };
+        
     }
     
     /* ~~~ Events ~~~ */
@@ -112,6 +116,9 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         OnPropertyChanged(nameof(ShowEncryptionTab));
         
         TitleBarText = Profile!.IsNameEmpty ? "New Profile" : $"Editing {Profile.Name}";
+        
+        Profile.ResolvePluginHandler();
+        HasArchiveResolver = Profile!.Plugins.Any(p => p is IArchiveResolverPlugin);
     }
 
     public void Save()

@@ -46,7 +46,7 @@ namespace vj0.Models.Profiles;
 public class Profile : BaseProfileDisplay
 {
     [JsonIgnore] public List<IPlugin> Plugins = [];
-
+    
     public void ResolvePluginHandler()
     {
         Plugins = [];
@@ -101,7 +101,7 @@ public class Profile : BaseProfileDisplay
         ExplorerVM.Reset();
         ScopeVM.Reset();
 
-        if (AutoDetectedGameId == EDetectedGameId.Fortnite)
+        if (AutoDetectedGameId == "Fortnite")
         {
             await RestAPI.EpicGames.VerifyAuthAsync();
         }
@@ -569,6 +569,7 @@ public class Profile : BaseProfileDisplay
                 }
                 
                 profileSetting.EnableDisplayLinks = true;
+                profileSetting.ResolvePluginHandler();
                 
                 Log.Information($"Loaded Profile {profileSetting.Name}");
 

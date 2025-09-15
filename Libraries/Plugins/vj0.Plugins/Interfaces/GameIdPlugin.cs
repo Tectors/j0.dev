@@ -4,7 +4,7 @@ namespace vj0.Plugins.Interfaces;
 
 public interface IGameIdPlugin : IGamePlugin
 {
-    EDetectedGameId GameId => EDetectedGameId.None;
+    string GameId => string.Empty;
 
     bool IGamePlugin.DoesInherentlyMatch(BaseProfile profile) => profile.AutoDetectedGameId == GameId;
 }

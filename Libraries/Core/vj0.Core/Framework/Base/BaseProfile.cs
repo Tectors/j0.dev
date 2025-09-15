@@ -14,13 +14,6 @@ using vj0.Core.Validators;
 
 namespace vj0.Core.Framework.Base;
 
-public enum EDetectedGameId
-{
-    None,
-    Fortnite,
-    Valorant
-}
-
 public enum EAudioFormatType
 {
     [Description("Decompressed Data")]
@@ -34,6 +27,19 @@ public enum EAudioFormatType
 /* This class is used by both vj0.Cloud and vj0 */
 public partial class BaseProfile : ObservableValidator
 {
+    /* The LATEST Schema Version */
+    public static int LatestSchemaVersion = 1;
+    
+    /* This Profile's last saved Schema Version */
+    [ObservableProperty] private int _schemaVersion = -1;
+    
+    public BaseProfile()
+    {
+        UpdateSchemaVersion();
+    }
+
+    public void UpdateSchemaVersion() => SchemaVersion = LatestSchemaVersion;
+    
     [NotifyDataErrorInfo]
     [Required(ErrorMessage = "Profile Name is required.")]
     [ObservableProperty] 
@@ -77,17 +83,10 @@ public partial class BaseProfile : ObservableValidator
     /* Detection ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsAutoDetected))]
-    [NotifyPropertyChangedFor(nameof(IsArchivedGame))]
-    private EDetectedGameId _autoDetectedGameId = EDetectedGameId.None;
-
-    [JsonIgnore]
-    public bool IsAutoDetected => AutoDetectedGameId != EDetectedGameId.None;
+    private string _autoDetectedGameId = string.Empty;
     
     [JsonIgnore]
-    public bool IsArchivedGame =>
-        !IsAutoDetected
-        && ArchiveDirectory.Contains("Fortnite")
-        && Regex.IsMatch(Name, @"^\d+\.\d+(\.\d+)?$");
+    public bool IsAutoDetected => AutoDetectedGameId != string.Empty;
     
     [JsonIgnore]
     public bool IsNameEmpty => string.IsNullOrEmpty(Name);

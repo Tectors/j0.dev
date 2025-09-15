@@ -8,7 +8,7 @@ public interface IGameDetectionPlugin : IPlugin
     void Detect(List<BaseProfile> LoadedProfiles, Action<BaseProfile>? onDetected = null);
     
     public static Task TryDetectGameAsync(
-        EDetectedGameId gameId,
+        string gameId,
         Func<BaseProfile?> detectFunc,
         Action<BaseProfile>? onDetected,
         List<BaseProfile> LoadedProfiles)

@@ -12,8 +12,8 @@ public sealed class FortniteProfileDetectionPlugin : IEpicGamesDetection
     public async void Detect(List<BaseProfile> LoadedProfiles, Action<BaseProfile>? onDetected = null)
     {
         await IEpicGamesDetection.TryDetectGameAsync(
-            gameId: EDetectedGameId.Fortnite,
-            detectFunc: () => IEpicGamesDetection.DetectGame("Fortnite", @"\FortniteGame\Content\Paks", EGame.GAME_UE5_LATEST, EDetectedGameId.Fortnite),
+            gameId: "Fortnite",
+            detectFunc: () => IEpicGamesDetection.DetectGame("Fortnite", @"\FortniteGame\Content\Paks", EGame.GAME_UE5_LATEST, "Fortnite"),
             onDetected,
             LoadedProfiles
         );

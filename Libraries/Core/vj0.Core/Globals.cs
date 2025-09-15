@@ -3,9 +3,6 @@ using System.IO;
 
 using CUE4Parse.UE4.Objects.Core.Misc;
 
-using RestSharp;
-using RestSharp.Serializers.NewtonsoftJson;
-
 namespace vj0.Core;
 
 public static class Globals

@@ -12,16 +12,16 @@ public sealed class ValorantProfileDetectionPlugin : IGameDetectionPlugin
     public async void Detect(List<BaseProfile> LoadedProfiles, Action<BaseProfile>? onDetected = null)
     {
         await IGameDetectionPlugin.TryDetectGameAsync(
-            gameId: EDetectedGameId.Valorant,
+            gameId: "Valorant",
             detectFunc: () =>
-                DetectValorantGame("VALORANT", @"\ShooterGame\Content\Paks", EGame.GAME_Valorant, EDetectedGameId.Valorant),
+                DetectValorantGame("VALORANT", @"\ShooterGame\Content\Paks", EGame.GAME_Valorant, "Valorant"),
             onDetected,
             LoadedProfiles
         );
     }
     
 #pragma warning disable CA1416
-    private static BaseProfile? DetectValorantGame(string appName, string pakPath, EGame version, EDetectedGameId gameId)
+    private static BaseProfile? DetectValorantGame(string appName, string pakPath, EGame version, string gameId)
     {
         try
         {

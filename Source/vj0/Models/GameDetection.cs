@@ -51,7 +51,7 @@ public static class GameDetection
         foreach (var profile in profileList)
         {
             var existingProfile = LoadedProfiles.FirstOrDefault(p => p.AutoDetectedGameId == profile.AutoDetectedGameId);
-            if (existingProfile is not null)
+            if (existingProfile is not null && existingProfile.SchemaVersion != -1)
             {
                 continue;
             }
@@ -60,6 +60,15 @@ public static class GameDetection
             LoadedProfiles.Add(profile);
 
             onDetected?.Invoke(profile);
+        }
+    }
+
+    public static void UpdateSchemaVersions()
+    {
+        foreach (var profile in LoadedProfiles)
+        {
+            profile.UpdateSchemaVersion();
+            _ = profile.Save();
         }
     }
 }
