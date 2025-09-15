@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vj0.Cloud", "Source\vj0.Clo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0.Shared", "Source\vj0.Shared\vj0.Shared.csproj", "{8C5CD8A1-1728-44D5-817D-897A5041E46F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUE4Parse", "Source\Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj", "{E5ACCA01-3D7E-460A-AAAB-C8C03FB1FE0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUE4Parse", "Dependencies\CUE4Parse\CUE4Parse\CUE4Parse.csproj", "{E5ACCA01-3D7E-460A-AAAB-C8C03FB1FE0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUE4Parse-Conversion", "Source\Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj", "{68C4EBD1-973C-4082-A2E2-D5E33FD4993D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUE4Parse-Conversion", "Dependencies\CUE4Parse\CUE4Parse-Conversion\CUE4Parse-Conversion.csproj", "{68C4EBD1-973C-4082-A2E2-D5E33FD4993D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vj0", "Source\vj0\vj0.csproj", "{A44CCAAB-2363-4DBE-8F69-1D60B890DF4E}"
 EndProject
