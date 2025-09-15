@@ -12,7 +12,7 @@ namespace vj0.Core.Models.API;
 
 public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitecentral.genxgames.gg")
 {
-    private readonly string _mappingsFolder = SharedGlobal.MappingsFolder.FullName;
+    private readonly string _mappingsFolder = Globals.MappingsFolder.FullName;
     
     public async Task<AesResponse?> GetAesAsync(string? url = null, string? version = null, bool useBaseUrl = true)
     {

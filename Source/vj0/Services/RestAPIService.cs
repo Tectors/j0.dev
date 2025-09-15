@@ -18,7 +18,7 @@ public class RestAPIService : IService
     public readonly CentralAPI Central;
     public readonly EpicGamesAPI EpicGames;
     public readonly GitHubAPI GitHub;
-    private RestClient _client => SharedGlobal.RestClient;
+    private RestClient _client => vj0.Core.Globals.RestClient;
 
     public RestAPIService()
     {

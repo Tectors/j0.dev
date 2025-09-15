@@ -54,7 +54,7 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
-                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}" IsVisible="{x:Static vj0.Core:SharedGlobal.IS_DEBUG}">
+                <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}" IsVisible="{x:Static vj0.Core:Globals.IS_DEBUG}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Beaker" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>

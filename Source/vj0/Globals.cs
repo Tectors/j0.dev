@@ -1,5 +1,5 @@
 global using static vj0.Services.Framework.AppServices;
-global using static vj0.Core.SharedGlobal;
+global using static vj0.Core.Globals;
 
 using Avalonia.Platform.Storage;
 

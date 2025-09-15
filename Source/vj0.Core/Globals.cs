@@ -10,7 +10,7 @@ using vj0.Core.Models.API;
 
 namespace vj0.Core;
 
-public static class SharedGlobal
+public static class Globals
 {
     /* Format: 0.0.0 */
     public const string VERSION = "0.0.2";

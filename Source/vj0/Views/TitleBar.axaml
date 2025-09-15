@@ -123,9 +123,9 @@
                                 </Border>
 
                                 <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="2">
-                                    <TextBlock FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static vj0.Core:SharedGlobal.VERSION}"/>
-                                    <TextBlock IsVisible="{x:Static vj0.Core:SharedGlobal.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static vj0.Core:SharedGlobal.COMMIT}"/>
-                                    <TextBlock IsVisible="{x:Static vj0.Core:SharedGlobal.IS_COMMIT_UNAVAILABLE}" FontSize="12" Opacity="0.5" Text="unknown commit"/>
+                                    <TextBlock FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{x:Static vj0.Core:Globals.VERSION}"/>
+                                    <TextBlock IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" FontSize="12" Opacity="0.5" Text="{x:Static vj0.Core:Globals.COMMIT}"/>
+                                    <TextBlock IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_UNAVAILABLE}" FontSize="12" Opacity="0.5" Text="unknown commit"/>
                                 </StackPanel>
                             </StackPanel>
                             
@@ -148,7 +148,7 @@
                                             <TextBlock>
                                                 - Clones this repo
                                             </TextBlock>
-                                            <TextBlock IsVisible="{x:Static vj0.Core:SharedGlobal.IS_COMMIT_AVAILABLE}">
+                                            <TextBlock IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}">
                                                 - Checks out this commit
                                             </TextBlock>
                                             <TextBlock>
@@ -171,7 +171,7 @@
                                     <avalonia1:MaterialIcon Kind="Git"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0.Core:SharedGlobal.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
+                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
                                     <Button.Resources>
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
@@ -215,7 +215,7 @@
                            Height="9"
                            Margin="2 2 2 0"/>
                     
-                    <TextBlock FontFamily="Consolas" FontWeight="DemiBold" Text="{x:Static vj0.Core:SharedGlobal.VERSION}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
+                    <TextBlock FontFamily="Consolas" FontWeight="DemiBold" Text="{x:Static vj0.Core:Globals.VERSION}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
                     
                     <controls:SymbolIcon Symbol="ChevronDown"/>
                 </StackPanel>

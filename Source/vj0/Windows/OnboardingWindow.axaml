@@ -38,7 +38,7 @@
                     </Button>
                 </StackPanel>
                 
-                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Core:SharedGlobal.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Core:Globals.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
             </StackPanel>
 
             <!-- Discord Link -->
