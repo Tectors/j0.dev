@@ -161,7 +161,7 @@
       <SolidColorBrush x:Key="BorderBrush" Color="#1f2023"/>
       <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
       
-      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#080808"/>
       
       <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>

@@ -24,19 +24,6 @@
     <Grid>
         <navigation:NavigationFrame>
             <Grid>
-                <!-- Background image -->
-                <Border x:Name="BackgroundImage" ClipToBounds="True">
-                    <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" 
-                           Margin="0 0" Opacity="0.265">
-                        <Image.OpacityMask>
-                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,76%">
-                                <GradientStop Color="#FF000000" Offset="0" />
-                                <GradientStop Color="#00000000" Offset="1" />
-                            </LinearGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                </Border>
-                
                 <ScrollViewer x:Name="ProfileScrollViewer" IsScrollChainingEnabled="True" Margin="3 0 5 0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
                     <WrapPanel x:Name="ProfileListPanel" LineSpacing="-16" Margin="8 8 8 -4" Orientation="Horizontal"/>
                 </ScrollViewer>
