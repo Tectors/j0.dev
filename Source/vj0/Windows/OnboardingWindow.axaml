@@ -27,7 +27,7 @@
         <!-- Title Bar -->
         <Grid>
             <!-- Arrow Navigation -->
-            <StackPanel Margin="15 15 0 0" Orientation="Horizontal">
+            <StackPanel Margin="17 5 0 0" Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal" IsVisible="{Binding CanGoBack}">
                     <Button Background="Transparent" Foreground="#adadad" Click="Back">
                         <fluent:FluentIcon Icon="ArrowLeft" IconSize="Size12"/>
@@ -38,7 +38,7 @@
                     </Button>
                 </StackPanel>
                 
-                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Core:Globals.VERSION}" Margin="7 1 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
+                <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Core:Globals.VERSION}" Margin="10 5 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>
             </StackPanel>
 
             <!-- Discord Link -->
@@ -54,7 +54,7 @@
                         BorderThickness="0"
                         CornerRadius="5"
                         FontSize="15"
-                        Width="33">
+                        Width="40">
         
                     <Image Source="/Assets/Brands/Scaled/Discord.20px.png"
                            Width="20"

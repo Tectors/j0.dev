@@ -70,7 +70,7 @@
     </Style>
     
     <Style Selector="Button.Glass:pressed">
-        <Setter Property="Background" Value="#292929" />
+        <Setter Property="Background" Value="#1c1c1c" />
         <Setter Property="BorderBrush" Value="#b5b5b5" />
     </Style>
     

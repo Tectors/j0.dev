@@ -1,6 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 
 using vj0.Services;
 using vj0.Services.Framework;
@@ -15,6 +21,78 @@ public partial class TitleBar : UserControl
         InitializeComponent();
         
         AttachedToVisualTree += OnAttachedToVisualTree;
+        
+        AttachGlow(Profile, "ProfileHoverGlow");
+        AttachGlow(Cloud, "CloudHoverGlow");
+    }
+    
+    private void AttachGlow(Button button, string glowElementName)
+    {
+        var glow = button.FindControl<Grid>(glowElementName);
+        if (glow == null) return;
+
+        button.PointerEntered += (_, _) => FadeOpacity(glow, 1.0);
+        button.PointerExited += (_, _) => FadeOpacity(glow, 0.0);
+    }
+    
+    private readonly Dictionary<Visual, CancellationTokenSource> _fadeTokens = new();
+
+    private async void FadeOpacity(Visual target, double targetOpacity, int durationMs = 300)
+    {
+        if (target == null) return;
+
+        if (_fadeTokens.TryGetValue(target, out var existingCts))
+        {
+            existingCts.Cancel();
+            _fadeTokens.Remove(target);
+        }
+
+        var start = await Dispatcher.UIThread.InvokeAsync(() => target.Opacity);
+        var end = targetOpacity;
+
+        if (Math.Abs(start - end) < 0.001)
+        {
+            return;
+        }
+
+        var cts = new CancellationTokenSource();
+        _fadeTokens[target] = cts;
+        var token = cts.Token;
+
+        const int stepMs = 16;
+        var elapsed = 0;
+
+        try
+        {
+            while (elapsed < durationMs && !token.IsCancellationRequested)
+            {
+                var time = elapsed / (double)durationMs;
+                var eased = CubicEaseOut(time);
+                var value = Math.Clamp(start + (end - start) * eased, 0, 1);
+
+                target.Opacity = value;
+
+                await Task.Delay(stepMs, token);
+                elapsed += stepMs;
+            }
+
+            if (!token.IsCancellationRequested)
+            {
+                target.Opacity = end;
+            }
+        }
+        catch (TaskCanceledException) { }
+        
+        finally
+        {
+            _fadeTokens.Remove(target);
+        }
+    }
+
+    private static double CubicEaseOut(double t)
+    {
+        var p = t - 1;
+        return p * p * p + 1;
     }
     
     private void OnAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)

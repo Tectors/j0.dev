@@ -94,22 +94,49 @@
                                     Orientation="Horizontal" Spacing="15" Margin="0 15 0 0">
                             
                             <!-- Donate button -->
-                            <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
-                                    Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
-                                    Classes="Glass" HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center">
-                                <StackPanel Orientation="Horizontal" Spacing="14">
-                                    <Viewbox Width="18" Height="18" Stretch="Uniform">
-                                        <Path Fill="#ff1c68"
-                                              Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
-                                        <Viewbox.Effect>
-                                            <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
-                                                              OffsetX="0" OffsetY="0" Opacity="0.3"/>
-                                        </Viewbox.Effect>
-                                    </Viewbox>
-                                    <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="19">Donate</TextBlock>
-                                </StackPanel>
-                            </Button>
+                            <Grid>
+                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="50" Height="10">
+                                    <Border.Effect>
+                                        <BlurEffect Radius="60"/>
+                                    </Border.Effect>
+                                </Border>
+                                
+                                <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
+                                        ClipToBounds="False"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
+                                        Classes="Glass" HorizontalContentAlignment="Center"
+                                        PointerEntered="Donate_OnPointerEntered"
+                                        VerticalContentAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Spacing="14">
+                                        <Grid>
+                                            <Viewbox Width="18" Height="18" Stretch="Uniform">
+                                                <Path Fill="#ff1c68"
+                                                      Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                                                <Viewbox.Effect>
+                                                    <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
+                                                                      OffsetX="0" OffsetY="0" Opacity="0.3"/>
+                                                </Viewbox.Effect>
+                                            </Viewbox>
+                                            
+                                            <Viewbox Width="18" Name="HeartScale" Height="18" Stretch="Uniform" ZIndex="1" IsHitTestVisible="False">
+                                                <Viewbox.RenderTransform>
+                                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                </Viewbox.RenderTransform>
+                                                
+                                                <Path Fill="#ff1c68"
+                                                      Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
+                                                <Viewbox.Effect>
+                                                    <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
+                                                                      OffsetX="0" OffsetY="0" Opacity="0.3"/>
+                                                </Viewbox.Effect>
+                                            </Viewbox>
+                                        </Grid>
+                                        
+                                        <TextBlock Foreground="White" FontWeight="DemiBold" FontSize="19" ZIndex="-1">Donate</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+
                             
                             <!-- Discord button -->
                             <Button Click="OpenDiscord" Cursor="Hand" ToolTip.Tip="Discord"
@@ -194,6 +221,6 @@
             </Grid>
         </navigation:NavigationFrame>
         
-        <Border Margin="0 0 15 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="90" Height="40"/>
+        <Border Margin="0 0 13 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="90" Height="40"/>
     </Grid>
 </UserControl>

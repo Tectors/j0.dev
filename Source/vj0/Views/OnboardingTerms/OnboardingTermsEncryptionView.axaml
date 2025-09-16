@@ -14,8 +14,8 @@
     <Border Background="{DynamicResource GuideBackgroundBrush}"
             CornerRadius="12" 
             BorderBrush="#333333"
-            BorderThickness="1"
             VerticalAlignment="Top"
+            BorderThickness="1 0 0 0"
             Margin="20 0"
             Padding="40">
         <StackPanel Spacing="10">
@@ -26,6 +26,7 @@
                 
                 <fluent:FluentIcon
                     Icon="Password"
+                    Margin="5 0 0 0"
                     IconSize="Size32"
                     IconVariant="Regular"/>
             </TextBlock>

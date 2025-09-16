@@ -14,7 +14,7 @@
     <Border Background="{DynamicResource GuideBackgroundBrush}"
             CornerRadius="12" 
             BorderBrush="#333333"
-            BorderThickness="1"
+            BorderThickness="1 0 0 0"
             VerticalAlignment="Top"
             Margin="20 0"
             Padding="40">
@@ -26,6 +26,7 @@
                 
                 <fluent:FluentIcon
                     Icon="Agents"
+                    Margin="5 0 0 0"
                     IconSize="Size32"
                     IconVariant="Regular"/>
             </TextBlock>

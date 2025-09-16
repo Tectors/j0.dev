@@ -14,7 +14,7 @@
     <Border Background="{DynamicResource GuideBackgroundBrush}"
             CornerRadius="12" 
             BorderBrush="#333333"
-            BorderThickness="1"
+            BorderThickness="1 0 0 0"
             Margin="20 0"
             VerticalAlignment="Top"
             Padding="40">
@@ -27,6 +27,7 @@
                 <fluent:FluentIcon
                     Icon="DataScatter"
                     IconSize="Size32"
+                    Margin="5 0 0 0"
                     IconVariant="Regular"/>
             </TextBlock>
 

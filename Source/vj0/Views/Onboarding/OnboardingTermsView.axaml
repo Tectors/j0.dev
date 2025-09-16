@@ -15,7 +15,7 @@
     
     <Grid Margin="15 0 0 0">
         <StackPanel VerticalAlignment="Center" Spacing="35">
-            <TextBlock LetterSpacing="-1" HorizontalAlignment="Center" FontSize="33" FontWeight="SemiBold" Foreground="White">
+            <TextBlock Margin="0 0 0 15" LetterSpacing="-1" HorizontalAlignment="Center" FontSize="33" FontWeight="SemiBold" Foreground="White">
                 <TextBlock.Effect>
                     <DropShadowEffect
                         Color="#e3e3e3"

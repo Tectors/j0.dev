@@ -33,6 +33,7 @@
                 HorizontalAlignment="Center"
                 ClipToBounds="True"
                 IsDefault="True"
+                IsEnabled="False"
                 Click="Save"
                 Width="180">
     

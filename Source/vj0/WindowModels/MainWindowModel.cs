@@ -243,6 +243,7 @@ public partial class MainWindowModel : WindowModelBase
         {
             TitleBarOpacity = 0.0;
             isBeating = false;
+            
             return;
         }
 
