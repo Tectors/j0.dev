@@ -45,7 +45,7 @@
         <Setter Property="Foreground" Value="{DynamicResource ToolTipForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource ToolTipBackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ToolTipBorderBrush}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FontSize" Value="{DynamicResource ToolTipContentThemeFontSize}" />
         <Setter Property="Padding" Value="{DynamicResource ToolTipBorderPadding}" />
         <Setter Property="MaxWidth" Value="{DynamicResource ToolTipMaxWidth}" />
@@ -65,7 +65,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}">
                     <ContentPresenter Name="PART_ContentPresenter"
                                       MaxWidth="{TemplateBinding MaxWidth}"
-                                      FontWeight="Medium"
+                                      FontWeight="Normal"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       TextWrapping="Wrap"/>

@@ -15,14 +15,14 @@
             
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="#e0e0e0"
-                            Padding="5"
-                            Height="20"
+                    <Border Background="#121212"
+                            Padding="5 2"
+                            BorderBrush="#343434"
+                            BorderThickness="1"
                             VerticalAlignment="Center"
                             CornerRadius="5">
                         <TextBlock FontFamily="Consolas"
                                    FontWeight="Bold"
-                                   Foreground="#1a1a1a"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Text="{Binding}" />

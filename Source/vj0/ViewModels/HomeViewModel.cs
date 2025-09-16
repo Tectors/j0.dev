@@ -21,7 +21,7 @@ public class HomeViewModel : ViewModelBase
         "bringing clarity to the chaos",
         "look closer.",
         "accidentally pushed into prod",
-        "developed with a LOT of coffee ☕",
+        "developed with coffee ☕",
         "powered by frustration and breakthroughs",
         "we speak fluent .uasset",
         "we lost the documentation years ago",

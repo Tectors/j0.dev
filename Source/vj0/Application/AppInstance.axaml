@@ -202,10 +202,9 @@
       <SolidColorBrush x:Key="MenuFlyoutItemForegroundDisabled" Color="#a8a8a8"/>
 
       <!-- ToolTip Brushes -->
-      <SolidColorBrush x:Key="ToolTipBackground" Color="#ffffff"/>
-      <SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="#ffffff"/>
-      <SolidColorBrush x:Key="ToolTipForegroundBrush" Color="#090909"/>
-      <SolidColorBrush x:Key="ToolTipBorderBrush" Color="#ffffff"/>
+      <SolidColorBrush x:Key="ToolTipBackgroundBrush" Color="#000000"/>
+      <SolidColorBrush x:Key="ToolTipForegroundBrush" Color="White"/>
+      <SolidColorBrush x:Key="ToolTipBorderBrush" Color="#3b3b3b"/>
 
       <!-- TextControl Brushes -->
       <SolidColorBrush x:Key="TextControlBorderBrush" Color="#4e5157"/>

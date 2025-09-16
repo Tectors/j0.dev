@@ -59,7 +59,7 @@
                         <fluent:SymbolIcon Symbol="Home" IconVariant="Filled" FontSize="18" />
                     </controls:NavigationViewItem>
                     
-                    <controls:NavigationViewItemSeparator IsVisible="{x:Static vj0:Globals.IsReadyToExplore}"/>
+                    <controls:NavigationViewItemSeparator Margin="0 5" IsVisible="{x:Static vj0:Globals.IsReadyToExplore}"/>
                     
                     <!-- Explorer -->
                     <controls:NavigationViewItem IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
@@ -80,6 +80,26 @@
                             </Grid>
                         </Grid>
                     </controls:NavigationViewItem>
+                    
+                    <!-- Scope -->
+                    <controls:NavigationViewItem IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
+                        <ToolTip.Tip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
+                                <controls1:KeybindDisplay Keybind="Ctrl+Alt+L" />
+                            </StackPanel>
+                        </ToolTip.Tip>
+                        
+                        <Grid>
+                            <avalonia:MaterialIcon Width="15" Kind="Filter" Margin="0 0 2 0" />
+                            
+                            <Grid IsVisible="{Binding DoesProfileExist}">
+                                <Border Margin="0 0 2 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=Loading}">
+                                    <controls:ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="25" Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </controls:NavigationViewItem>
                 </controls:NavigationView.MenuItems>
 
                 <controls:NavigationView.FooterMenuItems>
@@ -92,7 +112,7 @@
                         <fluent:SymbolIcon Symbol="Agents"/>
                     </controls:NavigationViewItem>
                     
-                    <controls:NavigationViewItemSeparator/>
+                    <controls:NavigationViewItemSeparator Margin="0 5"/>
                     
                     <!-- Settings -->
                     <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:SettingsView}">

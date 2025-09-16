@@ -8,8 +8,8 @@
         <ControlTemplate TargetType="ContentControl">
             <Border
                 ClipToBounds="True"
-                BorderThickness="1 1 1 1"
-                CornerRadius="12"
+                BorderThickness="1"
+                CornerRadius="10"
                 BorderBrush="{DynamicResource BorderBrush}"
                 Background="{DynamicResource PanelBackgroundBrush}"
                 HorizontalAlignment="Stretch" 
