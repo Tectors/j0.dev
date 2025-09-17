@@ -44,7 +44,7 @@
                 IsHitTestVisible="False"
                 Margin="0 0 10 0"/>
             
-            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-6 0 -6 0" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
                 <!-- 
@@ -96,14 +96,14 @@
                     </Button.Flyout>
                     
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
-                        <profiles:ProfileSplashControl ZIndex="1" Radius="12" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
+                        <profiles:ProfileSplashControl ZIndex="1" Radius="15" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
                         <!-- Display Name -->
                         <Grid IsHitTestVisible="False">
                             <Grid x:Name="ProfileHoverGlow" Opacity="0" ZIndex="-1" IsVisible="True">
-                                <Border Margin="-35 0 -35 0" Opacity="1" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="15">
+                                <Border Margin="-35 0 -35 0" Opacity="0.3" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="35">
                                     <Border.Effect>
-                                        <BlurEffect Radius="100"/>
+                                        <BlurEffect Radius="150"/>
                                     </Border.Effect>
                                 </Border>
                             </Grid>
@@ -116,10 +116,10 @@
                 </Button>
             </Grid>
             
-            <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-6 0 -6 0" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
+            <Button IsVisible="True" Height="33" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
@@ -302,19 +302,14 @@
                     
                         <Grid Cursor="Hand" Background="Transparent">
                             <Grid x:Name="CloudHoverGlow" Opacity="0" ZIndex="-1">
-                                <Border Margin="-5 0 -5 0" Opacity="0.35" Background="White" HorizontalAlignment="Stretch" Height="25">
+                                <Border Margin="-5 0 -5 0" Opacity="0.35" Background="{Binding APIServiceStatusColor}" HorizontalAlignment="Stretch" Height="25">
                                     <Border.Effect>
                                         <BlurEffect Radius="50"/>
                                     </Border.Effect>
                                 </Border>
                             </Grid>
                             
-                            <avalonia:FluentIcon Icon="CloudError" Foreground="#ff0055" IsVisible="{Binding IsAPIServiceErrored}"/>
-                            
-                            <Grid IsVisible="{Binding !IsAPIServiceErrored}">
-                                <avalonia:FluentIcon Icon="CloudOff" Foreground="#b3b3b3" IsVisible="{Binding !IsAPIServiceRunning}"/>
-                                <avalonia:FluentIcon Icon="Cloud" IsVisible="{Binding IsAPIServiceRunning}"/>
-                            </Grid>
+                            <avalonia:FluentIcon Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
                         </Grid>
                     </Button>
                 </StackPanel>

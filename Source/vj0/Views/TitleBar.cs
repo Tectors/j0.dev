@@ -22,6 +22,7 @@ public partial class TitleBar : UserControl
         
         AttachedToVisualTree += OnAttachedToVisualTree;
         
+        AttachGlow(Profile, "ProfileHoverGlow");
         AttachGlow(Cloud, "CloudHoverGlow");
     }
     

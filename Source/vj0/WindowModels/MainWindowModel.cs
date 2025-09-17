@@ -13,7 +13,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using FluentAvalonia.UI.Controls;
-
+using FluentIcons.Common;
 using vj0.Cloud.Controllers;
 using vj0.Controls.Profiles;
 using vj0.Framework.Models;
@@ -317,6 +317,9 @@ public partial class MainWindowModel : WindowModelBase
     public static bool IsAPIServiceRunning => AppServices.Cloud.API is not null && AppServices.Cloud.API!.IsRunning && !AppServices.Cloud.API!.HasErrored;
     public static bool IsAPIServiceErrored => AppServices.Cloud.API is not null && AppServices.Cloud.API!.HasErrored;
     
+    public static IBrush APIServiceStatusColor => IsAPIServiceErrored ? Brush.Parse("#ff0055") : IsAPIServiceRunning ? Brushes.White : Brush.Parse("#b3b3b3");
+    public static Icon APIServiceIcon => IsAPIServiceErrored ? Icon.CloudError : IsAPIServiceRunning ? Icon.Cloud : Icon.CloudOff;
+    
     public void UpdateAPIServiceEnabled()
     {
         OnPropertyChanged(nameof(IsAPIServiceEnabled));
@@ -326,6 +329,8 @@ public partial class MainWindowModel : WindowModelBase
     {
         OnPropertyChanged(nameof(IsAPIServiceRunning));
         OnPropertyChanged(nameof(IsAPIServiceErrored));
+        OnPropertyChanged(nameof(APIServiceStatusColor));
+        OnPropertyChanged(nameof(APIServiceIcon));
     }
     
     private CancellationTokenSource? LastProfileCancellationTokenSource = new();

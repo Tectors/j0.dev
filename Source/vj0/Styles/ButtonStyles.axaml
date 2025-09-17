@@ -1,6 +1,14 @@
 <Styles xmlns="https://github.com/avaloniaui"    
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="/Styles/FluentAvalonia/Button.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+    
     <Style Selector="CaptionButtons">
         <Setter Property="MaxHeight" Value="{DynamicResource TitleBarHeight}"/>
         <Setter Property="Height" Value="{DynamicResource TitleBarHeight}"/>

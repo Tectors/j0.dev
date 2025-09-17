@@ -215,7 +215,6 @@
           </Grid>
         </Grid>
 
-        <!-- Start Button -->
         <Grid Grid.Row="2" ColumnDefinitions="*,10,50" Margin="25,0,25,25">
           <Button
             x:Name="StartButton"
