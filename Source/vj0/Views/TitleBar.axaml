@@ -125,7 +125,7 @@
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
                         <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Black"/>
                         <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3b3b3b"/>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3b3b3b"/>
+                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3574f0"/>
                     </ResourceDictionary>
                 </Button.Resources>
                 

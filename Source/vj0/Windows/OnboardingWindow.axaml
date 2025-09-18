@@ -32,10 +32,6 @@
                     <Button Background="Transparent" Foreground="#adadad" Click="Back">
                         <fluent:FluentIcon Icon="ArrowLeft" IconSize="Size12"/>
                     </Button>
-            
-                    <Button Background="Transparent" Foreground="#adadad" Click="Next">
-                        <fluent:FluentIcon Icon="ArrowRight" IconSize="Size12"/>
-                    </Button>
                 </StackPanel>
                 
                 <TextBlock IsHitTestVisible="False" Text="{x:Static vj0.Core:Globals.VERSION}" Margin="10 5 7 8" IsVisible="{Binding !CanGoBack}" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.15"/>

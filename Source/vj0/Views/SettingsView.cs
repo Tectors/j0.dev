@@ -1,6 +1,9 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
-
+using Avalonia.Threading;
+using Avalonia.VisualTree;
+using FluentAvalonia.UI.Controls;
 using vj0.Services;
 
 namespace vj0.Views;
@@ -35,5 +38,35 @@ public partial class SettingsView : UserControl
                 
             HasInitialized = true;
         };
+        
+        NavigationView.TemplateApplied += (_, __) => FindPaneContentGrid();
+        NavigationView.LayoutUpdated += (_, __) => UpdatePaneBorder();
+    }
+    
+    private ItemsRepeater? NavigationLeftPanelContents;
+    
+    private void FindPaneContentGrid()
+    {
+        NavigationLeftPanelContents = NavigationView.GetVisualDescendants()
+            .OfType<ItemsRepeater>()
+            .FirstOrDefault(v => v.Name == "MenuItemsHost");
+
+        if (NavigationLeftPanelContents is null)
+        {
+            Dispatcher.UIThread.Post(FindPaneContentGrid, DispatcherPriority.Render);
+            return;
+        }
+
+        NavigationLeftPanelContents.SizeChanged += (_, __) => UpdatePaneBorder();
+        UpdatePaneBorder();
+    }
+    private void UpdatePaneBorder()
+    {
+        if (NavigationLeftPanelContents is null)
+        {
+            return;
+        }
+
+        PaneBorder.Height = NavigationLeftPanelContents.DesiredSize.Height + 38;
     }
 }

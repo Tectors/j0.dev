@@ -48,13 +48,22 @@
       <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrushPointerOver}" />
       <Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
     </Style>
-    
-    <Style Selector="^:pointerover">
-      <Setter Property="RenderTransform" Value="scale(0.995)" />
-    </Style>
 
     <Style Selector="^:pressed">
-      <Setter Property="RenderTransform" Value="scale(0.98)" />
+      <Setter Property="RenderTransform" Value="scale(1)" />
+    </Style>
+    
+    <Style Selector="^.PressScale">
+      <Setter Property="RenderTransform" Value="none"/>
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition Property="RenderTransform" Duration="0:0:.075" />
+        </Transitions>
+      </Setter>
+
+      <Style Selector="^:pressed">
+        <Setter Property="RenderTransform" Value="scale(0.98)" />
+      </Style>
     </Style>
 
     <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">

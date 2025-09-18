@@ -108,8 +108,8 @@
     <Compile Update="Views\Settings\SerializationSettingsView.cs">
       <DependentUpon>SerializationSettingsView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Settings\OnlineSettingsView.cs">
-      <DependentUpon>OnlineSettingsView.axaml</DependentUpon>
+    <Compile Update="Views\Settings\ConnectionsSettingsView.cs">
+      <DependentUpon>ConnectionsSettingsView.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Settings\ModelSettingsView.cs">
       <DependentUpon>ModelSettingsView.axaml</DependentUpon>

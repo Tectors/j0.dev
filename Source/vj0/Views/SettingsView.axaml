@@ -17,18 +17,20 @@
     d:DesignHeight="1500"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     
-    <navigation:NavigationFrame HideBorder="{Binding IsOnboarding}">
-        <controls:NavigationView Margin="20 20 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+    <Grid>
+        <navigation:NavigationFrame Name="PaneBorder" HideBorder="{Binding IsOnboarding}" HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Top" Width="405"/>
+        
+        <controls:NavigationView Margin="20 0 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
-                <controls:NavigationViewItem Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
+                <controls:NavigationViewItem Margin="3 20 0 0" Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Settings" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
 
-                <controls:NavigationViewItem Content="Integrations" Tag="{x:Type views:OnlineSettingsView}">
+                <controls:NavigationViewItem Content="Connections" Tag="{x:Type views:ConnectionsSettingsView}">
                     <controls:NavigationViewItem.IconSource>
-                        <fluent:FluentIconSource Icon="Globe" IconSize="Size32" IconVariant="Regular"/>
+                        <fluent:FluentIconSource Icon="Connected" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
@@ -54,6 +56,8 @@
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
                 
+                <controls:NavigationViewItemHeader Content="Dev Tools" IsVisible="{x:Static vj0.Core:Globals.IS_DEBUG}"/>
+                
                 <controls:NavigationViewItem Content="Debug" Tag="{x:Type views:DebugSettingsView}" IsVisible="{x:Static vj0.Core:Globals.IS_DEBUG}">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Beaker" IconSize="Size32" IconVariant="Regular"/>
@@ -61,7 +65,7 @@
                 </controls:NavigationViewItem>
             </controls:NavigationView.MenuItems>
             
-            <controls:Frame x:Name="ContentFrame"/>
+            <controls:Frame Margin="40 0 0 0" x:Name="ContentFrame"/>
         </controls:NavigationView>
-    </navigation:NavigationFrame>
+    </Grid>
 </UserControl>

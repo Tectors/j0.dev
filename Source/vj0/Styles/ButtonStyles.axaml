@@ -170,7 +170,7 @@
 
     <Style Selector="Button.BlueShine:pressed">
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="#195bff" />
+        <Setter Property="Background" Value="#1248CC" />
     </Style>
     
     <Style Selector="Button.BlueShine:disabled">

@@ -29,7 +29,7 @@
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#2ea8ff</SolidColorBrush>
                     <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                    <SolidColorBrush x:Key="ButtonBackgroundPressed">#2ea8ff</SolidColorBrush>
+                    <SolidColorBrush x:Key="ButtonBackgroundPressed">#1E96EB</SolidColorBrush>
                     <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
                 </ResourceDictionary>
             </Button.Resources>

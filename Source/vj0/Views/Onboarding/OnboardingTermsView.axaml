@@ -99,7 +99,7 @@
                         HorizontalAlignment="Stretch"/>
 
                     <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Margin="0 1 0 0" Text="Continue" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Margin="0 1 0 0" Text="Next" FontSize="16" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </Button>

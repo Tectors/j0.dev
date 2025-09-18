@@ -15,7 +15,7 @@ namespace vj0.Services;
 public partial class SettingsService : ObservableObject, IService
 {
     [ObservableProperty] private ApplicationSettingsViewModel _application = new();
-    [ObservableProperty] private OnlineSettingsViewModel _online = new();
+    [ObservableProperty] private ConnectionsSettingsViewModel _connections = new();
     [ObservableProperty] private CloudSettingsViewModel _cloud = new();
     [ObservableProperty] private SerializationSettingsViewModel _serialization = new();
     [ObservableProperty] private ModelSettingsViewModel _model = new();

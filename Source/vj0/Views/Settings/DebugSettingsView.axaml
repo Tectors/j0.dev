@@ -13,51 +13,55 @@
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
-    <ScrollViewer>
-        <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-            <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                    </ResourceDictionary>
-                </Button.Resources>
-                
-                <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
-                    <avalonia:FluentIcon
-                        Icon="WindowConsole"
-                        FontSize="25"
-                        IconVariant="Regular"/>
-                
-                    <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Logs</TextBlock>
-                </StackPanel>
-            </Button>
+    <Grid>
+        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Debug</TextBlock>
             
-            <Button Height="66" Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
-                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                    </ResourceDictionary>
-                </Button.Resources>
+        <ScrollViewer Margin="0 60 0 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+                <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                        <avalonia:FluentIcon
+                            Icon="WindowConsole"
+                            FontSize="25"
+                            IconVariant="Regular"/>
+                    
+                        <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Logs</TextBlock>
+                    </StackPanel>
+                </Button>
                 
-                <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
-                    <avalonia:FluentIcon
-                        Icon="StarArrowRightStart"
-                        FontSize="25"
-                        IconVariant="Regular"/>
-                
-                    <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Startup</TextBlock>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-    </ScrollViewer>
+                <Button Height="66" Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                        <avalonia:FluentIcon
+                            Icon="StarArrowRightStart"
+                            FontSize="25"
+                            IconVariant="Regular"/>
+                    
+                        <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Startup</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

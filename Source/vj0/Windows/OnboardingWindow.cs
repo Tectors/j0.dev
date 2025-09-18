@@ -35,11 +35,6 @@ public partial class OnboardingWindow : WindowBase<OnboardingWindowModel>
         Navigation.Onboarding.Open(type);
     }
 
-    private void Next(object? sender, RoutedEventArgs e)
-    {
-        GoNext();
-    }
-    
     public void GoNext()
     {
         if (!WindowModel.CanGoNext) return;

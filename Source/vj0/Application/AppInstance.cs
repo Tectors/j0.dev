@@ -108,7 +108,7 @@ public class AppInstance : Avalonia.Application
 
     private static void OnStartup(object? sender, ControlledApplicationLifetimeStartupEventArgs e)
     {
-        if (Settings.Online.UseDiscordRichPresence)
+        if (Settings.Connections.UseDiscordRichPresence)
         {
             Discord.Initialize();
         }

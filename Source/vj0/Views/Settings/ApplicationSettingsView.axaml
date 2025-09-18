@@ -15,45 +15,50 @@
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
-    <ScrollViewer>
-        <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-            <TextBlock Margin="0 5">Startup</TextBlock>
-            
-            <controls:SettingsExpander 
-                Header="Auto-Load Recent Profile"
-                Description="Automatically launches the last used profile on startup.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch IsChecked="{Binding LoadRecentProfileOnLaunch}" Cursor="Hand"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-            
-            <controls:SettingsExpander Header="Remember Window Size" Description="Keeps track of the window size and restores it on next launch.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch IsChecked="{Binding SaveWindowResolution}" Cursor="Hand"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-            
-            <TextBlock Margin="0 5">Other</TextBlock>
-            
-            <controls:SettingsExpander Header="Game Language" Description="The language used for in-game text and menus.">
-                <controls:SettingsExpander.Footer>
-                    <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type versions:ELanguage}}" SelectedItem="{Binding GameLanguage, Converter={StaticResource EnumToRecord}}"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-            
-            <controls:SettingsExpander Header="Tab Transitions" Description="Enable or disable the animation shown when switching between tabs.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch IsChecked="{Binding UseTabTransitions}" Cursor="Hand"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-            
-            <TextBlock Margin="0 5">Advanced</TextBlock>
-            
-            <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch IsChecked="{Binding ShowDebugData}" Cursor="Hand"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-        </StackPanel>
-    </ScrollViewer>
+    <Grid>
+        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Application</TextBlock>
+        
+        <ScrollViewer Margin="0 60 0 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+                <TextBlock Margin="0 5">Startup</TextBlock>
+                
+                <controls:SettingsExpander 
+                    Header="Auto-Load Recent Profile"
+                    Description="Automatically launches the last used profile on startup.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding LoadRecentProfileOnLaunch}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <controls:SettingsExpander Header="Remember Window Size" Description="Keeps track of the window size and restores it on next launch.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding SaveWindowResolution}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <TextBlock Margin="0 5">Other</TextBlock>
+                
+                <controls:SettingsExpander Header="Game Language" Description="The language used for in-game text and menus.">
+                    <controls:SettingsExpander.Footer>
+                        <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type versions:ELanguage}}" SelectedItem="{Binding GameLanguage, Converter={StaticResource EnumToRecord}}"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <controls:SettingsExpander Header="Tab Transitions" Description="Enable or disable the animation shown when switching between tabs.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding UseTabTransitions}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <TextBlock Margin="0 5">Advanced</TextBlock>
+                
+                <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding ShowDebugData}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
 </UserControl>

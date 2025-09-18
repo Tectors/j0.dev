@@ -4,7 +4,7 @@ using vj0.Framework.Models;
 
 namespace vj0.ViewModels.Settings;
 
-public partial class OnlineSettingsViewModel : ViewModelBase
+public partial class ConnectionsSettingsViewModel : ViewModelBase
 {
     [ObservableProperty] private bool _useDiscordRichPresence = true;
 

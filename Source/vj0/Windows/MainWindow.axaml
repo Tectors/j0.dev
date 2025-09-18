@@ -112,7 +112,7 @@
                         <fluent:SymbolIcon Symbol="Agents"/>
                     </controls:NavigationViewItem>
                     
-                    <controls:NavigationViewItemSeparator Margin="0 5"/>
+                    <controls:NavigationViewItemSeparator Margin="0 5" CornerRadius="15"/>
                     
                     <!-- Settings -->
                     <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:SettingsView}">

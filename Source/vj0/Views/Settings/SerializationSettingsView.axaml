@@ -13,19 +13,23 @@
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
-    <ScrollViewer>
-        <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-            <controls:SettingsExpander Header="Serialize Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadBlueprintBytecode}"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-            
-            <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
-                <controls:SettingsExpander.Footer>
-                    <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadMaterialShaderMaps}"/>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
-        </StackPanel>
-    </ScrollViewer>
+    <Grid>
+        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Serialization</TextBlock>
+
+        <ScrollViewer Margin="0 60 0 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+                <controls:SettingsExpander Header="Serialize Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadBlueprintBytecode}"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadMaterialShaderMaps}"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

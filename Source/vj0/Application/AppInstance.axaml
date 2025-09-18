@@ -110,6 +110,8 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/InfoBarStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ToolTipStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ContentDialogStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemHeaderStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemSeparatorStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
       <x:Double x:Key="TitleBarHeight">60</x:Double>
@@ -161,7 +163,7 @@
       <SolidColorBrush x:Key="BorderBrush" Color="#1f2023"/>
       <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
       
-      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#0a0a0a"/>
+      <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#080808"/>
       
       <SolidColorBrush x:Key="SubPanelBackgroundBrush" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="SubPanelBorderBrush" Color="#1f2023"/>

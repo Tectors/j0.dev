@@ -113,13 +113,13 @@
                                                     IsVisible="False">
                                                 <Button.Resources>
                                                     <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1c1c1c</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3e3e3e</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1C1C1C</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3E3E3E</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1c1c1c</SolidColorBrush>
+
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#2A2A2A</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                                                        
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3e3e3e</SolidColorBrush>
                                                     </ResourceDictionary>
                                                 </Button.Resources>
                                                 
@@ -142,13 +142,13 @@
                                                 
                                                 <Button.Resources>
                                                     <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1c1c1c</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3e3e3e</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1C1C1C</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3E3E3E</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#1c1c1c</SolidColorBrush>
+
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#2A2A2A</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                                                        
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3e3e3e</SolidColorBrush>
                                                     </ResourceDictionary>
                                                 </Button.Resources>
                                             </Button>
@@ -172,7 +172,7 @@
                                                     <ResourceDictionary>
                                                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver">White</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPointerOver">#0f0f10</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">White</SolidColorBrush>
+                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#E0E0E0</SolidColorBrush>
                                                         <SolidColorBrush x:Key="ButtonForegroundPressed">#0f0f10</SolidColorBrush>
                                                     </ResourceDictionary>
                                                 </Button.Resources>

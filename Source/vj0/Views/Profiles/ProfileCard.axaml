@@ -223,6 +223,7 @@
             IsEnabled="{Binding !IsRunning}"
             Height="50"
             Opacity="0.95"
+            Classes="PressScale"
             Cursor="Hand"
             ClipToBounds="True"
             BorderThickness="0"
@@ -243,7 +244,7 @@
                 </LinearGradientBrush>
                 
                 <LinearGradientBrush x:Key="ButtonBackgroundPressed" StartPoint="0%,0%" EndPoint="100%,0%">
-                  <GradientStop Color="#1f66ff" Offset="0.05"/>
+                  <GradientStop Color="#1248CC" Offset="0.05"/>
                 </LinearGradientBrush>
 
                 <LinearGradientBrush x:Key="ButtonBackgroundDisabled" StartPoint="0%,0%" EndPoint="100%,0%">
@@ -292,6 +293,7 @@
             CornerRadius="15"
             Cursor="Hand"
             Height="50"
+            Classes="PressScale"
             Focusable="False"
             Click="EditButton_Click"
             HorizontalAlignment="Stretch">

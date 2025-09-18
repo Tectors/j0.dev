@@ -24,9 +24,9 @@
 
     <Grid>
         <navigation:NavigationFrame>
-            <Grid>
+            <Grid Background="Transparent">
                 <!-- Background blur effect -->
-                <Border Width="150" Height="76" Margin="0 0 0 -80" Opacity="0.5"
+                <Border Width="450" Height="76" Margin="0 0 0 -80" Opacity="0.2"
                         HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -90,8 +90,9 @@
                                 
                                 <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
                                         ClipToBounds="False"
+                                        CornerRadius="245"
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
-                                        Classes="Glass" HorizontalContentAlignment="Center"
+                                        Classes="Glass PressScale" HorizontalContentAlignment="Center"
                                         PointerEntered="Donate_OnPointerEntered"
                                         VerticalContentAlignment="Center">
                                     <StackPanel Orientation="Horizontal" Spacing="14">
@@ -123,7 +124,6 @@
                                     </StackPanel>
                                 </Button>
                             </Grid>
-
                             
                             <!-- Discord button -->
                             <Button Click="OpenDiscord" Cursor="Hand" ToolTip.Tip="Discord"
@@ -147,7 +147,7 @@
                                 </StackPanel>
                             </Button>
                             
-                            <!-- X (Twitter) button -->
+                            <!-- X button -->
                             <Button Click="OpenXAccount" Cursor="Hand" ToolTip.Tip="X"
                                     HorizontalAlignment="Stretch" Height="40" Width="40"
                                     HorizontalContentAlignment="Center"
@@ -165,10 +165,12 @@
                             
                             <!-- Get Started button -->
                             <Button Click="GetStarted"
-                                    Classes="White"
+                                    Classes="White PressScale"
                                     Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
                                     IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=!DoesProfileExist}"
                                     HorizontalContentAlignment="Center"
+                                    BorderBrush="#232323"
+                                    CornerRadius="25"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="14">
                                     <TextBlock FontWeight="Bold" FontSize="19">Get Started</TextBlock>
@@ -180,10 +182,11 @@
                             <Grid IsVisible="{x:Static vj0:Globals.IsReadyToExplore}">
                                 <!-- Explore Files button -->
                                 <Button Click="ExploreFiles"
-                                        Classes="White"
+                                        Classes="White PressScale"
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
                                         IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=IsProfileInitialized}"
                                         HorizontalContentAlignment="Center"
+                                        CornerRadius="25"
                                         VerticalContentAlignment="Center">
                                     <StackPanel Orientation="Horizontal" Spacing="14">
                                         <avalonia:MaterialIcon Width="19" Kind="Folder"

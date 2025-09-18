@@ -4,9 +4,9 @@ using vj0.ViewModels.Settings;
 
 namespace vj0.Views.Settings;
 
-public partial class OnlineSettingsView : ViewBase<OnlineSettingsViewModel>
+public partial class ConnectionsSettingsView : ViewBase<ConnectionsSettingsViewModel>
 {
-    public OnlineSettingsView() : base(AppServices.Settings.Online)
+    public ConnectionsSettingsView() : base(AppServices.Settings.Connections)
     {
         InitializeComponent();
     }

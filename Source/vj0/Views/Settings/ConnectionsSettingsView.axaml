@@ -6,22 +6,24 @@
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
 
-    x:Class="vj0.Views.Settings.CloudSettingsView"
-    x:DataType="settings:CloudSettingsViewModel"
+    x:Class="vj0.Views.Settings.ConnectionsSettingsView"
+    x:DataType="settings:ConnectionsSettingsViewModel"
     
     mc:Ignorable="d"
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Cloud Service</TextBlock>
-        
+        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Connections</TextBlock>
+
         <ScrollViewer Margin="0 60 0 0">
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
-                <controls:SettingsExpander Header="Cloud Service" Description="Runs a locally hosted webhost API to use for applications like JsonAsAsset to interact with the game files.">
+                <TextBlock Margin="0 5">Presence</TextBlock>
+                
+                <controls:SettingsExpander Header="Discord Rich Presence" Description="Displays the application's information in your discord profile.">
                     <controls:SettingsExpander.Footer>
                         <StackPanel Orientation="Horizontal">
-                            <ToggleSwitch Cursor="Hand" IsChecked="{Binding RunHostedAPI}"/>
+                            <ToggleSwitch Cursor="Hand" IsChecked="{Binding UseDiscordRichPresence}"/>
                         </StackPanel>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
