@@ -14,13 +14,17 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Connections</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Connections</TextBlock>
 
         <ScrollViewer Margin="0 60 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <TextBlock Margin="0 5">Presence</TextBlock>
                 
                 <controls:SettingsExpander Header="Discord Rich Presence" Description="Displays the application's information in your discord profile.">
+                    <controls:SettingsExpander.IconSource>
+                        <controls:BitmapIconSource UriSource="avares://j0.dev/Assets/Brands/Scaled/Discord.20px.png" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <StackPanel Orientation="Horizontal">
                             <ToggleSwitch Cursor="Hand" IsChecked="{Binding UseDiscordRichPresence}"/>

@@ -7,6 +7,7 @@
     xmlns:versions="clr-namespace:CUE4Parse.UE4.Versions;assembly=CUE4Parse"
     xmlns:extensions="clr-namespace:vj0.Core.Extensions;assembly=vj0.Core"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
 
     x:Class="vj0.Views.Settings.ApplicationSettingsView"
     x:DataType="settings:ApplicationSettingsViewModel"
@@ -16,21 +17,30 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Application</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Application</TextBlock>
         
         <ScrollViewer Margin="0 60 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <TextBlock Margin="0 5">Startup</TextBlock>
                 
-                <controls:SettingsExpander 
+                <controls:SettingsExpander
                     Header="Auto-Load Recent Profile"
                     Description="Automatically launches the last used profile on startup.">
+                    
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="Agents" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch IsChecked="{Binding LoadRecentProfileOnLaunch}" Cursor="Hand"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
                 <controls:SettingsExpander Header="Remember Window Size" Description="Keeps track of the window size and restores it on next launch.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="Window" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch IsChecked="{Binding SaveWindowResolution}" Cursor="Hand"/>
                     </controls:SettingsExpander.Footer>
@@ -39,12 +49,20 @@
                 <TextBlock Margin="0 5">Other</TextBlock>
                 
                 <controls:SettingsExpander Header="Game Language" Description="The language used for in-game text and menus.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="LocalLanguage" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type versions:ELanguage}}" SelectedItem="{Binding GameLanguage, Converter={StaticResource EnumToRecord}}"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
                 <controls:SettingsExpander Header="Tab Transitions" Description="Enable or disable the animation shown when switching between tabs.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="SlideTransition" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch IsChecked="{Binding UseTabTransitions}" Cursor="Hand"/>
                     </controls:SettingsExpander.Footer>
@@ -53,6 +71,10 @@
                 <TextBlock Margin="0 5">Advanced</TextBlock>
                 
                 <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="DeveloperBoard" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch IsChecked="{Binding ShowDebugData}" Cursor="Hand"/>
                     </controls:SettingsExpander.Footer>

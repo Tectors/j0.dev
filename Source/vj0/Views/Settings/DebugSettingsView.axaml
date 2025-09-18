@@ -14,10 +14,10 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Debug</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Debug</TextBlock>
             
         <ScrollViewer Margin="0 60 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                     <Button.Resources>
                         <ResourceDictionary>

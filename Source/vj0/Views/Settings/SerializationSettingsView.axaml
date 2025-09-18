@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
 
     x:Class="vj0.Views.Settings.SerializationSettingsView"
     x:DataType="settings:SerializationSettingsViewModel"
@@ -14,17 +15,25 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Serialization</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Serialization</TextBlock>
 
         <ScrollViewer Margin="0 60 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <controls:SettingsExpander Header="Serialize Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:SymbolIconSource Symbol="BarcodeScanner" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadBlueprintBytecode}"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
                 <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:SymbolIconSource Symbol="CircleShadow" />
+                    </controls:SettingsExpander.IconSource>
+                    
                     <controls:SettingsExpander.Footer>
                         <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadMaterialShaderMaps}"/>
                     </controls:SettingsExpander.Footer>

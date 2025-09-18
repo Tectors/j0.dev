@@ -175,7 +175,7 @@
       <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#0DFFFFFF"/>
 
       <!-- ComboBox Brushes -->
-      <SolidColorBrush x:Key="ComboBoxBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="ComboBoxBackground" Color="#80121212"/>
       <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#4e5157"/>
       <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#1a1a1a"/>
       <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#1f1f1f"/>

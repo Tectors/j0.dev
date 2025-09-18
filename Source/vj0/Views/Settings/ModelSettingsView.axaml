@@ -20,10 +20,10 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10" Opacity="0.99" FontWeight="DemiBold">Model</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Model</TextBlock>
 
         <ScrollViewer Margin="0 60 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="15 0">
+            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <controls:SettingsExpander Header="Level Of Detail" Description="Select the desired mesh detail level. Higher levels provide less geometry detail.">
                     <controls:SettingsExpander.Footer>
                         <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type meshes:ELodFormat}}" SelectedItem="{Binding LodFormat, Converter={StaticResource EnumToRecord}}"/>

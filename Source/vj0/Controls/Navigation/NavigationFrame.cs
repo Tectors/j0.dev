@@ -11,10 +11,28 @@ public partial class NavigationFrame : ContentControl
 {
     public static readonly StyledProperty<bool> HideBorderProperty = AvaloniaProperty.Register<SettingsView, bool>(nameof(HideBorder));
     
+    public static readonly StyledProperty<IBrush?> BackgroundOverrideProperty =
+        AvaloniaProperty.Register<NavigationFrame, IBrush?>(nameof(BackgroundOverride));
+
+    public static readonly StyledProperty<bool> DisableMarginProperty =
+        AvaloniaProperty.Register<NavigationFrame, bool>(nameof(DisableMargin));
+    
     public bool HideBorder
     {
         get => GetValue(HideBorderProperty);
         set => SetValue(HideBorderProperty, value);
+    }
+    
+    public IBrush? BackgroundOverride
+    {
+        get => GetValue(BackgroundOverrideProperty);
+        set => SetValue(BackgroundOverrideProperty, value);
+    }
+
+    public bool DisableMargin
+    {
+        get => GetValue(DisableMarginProperty);
+        set => SetValue(DisableMarginProperty, value);
     }
     
     public NavigationFrame()
@@ -30,10 +48,25 @@ public partial class NavigationFrame : ContentControl
 
         _contentBorder = e.NameScope.Find<Border>("ContentBorder");
 
-        if (HideBorder && _contentBorder is not null)
+        if (_contentBorder is null)
+        {
+            return;
+        }
+
+        if (HideBorder)
         {
             _contentBorder.BorderThickness = new Thickness(0);
+        }
+
+        if (BackgroundOverride is not null)
+        {
+            _contentBorder.Background = BackgroundOverride;
+        }
+        else if (HideBorder)
+        {
             _contentBorder.Background = Brushes.Transparent;
         }
+
+        _contentBorder.Margin = DisableMargin ? new Thickness(0) : new Thickness(0, 0, 12, 12);
     }
 }

@@ -18,7 +18,7 @@
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     
     <Grid>
-        <navigation:NavigationFrame Name="PaneBorder" HideBorder="{Binding IsOnboarding}" HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Top" Width="405"/>
+        <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HideBorder="{Binding IsOnboarding}" HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Top" Width="393"/>
         
         <controls:NavigationView Margin="20 0 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
@@ -65,7 +65,7 @@
                 </controls:NavigationViewItem>
             </controls:NavigationView.MenuItems>
             
-            <controls:Frame Margin="40 0 0 0" x:Name="ContentFrame"/>
+            <controls:Frame Margin="45 10 0 0" x:Name="ContentFrame"/>
         </controls:NavigationView>
     </Grid>
 </UserControl>

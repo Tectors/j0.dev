@@ -67,6 +67,6 @@ public partial class SettingsView : UserControl
             return;
         }
 
-        PaneBorder.Height = NavigationLeftPanelContents.DesiredSize.Height + 38;
+        PaneBorder.Height = NavigationLeftPanelContents.DesiredSize.Height + 26;
     }
 }

@@ -100,7 +100,7 @@ public partial class ExplorerViewModel : ViewModelBase
             .Subscribe(_ =>
             {
                 if (!_initialFilterCompletion!.Task.IsCompleted)
-                    _initialFilterCompletion.SetResult();
+                    _initialFilterCompletion?.TrySetResult();
             });
 
         ViewCollection = flatCollection;
