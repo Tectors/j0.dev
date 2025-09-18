@@ -42,8 +42,6 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
             await ViewModel.RefreshAllAsync();
             UpdateCardWidths();
         });
-        
-        ScrollTopShadowRef.ScrollViewer = ProfileScrollViewer;
     }
     
     private void UpdateCardWidths()

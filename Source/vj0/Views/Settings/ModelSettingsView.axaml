@@ -11,6 +11,7 @@
     xmlns:textures="clr-namespace:CUE4Parse_Conversion.Textures;assembly=CUE4Parse-Conversion"
     xmlns:material="clr-namespace:CUE4Parse.UE4.Assets.Exports.Material;assembly=CUE4Parse"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.ModelSettingsView"
     x:DataType="settings:ModelSettingsViewModel"
@@ -20,9 +21,9 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Model</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Model</TextBlock>
 
-        <ScrollViewer Margin="0 60 0 0">
+        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <controls:SettingsExpander Header="Level Of Detail" Description="Select the desired mesh detail level. Higher levels provide less geometry detail.">
                     <controls:SettingsExpander.Footer>

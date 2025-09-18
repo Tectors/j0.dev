@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:controls="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.DebugSettingsView"
     x:DataType="settings:DebugSettingsViewModel"
@@ -14,9 +15,9 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Debug</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Debug</TextBlock>
             
-        <ScrollViewer Margin="0 60 0 0">
+        <ScrollViewer controls:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                     <Button.Resources>
@@ -30,7 +31,7 @@
                         </ResourceDictionary>
                     </Button.Resources>
                     
-                    <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Margin="15 0" Spacing="2" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="WindowConsole"
                             FontSize="25"
@@ -52,9 +53,9 @@
                         </ResourceDictionary>
                     </Button.Resources>
                     
-                    <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" Spacing="2" Margin="15 0" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
-                            Icon="StarArrowRightStart"
+                            Icon="Open"
                             FontSize="25"
                             IconVariant="Regular"/>
                     

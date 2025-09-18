@@ -5,6 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
+    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.ConnectionsSettingsView"
     x:DataType="settings:ConnectionsSettingsViewModel"
@@ -14,9 +15,9 @@
     d:DesignHeight="1500">
     
     <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold">Connections</TextBlock>
+        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Connections</TextBlock>
 
-        <ScrollViewer Margin="0 60 0 0">
+        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <TextBlock Margin="0 5">Presence</TextBlock>
                 

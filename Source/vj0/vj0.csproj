@@ -201,9 +201,6 @@
     <Compile Update="Views\Profiles\ProfileSelectionView.cs">
       <DependentUpon>ProfileSelectionView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Controls\ScrollTopShadow.cs">
-      <DependentUpon>ScrollTopShadow.axaml</DependentUpon>
-    </Compile>
     <Compile Update="Controls\Navigation\NavigationFrame.cs">
       <DependentUpon>NavigationFrame.axaml</DependentUpon>
     </Compile>
