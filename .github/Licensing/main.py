@@ -7,7 +7,7 @@ license_filenames = {
     "LICENSE", "LICENSE.txt", "LICENSE.md",
     "license", "license.txt", "license.md",
     "Licence", "licence.txt", "licence.md",
-    "THIRD_PARTY_NOTICES.md", "GPLv3.txt",
+    "THIRD_PARTY_NOTICES.md", "Apache-2.0.txt",
     "NOTICE"
 }
 
