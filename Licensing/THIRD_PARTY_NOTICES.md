@@ -25,6 +25,7 @@ This project includes third-party libraries that are licensed under their respec
 - Microsoft.EntityFrameworkCore.Tools
 - Microsoft.AspNetCore.SignalR.Client
 - runtime.native.System.Data.SqlClient.sni
+- Windows-API-Code-Pack-1.1 (https://github.com/contre/Windows-API-Code-Pack-1.1)
 
 - EpicManifestParser
 - FluentAvaloniaUI
