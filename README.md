@@ -31,7 +31,7 @@
 
 # 🧾 Licensing
 
-This project is licensed under the [GNU General Public License v3.0](./Licensing/GPLv3.txt).
+This project is licensed under the [Apache 2.0 License](./Licensing/Apache-2.0.txt).
 
 **`j0.dev`** makes use of open-source libraries created by many talented developers.
 For detailed license information and third-party attributions, please refer to:
