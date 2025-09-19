@@ -33,35 +33,42 @@
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Name="Root"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Padding="{TemplateBinding Padding}"
-                        BackgroundSizing="{TemplateBinding BackgroundSizing}">
-                    <Border.Transitions>
-                        <Transitions>
-                            <BrushTransition Duration="00:00:00.083"
-                                             Property="Background" />
-                            <BrushTransition Duration="00:00:00.083"
-                                             Property="BorderBrush" />
-                        </Transitions>
-                    </Border.Transitions>
-                    <Grid ColumnDefinitions="*,Auto">
-                        <ContentPresenter Content="{TemplateBinding Content}" />
+                <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid ClipToBounds="True">
+                        <Border Height="1" VerticalAlignment="Bottom" Background="#1f5eff" />
+                
+                        <Border Name="Root"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Padding="{TemplateBinding Padding}"
+                                BackgroundSizing="{TemplateBinding BackgroundSizing}">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Duration="00:00:00.083"
+                                                     Property="Background" />
+                                    <BrushTransition Duration="00:00:00.083"
+                                                     Property="BorderBrush" />
+                                </Transitions>
+                            </Border.Transitions>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <ContentPresenter Content="{TemplateBinding Content}" />
 
-                        <ui:SymbolIcon Name="ExpandCollapseChevron"
-                                       Symbol="ChevronDown"
-                                       FontSize="18"
-                                       Foreground="{DynamicResource ExpanderChevronForeground}"
-                                       RenderTransform="none"
-                                       Margin="{DynamicResource SettingsExpanderExpandCollapseChevronMargin}"
-                                       Grid.Column="1"
-                                       IsVisible="False"/>
+                                <ui:SymbolIcon Name="ExpandCollapseChevron"
+                                               Symbol="ChevronDown"
+                                               FontSize="18"
+                                               Foreground="{DynamicResource ExpanderChevronForeground}"
+                                               RenderTransform="none"
+                                               Margin="{DynamicResource SettingsExpanderExpandCollapseChevronMargin}"
+                                               Grid.Column="1"
+                                               IsVisible="False"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Border>
             </ControlTemplate>

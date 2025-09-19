@@ -73,7 +73,7 @@
     </Style>
     
     <Style Selector="Button.Glass:pointerover">
-        <Setter Property="Background" Value="#292929" />
+        <Setter Property="Background" Value="#242424" />
         <Setter Property="BorderBrush" Value="#b5b5b5" />
     </Style>
     

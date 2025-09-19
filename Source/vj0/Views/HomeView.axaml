@@ -170,7 +170,6 @@
                                     IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=!DoesProfileExist}"
                                     HorizontalContentAlignment="Center"
                                     BorderBrush="#232323"
-                                    CornerRadius="25"
                                     VerticalContentAlignment="Center">
                                 <StackPanel Orientation="Horizontal" Spacing="14">
                                     <TextBlock FontWeight="Bold" FontSize="19">Get Started</TextBlock>
@@ -186,7 +185,6 @@
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="25 0" Height="40"
                                         IsVisible="{Binding Source={x:Static framework:AppServices.MainWM}, Path=IsProfileInitialized}"
                                         HorizontalContentAlignment="Center"
-                                        CornerRadius="25"
                                         VerticalContentAlignment="Center">
                                     <StackPanel Orientation="Horizontal" Spacing="14">
                                         <avalonia:MaterialIcon Width="19" Kind="Folder"

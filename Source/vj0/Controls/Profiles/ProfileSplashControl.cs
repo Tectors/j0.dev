@@ -22,6 +22,14 @@ public partial class ProfileSplashControl : UserControl
         set => SetValue(RadiusProperty, value);
     }
 
+    private static readonly StyledProperty<bool> IgnoreLoadingProperty = AvaloniaProperty.Register<ProfileSplashControl, bool>(nameof(IgnoreLoading), false);
+
+    public bool IgnoreLoading
+    {
+        get => GetValue(IgnoreLoadingProperty);
+        set => SetValue(IgnoreLoadingProperty, value);
+    }
+
     public ProfileSplashControl()
     {
         InitializeComponent();

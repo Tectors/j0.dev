@@ -32,8 +32,8 @@ public partial class ProfileDisplay : ObservableObject
 
     [ObservableProperty] private DateTime? _lastUsed;
 
-    [ObservableProperty] private string _gradientStartColor = "";
-    [ObservableProperty] private string _gradientEndColor = "";
+    [ObservableProperty] private string _gradientStartColor = "#000000";
+    [ObservableProperty] private string _gradientEndColor = "#000000";
     
     public ProfileDisplay(BaseProfileDisplay profile)
     {

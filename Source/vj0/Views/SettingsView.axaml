@@ -9,16 +9,28 @@
     xmlns:navigation="clr-namespace:vj0.Controls.Navigation"
     xmlns:vj0="clr-namespace:vj0"
     xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
+    xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
+    xmlns:viewModels1="clr-namespace:vj0.ViewModels"
 
     x:Class="vj0.Views.SettingsView"
+    x:DataType="viewModels1:SettingsViewModel"
     
     mc:Ignorable="d"
     d:DesignWidth="1500"
-    d:DesignHeight="1500"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    d:DesignHeight="1500">
+    
+    <UserControl.Styles>
+        <Style Selector="controls|NavigationView.has-profile /template/ controls|ItemsRepeater#MenuItemsHost">
+            <Setter Property="Margin" Value="0,230,0,0"/>
+        </Style>
+        
+        <Style Selector="navigation|NavigationFrame.has-profile">
+            <Setter Property="Margin" Value="0,230,0,0"/>
+        </Style>
+    </UserControl.Styles>
     
     <Grid>
-        <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HideBorder="{Binding IsOnboarding}" HorizontalAlignment="Left" Margin="0 0 0 0" VerticalAlignment="Top" Width="393"/>
+        <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393"/>
         
         <controls:NavigationView Margin="20 0 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
@@ -67,5 +79,38 @@
             
             <controls:Frame Margin="45 10 0 0" x:Name="ContentFrame"/>
         </controls:NavigationView>
+        
+        <Button HorizontalAlignment="Left"
+                Name="EditProfileButton"
+                VerticalAlignment="Top"
+                Classes="Glass"
+                Width="393"
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                Margin="0 30 0 0"
+                Click="EditProfile"
+                IsVisible="False"
+                ClipToBounds="False"
+                Height="180">
+            
+            <Grid>
+                <Grid DataContext="{Binding CurrentProfile}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <profiles:ProfileSplashControl
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        IgnoreLoading="True"
+                        Radius="150"
+                        Margin="15 -28 0 0"
+                        SplashScale="3"/>
+                </Grid>
+                
+                <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis"
+                           TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}">Profile Name</TextBlock>
+                
+                <TextBlock Margin="15 132 0 0" FontSize="20" Opacity="0.5">Edit Profile</TextBlock>
+                
+                <controls:SymbolIcon HorizontalAlignment="Right" Margin="0 0 25 0" FontSize="35" Symbol="Settings"></controls:SymbolIcon>
+            </Grid>
+        </Button>
     </Grid>
 </UserControl>

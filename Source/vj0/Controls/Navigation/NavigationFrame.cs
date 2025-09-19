@@ -13,6 +13,9 @@ public partial class NavigationFrame : ContentControl
     
     public static readonly StyledProperty<IBrush?> BackgroundOverrideProperty =
         AvaloniaProperty.Register<NavigationFrame, IBrush?>(nameof(BackgroundOverride));
+    
+    public static readonly StyledProperty<IBrush?> BorderOverrideProperty =
+        AvaloniaProperty.Register<NavigationFrame, IBrush?>(nameof(BorderOverride));
 
     public static readonly StyledProperty<bool> DisableMarginProperty =
         AvaloniaProperty.Register<NavigationFrame, bool>(nameof(DisableMargin));
@@ -27,6 +30,12 @@ public partial class NavigationFrame : ContentControl
     {
         get => GetValue(BackgroundOverrideProperty);
         set => SetValue(BackgroundOverrideProperty, value);
+    }
+    
+    public IBrush? BorderOverride
+    {
+        get => GetValue(BorderOverrideProperty);
+        set => SetValue(BorderOverrideProperty, value);
     }
 
     public bool DisableMargin
@@ -65,6 +74,11 @@ public partial class NavigationFrame : ContentControl
         else if (HideBorder)
         {
             _contentBorder.Background = Brushes.Transparent;
+        }
+        
+        if (BorderOverride is not null)
+        {
+            _contentBorder.BorderBrush = BorderOverride;
         }
 
         _contentBorder.Margin = DisableMargin ? new Thickness(0) : new Thickness(0, 0, 12, 12);

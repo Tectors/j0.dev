@@ -33,6 +33,8 @@
         VerticalAlignment="Center"/>
     </Border>
     
-    <controls:ProgressRing IsVisible="{Binding IsNotInitializedAndIsActive}" Foreground="White" Width="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}" Height="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}"/>
+    <Grid IsVisible="{Binding !IgnoreLoading, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}}">
+      <controls:ProgressRing IsVisible="{Binding IsNotInitializedAndIsActive}" Foreground="White" Width="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}" Height="{Binding SplashScale, RelativeSource={RelativeSource AncestorType=profiles:ProfileSplashControl}, Converter={StaticResource MultiplyConverter}, ConverterParameter=28}"/>
+    </Grid>
   </Grid>
 </UserControl>

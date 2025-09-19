@@ -37,7 +37,7 @@ public partial class TitleBar : UserControl
     
     private readonly Dictionary<Visual, CancellationTokenSource> _fadeTokens = new();
 
-    private async void FadeOpacity(Visual target, double targetOpacity, int durationMs = 300)
+    private async void FadeOpacity(Visual target, double targetOpacity, int durationMs = 350)
     {
         if (target == null) return;
 

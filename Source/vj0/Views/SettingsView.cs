@@ -1,14 +1,19 @@
 using System.Linq;
+
 using Avalonia;
-using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
+
 using FluentAvalonia.UI.Controls;
+
+using vj0.Framework.Models;
 using vj0.Services;
+using vj0.ViewModels;
 
 namespace vj0.Views;
 
-public partial class SettingsView : UserControl
+public partial class SettingsView : ViewBase<SettingsViewModel>
 {
     public static readonly StyledProperty<bool> IsOnboardingProperty = AvaloniaProperty.Register<SettingsView, bool>(nameof(IsOnboarding));
     
@@ -21,7 +26,7 @@ public partial class SettingsView : UserControl
     private NavigatorContext Context = Navigation.Settings;
     private bool HasInitialized;
     
-    public SettingsView()
+    public SettingsView(): base(SettingsVM)
     {
         InitializeComponent();
 
@@ -39,8 +44,28 @@ public partial class SettingsView : UserControl
             HasInitialized = true;
         };
         
+        MainWM.PropertyChanged += (_, args) =>
+        {
+            if (args.PropertyName == nameof(MainWM.CurrentProfile))
+            {
+                UpdateProfile();
+            }
+        };
+        
         NavigationView.TemplateApplied += (_, __) => FindPaneContentGrid();
         NavigationView.LayoutUpdated += (_, __) => UpdatePaneBorder();
+        
+        UpdateProfile();
+    }
+    
+    private void UpdateProfile()
+    {
+        SettingsVM.CurrentProfile = MainWM.CurrentProfile;
+        
+        NavigationView.Classes.Set("has-profile", SettingsVM.CurrentProfile is not null);
+        PaneBorder.Classes.Set("has-profile", SettingsVM.CurrentProfile is not null);
+        
+        EditProfileButton.IsVisible = SettingsVM.CurrentProfile is not null;
     }
     
     private ItemsRepeater? NavigationLeftPanelContents;
@@ -58,6 +83,7 @@ public partial class SettingsView : UserControl
         }
 
         NavigationLeftPanelContents.SizeChanged += (_, __) => UpdatePaneBorder();
+        
         UpdatePaneBorder();
     }
     private void UpdatePaneBorder()
@@ -67,6 +93,11 @@ public partial class SettingsView : UserControl
             return;
         }
 
-        PaneBorder.Height = NavigationLeftPanelContents.DesiredSize.Height + 26;
+        PaneBorder.Height = (NavigationLeftPanelContents.DesiredSize.Height + 26) - PaneBorder.Margin.Top;
+    }
+
+    private void EditProfile(object? sender, RoutedEventArgs e)
+    {
+        MainWM.CurrentProfile!.OpenEditor();
     }
 }
