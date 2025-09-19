@@ -1,11 +1,10 @@
 using System.Linq;
 
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
-
-using FluentAvalonia.UI.Controls;
 
 using vj0.Framework.Models;
 using vj0.Services;
@@ -61,20 +60,22 @@ public partial class SettingsView : ViewBase<SettingsViewModel>
     private void UpdateProfile()
     {
         SettingsVM.CurrentProfile = MainWM.CurrentProfile;
+
+        var isCurrentProfileValid = SettingsVM.CurrentProfile is not null;
         
-        NavigationView.Classes.Set("has-profile", SettingsVM.CurrentProfile is not null);
-        PaneBorder.Classes.Set("has-profile", SettingsVM.CurrentProfile is not null);
+        NavigationView.Classes.Set("has-profile", isCurrentProfileValid);
+        PaneBorder.Classes.Set("has-profile", isCurrentProfileValid);
         
-        EditProfileButton.IsVisible = SettingsVM.CurrentProfile is not null;
+        EditProfileButton.IsVisible = isCurrentProfileValid;
     }
     
-    private ItemsRepeater? NavigationLeftPanelContents;
+    private ScrollViewer? NavigationLeftPanelContents;
     
     private void FindPaneContentGrid()
     {
         NavigationLeftPanelContents = NavigationView.GetVisualDescendants()
-            .OfType<ItemsRepeater>()
-            .FirstOrDefault(v => v.Name == "MenuItemsHost");
+            .OfType<ScrollViewer>()
+            .FirstOrDefault(v => v.Name == "MenuItemsScrollViewer");
 
         if (NavigationLeftPanelContents is null)
         {
@@ -93,7 +94,7 @@ public partial class SettingsView : ViewBase<SettingsViewModel>
             return;
         }
 
-        PaneBorder.Height = (NavigationLeftPanelContents.DesiredSize.Height + 26) - PaneBorder.Margin.Top;
+        PaneBorder.Height = (NavigationLeftPanelContents.DesiredSize.Height) - PaneBorder.Margin.Top;
     }
 
     private void EditProfile(object? sender, RoutedEventArgs e)

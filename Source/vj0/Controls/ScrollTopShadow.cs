@@ -38,7 +38,7 @@ public class ScrollTopShadow : Control
         });
     }
 
-    private ScrollTopShadow()
+    public ScrollTopShadow()
     {
         _fadeTimer.Tick += (_, _) => AnimateOpacityStep();
     }

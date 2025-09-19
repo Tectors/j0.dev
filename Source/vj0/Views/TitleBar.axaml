@@ -53,7 +53,7 @@
                 
                 Does not look good at higher opacities
                 -->
-                <Grid Opacity="0.1" Name="TitleBarGradient" IsVisible="True">
+                <Grid Opacity="0.0" Name="TitleBarGradient" IsVisible="True">
                     <Border Margin="10 0 10 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="40">
                         <Border.Effect>
                             <BlurEffect Radius="75"/>

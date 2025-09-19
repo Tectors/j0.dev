@@ -17,24 +17,32 @@
     
     mc:Ignorable="d"
     d:DesignWidth="1500"
-    d:DesignHeight="1500">
+    d:DesignHeight="300">
     
     <UserControl.Styles>
-        <Style Selector="controls|NavigationView.has-profile /template/ controls|ItemsRepeater#MenuItemsHost">
-            <Setter Property="Margin" Value="0,230,0,0"/>
+        <Style Selector="controls|NavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
+            <Setter Property="Margin" Value="0,0,0,2"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView /template/ controls|ItemsRepeater#MenuItemsHost">
+            <Setter Property="Margin" Value="0,20,0,20"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView.has-profile /template/ ScrollViewer#MenuItemsScrollViewer">
+            <Setter Property="Margin" Value="0,225,0,2"/>
         </Style>
         
         <Style Selector="navigation|NavigationFrame.has-profile">
-            <Setter Property="Margin" Value="0,230,0,0"/>
+            <Setter Property="Margin" Value="0,225,0,0"/>
         </Style>
     </UserControl.Styles>
     
     <Grid>
         <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393"/>
         
-        <controls:NavigationView Margin="20 0 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+        <controls:NavigationView Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
-                <controls:NavigationViewItem Margin="3 20 0 0" Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
+                <controls:NavigationViewItem Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
                         <fluent:FluentIconSource Icon="Settings" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
@@ -84,10 +92,11 @@
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
                 Classes="Glass"
+                CornerRadius="12"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
-                Margin="0 30 0 0"
+                Margin="0 28 0 0"
                 Click="EditProfile"
                 IsVisible="False"
                 ClipToBounds="False"

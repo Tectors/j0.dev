@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 
 namespace vj0.Controls.Profiles;
 
@@ -20,6 +21,23 @@ public partial class ProfileSplashControl : UserControl
     {
         get => GetValue(RadiusProperty);
         set => SetValue(RadiusProperty, value);
+    }
+        
+    private static readonly StyledProperty<Thickness> OutlineBorderThicknessProperty = AvaloniaProperty.Register<ProfileSplashControl, Thickness>(nameof(OutlineBorderThickness), new Thickness(0));
+
+    public Thickness OutlineBorderThickness
+    {
+        get => GetValue(OutlineBorderThicknessProperty);
+        set => SetValue(OutlineBorderThicknessProperty, value);
+    }
+    
+    public static readonly StyledProperty<IBrush?> OutlineBorderBrushProperty =
+        AvaloniaProperty.Register<ProfileSplashControl, IBrush?>(nameof(OutlineBorderBrush), Brushes.White);
+    
+    public IBrush? OutlineBorderBrush
+    {
+        get => GetValue(OutlineBorderBrushProperty);
+        set => SetValue(OutlineBorderBrushProperty, value);
     }
 
     private static readonly StyledProperty<bool> IgnoreLoadingProperty = AvaloniaProperty.Register<ProfileSplashControl, bool>(nameof(IgnoreLoading), false);

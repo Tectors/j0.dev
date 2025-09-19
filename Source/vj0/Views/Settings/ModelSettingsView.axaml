@@ -25,6 +25,8 @@
 
         <ScrollViewer controls1:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
+                <TextBlock Margin="0 5">General</TextBlock>
+                
                 <controls:SettingsExpander Header="Level Of Detail" Description="Select the desired mesh detail level. Higher levels provide less geometry detail.">
                     <controls:SettingsExpander.Footer>
                         <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type meshes:ELodFormat}}" SelectedItem="{Binding LodFormat, Converter={StaticResource EnumToRecord}}"/>

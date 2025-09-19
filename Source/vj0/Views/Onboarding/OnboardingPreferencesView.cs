@@ -16,7 +16,10 @@ public partial class OnboardingPreferencesView : UserControl
         
         Task.Run(async () =>
         {
-            await Task.Delay(4000);
+#if !DEBUG
+            await Task.Delay(4000);      
+#endif
+
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 ContinueButton.IsEnabled = true;

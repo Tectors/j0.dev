@@ -18,7 +18,9 @@ public partial class OnboardingTermsView : UserControl
         
         Task.Run(async () =>
         {
-            await Task.Delay(3000);
+#if !DEBUG
+            await Task.Delay(3000);      
+#endif
             await Dispatcher.UIThread.InvokeAsync(() =>
             {
                 ContinueButton.IsEnabled = true;
