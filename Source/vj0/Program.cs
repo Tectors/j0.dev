@@ -1,6 +1,7 @@
 using Avalonia;
 
 using System;
+using System.Linq;
 using System.Threading;
 
 using vj0.Application;
@@ -19,6 +20,14 @@ internal sealed class Program
         if (!isNewInstance)
         {
             return;
+        }
+        
+        var launchArg = args.FirstOrDefault(a => a.StartsWith("--launchProfile=", StringComparison.OrdinalIgnoreCase));
+        if (launchArg is not null)
+        {
+            var profileId = launchArg.Split('=')[1];
+
+            Globals.LaunchProfileArg = profileId;
         }
 
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);

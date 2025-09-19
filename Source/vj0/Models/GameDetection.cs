@@ -63,11 +63,12 @@ public static class GameDetection
         }
     }
 
-    public static void UpdateSchemaVersions()
+    public static void PostDetection()
     {
         foreach (var profile in LoadedProfiles)
         {
             profile.UpdateSchemaVersion();
+            
             _ = profile.Save();
         }
     }

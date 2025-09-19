@@ -38,11 +38,11 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         
             await GameDetection.LoadAllAsync();
             GameDetection.DetectAllProfilesAsync();
-            GameDetection.UpdateSchemaVersions();
+            GameDetection.PostDetection();
         }
     }
     
-    private bool hasAttemptedRecentProfileLoad;
+    private bool hasAttemptedProfileLoad;
     private bool hasLoadedProfiles;
     
     public async Task RefreshAllAsync()
@@ -54,23 +54,6 @@ public partial class ProfileSelectionViewModel : ViewModelBase
             hasLoadedProfiles = true;
         }
         
-        if (AppServices.Settings.Application.LoadRecentProfileOnLaunch && MainWM.CurrentProfile is null && !hasAttemptedRecentProfileLoad)
-        {
-            var recentProfile = GameDetection.GetRecentlyUsedProfiles(1).FirstOrDefault() ?? GameDetection.LoadedProfiles.FirstOrDefault();
-
-            if (recentProfile is not null)
-            {
-                _ = MainWM.StartProfileAsync(recentProfile);
-            }
-
-            hasAttemptedRecentProfileLoad = true;
-        }
-
-        if (!AppServices.Settings.Application.LoadRecentProfileOnLaunch)
-        {
-            hasAttemptedRecentProfileLoad = true;
-        }
-
         CardMap.Clear();
         ViewModelMap.Clear();
 
@@ -88,6 +71,33 @@ public partial class ProfileSelectionViewModel : ViewModelBase
                 _ = profile.ResolveDataFromArchives(false);
             }
         });
+
+        if (Globals.LaunchProfileArg != string.Empty && !hasAttemptedProfileLoad)
+        {
+            foreach (var profile in GameDetection.LoadedProfiles.Where(profile => profile.FileID == Globals.LaunchProfileArg))
+            {
+                _ = MainWM.StartProfileAsync(profile);
+            }
+            
+            hasAttemptedProfileLoad = true;
+        }
+        
+        if (AppServices.Settings.Application.LoadRecentProfileOnLaunch && MainWM.CurrentProfile is null && !hasAttemptedProfileLoad)
+        {
+            var recentProfile = GameDetection.GetRecentlyUsedProfiles(1).FirstOrDefault() ?? GameDetection.LoadedProfiles.FirstOrDefault();
+
+            if (recentProfile is not null)
+            {
+                _ = MainWM.StartProfileAsync(recentProfile);
+            }
+
+            hasAttemptedProfileLoad = true;
+        }
+
+        if (!AppServices.Settings.Application.LoadRecentProfileOnLaunch)
+        {
+            hasAttemptedProfileLoad = true;
+        }
 
         await Dispatcher.UIThread.InvokeAsync(() =>
         {

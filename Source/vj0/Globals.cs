@@ -14,4 +14,6 @@ public static class Globals
     public static readonly FilePickerFileType MappingsFileType = new(".USMAP Files") { Patterns = [ "*.usmap" ] };
 
     public const bool HideAllProfileCardInformation = false;
+    
+    public static string LaunchProfileArg = string.Empty;
 }
