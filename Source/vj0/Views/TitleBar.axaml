@@ -19,13 +19,13 @@
     d:DesignWidth="900"
     d:DesignHeight="150">
 
-    <Grid ClipToBounds="True" Height="{DynamicResource TitleBarHeight}">
+    <Grid>
         <!-- Background -->
         <Border
             Background="{DynamicResource BackgroundBrush}"
             IsHitTestVisible="False"/>
         
-        <controls1:CursorEffectControl/>
+        <controls1:CursorEffectControl ClipToBounds="False"/>
 
         <!-- Left Side -->
         <StackPanel Name="Left"
@@ -53,8 +53,8 @@
                 
                 Does not look good at higher opacities
                 -->
-                <Grid Opacity="0.0" Name="TitleBarGradient" IsVisible="True">
-                    <Border Margin="10 0 10 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="40">
+                <Grid Opacity="0.25" Name="TitleBarGradient" IsVisible="True">
+                    <Border Margin="10 0 10 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="25">
                         <Border.Effect>
                             <BlurEffect Radius="75"/>
                         </Border.Effect>

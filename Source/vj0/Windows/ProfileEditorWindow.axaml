@@ -23,8 +23,6 @@
     CanResize="False"
     
     Background="{DynamicResource BackgroundBrush}"
-    FontWeight="Light"
-    
     mc:Ignorable="d"
     
     d:DesignWidth="{Binding $parent[Window].MinWidth}"

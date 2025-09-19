@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Avalonia.Controls;
 using Avalonia.LogicalTree;
 
 using FluentAvalonia.UI.Controls;
@@ -29,7 +29,7 @@ public class NavigatorContext
     {
         _navigationView = navigationView;
 
-        _navigationView.ItemInvoked += (a, args) =>
+        _navigationView.ItemInvoked += (abs, args) =>
         {
             if (args.InvokedItemContainer.Tag is Type pageType)
             {

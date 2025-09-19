@@ -33,21 +33,18 @@
     </Window.KeyBindings>
     
     <Grid RowDefinitions="Auto, *" Margin="{Binding $parent[Window].OffScreenMargin}">
-        <!-- Title Bar -->
-        <views:TitleBar Grid.Row="0"/>
+        <!-- Title Bar Padding -->
+        <Grid Height="{DynamicResource TitleBarHeight}" Grid.Row="0" IsHitTestVisible="False"/>
 
-        <Grid Grid.Row="1" ColumnDefinitions="Auto, *">
+        <Grid Grid.Row="1">
             <!-- Entire Navigation -->
             <controls:NavigationView
-                Grid.Column="1"
-                
                 PaneDisplayMode="LeftCompact"
                 CompactPaneLength="{DynamicResource TitleBarHeight}"
                 
                 Classes="NoRoundedBackground"
                 
                 IsBackButtonVisible="False" IsPaneToggleButtonVisible="False"
-                SelectionFollowsFocus="True"
                 
                 Background="{DynamicResource BackgroundBrush}"
 
@@ -181,6 +178,9 @@
                      </ItemsControl>
                 </Grid>
             </controls:NavigationView>
+            
+            <!-- Overlay Title Bar Above Navigation View -->
+            <views:TitleBar ClipToBounds="False" Margin="{DynamicResource TitleBarNegativeTopMargin}" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

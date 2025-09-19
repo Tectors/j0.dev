@@ -157,7 +157,7 @@ public partial class ProfileSelectionView : ViewBase<ProfileSelectionViewModel>
                 })
             };
             
-            await dialog.ShowAsync();
+            await dialog.ShowAsync(MainWM.Window);
         };
     }
 }

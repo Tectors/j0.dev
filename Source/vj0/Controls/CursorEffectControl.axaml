@@ -5,10 +5,11 @@
     
     IsHitTestVisible="False">
     
-    <Canvas x:Name="CursorCanvas" Opacity="0.8" ClipToBounds="True">
+    <Canvas x:Name="CursorCanvas" Opacity="0.8" ClipToBounds="False">
         <Ellipse x:Name="CursorCircle" 
                  Width="120" 
-                 Height="120" 
+                 Height="120"
+                 ClipToBounds="False"
                  Fill="#15FFFFFF"
                  Opacity="0"
                  IsVisible="False">

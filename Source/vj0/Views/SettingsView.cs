@@ -94,7 +94,7 @@ public partial class SettingsView : ViewBase<SettingsViewModel>
             return;
         }
 
-        PaneBorder.Height = (NavigationLeftPanelContents.DesiredSize.Height) - PaneBorder.Margin.Top;
+        PaneBorder.Height = NavigationLeftPanelContents.DesiredSize.Height - PaneBorder.Margin.Top;
     }
 
     private void EditProfile(object? sender, RoutedEventArgs e)

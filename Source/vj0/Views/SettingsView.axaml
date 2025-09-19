@@ -11,6 +11,7 @@
     xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:viewModels1="clr-namespace:vj0.ViewModels"
+    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.SettingsView"
     x:DataType="viewModels1:SettingsViewModel"
@@ -20,6 +21,14 @@
     d:DesignHeight="300">
     
     <UserControl.Styles>
+        <Style Selector="controls|Frame#ContentFrame">
+            <Setter Property="Margin" Value="45,0,0,0"/>
+        </Style>
+        
+        <Style Selector="controls|NavigationView.has-profile controls|Frame#ContentFrame">
+            <Setter Property="Margin" Value="45,30,0,0"/>
+        </Style>
+        
         <Style Selector="controls|NavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
             <Setter Property="Margin" Value="0,0,0,2"/>
         </Style>
@@ -85,7 +94,7 @@
                 </controls:NavigationViewItem>
             </controls:NavigationView.MenuItems>
             
-            <controls:Frame Margin="45 10 0 0" x:Name="ContentFrame"/>
+            <controls:Frame x:Name="ContentFrame"/>
         </controls:NavigationView>
         
         <Button HorizontalAlignment="Left"
@@ -102,7 +111,15 @@
                 ClipToBounds="False"
                 Height="180">
             
-            <Grid>
+            <Grid Background="Transparent">
+                <Grid Opacity="0.4" IsVisible="True" HorizontalAlignment="Left">
+                    <Border Background="White" Height="40" Width="50" Margin="35 25 0 140">
+                        <Border.Effect>
+                            <BlurEffect Radius="50"/>
+                        </Border.Effect>
+                    </Border>
+                </Grid>
+                
                 <Grid DataContext="{Binding CurrentProfile}" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <profiles:ProfileSplashControl
                         HorizontalAlignment="Left"

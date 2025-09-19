@@ -115,6 +115,8 @@
       </ResourceDictionary.MergedDictionaries>
 
       <x:Double x:Key="TitleBarHeight">60</x:Double>
+      <Thickness x:Key="TitleBarNegativeTopMargin">0 -60 0 0</Thickness>
+      
       <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.425</x:Double>
       
       <x:Double x:Key="SettingsExpanderMinHeight">15</x:Double>
