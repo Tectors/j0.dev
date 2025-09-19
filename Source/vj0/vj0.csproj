@@ -60,9 +60,8 @@
       <PackageReference Include="runtime.native.System.Data.SqlClient.sni" Version="4.7.0"/>
       <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
       <PackageReference Include="System.Reactive" Version="6.0.1"/>
-      <!-- <- Licensed ~~~~~~~~~~~ -->
-
       <PackageReference Include="Microsoft-WindowsAPICodePack-ShellExtensions" Version="1.1.4" />
+      <!-- <- Licensed ~~~~~~~~~~~ -->
   </ItemGroup>
 
   <ItemGroup>
