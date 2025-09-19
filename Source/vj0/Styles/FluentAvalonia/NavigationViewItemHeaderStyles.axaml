@@ -9,7 +9,6 @@
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="Foreground" Value="White" />
         <Setter Property="Opacity" Value="0.85" />
         <Setter Property="Template">
             <ControlTemplate>

@@ -108,7 +108,7 @@
                                 </Border>
                             </Grid>
                             
-                            <TextBlock Name="ProfileName" MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Foreground="White" Text="{Binding ProfileDisplayName}" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Name="ProfileName" MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding ProfileDisplayName}" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Grid>
 
                         <controls:SymbolIcon Margin="-5 0 0 0" Symbol="ChevronDown"/>
@@ -183,7 +183,6 @@
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
@@ -198,7 +197,6 @@
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
@@ -213,7 +211,6 @@
                                         <ResourceDictionary>
                                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
                                             <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>

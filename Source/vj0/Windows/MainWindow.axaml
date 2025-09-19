@@ -141,12 +141,12 @@
                                      Classes="FadeIn"
                                      
                                      Margin="25 2"
-                                     Background="#7F0f0f0f"
+                                     Background="{DynamicResource InfoBarBackground}"
                                      
                                      IsOpen="True">
                                      
                                      <controls:InfoBar.Effect>
-                                         <DropShadowEffect Color="Black"
+                                         <DropShadowEffect Color="{DynamicResource InfoBarDropShadowBackground}"
                                            Opacity="0.35"
                                            BlurRadius="90"/>
                                      </controls:InfoBar.Effect>

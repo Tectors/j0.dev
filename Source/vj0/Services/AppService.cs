@@ -114,7 +114,7 @@ public class AppService : IService
     }
 
     [RequiresAssemblyFiles]
-    public void RefreshWindowJumpList()
+    private void RefreshWindowJumpList()
     {
         if (!TaskbarManager.IsPlatformSupported || !HasActiveWindow())
         {

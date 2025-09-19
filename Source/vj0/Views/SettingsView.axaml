@@ -11,7 +11,6 @@
     xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:viewModels1="clr-namespace:vj0.ViewModels"
-    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.SettingsView"
     x:DataType="viewModels1:SettingsViewModel"

@@ -145,6 +145,9 @@
       <!-- Brushes grouped logically -->
       <SolidColorBrush x:Key="BackgroundBrush" Color="Black"/>
       
+      <SolidColorBrush x:Key="InfoBarBackground" Color="#7F0f0f0f"/>
+      <Color x:Key="InfoBarDropShadowBackground">Black</Color>
+      
       <SolidColorBrush x:Key="CheckBoxForegroundUnchecked" Color="White"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="#198cff"/>
       <SolidColorBrush x:Key="CheckBoxCheckBackgroundChecked" Color="#198cff"/>
@@ -162,7 +165,7 @@
       <SolidColorBrush x:Key="CommandBarFlyoutAppBarButtonBackgroundPressed" Color="#235fe8"/>
       
       <SolidColorBrush x:Key="ForegroundBrush" Color="White"/>
-      <SolidColorBrush x:Key="BorderBrush" Color="#1f2023"/>
+      <SolidColorBrush x:Key="BorderBrush" Color="#292A2D"/>
       <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
       
       <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#080808"/>
