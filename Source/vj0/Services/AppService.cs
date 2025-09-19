@@ -126,7 +126,7 @@ public class AppService : IService
         
         var recentCategory = new JumpListCustomCategory("Recent");
 
-        foreach (var Profile in GameDetection.GetRecentlyUsedProfiles(3))
+        foreach (var Profile in GameDetection.GetRecentlyUsedProfiles(5))
         {
             var profileLink = new JumpListLink(exePath, Profile.Name)
             {

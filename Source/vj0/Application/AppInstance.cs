@@ -18,6 +18,7 @@ public class AppInstance : Avalonia.Application
 {
     private IClassicDesktopStyleApplicationLifetime Desktop = null!;
     private bool debugShowStartup;
+    
     public Window savedWindow = null!;
 
     public override void Initialize()
