@@ -93,6 +93,7 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
 
         UpdateMainWindowProfileState(originalProfile, isUncompleted, hasChanged, hasVisuallyChanged);
 
+        ProfileEditorNavigationView.SelectedItem = null;
         Close();
     }
 

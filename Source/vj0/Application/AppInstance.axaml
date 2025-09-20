@@ -15,6 +15,8 @@
     <FluentTheme/>
 
     <StyleInclude Source="/Styles/ButtonStyles.axaml"/>
+    <StyleInclude Source="/Styles/TextStyles.axaml"/>
+    <StyleInclude Source="/Styles/GeneralStyles.axaml"/>
     
     <avalonia:MaterialIconStyles/>
 
@@ -111,6 +113,7 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/ContentDialogStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemHeaderStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemSeparatorStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
 
       <x:Double x:Key="TitleBarHeight">60</x:Double>
@@ -189,6 +192,8 @@
       <!-- ComboBox Brushes -->
       <SolidColorBrush x:Key="ComboBoxBackground" Color="#80121212"/>
       <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#4e5157"/>
+      <SolidColorBrush x:Key="ComboBoxPressedBorderBrush" Color="#3574f0"/>
+      <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="#1a1a1a"/>
       <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#1a1a1a"/>
       <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#0d5eff"/>
@@ -208,7 +213,7 @@
       <!-- MenuFlyout Brushes -->
       <SolidColorBrush x:Key="MenuFlyoutPresenterBackground" Color="#141415"/>
       <SolidColorBrush x:Key="FlyoutPresenterBackground" Color="#141415"/>
-      <SolidColorBrush x:Key="FlyoutBorderThemeBrush" Color="#232323"/>
+      <SolidColorBrush x:Key="FlyoutBorderThemeBrush" Color="#303030"/>
       
       <SolidColorBrush x:Key="MenuFlyoutItemBackground" Color="Transparent"/>
       <SolidColorBrush x:Key="MenuFlyoutItemBackgroundPointerOver" Color="#235fe8"/>

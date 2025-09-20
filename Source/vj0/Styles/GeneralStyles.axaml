@@ -1,0 +1,17 @@
+<Styles xmlns="https://github.com/avaloniaui"    
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style Selector="ScrollViewer.SettingsScrollViewer">
+        <Setter Property="Margin" Value="0 45 0 0" />
+    </Style>
+    
+    <Style Selector="StackPanel.SettingsStackPanel">
+        <Setter Property="Margin" Value="0 0 20 25" />
+        <Setter Property="Spacing" Value="10" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    
+    <Style Selector="Grid.SettingsWrapper">
+        <Setter Property="Margin" Value="15 0 0 0" />
+    </Style>
+</Styles>

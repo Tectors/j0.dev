@@ -14,12 +14,12 @@
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
-    <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Debug</TextBlock>
+    <Grid Classes="SettingsWrapper">
+        <TextBlock Classes="SettingsHeader">Debug</TextBlock>
             
-        <ScrollViewer controls:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
-                <TextBlock Margin="0 5">Developer Tools</TextBlock>
+        <ScrollViewer controls:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+            <StackPanel Classes="SettingsStackPanel">
+                <TextBlock Classes="SettingsCategory" Text="Developer Tools"/>
                 
                 <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
                     <Button.Resources>

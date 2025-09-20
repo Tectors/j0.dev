@@ -119,7 +119,7 @@
             <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" Height="33" BorderThickness="1" BorderBrush="{DynamicResource TitleBarVersionBorderBrush}" Background="{DynamicResource TitleBarVersionBackground}" CornerRadius="25">
+            <Button Padding="8 0" IsVisible="True" Height="33" BorderThickness="1" BorderBrush="{DynamicResource TitleBarVersionBorderBrush}" Background="{DynamicResource TitleBarVersionBackground}" CornerRadius="25">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
@@ -152,15 +152,7 @@
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
-                                <Button Click="CopyGitCloneCommand" Cursor="Hand"
-                                        HorizontalAlignment="Stretch"
-                                        FontWeight="Normal"
-                                        Opacity="0.95"
-                                        Background="Black"
-                                        Height="30"
-                                        BorderThickness="1"
-                                        BorderBrush="#1f2023"
-                                        CornerRadius="15">
+                                <Button Click="CopyGitCloneCommand" Cursor="Hand" Classes="AccentHighlight" Height="30">
                                     
                                     <ToolTip.Tip>
                                         <StackPanel MaxWidth="250">
@@ -178,45 +170,15 @@
                                             </TextBlock>
                                         </StackPanel>
                                     </ToolTip.Tip>
-                                    
-                                    <Button.Resources>
-                                        <ResourceDictionary>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                        </ResourceDictionary>
-                                    </Button.Resources>
 
                                     <avalonia1:MaterialIcon Kind="Git"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View Commit" Background="Black" CornerRadius="15" Cursor="Hand" IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
-                                    <Button.Resources>
-                                        <ResourceDictionary>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                        </ResourceDictionary>
-                                    </Button.Resources>
-
+                                <Button ToolTip.Tip="View Commit" Classes="AccentHighlight" IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
                                     <avalonia1:MaterialIcon Kind="Github"/>
                                 </Button>
                                 
-                                <Button HorizontalAlignment="Stretch" BorderThickness="1" ToolTip.Tip="View License" Background="Black" CornerRadius="15" Cursor="Hand" Click="OpenGitHubLicense" Height="30">
-                                    <Button.Resources>
-                                        <ResourceDictionary>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#0f0f0f</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#000000</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
-                                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                        </ResourceDictionary>
-                                    </Button.Resources>
-
+                                <Button ToolTip.Tip="View License" Classes="AccentHighlight" Click="OpenGitHubLicense" Height="30">
                                     <avalonia1:MaterialIcon Kind="Legal"/>
                                 </Button>
                             </StackPanel>
@@ -231,12 +193,12 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         IsHitTestVisible="False"
-                        Height="9"
-                        Margin="2 2 2 0"/>
+                        Height="11"
+                        Margin="6 2 5 0"/>
                     
-                    <TextBlock FontFamily="Consolas" Text="{x:Static vj0.Core:Globals.VERSION}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
+                    <TextBlock FontFamily="Consolas" Text="{x:Static vj0.Core:Globals.VERSION}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
                     
-                    <controls:SymbolIcon Symbol="ChevronDown"/>
+                    <controls:SymbolIcon Symbol="ChevronDown" Margin="0 0 4 0"/>
                 </StackPanel>
             </Button>
         </StackPanel>

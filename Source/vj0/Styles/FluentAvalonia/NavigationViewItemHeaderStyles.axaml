@@ -9,10 +9,10 @@
         <Setter Property="MinHeight" Value="0"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="Opacity" Value="0.85" />
+        <Setter Property="Opacity" Value="1" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Panel Name="NVIHeaderRootGrid" Margin="0 10 0 -5">
+                <Panel Name="NVIHeaderRootGrid" Margin="0 15 0 -5">
                     <Panel Name="InnerHeaderGrid"
                            HorizontalAlignment="Left"
                            Margin="{DynamicResource NavigationViewItemInnerHeaderMargin}"

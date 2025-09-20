@@ -79,7 +79,73 @@
     
     <Style Selector="Button.Glass:pressed">
         <Setter Property="Background" Value="#1c1c1c" />
-        <Setter Property="BorderBrush" Value="#b5b5b5" />
+        <Setter Property="BorderBrush" Value="#3574f0" />
+    </Style>
+    
+    <Style Selector="Button.WhiteOutline">
+        <Setter Property="BorderBrush" Value="#adadad" />
+    </Style>
+    
+    <Style Selector="Button.WhiteOutline:pressed">
+        <Setter Property="Background" Value="#050505" />
+    </Style>
+    
+    <Style Selector="Button.RedPressedOutline:pressed">
+        <Setter Property="BorderBrush" Value="#ff1c68" />
+    </Style>
+    
+    <!-- Accent Highlight Button -->
+    <Style Selector="Button.AccentHighlight">
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="BorderBrush" Value="#1f2023" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        Foreground="{TemplateBinding Foreground}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.AccentHighlight /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+    
+    <Style Selector="Button.AccentHighlight /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    
+    <Style Selector="Button.AccentHighlight:pointerover">
+        <Setter Property="Background" Value="#0f0f0f" />
+        <Setter Property="BorderBrush" Value="#6b6b6b" />
+    </Style>
+    
+    <Style Selector="Button.AccentHighlight:pressed">
+        <Setter Property="Background" Value="#000000" />
+        <Setter Property="BorderBrush" Value="#3574f0" />
     </Style>
     
     <!-- White Button -->

@@ -48,7 +48,7 @@
     <Grid>
         <navigation:NavigationFrame DisableMargin="True" Name="PaneBorder" HorizontalAlignment="Left" VerticalAlignment="Top" Width="393"/>
         
-        <controls:NavigationView Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
+        <controls:NavigationView FontSize="15" Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
                 <controls:NavigationViewItem Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
@@ -100,7 +100,7 @@
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
                 Classes="Glass"
-                CornerRadius="12"
+                CornerRadius="18"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"

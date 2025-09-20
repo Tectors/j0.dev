@@ -20,12 +20,12 @@
     d:DesignWidth="1500"
     d:DesignHeight="1500">
     
-    <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Models</TextBlock>
+    <Grid Classes="SettingsWrapper">
+        <TextBlock Classes="SettingsHeader">Models</TextBlock>
 
-        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
-                <TextBlock Margin="0 5">General</TextBlock>
+        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+            <StackPanel Classes="SettingsStackPanel">
+                <TextBlock Classes="SettingsCategory" Text="General"/>
                 
                 <controls:SettingsExpander Header="Level Of Detail" Description="Select the desired mesh detail level. Higher levels provide less geometry detail.">
                     <controls:SettingsExpander.Footer>
@@ -45,7 +45,7 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Margin="0 5">Materials</TextBlock>
+                <TextBlock Classes="SettingsCategory" Text="Materials"/>
                 
                 <controls:SettingsExpander Header="Embed" Description="Include materials and instances directly within exported model files.">
                     <controls:SettingsExpander.Footer>
@@ -59,7 +59,7 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Margin="0 5">Skeletal Meshes</TextBlock>
+                <TextBlock Classes="SettingsCategory" Text="Skeletal Meshes"/>
                 
                 <controls:SettingsExpander Header="Socket Format" Description="Select how sockets are baked into exported files." IsVisible="{Binding IsActorXFormat}">
                     <controls:SettingsExpander.Footer>
@@ -73,7 +73,7 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Margin="0 5">Formats</TextBlock>
+                <TextBlock Classes="SettingsCategory" Text="Formats"/>
                 
                 <controls:SettingsExpander Header="Nanite" Description="Set the export format for high-density Nanite meshes.">
                     <controls:SettingsExpander.Footer>

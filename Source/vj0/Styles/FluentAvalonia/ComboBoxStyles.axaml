@@ -8,8 +8,6 @@
             <StackPanel Spacing="5">
                 <ComboBox>
                     <ComboBoxItem Content="aaaaaaaaa" />
-                    <ComboBoxItem Content="a" />
-                    <ComboBoxItem Content="a" />
                 </ComboBox>
                 <ComboBox PlaceholderText="Placeholder">
                     <ComboBoxItem Content="Item1" />
@@ -173,19 +171,19 @@
                                ClipToBounds="True"
                                InheritsTransform="True">
                             <Border x:Name="PopupBorder"
-                                    Background="{DynamicResource ComboBoxPopupBorderBackground}"
-                                    Margin="0 1 0 0"
-                                    BorderBrush="{DynamicResource ComboBoxPopupBorderBrush}"
-                                    BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
-                                    Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
+                                    Background="{DynamicResource FlyoutPresenterBackground}"
+                                    BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
+                                    BorderThickness="1"
+                                    ClipToBounds="True"
                                     HorizontalAlignment="Stretch"
                                     CornerRadius="{DynamicResource OverlayCornerRadius}"
                                     BackgroundSizing="InnerBorderEdge">
                                 <ScrollViewer HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" Margin="5"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                              ClipToBounds="True" Margin="5 0"
                                               IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
-                                                    Margin="{DynamicResource ComboBoxDropdownContentMargin}"
+                                                    Margin="5 10 5 10"
                                                     ItemsPanel="{TemplateBinding ItemsPanel}" />
                                 </ScrollViewer>
                             </Border>
@@ -217,6 +215,7 @@
             </Style>
             <Style Selector="^ /template/ Border#Background">
                 <Setter Property="Background" Value="{DynamicResource ComboBoxBackgroundPressed}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ComboBoxPressedBorderBrush}" />
             </Style>
         </Style>
 
@@ -257,12 +256,13 @@
     </ControlTheme>
 
     <ControlTheme TargetType="ComboBoxItem" x:Key="{x:Type ComboBoxItem}">
-        <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="CornerRadius" Value="10" />
         <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForeground}" />
-        <Setter Property="Background" Value="{DynamicResource ComboBoxPopupBorderBackground}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Padding" Value="{DynamicResource ComboBoxItemThemePadding}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="FocusAdorner">
             <FocusAdornerTemplate>
                 <Border BorderThickness="{DynamicResource SystemControlFocusVisualPrimaryThickness}"

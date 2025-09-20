@@ -1,0 +1,15 @@
+<Styles xmlns="https://github.com/avaloniaui"    
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style Selector="TextBlock.SettingsHeader">
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </Style>
+    
+    <Style Selector="TextBlock.SettingsCategory">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Opacity" Value="0.92" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="Margin" Value="0 13" />
+    </Style>
+</Styles>

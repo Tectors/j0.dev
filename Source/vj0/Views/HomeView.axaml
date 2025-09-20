@@ -90,9 +90,9 @@
                                 
                                 <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
                                         ClipToBounds="False"
-                                        CornerRadius="245"
+                                        CornerRadius="10"
                                         Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
-                                        Classes="Glass PressScale" HorizontalContentAlignment="Center"
+                                        Classes="Glass WhiteOutline RedPressedOutline PressScale" HorizontalContentAlignment="Center"
                                         PointerEntered="Donate_OnPointerEntered"
                                         VerticalContentAlignment="Center">
                                     <StackPanel Orientation="Horizontal" Spacing="14">

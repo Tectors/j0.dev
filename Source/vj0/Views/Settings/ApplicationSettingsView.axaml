@@ -14,15 +14,15 @@
     x:DataType="settings:ApplicationSettingsViewModel"
     
     mc:Ignorable="d"
-    d:DesignWidth="1500"
-    d:DesignHeight="1500">
+    d:DesignWidth="500"
+    d:DesignHeight="200">
     
-    <Grid>
-        <TextBlock FontSize="25" Margin="10 0 0 0" Opacity="0.99" FontWeight="DemiBold" ZIndex="1">Application</TextBlock>
+    <Grid Classes="SettingsWrapper">
+        <TextBlock Classes="SettingsHeader">Application</TextBlock>
         
-        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Margin="0 45 0 0">
-            <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
-                <TextBlock Margin="0 5" Text="Startup &amp; Behavior"/>
+        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+            <StackPanel Classes="SettingsStackPanel">
+                <TextBlock Classes="SettingsCategory" Text="Startup &amp; Behavior"/>
                 
                 <controls:SettingsExpander
                     Header="Auto-Load Last Profile"
@@ -57,7 +57,7 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Margin="0 5">General</TextBlock>
+                <TextBlock Classes="SettingsCategory" Text="General"/>
                 
                 <controls:SettingsExpander Header="Game Language" Description="The language used for in-game text and menus.">
                     <controls:SettingsExpander.IconSource>
@@ -69,7 +69,7 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <TextBlock Margin="0 5">Advanced</TextBlock>
+                <TextBlock Classes="SettingsCategory" Text="Advanced"/>
                 
                 <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
                     <controls:SettingsExpander.IconSource>
@@ -83,5 +83,4 @@
             </StackPanel>
         </ScrollViewer>
     </Grid>
-
 </UserControl>

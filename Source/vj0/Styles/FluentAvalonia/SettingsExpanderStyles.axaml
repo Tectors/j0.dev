@@ -149,6 +149,7 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type ui:SettingsExpander}" TargetType="ui:SettingsExpander">
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="Background" Value="{DynamicResource ExpanderBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource ExpanderHeaderBorderThickness}" />
