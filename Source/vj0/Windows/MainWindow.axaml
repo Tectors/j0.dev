@@ -52,7 +52,7 @@
 
                 <controls:NavigationView.MenuItems>
                     <!-- Home -->
-                    <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:HomeView}" IsSelected="True">
+                    <controls:NavigationViewItem Focusable="False" ToolTip.Tip="Home" Tag="{x:Type views:HomeView}" IsSelected="True">
                         <fluent:SymbolIcon Symbol="Home" IconVariant="Filled" FontSize="20" />
                     </controls:NavigationViewItem>
                     
@@ -114,7 +114,7 @@
                     <controls:NavigationViewItemSeparator Margin="0 5" CornerRadius="15"/>
                     
                     <!-- Settings -->
-                    <controls:NavigationViewItem ToolTip.Tip="Home" Tag="{x:Type views:SettingsView}">
+                    <controls:NavigationViewItem ToolTip.Tip="Settings" Tag="{x:Type views:SettingsView}">
                         <fluent:FluentIcon Width="18" Icon="Settings" Margin="0 0 2 0" />
                     </controls:NavigationViewItem>
                 </controls:NavigationView.FooterMenuItems>

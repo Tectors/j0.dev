@@ -62,7 +62,7 @@
                 </Grid>
                 
                 <!-- Profile Button -->
-                <Button ClipToBounds="False" Name="Profile" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="5 5 10 5" Background="Transparent" CornerRadius="10">
+                <Button Click="EditProfile" ClipToBounds="False" Name="Profile" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="10 5 10 5" Background="Transparent" CornerRadius="25">
                     <Button.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
@@ -70,7 +70,7 @@
                         </ResourceDictionary>
                     </Button.Resources>
                     
-                    <Button.Flyout>
+                    <!--<Button.Flyout>
                         <Flyout>
                             <Grid Margin="2">
                                 <StackPanel Spacing="15">
@@ -93,10 +93,10 @@
                                 </StackPanel>
                             </Grid>
                         </Flyout>
-                    </Button.Flyout>
+                    </Button.Flyout>-->
                     
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
-                        <profiles:ProfileSplashControl ZIndex="1" Radius="15" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
+                        <profiles:ProfileSplashControl ZIndex="1" Radius="12" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
                         <!-- Display Name -->
                         <Grid IsHitTestVisible="False">
@@ -111,7 +111,7 @@
                             <TextBlock Name="ProfileName" MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding ProfileDisplayName}" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Grid>
 
-                        <controls:SymbolIcon Margin="-5 0 0 0" Symbol="ChevronDown"/>
+                        <!--<controls:SymbolIcon Margin="-5 0 0 0" Symbol="ChevronDown"/>-->
                     </StackPanel>
                 </Button>
             </Grid>

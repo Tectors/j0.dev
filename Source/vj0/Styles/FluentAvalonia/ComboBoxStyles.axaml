@@ -173,9 +173,9 @@
                                ClipToBounds="True"
                                InheritsTransform="True">
                             <Border x:Name="PopupBorder"
-                                    Background="#262626"
+                                    Background="{DynamicResource ComboBoxPopupBorderBackground}"
                                     Margin="0 1 0 0"
-                                    BorderBrush="#3b3c3c"
+                                    BorderBrush="{DynamicResource ComboBoxPopupBorderBrush}"
                                     BorderThickness="{DynamicResource ComboBoxDropdownBorderThickness}"
                                     Padding="{DynamicResource ComboBoxDropdownBorderPadding}"
                                     HorizontalAlignment="Stretch"
@@ -259,7 +259,7 @@
     <ControlTheme TargetType="ComboBoxItem" x:Key="{x:Type ComboBoxItem}">
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="Foreground" Value="{DynamicResource ComboBoxItemForeground}" />
-        <Setter Property="Background" Value="#262626" />
+        <Setter Property="Background" Value="{DynamicResource ComboBoxPopupBorderBackground}" />
         <Setter Property="Padding" Value="{DynamicResource ComboBoxItemThemePadding}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Cursor" Value="Hand" />

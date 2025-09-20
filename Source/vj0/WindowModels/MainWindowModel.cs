@@ -439,7 +439,7 @@ public partial class MainWindowModel : WindowModelBase
                 })
             };
             
-            _ = dialog.ShowAsync();
+            _ = dialog.ShowAsync(MainWM.Window);
         });
     }
 

@@ -8,7 +8,7 @@
         <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Padding="10 0 10 0" BorderBrush="#1f2023" BorderThickness="1" Background="#80121212" CornerRadius="5">
+                <Border Padding="10 0 10 0" BorderBrush="{DynamicResource SubPanelBorderBrush}" BorderThickness="1" Background="{DynamicResource TextControlBackground}" CornerRadius="5">
                     <ui:ItemsRepeater Name="PART_ItemsRepeater" />
                 </Border>
             </ControlTemplate>

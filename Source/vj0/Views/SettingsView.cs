@@ -66,7 +66,10 @@ public partial class SettingsView : ViewBase<SettingsViewModel>
         NavigationView.Classes.Set("has-profile", isCurrentProfileValid);
         PaneBorder.Classes.Set("has-profile", isCurrentProfileValid);
         
-        EditProfileButton.IsVisible = isCurrentProfileValid;
+        Dispatcher.UIThread.Post(() =>
+        {
+            EditProfileButton.IsVisible = isCurrentProfileValid;
+        });
     }
     
     private ScrollViewer? NavigationLeftPanelContents;

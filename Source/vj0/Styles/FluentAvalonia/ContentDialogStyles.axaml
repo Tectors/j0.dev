@@ -13,8 +13,8 @@
 
     <ControlTheme x:Key="{x:Type ui:ContentDialog}" TargetType="ui:ContentDialog">
         <Setter Property="Foreground" Value="{DynamicResource ContentDialogForeground}"/>
-        <Setter Property="Background" Value="Black"/>
-        <Setter Property="BorderBrush" Value="#222323"/>
+        <Setter Property="Background" Value="{DynamicResource ContentDialogABackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentDialogABorderBrush}"/>
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="15" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
@@ -104,9 +104,9 @@
                                                     HorizontalContentAlignment="Center"
                                                     VerticalContentAlignment="Center"
                                                     Cursor="Hand"
-                                                    Background="#151515"
+                                                    Background="{DynamicResource ContentDialogBlackButtonBackground}"
                                                     Padding="20 8"
-                                                    BorderBrush="#313131"
+                                                    BorderBrush="{DynamicResource ContentDialogBlackButtonBorderBrush}"
                                                     FontWeight="Medium"
                                                     FontSize="15"
                                                     BorderThickness="1"
@@ -130,9 +130,9 @@
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
                                                     Cursor="Hand"
-                                                    Background="#151515"
+                                                    Background="{DynamicResource ContentDialogBlackButtonBackground}"
                                                     Padding="20 8"
-                                                    BorderBrush="#313131"
+                                                    BorderBrush="{DynamicResource ContentDialogBlackButtonBorderBrush}"
                                                     FontWeight="Medium"
                                                     FontSize="15"
                                                     BorderThickness="1"
@@ -163,7 +163,7 @@
                                                     Background="White"
                                                     Cursor="Hand"
                                                     IsDefault="{TemplateBinding IsPrimaryButtonEnabled}"
-                                                    Foreground="#0f0f10"
+                                                    Foreground="{DynamicResource ContentDialogBackground}"
                                                     VerticalContentAlignment="Center"
                                                     FontSize="15"
                                                     Padding="20 8"

@@ -22,6 +22,18 @@
             <StackPanel VerticalAlignment="Top" Spacing="10" Margin="10 0">
                 <TextBlock Margin="0 5">Data Reading</TextBlock>
                 
+                <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:SymbolIconSource Symbol="CircleShadow" />
+                    </controls:SettingsExpander.IconSource>
+                    
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadMaterialShaderMaps}"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
+                <TextBlock Margin="0 5">Bytecode</TextBlock>
+                
                 <controls:SettingsExpander Header="Serialize Bytecode" Description="Required for parsing logic, function graphs, and native bindings.">
                     <controls:SettingsExpander.IconSource>
                         <fluent:SymbolIconSource Symbol="BarcodeScanner" />
@@ -32,13 +44,12 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <controls:SettingsExpander Header="Serialize Shader Maps" Description="Useful for analyzing cooked material render data.">
+                <controls:SettingsExpander Header="Decompile Bytecode into C++" Description="Allows bytecode to be decompiled into pseudo C++ format.">
                     <controls:SettingsExpander.IconSource>
-                        <fluent:SymbolIconSource Symbol="CircleShadow" />
+                        <fluent:FluentIconSource Icon="QrCode" />
                     </controls:SettingsExpander.IconSource>
                     
                     <controls:SettingsExpander.Footer>
-                        <ToggleSwitch Cursor="Hand" IsChecked="{Binding ReadMaterialShaderMaps}"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
             </StackPanel>

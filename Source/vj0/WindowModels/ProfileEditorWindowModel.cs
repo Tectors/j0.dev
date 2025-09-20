@@ -26,6 +26,8 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
         OnClose?.Invoke();
     }
 
+    [ObservableProperty] private bool _isUserInterfaceEnabled = true;
+
     [ObservableProperty] private bool _hasArchiveResolver;
 
     /* ~~~ Observable Properties ~~~ */
@@ -35,7 +37,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
     /* ~~~ Computed Properties ~~~ */
     public object SaveChangesText => 
         Profile?.Status.State == EProfileStatus.Uncompleted ? "Create" : 
-        Profile?.Status.State == EProfileStatus.Active ? "Save and Load" : 
+        Profile?.Status.State == EProfileStatus.Active ? "Save & Load" : 
         "Save Changes";
 
     public bool? ShowEncryptionTab => Profile?.PakFileEntries.Count > 0;
@@ -48,6 +50,14 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
             if (e.PropertyName == nameof(Profile))
             {
                 OnProfileChanged();
+                
+                Profile!.PropertyChanged += (_, ProfileArgs) =>
+                {
+                    if (ProfileArgs.PropertyName == nameof(Profile.Name))
+                    {
+                        OnProfileNameChanged();
+                    }
+                };
             }
         };
     }
@@ -78,6 +88,8 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
 
     private void OnArchiveDirectoryChanged()
     {
+        Profile!.ResolvePluginHandler();
+        
         if (Profile is null ||
             /* This operation is to fill the name if it is empty using the archive directory */
             !Profile.Name.IsNullOrEmpty()
@@ -113,16 +125,20 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
     {
         OnPropertyChanged(nameof(SaveChangesText));
         OnPropertyChanged(nameof(ShowEncryptionTab));
-        
+
+        OnProfileNameChanged();
+    }
+    
+    private void OnProfileNameChanged()
+    {
         TitleBarText = Profile!.IsNameEmpty ? "New Profile" : $"Editing {Profile.Name}";
-        
         Profile.ResolvePluginHandler();
         HasArchiveResolver = Profile!.Plugins.Any(p => p is IArchiveResolverPlugin);
     }
 
     public void Save()
     {
-        if (Profile is null || Profile.HasErrors || SelectedVersionName is null)
+        if (Profile is null || Profile.HasErrors || SelectedVersionName is null || !IsUserInterfaceEnabled)
         {
             return;
         }

@@ -138,6 +138,13 @@
       
       <CornerRadius x:Key="ControlCornerRadius">8</CornerRadius>
       
+      <SolidColorBrush x:Key="ComboBoxPopupBorderBackground" Color="#262626"/>
+      <SolidColorBrush x:Key="ComboBoxPopupBorderBrush" Color="#3b3c3c"/>
+      <SolidColorBrush x:Key="ContentDialogABackground" Color="Black"/>
+      <SolidColorBrush x:Key="ContentDialogABorderBrush" Color="#222323"/>
+      <SolidColorBrush x:Key="ContentDialogBlackButtonBackground" Color="#151515"/>
+      <SolidColorBrush x:Key="ContentDialogBlackButtonBorderBrush" Color="#313131"/>
+      
       <SolidColorBrush x:Key="ContentDialogBackground" Color="#0f0f10"/>
       <SolidColorBrush x:Key="ContentDialogTopOverlay" Color="#0f0f10"/>
       <SolidColorBrush x:Key="ContentDialogBorderBrush" Color="#282828"/>

@@ -79,7 +79,9 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
 
         if (originalProfile.Status.State == EProfileStatus.Uncompleted)
         {
+            WindowModel.IsUserInterfaceEnabled = false;
             await FetchUndetectedMetadataAsync();
+            WindowModel.IsUserInterfaceEnabled = true;
         }
         else if (!hasChanged)
         {
