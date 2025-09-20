@@ -94,14 +94,14 @@
     </ControlTheme>
 
     <ControlTheme x:Key="{x:Type ui:InfoBar}" TargetType="ui:InfoBar">
-        <Setter Property="Background" Value="#0d0d0d" />
+        <Setter Property="Background" Value="{DynamicResource InfoBarABackground}" />
         <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
         <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Name="ContentRoot"
                         VerticalAlignment="Top"
-                        BorderBrush="#1f2023"
+                        BorderBrush="{DynamicResource InfoBarContentBackground}"
                         BorderThickness="1"
                         CornerRadius="{TemplateBinding CornerRadius}"
                         BackgroundSizing="{TemplateBinding BackgroundSizing}">
@@ -111,7 +111,7 @@
                     -->
                     <Panel>
                         <!-- use separate border for Background b/c no margin -->
-                        <Border Background="#080808"
+                        <Border Background="{DynamicResource InfoBarBorderBackground}"
                                 CornerRadius="{TemplateBinding CornerRadius}"/>
                         <Grid HorizontalAlignment="Stretch"
                               MinHeight="{DynamicResource InfoBarMinHeight}"

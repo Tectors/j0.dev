@@ -21,11 +21,11 @@
   <Border
     CornerRadius="12"
     x:Name="ProfileCardBackground"
-    Background="#B3131314"
+    Background="{DynamicResource ProfileCardBackground}"
     PointerEntered="OnCardPointerEntered"
     PointerExited="OnCardPointerExited"
     ClipToBounds="True"
-    BorderBrush="#232526"
+    BorderBrush="{DynamicResource ProfileCardBorder}"
     BorderThickness="1"
     Margin="14 6 14 28" HorizontalAlignment="Stretch" VerticalAlignment="Center">
     
@@ -199,7 +199,7 @@
               <controls:SymbolIcon
                 Height="16"
                 Symbol="Clock"
-                Foreground="#8d8d94"
+                Foreground="{DynamicResource ProfileCardLastUsedForeground}"
                 FontSize="20"
                 Width="17" />
               
@@ -208,7 +208,7 @@
                 FontSize="15"
                 FontWeight="Medium"
                 LetterSpacing="-0.2"
-                Foreground="#8d8d94"
+                Foreground="{DynamicResource ProfileCardLastUsedForeground}"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
             </StackPanel>
@@ -287,8 +287,8 @@
             x:Name="EditButton"
             Grid.Column="2"
             Foreground="White"
-            Background="#141414"
-            BorderBrush="#5c5c5c"
+            Background="{DynamicResource ProfileCardEditButtonBackground}"
+            BorderBrush="{DynamicResource ProfileCardEditButtonBorderBrush}"
             BorderThickness="1"
             CornerRadius="15"
             Cursor="Hand"

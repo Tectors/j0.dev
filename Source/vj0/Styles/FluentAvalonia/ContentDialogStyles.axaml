@@ -98,84 +98,35 @@
                                             Padding="0 15 0 15">
                                         <StackPanel Name="CommandSpace" Spacing="10" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 15 0">
                                             <Button Name="SecondaryButton"
+                                                    Classes="ContentSecondary"
                                                     Content="{TemplateBinding SecondaryButtonText}"
                                                     IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                                     HorizontalContentAlignment="Center"
                                                     VerticalContentAlignment="Center"
-                                                    Cursor="Hand"
-                                                    Background="{DynamicResource ContentDialogBlackButtonBackground}"
-                                                    Padding="20 8"
-                                                    BorderBrush="{DynamicResource ContentDialogBlackButtonBorderBrush}"
-                                                    FontWeight="Medium"
-                                                    FontSize="15"
-                                                    BorderThickness="1"
                                                     IsVisible="False">
-                                                <Button.Resources>
-                                                    <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1C1C1C</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3E3E3E</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#2A2A2A</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                                                    </ResourceDictionary>
-                                                </Button.Resources>
-                                                
                                             </Button>
 
                                             <Button Name="CloseButton"
                                                     Content="{TemplateBinding CloseButtonText}"
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
-                                                    Cursor="Hand"
-                                                    Background="{DynamicResource ContentDialogBlackButtonBackground}"
-                                                    Padding="20 8"
-                                                    BorderBrush="{DynamicResource ContentDialogBlackButtonBorderBrush}"
-                                                    FontWeight="Medium"
-                                                    FontSize="15"
-                                                    BorderThickness="1"
+                                                    Classes="ContentSecondary"
                                                     HorizontalContentAlignment="Center"
                                                     VerticalContentAlignment="Center"
                                                     IsVisible="False">
-                                                
-                                                <Button.Resources>
-                                                    <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#1C1C1C</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3E3E3E</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBorderBrushPressed">#2A2A2A</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                                                    </ResourceDictionary>
-                                                </Button.Resources>
                                             </Button>
                                             
                                             <Button Name="PrimaryButton"
+                                                    Classes="ContentPrimary"
                                                     Content="{TemplateBinding PrimaryButtonText}"
                                                     IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
                                                     HorizontalAlignment="Stretch"
-                                                    FontWeight="Bold"
                                                     VerticalAlignment="Stretch"
                                                     HorizontalContentAlignment="Center"
-                                                    Background="White"
-                                                    Cursor="Hand"
                                                     IsDefault="{TemplateBinding IsPrimaryButtonEnabled}"
-                                                    Foreground="{DynamicResource ContentDialogBackground}"
                                                     VerticalContentAlignment="Center"
-                                                    FontSize="15"
-                                                    Padding="20 8"
                                                     IsVisible="False">
-                                                <Button.Resources>
-                                                    <ResourceDictionary>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver">White</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPointerOver">#0f0f10</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonBackgroundPressed">#E0E0E0</SolidColorBrush>
-                                                        <SolidColorBrush x:Key="ButtonForegroundPressed">#0f0f10</SolidColorBrush>
-                                                    </ResourceDictionary>
-                                                </Button.Resources>
                                             </Button>
                                         </StackPanel>
                                     </Border>

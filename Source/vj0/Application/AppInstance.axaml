@@ -97,7 +97,6 @@
       <converters:MultiplyConverter x:Key="MultiplyConverter" />
       
       <ResourceDictionary.MergedDictionaries>
-        <ResourceInclude Source="/Styles/TaskDialog.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/BreadcrumbBarItemStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TreeViewStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/ScrollBarStyles.axaml"/>
@@ -174,6 +173,7 @@
       <SolidColorBrush x:Key="ForegroundBrush" Color="White"/>
       <SolidColorBrush x:Key="BorderBrush" Color="#292A2D"/>
       <SolidColorBrush x:Key="SubWindowBorderBrush" Color="#212121"/>
+      <SolidColorBrush x:Key="ExpanderHeaderBorderBrush" Color="#3d3d3d"/>
       
       <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#080808"/>
       
@@ -193,6 +193,9 @@
       <SolidColorBrush x:Key="ComboBoxItemBackground" Color="#1f1f1f"/>
       <SolidColorBrush x:Key="ComboBoxItemBackgroundSelected" Color="#0d5eff"/>
       <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPointerOver" Color="#0d5eff"/>
+
+      <SolidColorBrush x:Key="TitleBarVersionBackground" Color="Black"/>
+      <SolidColorBrush x:Key="TitleBarVersionBorderBrush" Color="#282828"/>
       
       <Thickness x:Key="ComboBoxDropdownBorderPadding">0</Thickness>
       <Thickness x:Key="ComboBoxDropdownContentMargin">0</Thickness>
@@ -228,9 +231,31 @@
       <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#80121212"/>
 
       <!-- ProfileCard Brushes -->
-      <SolidColorBrush x:Key="ProfileCardBackground" Color="#151515"/>
+      <SolidColorBrush x:Key="ProfileCardBackground" Color="#B3131314"/>
+      <SolidColorBrush x:Key="ProfileCardBorder" Color="#232526"/>
       <SolidColorBrush x:Key="ProfileCardSubTextColor" Color="#c9c9c9"/>
+      <SolidColorBrush x:Key="ProfileCardLastUsedForeground" Color="#8d8d94"/>
+      <SolidColorBrush x:Key="ProfileCardEditButtonBackground" Color="#141414"/>
+      <SolidColorBrush x:Key="ProfileCardEditButtonBorderBrush" Color="#5c5c5c"/>
+      <SolidColorBrush x:Key="ProfileCardEditBackgroundBrush" Color="#1c1c1c"/>
+      
+      <SolidColorBrush x:Key="KeybindDisplayBackground" Color="#121212"/>
+      <SolidColorBrush x:Key="KeybindDisplayBorderBrush" Color="#343434"/>
+      
+      <SolidColorBrush x:Key="InfoBarABackground" Color="#0d0d0d"/>
+      <SolidColorBrush x:Key="InfoBarBorderBackground" Color="#080808"/>
+      <SolidColorBrush x:Key="InfoBarContentBackground" Color="#1f2023"/>
 
+      <SolidColorBrush x:Key="ScrollBarBackground" Color="#804a4a4a"/>
+      <SolidColorBrush x:Key="ScrollBarPointerOverBackground" Color="#984a4a4a"/>
+      <SolidColorBrush x:Key="ScrollBarPressedBackground" Color="#B39c9c9c"/>
+      <SolidColorBrush x:Key="ScrollBarLineButtonForeground" Color="#a3a3a3"/>
+      <SolidColorBrush x:Key="ScrollBarLineButtonIconForeground" Color="#828282"/>
+      
+      <SolidColorBrush x:Key="TextBoxDeleteButtonBorderBrush" Color="#616161"/>
+      <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#b3b3b3"/>
+      <SolidColorBrush x:Key="TextBoxClearForeground" Color="#808080"/>
+      
       <!-- CaptionButton Brushes -->
       <SolidColorBrush x:Key="CaptionButtonBackground" Color="#1a1a1a"/>
       <SolidColorBrush x:Key="CaptionButtonForeground" Color="White"/>

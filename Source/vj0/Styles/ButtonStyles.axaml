@@ -130,6 +130,107 @@
         <Setter Property="Background" Value="White" />
     </Style>
     
+    <!-- Content Secondary Button -->
+    <Style Selector="Button.ContentSecondary">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="Background" Value="{DynamicResource ContentDialogBlackButtonBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentDialogBlackButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="20 8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.ContentSecondary /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+
+    <Style Selector="Button.ContentSecondary:pointerover">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#1C1C1C" />
+        <Setter Property="BorderBrush" Value="#3E3E3E" />
+    </Style>
+
+    <Style Selector="Button.ContentSecondary:pressed">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Background" Value="#141414" />
+        <Setter Property="BorderBrush" Value="#2A2A2A" />
+    </Style>
+    
+    <!-- Content Primary Button -->
+    <Style Selector="Button.ContentPrimary">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="{DynamicResource ContentDialogBackground}" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="20 8" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Button.ContentPrimary /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+
+    <Style Selector="Button.ContentPrimary:pointerover">
+        <Setter Property="Foreground" Value="#0f0f10" />
+        <Setter Property="Background" Value="White" />
+    </Style>
+
+    <Style Selector="Button.ContentPrimary:pressed">
+        <Setter Property="Foreground" Value="#0f0f10" />
+        <Setter Property="Background" Value="#E0E0E0" />
+    </Style>
+    
     <!-- Blue Shine Button -->
     <Style Selector="Button.BlueShine">
         <Setter Property="Foreground" Value="White" />

@@ -40,7 +40,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle Name="ThumbVisual"
-                       Fill="#804a4a4a"
+                       Fill="{DynamicResource ScrollBarBackground}"
                        Stroke="{TemplateBinding BorderBrush}"
                        StrokeThickness="{DynamicResource ScrollBarThumbStrokeThickness}"
                        RadiusX="5"
@@ -56,13 +56,13 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ Rectangle">
-            <Setter Property="Fill" Value="#984a4a4a" />
+            <Setter Property="Fill" Value="{DynamicResource ScrollBarPointerOverBackground}" />
         </Style>
         <Style Selector="^:pressed  /template/ Rectangle">
-            <Setter Property="Fill" Value="#B39c9c9c" />
+            <Setter Property="Fill" Value="{DynamicResource ScrollBarPressedBackground}" />
         </Style>
         <Style Selector="^:disabled  /template/ Rectangle">
-            <Setter Property="Fill" Value="#B39c9c9c" />
+            <Setter Property="Fill" Value="{DynamicResource ScrollBarPressedBackground}" />
         </Style>
     </ControlTheme>
 
@@ -89,7 +89,7 @@
                     <ui:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}"
                                  Name="ArrowGlyph"
                                  FontSize="{DynamicResource ScrollBarButtonArrowIconFontSize}"
-                                 Foreground="#a3a3a3"
+                                 Foreground="{DynamicResource ScrollBarLineButtonForeground}"
                                  Glyph="{TemplateBinding Content}"
                                  RenderTransform="none"
                                  RenderTransformOrigin="50%,50%">
@@ -111,7 +111,7 @@
         </Setter>
 
         <Style Selector="^:pointerover /template/ ui|FontIcon">
-            <Setter Property="Foreground" Value="#828282" />
+            <Setter Property="Foreground" Value="{DynamicResource ScrollBarLineButtonIconForeground}" />
         </Style>
         <Style Selector="^:pressed /template/ ui|FontIcon">
             <Setter Property="RenderTransform" Value="scale(0.875)" />

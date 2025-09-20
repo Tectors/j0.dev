@@ -15,9 +15,9 @@
             
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="#121212"
+                    <Border Background="{DynamicResource KeybindDisplayBackground}"
+                            BorderBrush="{DynamicResource KeybindDisplayBorderBrush}"
                             Padding="5 2"
-                            BorderBrush="#343434"
                             BorderThickness="1"
                             VerticalAlignment="Center"
                             CornerRadius="5">

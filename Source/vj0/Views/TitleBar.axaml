@@ -119,7 +119,7 @@
             <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" Height="33" BorderThickness="1" BorderBrush="#282828" Background="Black" CornerRadius="25">
+            <Button IsVisible="True" Height="33" BorderThickness="1" BorderBrush="{DynamicResource TitleBarVersionBorderBrush}" Background="{DynamicResource TitleBarVersionBackground}" CornerRadius="25">
                 <Button.Resources>
                     <ResourceDictionary>
                         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>

@@ -47,7 +47,7 @@
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#ButtonLayoutGrid">
                 <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="#616161" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TextBoxDeleteButtonBorderBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ui|SymbolIcon#Glyph">
@@ -99,7 +99,7 @@
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#ButtonLayoutGrid">
                 <Setter Property="Background" Value="{DynamicResource TextControlButtonBackgroundPointerOver}" />
-                <Setter Property="BorderBrush" Value="#616161" />
+                <Setter Property="BorderBrush" Value="{DynamicResource TextBoxDeleteButtonBorderBrush}" />
             </Style>
 
             <Style Selector="^ /template/ ui|FontIcon#Glyph">
@@ -245,7 +245,7 @@
             <Setter Property="Foreground" Value="{DynamicResource TextControlForegroundPointerOver}" />
 
             <Style Selector="^ /template/ Border#PART_BorderElement">
-                <Setter Property="BorderBrush" Value="#b3b3b3"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}"/>
                 <Setter Property="Background" Value="{DynamicResource TextControlBackgroundPointerOver}" />
             </Style>
 
@@ -303,7 +303,7 @@
                             Padding="{StaticResource HelperButtonThemePadding}"
                             IsTabStop="False"
                             Focusable="False"
-                            Foreground="#808080"
+                            Foreground="{DynamicResource TextBoxClearForeground}"
                             Cursor="Hand"
                             Margin="5"
                             FontSize="{TemplateBinding FontSize}"
