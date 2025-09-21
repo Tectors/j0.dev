@@ -208,6 +208,9 @@
     <Compile Update="Controls\Navigation\NavigationUnboundFrame.cs">
       <DependentUpon>NavigationUnboundFrame.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Windows\GalleryWindow.cs">
+      <DependentUpon>GalleryWindow.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,98 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
+    xmlns:controls1="clr-namespace:vj0.Controls"
+    xmlns:windowModels="clr-namespace:vj0.WindowModels"
+
+    x:Class="vj0.Windows.GalleryWindow"
+    x:DataType="windowModels:GalleryWindowModel"
+
+    Title="{Binding Title}"
+    
+    Width="1100" Height="750"
+    
+    CanResize="False"
+    
+    Background="{DynamicResource BackgroundBrush}"
+    mc:Ignorable="d"
+    
+    d:DesignWidth="{Binding $parent[Window].MinWidth}"
+    d:DesignHeight="{Binding $parent[Window].MinHeight}">
+    
+    <Window.Styles>
+        <Style Selector="CaptionButtons Button#PART_RestoreButton">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        
+        <Style Selector="CaptionButtons Button#PART_MinimizeButton">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+    </Window.Styles>
+    
+    <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <!-- Title Bar -->
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+                    <CaptionButtons Name="captionButtons"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Navigation -->
+            <Grid Grid.Row="2" Background="{DynamicResource BackgroundBrush}">
+                <!-- Navigation -->
+                <controls:NavigationView
+                    x:Name="GalleryNavigationView"
+                
+                    PaneDisplayMode="LeftCompact"
+                    Classes="NoBackground"
+                    CompactPaneLength="0">
+
+                    <controls:Frame Margin="0 -20 0 0" x:Name="ContentFrame"/>
+                </controls:NavigationView>
+            </Grid>
+
+            <!-- Action Bar -->
+            <Grid Grid.Row="3" Background="{DynamicResource BackgroundBrush}">
+                <Grid>
+                    <controls1:CursorEffectControl/>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                Height="60"
+                                Margin="25 5 0 5"
+                                HorizontalAlignment="Left"
+                                Spacing="10"
+                                VerticalAlignment="Bottom">
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0 0 25 25"
+                                HorizontalAlignment="Right"
+                                Spacing="10"
+                                VerticalAlignment="Bottom">
+
+                        <Button Cursor="Hand"
+                                FontSize="18"
+                                Padding="45 8"
+                                CornerRadius="4"
+                                Classes="BlueShine">
+                            
+                            <ToolTip.Tip>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Close without Saving</TextBlock>
+                                    <controls1:KeybindDisplay Keybind="Escape" />
+                                </StackPanel>
+                            </ToolTip.Tip>
+
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Next</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

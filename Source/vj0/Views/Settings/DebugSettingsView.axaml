@@ -19,20 +19,22 @@
             
         <ScrollViewer controls:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
+                <TextBlock Classes="SettingsCategory" Text="Q1"/>
+                
+                <Button Height="66" Click="OpenGallery" Classes="SettingsExpander">
+                    <StackPanel Orientation="Horizontal" Spacing="2" Margin="12 0" HorizontalAlignment="Left">
+                        <avalonia:FluentIcon
+                            Icon="PanelRightGallery"
+                            FontSize="25"
+                            IconVariant="Regular"/>
+                    
+                        <TextBlock Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17">Open Gallery</TextBlock>
+                    </StackPanel>
+                </Button>
+                
                 <TextBlock Classes="SettingsCategory" Text="Developer Tools"/>
                 
-                <Button Height="66" Click="OpenLogsFolder" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                        </ResourceDictionary>
-                    </Button.Resources>
-                    
+                <Button Height="66" Click="OpenLogsFolder" Classes="SettingsExpander">
                     <StackPanel Orientation="Horizontal" Margin="12 0" Spacing="2" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="WindowConsole"
@@ -43,18 +45,7 @@
                     </StackPanel>
                 </Button>
                 
-                <Button Height="66" Click="OpenStartup" Cursor="Hand" Background="{DynamicResource ExpanderBackground}" BorderBrush="#3d3d3d" BorderThickness="1" HorizontalAlignment="Stretch">
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#191919</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#3d3d3d</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed">#141414</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3d3d3d</SolidColorBrush>
-                            <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-                        </ResourceDictionary>
-                    </Button.Resources>
-                    
+                <Button Height="66" Click="OpenStartup" Classes="SettingsExpander">
                     <StackPanel Orientation="Horizontal" Spacing="2" Margin="12 0" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="Open"

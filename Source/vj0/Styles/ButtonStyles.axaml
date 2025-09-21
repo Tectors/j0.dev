@@ -148,6 +148,59 @@
         <Setter Property="BorderBrush" Value="#3574f0" />
     </Style>
     
+    <!-- SettingsExpander Button -->
+    <Style Selector="Button.SettingsExpander">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Background" Value="{DynamicResource ExpanderBackground}" />
+        <Setter Property="BorderBrush" Value="#3d3d3d" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <ContentPresenter
+                        Name="PART_ContentPresenter"
+                        Content="{TemplateBinding Content}"
+                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{x:Null}"
+                        Foreground="{TemplateBinding Foreground}"
+                        RecognizesAccessKey="True"/>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="Button.SettingsExpander /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="TextBlock.Foreground" Value="{Binding $parent[Button].Foreground}" />
+    </Style>
+    
+    <Style Selector="Button.SettingsExpander /template/ ContentPresenter">
+        <Setter Property="Background" Value="{x:Null}" />
+    </Style>
+    
+    <Style Selector="Button.SettingsExpander:pointerover">
+        <Setter Property="Background" Value="#191919" />
+        <Setter Property="BorderBrush" Value="#3d3d3d" />
+    </Style>
+    
+    <Style Selector="Button.SettingsExpander:pressed">
+        <Setter Property="Background" Value="#141414" />
+        <Setter Property="BorderBrush" Value="#3d3d3d" />
+    </Style>
+    
     <!-- White Button -->
     <Style Selector="Button.White">
         <Setter Property="CornerRadius" Value="8" />
@@ -301,6 +354,8 @@
     <Style Selector="Button.BlueShine">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#195bff" />
+        <Setter Property="BorderBrush" Value="#1842ab" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
         
         <Setter Property="CornerRadius" Value="12" />
         <Setter Property="Cursor" Value="Hand" />

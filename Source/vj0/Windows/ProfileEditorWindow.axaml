@@ -34,7 +34,13 @@
         <KeyBinding Gesture="Escape" Command="{Binding CloseWindow}" />
         <KeyBinding Gesture="Ctrl+E" Command="{Binding CloseWindow}" />
     </Window.KeyBindings>
-
+    
+    <Window.Styles>
+        <Style Selector="CaptionButtons Button#PART_RestoreButton">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+    </Window.Styles>
+    
     <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
         <controls:ProgressRing Foreground="White" Height="120" Width="120" IsVisible="{Binding !IsUserInterfaceEnabled}"/>
         

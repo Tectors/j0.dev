@@ -39,4 +39,14 @@ public partial class DebugSettingsView : ViewBase<DebugSettingsViewModel>
         win.CenterToScreen(window);
         win.Show();
     }
+    
+    private void OpenGallery(object? sender, RoutedEventArgs e)
+    {
+        var win = new GalleryWindow();
+
+        if (this.GetVisualRoot() is not Window window) return;
+        
+        win.CenterToScreen(window);
+        win.Show();
+    }
 }
