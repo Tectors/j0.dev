@@ -216,23 +216,11 @@
                         <Button Cursor="Hand"
                                 Click="CloseWindow"
                                 Height="33"
-                                Classes="HoverLift"
+                                Classes="Glass SoftGlass HoverLift"
                                 FontSize="13"
                                 BorderThickness="1"
                                 Padding="10 0"
-                                BorderBrush="#242424"
-                                Background="#1a1a1a"
                                 CornerRadius="4">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver">#242424</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPressed">#1f1f1f</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrush">#4e5157</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#4e5157</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                </ResourceDictionary>
-                            </Button.Resources>
                             
                             <ToolTip.Tip>
                                 <StackPanel Orientation="Horizontal">

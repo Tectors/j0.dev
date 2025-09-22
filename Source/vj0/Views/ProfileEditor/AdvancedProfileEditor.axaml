@@ -42,6 +42,7 @@
                                     <TextBox Grid.Column="0"
                                              HorizontalAlignment="Stretch"
                                              Classes="clearButton"
+                                             Background="Black"
                                              Text="{Binding Profile.MappingsContainer.Path}"/>
                         
                                     <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseMappingsPathFile}">
@@ -70,7 +71,7 @@
                         Texture Platform
                     </TextBlock>
 
-                    <ComboBox HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type texture:ETexturePlatform}}" SelectedItem="{Binding Profile.TexturePlatform, Converter={StaticResource EnumToRecord}}"/>
+                    <ComboBox Background="Black" HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type texture:ETexturePlatform}}" SelectedItem="{Binding Profile.TexturePlatform, Converter={StaticResource EnumToRecord}}"/>
                 </StackPanel>
                 
                 <StackPanel Opacity="{Binding AutoDetectedGameToOpacity}"
@@ -80,7 +81,7 @@
                         Audio Format
                     </TextBlock>
 
-                    <ComboBox HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type base:EAudioFormatType}}" SelectedItem="{Binding Profile.AudioFormat, Converter={StaticResource EnumToRecord}}"/>
+                    <ComboBox Background="Black" HorizontalAlignment="Stretch" Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type base:EAudioFormatType}}" SelectedItem="{Binding Profile.AudioFormat, Converter={StaticResource EnumToRecord}}"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

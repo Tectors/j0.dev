@@ -278,10 +278,7 @@
         <Setter Property="Background" Value="{DynamicResource TitleBarVersionBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource TitleBarVersionBorderBrush}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Padding" Value="8 0" />
-        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="IsTabStop" Value="True" />
         <Setter Property="Template">
