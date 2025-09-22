@@ -103,6 +103,7 @@
                                                     IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                                     HorizontalContentAlignment="Center"
+                                                    IsDefault="False"
                                                     VerticalContentAlignment="Center"
                                                     IsVisible="False">
                                             </Button>
@@ -113,6 +114,7 @@
                                                     VerticalAlignment="Stretch"
                                                     Classes="ContentSecondary"
                                                     HorizontalContentAlignment="Center"
+                                                    IsDefault="False"
                                                     VerticalContentAlignment="Center"
                                                     IsVisible="False">
                                             </Button>

@@ -5,12 +5,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-    xmlns:controls1="clr-namespace:vj0.Controls"
     xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
     xmlns:profiles="clr-namespace:vj0.Controls.Profiles"
     xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
+    xmlns:window="clr-namespace:vj0.Controls.Window"
 
     x:Class="vj0.Views.TitleBar"
     x:DataType="windowModels:MainWindowModel"
@@ -19,39 +19,14 @@
     d:DesignWidth="900"
     d:DesignHeight="150">
 
-    <Grid>
-        <!-- Background -->
-        <Border
-            Background="{DynamicResource BackgroundBrush}"
-            IsHitTestVisible="False"/>
-        
-        <controls1:CursorEffectControl ClipToBounds="False"/>
-
-        <!-- Left Side -->
-        <StackPanel Name="Left"
-            Margin="20 0 0 0"
-            Orientation="Horizontal"
-            VerticalAlignment="Stretch"
-            Spacing="12">
-            
-            <!-- Icon -->
-            <Image Name="Icon"
-                Source="/Assets/Icon/Scaled/App.Icon.32.png"
-                Width="22"
-                Opacity="0.95"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                IsHitTestVisible="False"
-                Margin="0 0 10 0"/>
-            
-            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
+    <window:BaseTitleBar>
+        <window:BaseTitleBar.LeftItems>
+            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
                 <!-- 
                 
                 Title Bar Gradient
-                
-                Does not look good at higher opacities
                 -->
                 <Grid Opacity="0.25" Name="TitleBarGradient" IsVisible="True">
                     <Border Margin="10 0 10 0" Opacity="{Binding TitleBarOpacity}" Background="{Binding TitleBarSecondGradientBrush}" HorizontalAlignment="Stretch" Height="25">
@@ -63,38 +38,6 @@
                 
                 <!-- Profile Button -->
                 <Button Click="EditProfile" ClipToBounds="False" Name="Profile" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="10 5 10 5" Background="Transparent" CornerRadius="25">
-                    <Button.Resources>
-                        <ResourceDictionary>
-                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#10FFFFFF"/>
-                        </ResourceDictionary>
-                    </Button.Resources>
-                    
-                    <!--<Button.Flyout>
-                        <Flyout>
-                            <Grid Margin="2">
-                                <StackPanel Spacing="15">
-                                    <Button Cursor="Hand" Click="EditProfile" HorizontalAlignment="Stretch" Padding="10" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                                        <ToolTip.Tip>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Edit Settings</TextBlock>
-                                                <controls1:KeybindDisplay Keybind="Ctrl+E" />
-                                            </StackPanel>
-                                        </ToolTip.Tip>
-                                        
-                                        <StackPanel Orientation="Horizontal" Spacing="12" Opacity="1">
-                                            <avalonia:FluentIcon Icon="Settings" IconSize="Size32" FontSize="17" IconVariant="Regular"/>
-                                             
-                                            <TextBlock FontWeight="Light" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                Settings
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </Flyout>
-                    </Button.Flyout>-->
-                    
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
                         <profiles:ProfileSplashControl ZIndex="1" Radius="12" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
@@ -107,11 +50,9 @@
                                     </Border.Effect>
                                 </Border>
                             </Grid>
-                            
+
                             <TextBlock Name="ProfileName" MaxWidth="250" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding ProfileDisplayName}" FontSize="16" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </Grid>
-
-                        <!--<controls:SymbolIcon Margin="-5 0 0 0" Symbol="ChevronDown"/>-->
                     </StackPanel>
                 </Button>
             </Grid>
@@ -119,16 +60,7 @@
             <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- GitHub / Versioning Button -->
-            <Button Padding="8 0" IsVisible="True" Height="33" BorderThickness="1" BorderBrush="{DynamicResource TitleBarVersionBorderBrush}" Background="{DynamicResource TitleBarVersionBackground}" CornerRadius="25">
-                <Button.Resources>
-                    <ResourceDictionary>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
-                        <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Black"/>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#3b3b3b"/>
-                        <SolidColorBrush x:Key="ButtonBorderBrushPressed" Color="#3574f0"/>
-                    </ResourceDictionary>
-                </Button.Resources>
-                
+            <Button IsVisible="True" Height="33" Classes="TitleBarContrast">
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
                         <StackPanel Spacing="15" Margin="5">
@@ -152,8 +84,7 @@
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
-                                <Button Click="CopyGitCloneCommand" Cursor="Hand" Classes="AccentHighlight" Height="30">
-                                    
+                                <Button Click="CopyGitCloneCommand" Cursor="Hand" Classes="AccentHighlight HoverLift" Height="30">
                                     <ToolTip.Tip>
                                         <StackPanel MaxWidth="250">
                                             <TextBlock>
@@ -174,11 +105,11 @@
                                     <avalonia1:MaterialIcon Kind="Git"/>
                                 </Button>
                                 
-                                <Button ToolTip.Tip="View Commit" Classes="AccentHighlight" IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
+                                <Button ToolTip.Tip="View Commit" Classes="AccentHighlight HoverLift" IsVisible="{x:Static vj0.Core:Globals.IS_COMMIT_AVAILABLE}" Click="OpenGitHubLink" Height="30">
                                     <avalonia1:MaterialIcon Kind="Github"/>
                                 </Button>
                                 
-                                <Button ToolTip.Tip="View License" Classes="AccentHighlight" Click="OpenGitHubLicense" Height="30">
+                                <Button ToolTip.Tip="View License" Classes="AccentHighlight HoverLift" Click="OpenGitHubLicense" Height="30">
                                     <avalonia1:MaterialIcon Kind="Legal"/>
                                 </Button>
                             </StackPanel>
@@ -201,80 +132,61 @@
                     <controls:SymbolIcon Symbol="ChevronDown" Margin="2 0 4 0"/>
                 </StackPanel>
             </Button>
-        </StackPanel>
-        
-        <!-- Middle Content -->
-        <Grid Margin="0 0 0 0" HorizontalAlignment="Center">
-            <!-- I wanted to put TextStatus here, but it doesn't fit in the UI. -->
-            <StackPanel Orientation="Horizontal" Spacing="10">
-            </StackPanel>
-        </Grid>
-        
-        <!-- Right Side -->
-        <Grid HorizontalAlignment="Right">
-            <StackPanel Orientation="Horizontal" Spacing="10">
-                <!-- Content Control depending on what tab is open -->
-                <ContentControl Content="{Binding CurrentToolbarContent}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                
-                <StackPanel Orientation="Horizontal" Spacing="10">
-                    <!-- Separator if content control has content -->
-                    <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
+        </window:BaseTitleBar.LeftItems>
 
-                    <!-- Cloud Service -->
-                    <Button Name="Cloud" ClipToBounds="False" IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8">
-                        <ToolTip.Tip>
-                            <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
-                                <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
-                                <TextBlock VerticalAlignment="Center" FontWeight="Medium" Opacity="0.4" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
-                            </StackPanel>
-                        </ToolTip.Tip>
-                        
-                        <Button.Flyout>
-                            <Flyout>
-                                <StackPanel Width="100" Spacing="8">
-                                    <Button Click="RestartAPI" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="40" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
-                                        <Button.Resources>
-                                            <ResourceDictionary>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
-                                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1f1f1f"/>
-                                            </ResourceDictionary>
-                                        </Button.Resources>
-                                        
-                                        <StackPanel Orientation="Horizontal" Spacing="8">
-                                            <avalonia:FluentIcon FontSize="20" Icon="Pulse"/>
-                                        
-                                            <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                Restart
-                                            </TextBlock>
-                                        </StackPanel>
-                                    </Button>
-                                </StackPanel>
-                            </Flyout>
-                        </Button.Flyout>
-                        
-                        <Button.Resources>
-                            <ResourceDictionary>
-                                <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent"/>
-                                <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="Transparent"/>
-                            </ResourceDictionary>
-                        </Button.Resources>
+        <window:BaseTitleBar.RightContent>
+            <!-- Content Control depending on what tab is open -->
+            <ContentControl Content="{Binding CurrentToolbarContent}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            
+            <StackPanel Orientation="Horizontal" Spacing="10" ClipToBounds="False">
+                <!-- Separator if content control has content -->
+                <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
+
+                <!-- Cloud Service -->
+                <Button Name="Cloud" ClipToBounds="False" IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8">
+                    <ToolTip.Tip>
+                        <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
+                            <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
+                            <TextBlock VerticalAlignment="Center" FontWeight="Medium" Opacity="0.4" MaxWidth="200" FontSize="13">Locally hosted API to interact with CUEParse</TextBlock>
+                        </StackPanel>
+                    </ToolTip.Tip>
                     
-                        <Grid Cursor="Hand" Background="Transparent">
-                            <Grid x:Name="CloudHoverGlow" Opacity="0" ZIndex="-1">
-                                <Border Margin="-5 0 -5 0" Opacity="0.35" Background="{Binding APIServiceStatusColor}" HorizontalAlignment="Stretch" Height="25">
-                                    <Border.Effect>
-                                        <BlurEffect Radius="50"/>
-                                    </Border.Effect>
-                                </Border>
-                            </Grid>
-                            
-                            <avalonia:FluentIcon Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel Width="100" Spacing="8">
+                                <Button Click="RestartAPI" Cursor="Hand" HorizontalAlignment="Stretch" Padding="10 0" Height="40" Background="Transparent" CornerRadius="8" HorizontalContentAlignment="Left" VerticalContentAlignment="Center">
+                                    <Button.Resources>
+                                        <ResourceDictionary>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#10FFFFFF"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#1f1f1f"/>
+                                        </ResourceDictionary>
+                                    </Button.Resources>
+                                    
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <avalonia:FluentIcon FontSize="20" Icon="Pulse"/>
+                                    
+                                        <TextBlock FontWeight="Light" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            Restart
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                    
+                    <Grid Cursor="Hand" Background="Transparent" ClipToBounds="False">
+                        <Grid x:Name="CloudHoverGlow" Opacity="0" ZIndex="-1" ClipToBounds="False">
+                            <Border Margin="-5 0 -5 0" Opacity="0.35" Background="{Binding APIServiceStatusColor}" HorizontalAlignment="Stretch" Height="25">
+                                <Border.Effect>
+                                    <BlurEffect Radius="50"/>
+                                </Border.Effect>
+                            </Border>
                         </Grid>
-                    </Button>
-                </StackPanel>
-
-                <CaptionButtons Name="captionButtons"/>
+                        
+                        <avalonia:FluentIcon Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
+                    </Grid>
+                </Button>
             </StackPanel>
-        </Grid>
-    </Grid>
+        </window:BaseTitleBar.RightContent>
+    </window:BaseTitleBar>
 </UserControl>

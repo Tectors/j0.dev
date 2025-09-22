@@ -36,12 +36,6 @@
         <KeyBinding Gesture="Ctrl+E" Command="{Binding CloseWindow}" />
     </Window.KeyBindings>
     
-    <Window.Styles>
-        <Style Selector="CaptionButtons Button#PART_RestoreButton">
-            <Setter Property="IsVisible" Value="False"/>
-        </Style>
-    </Window.Styles>
-    
     <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
         <controls:ProgressRing Foreground="White" Height="120" Width="120" IsVisible="{Binding !IsUserInterfaceEnabled}"/>
         
@@ -101,7 +95,7 @@
                     <controls:Frame Padding="15 5 0 0" Background="{DynamicResource BackgroundBrush}" x:Name="ContentFrame"/>
                 </controls:NavigationView>
                 
-                <window:BaseTitleBar ShowIcon="{Binding Profile.IsNameEmpty}" ClipToBounds="False" Margin="{DynamicResource TitleBarNegativeTopMargin}" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <window:BaseTitleBar VerticalAlignment="Top" ShowIcon="{Binding Profile.IsNameEmpty}" Height="{DynamicResource TitleBarHeight}" Margin="{DynamicResource TitleBarNegativeTopMargin}">
                     <window:BaseTitleBar.LeftItems>
                         <profiles:ProfileSplashControl Margin="2 0 0 0" SplashScale="1.15" IsHitTestVisible="False" IsVisible="{Binding !IsNameEmpty}" Radius="14" DataContext="{Binding Profile}"/>
                         
@@ -133,54 +127,26 @@
                     </window:BaseTitleBar.LeftItems>
 
                     <window:BaseTitleBar.RightContent>
-                        <Button Cursor="Hand"
-                                IsVisible="{Binding HasArchiveResolver}"
+                        <Button IsVisible="{Binding HasArchiveResolver}"
                                 Height="35"
                                 Width="45"
+                                Padding="10 0"
+                                Classes="Glass SoftGlass HoverLift"
                                 HorizontalAlignment="Right"
                                 Click="Button_FetchFromDataBase"
-                                ToolTip.Tip="Fetch AES keys and mappings from online archives"
-                                BorderThickness="1"
-                                Padding="10 0"
-                                FontWeight="SemiBold"
-                                Background="Transparent"
-                                BorderBrush="#1f2023"
-                                CornerRadius="10">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                </ResourceDictionary>
-                            </Button.Resources>
+                                ToolTip.Tip="Fetch AES keys and mappings from online archives">
 
                             <avalonia:FluentIcon FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="CloudArrowDown"></avalonia:FluentIcon>
                         </Button>
                         
-                        <Button Cursor="Hand"
-                                Width="45"
+                        <Button Width="45"
                                 Height="35"
+                                Padding="10 0"
+                                Classes="Glass SoftGlass HoverLift"
                                 HorizontalAlignment="Right"
                                 Command="{Binding Profile.OpenInFileExplorer}"
                                 ToolTip.Tip="Open In File Explorer"
-                                BorderThickness="1"
-                                IsVisible="{Binding !IsUncompletedProfile}"
-                                Padding="10 0"
-                                FontWeight="SemiBold"
-                                Background="Transparent"
-                                BorderBrush="#1f2023"
-                                CornerRadius="10">
-                            <Button.Resources>
-                                <ResourceDictionary>
-                                    <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonForegroundDisabled">White</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrush">#8a8a8a</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPointerOver">#6b6b6b</SolidColorBrush>
-                                    <SolidColorBrush x:Key="ButtonBorderBrushPressed">#3574f0</SolidColorBrush>
-                                </ResourceDictionary>
-                            </Button.Resources>
+                                IsVisible="{Binding !IsUncompletedProfile}">
 
                             <avalonia1:MaterialIcon FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="OpenInBrowser"></avalonia1:MaterialIcon>
                         </Button>
@@ -212,7 +178,7 @@
                         <Button Cursor="Hand"
                                 IsEnabled="{Binding !Profile.HasErrors}"
                                 IsHitTestVisible="{Binding !Profile.HasErrors}"
-                                Classes="BlueShine"
+                                Classes="BlueShine HoverLift"
                                 Click="Save"
                                 Height="33"
                                 FontSize="15"
@@ -250,6 +216,7 @@
                         <Button Cursor="Hand"
                                 Click="CloseWindow"
                                 Height="33"
+                                Classes="HoverLift"
                                 FontSize="13"
                                 BorderThickness="1"
                                 Padding="10 0"

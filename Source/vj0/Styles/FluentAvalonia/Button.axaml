@@ -67,7 +67,7 @@
     </Style>
     
     <Style Selector="^.HoverLift">
-      <Setter Property="RenderTransform" Value="translate(0px, 2px)" />
+      <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
       <Setter Property="Transitions">
         <Transitions>
           <TransformOperationsTransition Property="RenderTransform"
@@ -78,6 +78,21 @@
 
       <Style Selector="^:pointerover">
         <Setter Property="RenderTransform" Value="translate(0px, -2px)" />
+      </Style>
+    </Style>
+    
+    <Style Selector="^.SoftHoverLift">
+      <Setter Property="RenderTransform" Value="translate(0px, 0px)" />
+      <Setter Property="Transitions">
+        <Transitions>
+          <TransformOperationsTransition Property="RenderTransform"
+                                         Duration="0:0:.25"
+                                         Easing="CircularEaseOut" />
+        </Transitions>
+      </Setter>
+
+      <Style Selector="^:pointerover">
+        <Setter Property="RenderTransform" Value="translate(0px, -0.80px)" />
       </Style>
     </Style>
 

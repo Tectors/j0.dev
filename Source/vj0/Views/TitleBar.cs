@@ -7,7 +7,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
-
+using Avalonia.VisualTree;
 using vj0.Services;
 using vj0.Services.Framework;
 using vj0.Windows;
@@ -20,19 +20,37 @@ public partial class TitleBar : UserControl
     {
         InitializeComponent();
         
-        AttachedToVisualTree += OnAttachedToVisualTree;
-        
-        AttachGlow(Profile, "ProfileHoverGlow");
-        AttachGlow(Cloud, "CloudHoverGlow");
+        AttachedToVisualTree += (_, _) =>
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                AttachGlow(Profile, "ProfileHoverGlow");
+                AttachGlow(Cloud, "CloudHoverGlow");
+            }, DispatcherPriority.Loaded);
+        };
+    }
+    
+    private T? FindDescendant<T>(Visual root, string name) where T : Control
+    {
+        foreach (var child in root.GetVisualDescendants())
+        {
+            if (child is T match && match.Name == name)
+            {
+                return match;
+            }
+        }
+        return null;
     }
     
     private void AttachGlow(Button button, string glowElementName)
     {
-        var glow = button.FindControl<Grid>(glowElementName);
+        if (button == null) return;
+
+        var glow = FindDescendant<Grid>(this, glowElementName);
         if (glow == null) return;
 
         button.PointerEntered += (_, _) => FadeOpacity(glow, 1.0);
-        button.PointerExited += (_, _) => FadeOpacity(glow, 0.0);
+        button.PointerExited  += (_, _) => FadeOpacity(glow, 0.0);
     }
     
     private readonly Dictionary<Visual, CancellationTokenSource> _fadeTokens = new();
@@ -93,14 +111,6 @@ public partial class TitleBar : UserControl
     {
         var p = t - 1;
         return p * p * p + 1;
-    }
-    
-    private void OnAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
-    {
-        if (VisualRoot is Window window)
-        {
-            captionButtons.Attach(window);
-        }
     }
     
     private void EditProfile(object? sender, RoutedEventArgs e) => (VisualRoot as MainWindow)?.OnEditProfile(sender, e);

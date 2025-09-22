@@ -93,17 +93,6 @@
         
         <!-- Background Wallpaper -->
         <Grid Grid.Row="1" Margin="-2 0 0 0">
-            <Border ClipToBounds="True">
-                <Image Source="/Assets/Background/Wallpaper.png" Stretch="UniformToFill" Opacity="0.5">
-                    <Image.OpacityMask>
-                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,50%">
-                            <GradientStop Color="#FF000000" Offset="0" />
-                            <GradientStop Color="#00000000" Offset="1" />
-                        </LinearGradientBrush>
-                    </Image.OpacityMask>
-                </Image>
-            </Border>
-            
             <!-- Navigation -->
             <controls:NavigationView
                 x:Name="OnboardingNavigationView"

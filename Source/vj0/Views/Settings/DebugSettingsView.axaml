@@ -20,7 +20,7 @@
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Q1"/>
                 
-                <Button Height="66" Click="OpenGallery" Classes="SettingsExpander">
+                <Button Height="66" Click="OpenGallery" Classes="SettingsExpander HoverLift">
                     <StackPanel Orientation="Horizontal" Spacing="2" Margin="12 0" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="PanelRightGallery"
@@ -33,7 +33,7 @@
                 
                 <TextBlock Classes="SettingsCategory" Text="Developer Tools"/>
                 
-                <Button Height="66" Click="OpenLogsFolder" Classes="SettingsExpander">
+                <Button Height="66" Click="OpenLogsFolder" Classes="SettingsExpander HoverLift">
                     <StackPanel Orientation="Horizontal" Margin="12 0" Spacing="2" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="WindowConsole"
@@ -44,7 +44,7 @@
                     </StackPanel>
                 </Button>
                 
-                <Button Height="66" Click="OpenStartup" Classes="SettingsExpander">
+                <Button Height="66" Click="OpenStartup" Classes="SettingsExpander HoverLift">
                     <StackPanel Orientation="Horizontal" Spacing="2" Margin="12 0" HorizontalAlignment="Left">
                         <avalonia:FluentIcon
                             Icon="Open"
