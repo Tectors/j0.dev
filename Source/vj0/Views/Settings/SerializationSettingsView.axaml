@@ -6,7 +6,6 @@
     xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
     xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.SerializationSettingsView"
     x:DataType="settings:SerializationSettingsViewModel"
@@ -18,7 +17,7 @@
     <Grid Classes="SettingsWrapper">
         <TextBlock Classes="SettingsHeader">Serialization</TextBlock>
 
-        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+        <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Data Reading"/>
                 

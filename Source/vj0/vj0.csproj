@@ -211,6 +211,9 @@
     <Compile Update="Windows\GalleryWindow.cs">
       <DependentUpon>GalleryWindow.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Controls\Window\BaseTitleBar.cs">
+      <DependentUpon>BaseTitleBar.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

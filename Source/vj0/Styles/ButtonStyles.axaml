@@ -83,7 +83,7 @@
     </Style>
     
     <Style Selector="Button.WhiteOutline">
-        <Setter Property="BorderBrush" Value="#adadad" />
+        <Setter Property="BorderBrush" Value="#404040" />
     </Style>
     
     <Style Selector="Button.WhiteOutline:pressed">
@@ -92,6 +92,14 @@
     
     <Style Selector="Button.RedPressedOutline:pressed">
         <Setter Property="BorderBrush" Value="#ff1c68" />
+    </Style>
+    
+    <Style Selector="Button.GlassDarkerInteraction:pointerover">
+        <Setter Property="Background" Value="#1a1a1a" />
+    </Style>
+    
+    <Style Selector="Button.GlassDarkerInteraction:pressed">
+        <Setter Property="Background" Value="#121212" />
     </Style>
     
     <!-- Accent Highlight Button -->

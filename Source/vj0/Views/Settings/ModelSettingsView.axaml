@@ -11,7 +11,6 @@
     xmlns:textures="clr-namespace:CUE4Parse_Conversion.Textures;assembly=CUE4Parse-Conversion"
     xmlns:material="clr-namespace:CUE4Parse.UE4.Assets.Exports.Material;assembly=CUE4Parse"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
-    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.ModelSettingsView"
     x:DataType="settings:ModelSettingsViewModel"
@@ -23,7 +22,7 @@
     <Grid Classes="SettingsWrapper">
         <TextBlock Classes="SettingsHeader">Models</TextBlock>
 
-        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+        <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="General"/>
                 

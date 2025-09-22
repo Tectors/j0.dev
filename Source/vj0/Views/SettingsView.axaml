@@ -37,11 +37,11 @@
         </Style>
         
         <Style Selector="controls|NavigationView.has-profile /template/ ScrollViewer#MenuItemsScrollViewer">
-            <Setter Property="Margin" Value="0,225,0,2"/>
+            <Setter Property="Margin" Value="0,232,0,2"/>
         </Style>
         
         <Style Selector="navigation|NavigationFrame.has-profile">
-            <Setter Property="Margin" Value="0,225,0,0"/>
+            <Setter Property="Margin" Value="0,232,0,0"/>
         </Style>
     </UserControl.Styles>
     
@@ -99,12 +99,12 @@
         <Button HorizontalAlignment="Left"
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
-                Classes="Glass"
+                Classes="Glass GlassDarkerInteraction HoverLift"
                 CornerRadius="18"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"
-                Margin="0 28 0 0"
+                Margin="0 32 0 0"
                 Click="EditProfile"
                 IsVisible="False"
                 Focusable="False"

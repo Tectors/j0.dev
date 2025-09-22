@@ -1,0 +1,73 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls1="clr-namespace:vj0.Controls"
+    xmlns:controls="clr-namespace:vj0.Controls.Window"
+    x:Class="vj0.Controls.Window.BaseTitleBar"
+    mc:Ignorable="d"
+    d:DesignWidth="900"
+    d:DesignHeight="150">
+
+    <Grid>
+        <!-- Background -->
+        <Border
+            Background="{DynamicResource BackgroundBrush}"
+            IsHitTestVisible="False"/>
+
+        <controls1:CursorEffectControl ClipToBounds="False"/>
+
+        <!-- Left Side -->
+        <StackPanel Name="Left"
+                    Margin="20 0 0 0"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Stretch"
+                    Spacing="12">
+
+            <!-- Icon -->
+            <Image Name="Icon"
+                   Source="/Assets/Icon/Scaled/App.Icon.32.png"
+                   Width="22"
+                   IsVisible="{Binding ShowIcon, RelativeSource={RelativeSource AncestorType={x:Type controls:BaseTitleBar}}}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   IsHitTestVisible="False"
+                   Margin="0 0 10 0"/>
+            
+            <ItemsControl Margin="-8 0 0 0" ItemsSource="{Binding LeftItems, RelativeSource={RelativeSource AncestorType={x:Type controls:BaseTitleBar}}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="12"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+
+        <!-- Middle Content -->
+        <Grid Margin="0 0 0 0" HorizontalAlignment="Center">
+            <ItemsControl ItemsSource="{Binding MiddleContent, RelativeSource={RelativeSource AncestorType={x:Type controls:BaseTitleBar}}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Spacing="12"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Grid>
+
+        <!-- Right Side -->
+        <Grid HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <ItemsControl ItemsSource="{Binding RightContent, RelativeSource={RelativeSource AncestorType={x:Type controls:BaseTitleBar}}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="12"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+                <CaptionButtons Name="captionButtons"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

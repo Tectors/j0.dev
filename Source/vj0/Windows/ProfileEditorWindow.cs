@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 
-using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 
@@ -56,7 +55,6 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
         WindowModel.Reset();
         
         InitializeComponent();
-        captionButtons.Attach((VisualRoot as Window)!);
 
         NavigatorContext.Initialize(ProfileEditorNavigationView);
 

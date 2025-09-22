@@ -8,7 +8,6 @@
     xmlns:extensions="clr-namespace:vj0.Core.Extensions;assembly=vj0.Core"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
     xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-    xmlns:controls1="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.ApplicationSettingsView"
     x:DataType="settings:ApplicationSettingsViewModel"
@@ -20,7 +19,7 @@
     <Grid Classes="SettingsWrapper">
         <TextBlock Classes="SettingsHeader">Application</TextBlock>
         
-        <ScrollViewer controls1:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+        <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Startup &amp; Behavior"/>
                 

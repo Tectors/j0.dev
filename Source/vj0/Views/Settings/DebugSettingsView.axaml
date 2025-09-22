@@ -5,7 +5,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:avalonia="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
     xmlns:settings="clr-namespace:vj0.ViewModels.Settings"
-    xmlns:controls="clr-namespace:vj0.Controls"
 
     x:Class="vj0.Views.Settings.DebugSettingsView"
     x:DataType="settings:DebugSettingsViewModel"
@@ -17,7 +16,7 @@
     <Grid Classes="SettingsWrapper">
         <TextBlock Classes="SettingsHeader">Debug</TextBlock>
             
-        <ScrollViewer controls:ScrollTopShadow.Enable="True" Classes="SettingsScrollViewer">
+        <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
                 <TextBlock Classes="SettingsCategory" Text="Q1"/>
                 
