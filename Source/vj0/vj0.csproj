@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
       <AssemblyName>j0.dev</AssemblyName>
       <ApplicationIcon>Assets/Icon/App.ico</ApplicationIcon>
@@ -224,17 +224,22 @@
         </ItemGroup>
     </Target>
 
-  <Target Name="CopyPluginDllsToDebug" AfterTargets="Build">
-      <ItemGroup>
-        <BuiltPluginDlls Include="..\..\Plugins\Branded\**\bin\$(Configuration)\net8.0\vj0.Plugins.*.dll" />
-      </ItemGroup>
+    <Target Name="CopyPluginDllsToDebug" AfterTargets="ResolveReferences">
+        <ItemGroup>
+            <BuiltPluginDlls Include="..\..\Plugins\Branded\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\vj0.Plugins.*.dll" />
+            <BuiltPluginDlls Include="..\..\Plugins\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\vj0.Plugins.*.dll" />
+        </ItemGroup>
 
-      <Copy SourceFiles="@(BuiltPluginDlls)" DestinationFolder="$(OutputPath)Plugins\" SkipUnchangedFiles="true" />
-  </Target>
+        <Message Text="Found plugin: %(BuiltPluginDlls.Identity)" Importance="high" />
+
+        <Copy SourceFiles="@(BuiltPluginDlls)"
+              DestinationFolder="$(OutputPath)Plugins\"
+              SkipUnchangedFiles="true" />
+    </Target>
 
   <Target Name="CopyPlugins" AfterTargets="Publish">
     <ItemGroup>
-        <PluginAssemblies Include="..\..\Plugins\Branded\**\bin\$(Configuration)\net8.0\vj0.Plugins.*.dll" />
+        <PluginAssemblies Include="..\..\Plugins\Branded\**\bin\Debug\net8.0\$(RuntimeIdentifier)\vj0.Plugins.*.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(PluginAssemblies)" DestinationFolder="$(PublishDir)Plugins\" />
     </Target>
