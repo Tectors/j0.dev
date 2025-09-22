@@ -98,7 +98,7 @@
                                             Padding="0 15 0 15">
                                         <StackPanel Name="CommandSpace" Spacing="10" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 15 0">
                                             <Button Name="SecondaryButton"
-                                                    Classes="ContentSecondary"
+                                                    Classes="ContentSecondary HoverLift"
                                                     Content="{TemplateBinding SecondaryButtonText}"
                                                     IsEnabled="{TemplateBinding IsSecondaryButtonEnabled}"
                                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -112,15 +112,15 @@
                                                     Content="{TemplateBinding CloseButtonText}"
                                                     HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
-                                                    Classes="ContentSecondary"
+                                                    Classes="ContentSecondary HoverLift"
                                                     HorizontalContentAlignment="Center"
-                                                    IsDefault="False"
+                                                    IsDefault="{Binding IsPrimaryButtonEnabled, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource InverseBoolConverter}}"
                                                     VerticalContentAlignment="Center"
                                                     IsVisible="False">
                                             </Button>
                                             
                                             <Button Name="PrimaryButton"
-                                                    Classes="ContentPrimary"
+                                                    Classes="ContentPrimary HoverLift"
                                                     Content="{TemplateBinding PrimaryButtonText}"
                                                     IsEnabled="{TemplateBinding IsPrimaryButtonEnabled}"
                                                     HorizontalAlignment="Stretch"

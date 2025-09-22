@@ -33,8 +33,8 @@ public partial class ProfileCard : UserControl, INotifyPropertyChanged
         ViewModel = new ProfileCardViewModel();
         
         ViewModel.Profile!.Display.SetRandomGradient();
-        ViewModel.Profile!.Name = "Game 1";
-        ViewModel.Profile!.ArchiveDirectory = @"T:\Games\Game\Content\Paks";
+        ViewModel.Profile!.Name = "Profile";
+        ViewModel.Profile!.ArchiveDirectory = @"D:\Builds\Profile\Content\Paks";
         
         ViewModel.PropertyChanged += (_, args) =>
         {

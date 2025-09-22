@@ -225,50 +225,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
     private ProfileCard CreateCard(Profile profile)
     {
-        ProfileCardViewModel vm;
-        
-        if (Globals.HideAllProfileCardInformation)
-#pragma warning disable CS0162 // Unreachable code detected
-        {
-            var funnyNames = new[]
-            {
-                "Turbo Bread",
-                "Moist Duck",
-                "Sock Blast",
-                "Pogo Ants",
-                "Lawn Rage",
-                "Toast Jam",
-                "Glue Hero",
-                "Beef Quest",
-                "Chonk Run",
-                "Crab Life",
-                "Fork Jam",
-                "Dust Wars",
-                "Biscuit X",
-                "Rat Punch",
-                "Bean Raid",
-                "Puff Tank",
-                "Mug Rush",
-                "Worm Golf",
-                "Kelp Gun",
-                "Yarn Pit"
-            };
-            
-            var newProfile = profile.LazyClone();
-            var random = new Random();
-            
-            newProfile.Name = funnyNames[random.Next(funnyNames.Length)];
-            newProfile.Display.SetRandomGradient();
-            newProfile.ArchiveDirectory = @"D:\Builds\Tropical\Game\Content\Paks";
-            
-            vm = GetOrCreateProfileViewModel(newProfile);
-        }
-#pragma warning restore CS0162 // Unreachable code detected
-        else
-        {
-            vm = GetOrCreateProfileViewModel(profile);
-        }
-        
+        var vm = GetOrCreateProfileViewModel(profile);
         var card = new ProfileCard(vm);
         
         HookEvents?.Invoke(card);

@@ -48,7 +48,6 @@
                                                     Text="{Binding Key, Mode=TwoWay}"
                                                     FontFamily="Consolas"
                                                     FontSize="14"
-                                                    Background="Black"
                                                     HorizontalAlignment="Stretch"
                                                     Height="33"/>
                                             </Grid>

@@ -223,7 +223,7 @@
             IsEnabled="{Binding !IsRunning}"
             Height="50"
             Opacity="0.95"
-            Classes="PressScale"
+            Classes="PressScale HoverLift"
             Cursor="Hand"
             ClipToBounds="True"
             BorderThickness="0"
@@ -293,7 +293,7 @@
             CornerRadius="15"
             Cursor="Hand"
             Height="50"
-            Classes="PressScale"
+            Classes="PressScale HoverLift"
             Focusable="False"
             Click="EditButton_Click"
             HorizontalAlignment="Stretch">

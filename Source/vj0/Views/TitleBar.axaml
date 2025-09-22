@@ -21,7 +21,7 @@
 
     <window:BaseTitleBar>
         <window:BaseTitleBar.LeftItems>
-            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
                 <!-- 
@@ -57,7 +57,7 @@
                 </Button>
             </Grid>
             
-            <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-3 0 -3 0" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- GitHub / Versioning Button -->
             <Button IsVisible="True" Height="33" Classes="TitleBarContrast">

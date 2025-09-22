@@ -59,7 +59,7 @@
                     <controls:NavigationViewItemSeparator Margin="0 5" IsVisible="{x:Static vj0:Globals.IsReadyToExplore}"/>
                     
                     <!-- Explorer -->
-                    <controls:NavigationViewItem Margin="3 0 0 5" IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
+                    <controls:NavigationViewItem Focusable="False" Margin="3 0 0 5" IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
                         <ToolTip.Tip>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
@@ -79,7 +79,7 @@
                     </controls:NavigationViewItem>
                     
                     <!-- Scope -->
-                    <controls:NavigationViewItem IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
+                    <controls:NavigationViewItem Focusable="False" IsVisible="{x:Static vj0:Globals.IsReadyToExplore}" Tag="{x:Type views:ExplorerPlaceholder}" IsEnabled="{Binding Source={x:Static framework:AppServices.ExplorerVM}, Path=!Loading}">
                         <ToolTip.Tip>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Explorer</TextBlock>
@@ -101,7 +101,7 @@
 
                 <controls:NavigationView.FooterMenuItems>
                     <!-- Profiles -->
-                    <controls:NavigationViewItem ToolTip.Tip="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
+                    <controls:NavigationViewItem Focusable="False" ToolTip.Tip="Profiles" Tag="{x:Type profiles:ProfileSelectionView}">
                         <controls:NavigationViewItem.InfoBadge>
                             <controls:InfoBadge Background="#03d7fc" Margin="0 5 -8 0" Height="6" Width="6" Padding="0 0 0 0" IsVisible="{Binding !DoesProfileExist}" />
                         </controls:NavigationViewItem.InfoBadge>
@@ -114,7 +114,7 @@
                     <controls:NavigationViewItemSeparator Margin="0 5" CornerRadius="15"/>
                     
                     <!-- Settings -->
-                    <controls:NavigationViewItem ToolTip.Tip="Settings" Tag="{x:Type views:SettingsView}">
+                    <controls:NavigationViewItem Focusable="False" ToolTip.Tip="Settings" Tag="{x:Type views:SettingsView}">
                         <fluent:FluentIcon Width="18" Icon="Settings" Margin="0 0 2 0" />
                     </controls:NavigationViewItem>
                 </controls:NavigationView.FooterMenuItems>

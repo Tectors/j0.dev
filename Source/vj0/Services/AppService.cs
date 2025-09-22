@@ -1,11 +1,3 @@
-using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input.Platform;
 using Avalonia.Platform.Storage;
@@ -13,6 +5,14 @@ using Avalonia.Platform.Storage;
 using FluentAvalonia.UI.Controls;
 
 using Microsoft.WindowsAPICodePack.Taskbar;
+
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 using vj0.Framework;
 using vj0.Models;
@@ -37,10 +37,6 @@ public class AppService : IService
     private void OnAppClose(object? sender, ControlledApplicationLifetimeExitEventArgs e)
     {
         Settings.Save();
-        
-#pragma warning disable IL3002
-        App.RefreshWindowJumpList();
-#pragma warning restore IL3002
     }
 
     private IStorageProvider StorageProvider => Lifetime.MainWindow!.StorageProvider;
@@ -114,9 +110,9 @@ public class AppService : IService
     }
 
     [RequiresAssemblyFiles]
-    private void RefreshWindowJumpList()
+    public void RefreshWindowJumpList()
     {
-        if (!TaskbarManager.IsPlatformSupported || !HasActiveWindow())
+        if (!TaskbarManager.IsPlatformSupported)
         {
             return;
         }

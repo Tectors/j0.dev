@@ -80,7 +80,7 @@
         <Setter Property="RenderTransform" Value="translate(0px, -2px)" />
       </Style>
       <Style Selector="^:pressed">
-        <Setter Property="RenderTransform" Value="translate(0px, -1px)" />
+        <Setter Property="RenderTransform" Value="translate(0px, 1px)" />
       </Style>
     </Style>
     

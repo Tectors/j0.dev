@@ -90,6 +90,11 @@
     <Style Selector="ScrollBar">
       <Setter Property="Width" Value="20"/>
     </Style>
+    
+    <Style Selector="Button">
+      <Setter Property="IsDefault" Value="False"/>
+      <Setter Property="Focusable" Value="False"/>
+    </Style>
   </Application.Styles>
   
   <Application.Resources>
@@ -97,7 +102,8 @@
       <extensions:EnumToRecordConverter x:Key="EnumToRecord"/>
       <extensions:EnumEqualsConverter x:Key="EnumEquals" />
       <converters:MultiplyConverter x:Key="MultiplyConverter" />
-      
+      <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="/Styles/FluentAvalonia/BreadcrumbBarItemStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/TreeViewStyles.axaml"/>

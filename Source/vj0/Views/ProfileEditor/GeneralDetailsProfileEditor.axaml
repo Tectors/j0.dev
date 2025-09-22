@@ -31,7 +31,6 @@
                         </StackPanel>
 
                         <TextBox
-                            Background="Black"
                             Text="{Binding Profile.Name, Mode=TwoWay}"
                             FontSize="14"
                             Watermark="..."
@@ -53,7 +52,6 @@
                         <ComboBox FontFamily="Consolas"
                                   Height="32"
                                   FontSize="14"
-                                  Background="Black"
                                   Focusable="True"
                                   ItemsSource="{Binding GameVersionOptions}"
                                   SelectedItem="{Binding SelectedVersionName, Mode=TwoWay}"
@@ -83,7 +81,6 @@
                     <Grid ColumnDefinitions="*,Auto">
                         <TextBox Grid.Column="0" Classes="clearButton"
                                  HorizontalAlignment="Stretch"
-                                 Background="Black"
                                  Text="{Binding Profile.ArchiveDirectory}"/>
                         <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseArchiveDirectoryPath}">
                             <fluent:SymbolIcon Symbol="Folder"/>
@@ -105,7 +102,6 @@
                              Text="{Binding Profile.Encryption.MainKey, Mode=TwoWay}"
                              HorizontalAlignment="Stretch"
                              FontSize="14"
-                             Background="Black"
                              Classes="clearButton"
                              Padding="10 6"
                              Height="33"/>

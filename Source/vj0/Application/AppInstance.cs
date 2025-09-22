@@ -74,6 +74,10 @@ public class AppInstance : Avalonia.Application
 
             window.Closing += (_, _) =>
             {
+#pragma warning disable IL3002
+                App.RefreshWindowJumpList();
+#pragma warning restore IL3002
+                
                 if (window.WindowState == WindowState.Maximized)
                 {
                     return;

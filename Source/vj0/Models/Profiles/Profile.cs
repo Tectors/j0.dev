@@ -410,7 +410,7 @@ public class Profile : BaseProfileDisplay
     /* File IO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public async Task Save()
     {
-        if (Globals.HideAllProfileCardInformation)
+        if (Globals.RedactProfiles)
 #pragma warning disable CS0162 // Unreachable code detected
         {
             return;
@@ -565,6 +565,22 @@ public class Profile : BaseProfileDisplay
                 
                 profileSetting.EnableDisplayLinks = true;
                 profileSetting.ResolvePluginHandler();
+
+                if (Globals.RedactProfiles)
+#pragma warning disable CS0162 // Unreachable code detected
+                {
+                    var names = new[]
+                    {
+                        "Profile"
+                    };
+            
+                    var random = new Random();
+            
+                    profileSetting.Name = names[random.Next(names.Length)];
+                    profileSetting.Display.SetRandomGradient();
+                    profileSetting.ArchiveDirectory = @"D:\Builds\Profile\Content\Paks";
+                }
+#pragma warning restore CS0162 // Unreachable code detected
                 
                 Log.Information($"Loaded Profile {profileSetting.Name}");
 

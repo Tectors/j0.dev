@@ -7,13 +7,13 @@ namespace vj0;
 
 public static class Globals
 {
-    /* future. ?? */
+    /* sometime in the future */
     public const bool IsReadyToExplore = false;
     public const bool IsReadyToMeshExport = true;
 
     public static readonly FilePickerFileType MappingsFileType = new(".USMAP Files") { Patterns = [ "*.usmap" ] };
 
-    public const bool HideAllProfileCardInformation = false;
+    public const bool RedactProfiles = false;
     
     public static string LaunchProfileArg = string.Empty;
 }
