@@ -41,9 +41,9 @@ public class APIBase
         }
     }
 
-    protected async Task<RestResponse> ExecuteAsync(string url, Method method = Method.Get, bool verbose = true, params Parameter[] parameters)
+    protected async Task<RestResponse> ExecuteAsync(string url, Method method = Method.Get, bool verbose = true, bool useBaseUrl = true, params Parameter[] parameters)
     {
-        var request = CreateRequest(url, method, parameters);
+        var request = CreateRequest(url, method, parameters, useBaseUrl);
 
         var response = await _client.ExecuteAsync(request).ConfigureAwait(false);
         LogResponse(request, response, verbose);

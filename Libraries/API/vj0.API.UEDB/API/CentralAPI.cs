@@ -39,38 +39,21 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
             endpointUrl += $"?version={version}";
         }
 
-        var response = await ExecuteAsync<JToken>(endpointUrl, verbose: false);
-        if (response is null)
-        {
-            return null;
-        }
+        var mappings = await ExecuteAsync<MappingsResponse>(endpointUrl, verbose: false);
 
-        var tokens = response.SelectTokens("$.[0].['url','fileName']").ToArray();
-        if (tokens.Length == 0)
-        {
-            return null;
-        }
-
-        var url = tokens.ElementAtOrDefault(0)?.ToString();
-        var fileName = tokens.ElementAtOrDefault(1)?.ToString() ?? Path.GetFileName(url ?? "");
-
-        var mapping = new MappingsResponse
-        {
-            Url = url ?? string.Empty,
-            FileName = fileName
-        };
-
-        if (!mapping.IsValid)
+        if (mappings is { IsValid: false })
         {
             return null;
         }
 
         var targetFolder = !string.IsNullOrWhiteSpace(version) ? Path.Combine(_mappingsFolder, version) : _mappingsFolder;
-
-        var localPath = Path.Combine(targetFolder, mapping.FileName);
+        var mapping = mappings!.GetFirstMapping();
+        var (_, url, fileName) = mapping!.Value;
+        
+        var localPath = Path.Combine(targetFolder, fileName);
         if (forceDownload || !File.Exists(localPath))
         {
-            var data = await ExecuteAsync(mapping.Url.Replace("https://fortnitecentral.genxgames.gg/", ""), Method.Get, false);
+            var data = await ExecuteAsync(url, Method.Get, false, useBaseUrl: false);
             if (!data.IsSuccessful || data.RawBytes is null)
             {
                 return null;
@@ -80,7 +63,7 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
             await File.WriteAllBytesAsync(localPath, data.RawBytes, token);
         }
 
-        mapping.LocalPath = localPath;
-        return mapping;
+        mappings.LocalPath = localPath;
+        return mappings;
     }
 }
