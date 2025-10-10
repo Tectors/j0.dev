@@ -216,10 +216,6 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Assets\Background\" />
-  </ItemGroup>
-
     <Target Name="IncludePlugins" BeforeTargets="ResolveProjectReferences">
         <ItemGroup>
             <ProjectReference Include="..\..\Plugins\Branded\**\vj0.Plugins.*.csproj" />
