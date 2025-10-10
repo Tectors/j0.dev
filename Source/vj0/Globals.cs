@@ -9,7 +9,7 @@ public static class Globals
 {
     /* sometime in the future */
     public const bool IsReadyToExplore = false;
-    public const bool IsReadyToMeshExport = true;
+    public const bool IsReadyToMeshExport = false;
 
     public static readonly FilePickerFileType MappingsFileType = new(".USMAP Files") { Patterns = [ "*.usmap" ] };
 
