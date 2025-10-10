@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -10,7 +10,6 @@ namespace vj0.Core.Framework.CUEParse;
 
 public partial class EncryptionKey : ObservableObject
 {
-    [ObservableProperty] private string _name = "";
     [ObservableProperty] private string _guid = "";
     [ObservableProperty] private string _key = "";
 
@@ -38,9 +37,9 @@ public partial class EncryptionKey : ObservableObject
     {
         if (other is null) return false;
 
-        return string.Equals(Name, other.Name, StringComparison.Ordinal) && string.Equals(Guid, other.Guid, StringComparison.Ordinal) && string.Equals(Key, other.Key, StringComparison.Ordinal);
+        return string.Equals(Guid, other.Guid, StringComparison.Ordinal) && string.Equals(Key, other.Key, StringComparison.Ordinal);
     }
 
     public override bool Equals(object? obj) => Equals(obj as EncryptionKey);
-    public override int GetHashCode() => HashCode.Combine(Name, Guid, Key);
+    public override int GetHashCode() => HashCode.Combine(Guid, Key);
 }

@@ -7,9 +7,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 using CUE4Parse.UE4.Versions;
 
-using vj0.Converters.Enum;
 using vj0.Models.Profiles.Paks;
-using vj0.Core.Framework.Base;
 using vj0.ViewModels.Profiles.Framework;
 
 namespace vj0.ViewModels.ProfileEditor;
@@ -42,12 +40,6 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
 
         SelectedVersionName = Profile.Version.ToString()[5..];
 
-        if (Profile.Status.State == EProfileStatus.Uncompleted &&
-            SelectedVersionName == EGameNameConverter.ToName(EGame.GAME_UE5_6))
-        {
-            SelectedVersionName = EGameNameConverter.ToName(EGame.GAME_UE5_7);
-        }
-
         GeneratePakFileEntries();
     }
 
@@ -61,7 +53,7 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
         {
             var key = "";
 
-            var matchingKey = Profile.Encryption.Keys.FirstOrDefault(k => k.Name == pakFileEntry.FileName);
+            var matchingKey = Profile.Encryption.Keys.FirstOrDefault(k => k.Guid == pakFileEntry.Guid);
             if (matchingKey is not null)
             {
                 key = matchingKey.Key;
@@ -75,11 +67,10 @@ public partial class ProfileEditorViewModel : ProfileViewModelBase
             });
         }
 
-        foreach (var aes in Profile.Encryption.Keys.Where(aes => PakKeyEntries.All(e => e.FileName != aes.Name)))
+        foreach (var aes in Profile.Encryption.Keys.Where(aes => PakKeyEntries.All(e => e.Guid != aes.Guid)))
         {
             PakKeyEntries.Add(new PakKeyEntry
             {
-                FileName = aes.Name,
                 Key = aes.Key,
                 Guid = aes.Guid
             });

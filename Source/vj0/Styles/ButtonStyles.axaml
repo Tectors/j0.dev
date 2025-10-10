@@ -83,7 +83,11 @@
     </Style>
     
     <Style Selector="Button.WhiteOutline">
-        <Setter Property="BorderBrush" Value="#404040" />
+        <Setter Property="BorderBrush" Value="#757575" />
+    </Style>
+    
+    <Style Selector="Button.WhiteOutline:pointerover">
+        <Setter Property="BorderBrush" Value="#bdbdbd" />
     </Style>
     
     <Style Selector="Button.WhiteOutline:pressed">

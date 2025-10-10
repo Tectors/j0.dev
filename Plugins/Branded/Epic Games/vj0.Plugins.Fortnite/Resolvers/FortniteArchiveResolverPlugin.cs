@@ -24,25 +24,26 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
     {
         var InherentlyMatches = ((IGamePlugin)this).DoesInherentlyMatch(Profile);
         
-        const string GEN_API_URL = $"https://fortnitecentral.genxgames.gg/api/v1/aes";
+        const string UEDB_FN_API_URL = $"https://uedb.dev/svc/api/v1/fortnite/aes";
         var GIT_ARCHIVE_URL = $"https://raw.githubusercontent.com/Tectors/fortnite-aes-archive/refs/heads/master/api/archive/{Profile.Name}.json";
 
         string API_URL;
 
         if (InherentlyMatches)
         {
-            API_URL = GEN_API_URL;
+            API_URL = UEDB_FN_API_URL;
         } else {
             if (!StringExtensions.TryParseStringToDouble(Profile.Name, out var value))
             {
                 return;
             }
             
-            var useGenAPI = value >= 18.00;
-            API_URL = useGenAPI ? GEN_API_URL + $"?version={Profile.Name}" : GIT_ARCHIVE_URL;
+            /* Server doesn't actually have proper versioning yet, at the time of writing this */
+            var useUEDBAPI = value >= 18.00;
+            API_URL = useUEDBAPI ? UEDB_FN_API_URL + $"?version={Profile.Name}" : GIT_ARCHIVE_URL;
         }
         
-        var aes = await API.UEDB.Globals.API.GetAesAsync(API_URL, useBaseUrl: false);
+        var aes = await Globals.API.GetAesAsync(API_URL, useBaseUrl: false);
 
         if (aes is null)
         {
@@ -97,7 +98,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
         
         if (value >= 15.20)
         {
-            var mapping = await API.UEDB.Globals.API.FetchMappingAsync(Profile.Name);
+            var mapping = await Globals.API.FetchMappingAsync(Profile.Name);
         
             if (mapping is { LocalPath: not null })
             {

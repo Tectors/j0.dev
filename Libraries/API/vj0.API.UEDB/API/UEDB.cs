@@ -1,5 +1,3 @@
-using Newtonsoft.Json.Linq;
-
 using RestSharp;
 
 using Serilog;
@@ -9,13 +7,20 @@ using vj0.API.UEDB.API.Responses;
 
 namespace vj0.API.UEDB.API;
 
-public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitecentral.genxgames.gg")
+public class UEDB(RestClient client, string gameName) : APIBase(client, "https://uedb.dev/svc/api/v1")
 {
     private readonly string _mappingsFolder = Core.Globals.MappingsFolder.FullName;
     
     public async Task<AesResponse?> GetAesAsync(string? url = null, string? version = null, bool useBaseUrl = true)
     {
-        url ??= "api/v1/aes";
+        url ??= "";
+        
+        if (useBaseUrl)
+        {
+            url += $"{gameName}/";
+            url += "aes";
+        }
+
         if (!string.IsNullOrWhiteSpace(version))
         {
             url += $"?version={version}";
@@ -33,7 +38,9 @@ public class CentralAPI(RestClient client) : APIBase(client, "https://fortnitece
 
     public async Task<MappingsResponse?> FetchMappingAsync(string? version = null, bool forceDownload = false, CancellationToken token = default)
     {
-        var endpointUrl = "api/v1/mappings";
+        var endpointUrl = $"{gameName}/";
+        
+        endpointUrl += "mappings";
         if (!string.IsNullOrWhiteSpace(version))
         {
             endpointUrl += $"?version={version}";

@@ -152,14 +152,12 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
             .Where(entry =>
                 !string.IsNullOrWhiteSpace(entry.Key) ||
                 Profile.Encryption.Keys.Any(k =>
-                    k.Name == entry.FileName &&
                     !string.IsNullOrWhiteSpace(k.Key) &&
                     k.Key != entry.Key))
             .GroupBy(entry => entry.FileName)
             .Select(group => group.First())
             .Select(entry => new EncryptionKey
             {
-                Name = entry.FileName,
                 Key = entry.Key,
                 Guid = entry.Guid
             }).ToList();

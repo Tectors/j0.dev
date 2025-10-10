@@ -57,6 +57,16 @@ public class Profile : BaseProfileDisplay
             Plugins.Add(Plugin);
             Log.Information($"{Name}: Added Plugin \"{Plugin.Name}\" [{reason}]");
         }
+        
+        foreach (var Plugin in Plugins)
+        {
+            if (Plugin is not (IGameVersionUpdatePlugin archiveResolverPlugin and IGamePlugin gamePlugin)) continue;
+
+            if (gamePlugin.DoesInherentlyMatch(this))
+            {
+                archiveResolverPlugin.Update(this);
+            }
+        }
     }
 
     public async Task ResolveDataFromArchives(bool Voluntary)
@@ -235,7 +245,6 @@ public class Profile : BaseProfileDisplay
             var newKey = new EncryptionKey()
             {
                 Guid = unknownKey.Guid,
-                Name = pakFile.FileName,
                 Key = unknownKey.Key
             };
                     

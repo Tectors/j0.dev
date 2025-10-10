@@ -18,6 +18,7 @@ public class HomeViewModel : ViewModelBase
         "buy us some time (and coffee ☕)",
         "developed by a dedicated community of contributors",
         "powered by Avalonia and CUEParse",
+        "powered by UEDB",
         "bringing clarity to the chaos",
         "look closer.",
         "accidentally pushed into prod",

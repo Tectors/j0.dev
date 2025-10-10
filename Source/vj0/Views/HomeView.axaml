@@ -82,9 +82,9 @@
                             
                             <!-- Donate button -->
                             <Grid>
-                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="50" Height="10">
+                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="10">
                                     <Border.Effect>
-                                        <BlurEffect Radius="60"/>
+                                        <BlurEffect Radius="90"/>
                                     </Border.Effect>
                                 </Border>
                                 
