@@ -17,7 +17,7 @@ public partial class OnboardingPreferencesView : UserControl
         Task.Run(async () =>
         {
 #if !DEBUG
-            await Task.Delay(4000);      
+            await Task.Delay(1000);      
 #endif
 
             await Dispatcher.UIThread.InvokeAsync(() =>
