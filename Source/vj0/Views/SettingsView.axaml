@@ -132,7 +132,7 @@
                 </Grid>
                 
                 <TextBlock Margin="15 78 0 0" HorizontalAlignment="Left" FontSize="35" FontWeight="DemiBold" TextTrimming="CharacterEllipsis"
-                           TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}">Profile Name</TextBlock>
+                           TextWrapping="NoWrap" MaxWidth="270" Text="{Binding CurrentProfile.Name}"></TextBlock>
                 
                 <TextBlock Margin="15 132 0 0" FontSize="20" Opacity="0.5">Edit Profile</TextBlock>
                 
