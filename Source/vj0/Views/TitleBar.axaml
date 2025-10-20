@@ -38,7 +38,14 @@
                 </Grid>
                 
                 <!-- Profile Button -->
-                <Button Click="EditProfile" ClipToBounds="False" Name="Profile" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="10 5 10 5" Background="Transparent" CornerRadius="25">
+                <Button Click="EditProfile" Classes="SoftHoverLift" ClipToBounds="False" Name="Profile" Opacity="{Binding ProfileButtonOpacity}" BorderThickness="0" Padding="10 5 10 5" Background="Transparent" CornerRadius="25">
+                    <Button.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver">Transparent</SolidColorBrush>
+                            <SolidColorBrush x:Key="ButtonBackgroundPressed">Transparent</SolidColorBrush>
+                        </ResourceDictionary>
+                    </Button.Resources>
+                    
                     <StackPanel Orientation="Horizontal" Spacing="10" Background="Transparent" Cursor="Hand">
                         <profiles:ProfileSplashControl ZIndex="1" Radius="12" SplashScale="1.09" DataContext="{Binding CurrentProfile}"/>
 
