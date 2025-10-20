@@ -7,7 +7,6 @@ namespace vj0;
 
 public static class Globals
 {
-    /* sometime in the future */
     public const bool IsReadyToExplore = false;
     public const bool IsReadyToMeshExport = false;
 
