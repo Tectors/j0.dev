@@ -11,6 +11,7 @@
     xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
     xmlns:vj0.Core="clr-namespace:vj0.Core;assembly=vj0.Core"
     xmlns:window="clr-namespace:vj0.Controls.Window"
+    xmlns:vj0="clr-namespace:vj0"
 
     x:Class="vj0.Views.TitleBar"
     x:DataType="windowModels:MainWindowModel"
@@ -57,10 +58,10 @@
                 </Button>
             </Grid>
             
-            <TextBlock IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
             
-            <!-- GitHub / Versioning Button -->
-            <Button IsVisible="True" Height="33" Classes="TitleBarContrast">
+            <!-- Version Button -->
+            <Button IsVisible="{x:Static vj0:Globals.ShowVersion}" Height="33" Classes="TitleBarContrast">
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
                         <StackPanel Spacing="15" Margin="5">

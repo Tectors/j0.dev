@@ -13,6 +13,7 @@ public static class Globals
 
     public static readonly FilePickerFileType MappingsFileType = new(".USMAP Files") { Patterns = [ "*.usmap" ] };
 
+    public const bool ShowVersion = true;
     public const bool RedactProfiles = false;
     
     public static string LaunchProfileArg = string.Empty;
