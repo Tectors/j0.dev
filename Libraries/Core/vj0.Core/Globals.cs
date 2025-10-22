@@ -8,8 +8,8 @@ namespace vj0.Core;
 public static class Globals
 {
     /* Format: 0.0.0 */
-    public const string VERSION = "0.0.4";
-    public const string COMMIT = "c5e2780";
+    public const string VERSION = "0.0.4.1";
+    public const string COMMIT = "";
     
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);
     public static bool IS_COMMIT_UNAVAILABLE => !IS_COMMIT_AVAILABLE;

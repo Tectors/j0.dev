@@ -68,7 +68,7 @@
             <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
             
             <!-- Version Button -->
-            <Button IsVisible="{x:Static vj0:Globals.ShowVersion}" Height="33" Classes="TitleBarContrast">
+            <Button IsVisible="{x:Static vj0:Globals.ShowVersion}" Height="33" Classes="SoftHoverLift">
                 <Button.Flyout>
                     <Flyout Placement="Bottom" VerticalOffset="3">
                         <StackPanel Spacing="15" Margin="5">
