@@ -15,5 +15,7 @@ public static class Globals
     public const bool ShowVersion = true;
     public const bool RedactProfiles = false;
     
+    public const bool HideVersionPrompt = true;
+    
     public static string LaunchProfileArg = string.Empty;
 }

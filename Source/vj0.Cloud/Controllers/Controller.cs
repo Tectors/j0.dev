@@ -4,6 +4,7 @@ using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Meshes;
+using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
 
 using Microsoft.AspNetCore.Mvc;
@@ -71,7 +72,8 @@ public class CloudApiController : ControllerBase
 
         return new OkObjectResult(JsonConvert.SerializeObject(new
         {
-            name = MainProfile?.Provider.ProjectName
+            name = MainProfile?.Provider.ProjectName,
+            major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4
         }, Formatting.Indented));
     }
     
