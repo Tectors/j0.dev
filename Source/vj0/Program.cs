@@ -31,7 +31,22 @@ internal sealed class Program
         }
 
         BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
-        mutex.ReleaseMutex();
+        ReleaseMutex();
+    }
+    
+    public static void ReleaseMutex()
+    {
+        try
+        {
+            if (mutex == null) return;
+            mutex.ReleaseMutex();
+            mutex.Dispose();
+            mutex = null;
+        }
+        catch
+        {
+            /* Ignore if already released */
+        }
     }
 
     private static AppBuilder BuildAvaloniaApp()

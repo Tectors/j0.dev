@@ -43,6 +43,7 @@ public static class Globals
     private static readonly string DataFolder = Path.Combine(ApplicationDataFolder, CODENAME);
     
     public static readonly DirectoryInfo ProfilesFolder = new(Path.Combine(DataFolder, "Profiles"));
+    public static readonly DirectoryInfo InstallationFolder = new(Path.Combine(DataFolder, "Installation"));
     public static readonly DirectoryInfo RuntimeFolder = new(Path.Combine(DataFolder, "Runtime"));
     public static readonly DirectoryInfo OnDemandFolder = new(Path.Combine(RuntimeFolder.ToString(), "Demand"));
     public static readonly DirectoryInfo MappingsFolder = new(Path.Combine(RuntimeFolder.ToString(), "Mappings"));

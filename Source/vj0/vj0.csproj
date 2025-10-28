@@ -59,6 +59,7 @@
       <PackageReference Include="ReactiveUI" Version="20.4.1" />
       <PackageReference Include="runtime.native.System.Data.SqlClient.sni" Version="4.7.0"/>
       <PackageReference Include="Serilog.Sinks.File" Version="7.0.0"/>
+      <PackageReference Include="SharpCompress" Version="0.41.0" />
       <PackageReference Include="System.Reactive" Version="6.0.1"/>
       <PackageReference Include="Microsoft-WindowsAPICodePack-ShellExtensions" Version="1.1.4" />
       <!-- <- Licensed ~~~~~~~~~~~ -->
