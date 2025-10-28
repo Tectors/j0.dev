@@ -10,14 +10,15 @@
     x:Class="vj0.Views.Profiles.ProfileSelectionViewToolbar"
     mc:Ignorable="d"
     d:DesignWidth="550"
-    d:DesignHeight="40"
+    d:DesignHeight="70"
 
+    ClipToBounds="False"
     Focusable="True"
     HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch">
     
-    <StackPanel Orientation="Horizontal" Spacing="10">
-        <Button Cursor="Hand" Classes="HoverLift" Width="44" BorderThickness="0" Command="{x:Static profiles:Profile.CreateNewProfileCommand}" Height="35" Background="#0095ff" Opacity="1" CornerRadius="7" IsVisible="True">
+    <StackPanel Orientation="Horizontal" Spacing="10" ClipToBounds="False">
+        <Button Cursor="Hand" Classes="HoverLift" BorderThickness="0" Command="{x:Static profiles:Profile.CreateNewProfileCommand}" Height="35" Background="#0095ff" Opacity="1" CornerRadius="7" IsVisible="True">
             <ToolTip.Tip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Create a New Profile</TextBlock>
@@ -34,9 +35,7 @@
                 </ResourceDictionary>
             </Button.Resources>
                 
-            <Grid>
-                <avalonia:FluentIcon Foreground="White" Opacity="1" FontSize="23" Icon="Add"/>
-            </Grid>
+            <avalonia:FluentIcon Foreground="White" Opacity="1" FontSize="23" Icon="AlbumAdd"/>
         </Button>
     </StackPanel>
 </UserControl>

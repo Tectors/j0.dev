@@ -26,7 +26,6 @@ public partial class TitleBar : UserControl
             Dispatcher.UIThread.Post(() =>
             {
                 AttachGlow(Profile, "ProfileHoverGlow");
-                AttachGlow(Cloud, "CloudHoverGlow");
             }, DispatcherPriority.Loaded);
         };
     }

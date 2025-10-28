@@ -144,14 +144,11 @@
 
         <window:BaseTitleBar.RightContent>
             <!-- Content Control depending on what tab is open -->
-            <ContentControl Content="{Binding CurrentToolbarContent}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ContentControl ClipToBounds="False" Content="{Binding CurrentToolbarContent}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             
             <StackPanel Orientation="Horizontal" Spacing="10" ClipToBounds="False">
-                <!-- Separator if content control has content -->
-                <Border IsHitTestVisible="True" Margin="3 0" IsVisible="{Binding IsCurrentToolbarContentVisible}" Height="20" Background="White" Opacity="0.3" Width="1"></Border>
-
                 <!-- Cloud Service -->
-                <Button Name="Cloud" ClipToBounds="False" IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8">
+                <Button Name="Cloud" ClipToBounds="False" IsVisible="{Binding IsAPIServiceEnabled}" Height="40" Background="Transparent" CornerRadius="8" Classes="HoverLift">
                     <ToolTip.Tip>
                         <StackPanel Orientation="Vertical" Spacing="3" Margin="5">
                             <TextBlock VerticalAlignment="Center" FontWeight="Medium">Cloud Service</TextBlock>
@@ -183,14 +180,6 @@
                     </Button.Flyout>
                     
                     <Grid Cursor="Hand" Background="Transparent" ClipToBounds="False">
-                        <Grid x:Name="CloudHoverGlow" Opacity="0" ZIndex="-1" ClipToBounds="False">
-                            <Border Margin="-5 0 -5 0" Opacity="0.35" Background="{Binding APIServiceStatusColor}" HorizontalAlignment="Stretch" Height="25">
-                                <Border.Effect>
-                                    <BlurEffect Radius="50"/>
-                                </Border.Effect>
-                            </Border>
-                        </Grid>
-                        
                         <avalonia:FluentIcon Icon="{Binding APIServiceIcon}" Foreground="{Binding APIServiceStatusColor}"/>
                     </Grid>
                 </Button>
