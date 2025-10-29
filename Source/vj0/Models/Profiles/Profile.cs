@@ -345,7 +345,15 @@ public class Profile : BaseProfileDisplay
     
     private async void LoadMappings(CancellationToken cancellationToken = default)
     {
-        var mapping = await vj0.API.UEDB.Globals.API.FetchMappingAsync(token: cancellationToken);
+        MappingsResponse? mapping = null;
+        try
+        {
+            mapping = await vj0.API.UEDB.Globals.API.FetchMappingAsync(token: cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            Log.Warning($"Failed to fetch online mappings {ex.Message}");
+        }
 
         if (Provider is null) return;
 
