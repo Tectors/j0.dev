@@ -64,6 +64,8 @@ public class UpdateService : IService
     
     public async void Initialize()
     {
+        if (MainWM.Window == null) return;
+        
         await UpdateVersioning();
         
         if (CurrentVersion < LatestReleaseVersion && CurrentVersion != null
