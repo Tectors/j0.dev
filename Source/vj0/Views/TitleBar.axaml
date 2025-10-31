@@ -22,7 +22,7 @@
 
     <window:BaseTitleBar>
         <window:BaseTitleBar.LeftItems>
-            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Opacity="0.1" Text="/"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
                 <!-- 
@@ -65,7 +65,7 @@
                 </Button>
             </Grid>
             
-            <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Opacity="0.1" Text="/"/>
             
             <!-- Version Button -->
             <Button IsVisible="{x:Static vj0:Globals.ShowVersion}" Height="33" Classes="SoftHoverLift">
@@ -128,14 +128,14 @@
                 <StackPanel Cursor="Hand" Orientation="Horizontal" Spacing="5" Background="Transparent">
                     <Image
                         Source="/Assets/Views/Version.png"
-                        Width="14"
+                        Width="18"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         IsHitTestVisible="False"
                         Height="11"
                         Margin="3 2 3 0"/>
                     
-                    <TextBlock FontFamily="Consolas" Text="{x:Static vj0.Core:Globals.VERSION}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12"/>
+                    <TextBlock FontFamily="Consolas" Text="{x:Static vj0.Core:Globals.VERSION}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13"/>
                     
                     <controls:SymbolIcon Symbol="ChevronDown" Margin="2 0 4 0"/>
                 </StackPanel>

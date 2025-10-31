@@ -35,16 +35,19 @@ public class UpdateService : IService
             if (CurrentVersion > LatestReleaseVersion) return;
         }
         
-        var win = new GalleryWindow();
+        var win = new GalleryWindow
+        {
+            Height = 678
+        };
 
         win.CenterToScreen(MainWM.Window);
         win.Show();
         
-        win.WM.Title = CurrentVersion.ToString();
+        win.WM.Title = "Update System Enhancements";
         win.WM.Tag = true;
         win.WM.TagType = TagType.New;
         win.WM.SecondaryButtonEnabled = false;
-        win.WM.Description = "This update includes an improved user interface and update reminders. It also updates the CUEParse commit and focuses on maintenance rather than new features.";
+        win.WM.Description = "This update improves how update reminders are handled and refreshes the CUEParse integration to the latest commit.";
     }
 
     private async Task UpdateVersioning()
