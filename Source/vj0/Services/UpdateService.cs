@@ -1,67 +1,118 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.Input;
 
 using FluentAvalonia.UI.Controls;
 using SharpCompress.Archives;
 using SharpCompress.Common;
+using vj0.Extensions;
 using vj0.Framework;
+using vj0.Models.API.Responses;
+using vj0.WindowModels;
+using vj0.Windows;
+using static System.Version;
 
 namespace vj0.Services;
 
 public class UpdateService : IService
 {
+    private Version CurrentVersion = null!;
+    private Version LastSavedVersion = null!;
+
+    private GitHubReleaseResponse LatestRelease = null!;
+    private Version LatestReleaseVersion = null!;
+    private bool ShowAllModels = false;
+
+    private void ShowModel()
+    {
+        if (!ShowAllModels)
+        {
+            if (CurrentVersion <= LastSavedVersion
+                && Settings.Application.Version != string.Empty) return;
+        
+            if (CurrentVersion > LatestReleaseVersion) return;
+        }
+        
+        var win = new GalleryWindow();
+
+        win.CenterToScreen(MainWM.Window);
+        win.Show();
+        
+        win.WM.Title = CurrentVersion.ToString();
+        win.WM.Tag = true;
+        win.WM.TagType = TagType.New;
+        win.WM.SecondaryButtonEnabled = false;
+        win.WM.Description = "This update includes an improved user interface and update reminders. It also updates the CUEParse commit and focuses on maintenance rather than new features.";
+    }
+
+    private async Task UpdateVersioning()
+    {
+        TryParse(VERSION, out CurrentVersion!);
+        TryParse(Settings.Application.Version, out LastSavedVersion!);
+        
+        LatestRelease = (await RestAPI.GitHub.GetLatestRelease())!;
+        if (LatestRelease is not null)
+        {
+            LatestReleaseVersion = new Version(LatestRelease.Name);
+        }
+    }
+    
     public async void Initialize()
     {
-        if (!Version.TryParse(VERSION, out var currentVersion))
+        await UpdateVersioning();
+        
+        if (CurrentVersion < LatestReleaseVersion && CurrentVersion != null
+            && LatestRelease is not null
+            || ShowAllModels)
         {
-            return;
-        }
-        
-        var latestRelease = await RestAPI.GitHub.GetLatestRelease();
-        if (latestRelease is null) return;
-
-        var latestVersion = new Version(latestRelease.Name);
-        
-        if (Globals.HideVersionPrompt) return;
-        
-        if (currentVersion < latestVersion)
-        {
-            var dialog = new ContentDialog
+            var win = new GalleryWindow
             {
-                Title = "New Version Available!",
-                Content = $"Get the latest features and improvements for {APP_NAME}.",
-                CloseButtonText = "Dismiss",
-                PrimaryButtonText = "Download & Install",
-                PrimaryButtonCommand = new RelayCommand(async () =>
+                Height = 658
+            };
+
+            win.CenterToScreen(MainWM.Window);
+            win.Show();
+        
+            win.WM.Title = $"{LatestRelease.Name} is now available!";
+            win.WM.PrimaryButtonText = "Update";
+            win.WM.Tag = true;
+            win.WM.OnPrimaryButtonClick += () =>
+            {
+                var asset = LatestRelease.Assets.FirstOrDefault();
+                if (asset != null)
                 {
-                    var asset = latestRelease.Assets.FirstOrDefault();
-                    if (asset != null)
-                    {
-                        await DownloadAndInstall(latestRelease.Name, asset.DownloadUrl);
-                    }
-                })
+                    _ = DownloadAndInstall(LatestRelease.Name, asset.DownloadUrl);
+                }
             };
-            
-            _ = dialog.ShowAsync();
+            win.WM.TagType = TagType.Update;
+            win.WM.Description = "Get the latest features and improvements in the new version.";
         }
+        
+        ShowModel();
 
-        if (currentVersion > latestVersion)
+        if (LatestReleaseVersion != null && CurrentVersion != null || ShowAllModels)
         {
-#if !DEBUG
-            var dialog = new ContentDialog
+            if (CurrentVersion > LatestReleaseVersion
+                && Settings.Application.Version != CurrentVersion.ToString() || ShowAllModels)
             {
-                Title = "Development Build",
-                Content = $"You are currently running a developmental build of {APP_NAME}.\n\nThis issued version may be unstable.",
-                CloseButtonText = "Dismiss"
-            };
-            
-            _ = dialog.ShowAsync();
+#if !DEBUG
+                var win = new GalleryWindow();
+
+                win.CenterToScreen(MainWM.Window);
+                win.Show();
+        
+                win.WM.Title = $"{VERSION}";
+                win.WM.Tag = true;
+                win.WM.TagType = TagType.Developmental;
+                win.WM.PrimaryButtonEnabled = false;
+                win.WM.SecondaryButtonText = "Got it";
+                win.WM.Description = $"You are running a developmental build of {APP_NAME}.\n\nThis issued version may be unstable.";
 #endif
+            }
+            
+            Settings.Application.Version = CurrentVersion.ToString();
         }
     }
 
@@ -69,6 +120,7 @@ public class UpdateService : IService
     {
         try
         {
+            MainWM.Window.Hide();
             var installationFolder = new DirectoryInfo(Path.Combine(InstallationFolder.ToString(), versionName));
             
             if (!installationFolder.Exists)

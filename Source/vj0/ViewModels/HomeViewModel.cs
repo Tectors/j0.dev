@@ -14,7 +14,6 @@ public class HomeViewModel : ViewModelBase
 
     public readonly string[] TagLines =
     [
-        "the ultimate datamining experience",
         "buy us some time (and coffee ☕)",
         "developed by a dedicated community of contributors",
         "powered by Avalonia and CUEParse",
@@ -26,11 +25,13 @@ public class HomeViewModel : ViewModelBase
         "powered by frustration and breakthroughs",
         "we speak fluent .uasset",
         "we lost the documentation years ago",
+        "you might be reading this when ue6 is out.. who knows..",
         "your .pak files fear us",
         "we run on hope and async",
         "waking up at 3AM to fix one line",
         "open-source, open-minds",
         "the logs know everything...",
+        "PR pushed 2067",
         "todo: fix this - 1993",
         "fix scheduled for Q3 1997",
     ];

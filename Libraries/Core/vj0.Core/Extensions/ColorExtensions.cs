@@ -1,5 +1,5 @@
 using System;
-
+using System.Globalization;
 using Avalonia.Media;
 
 namespace vj0.Core.Extensions;
@@ -68,5 +68,14 @@ public static class ColorExtensions
         }
 
         return p + (q - p) * 6f * t;
+    }
+    
+    public static Color DarkenColor(Color color, double amount)
+    {
+        var r = (byte)(color.R * (1 - amount));
+        var g = (byte)(color.G * (1 - amount));
+        var b = (byte)(color.B * (1 - amount));
+
+        return Color.FromArgb(color.A, r, g, b);
     }
 }

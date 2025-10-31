@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 using Avalonia;
@@ -14,6 +15,8 @@ namespace vj0.ViewModels.Settings;
 
 public partial class ApplicationSettingsViewModel : ViewModelBase
 {
+    [ObservableProperty] private string _version = string.Empty;
+    
     [ObservableProperty] private bool _completedOnboarding;
     [ObservableProperty] private bool _loadRecentProfileOnLaunch = true;
     [ObservableProperty] private bool _saveWindowResolution = true;

@@ -1,7 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using vj0.Framework.Models;
-using vj0.Services;
 using vj0.WindowModels;
 
 namespace vj0.Windows;
@@ -9,7 +8,7 @@ namespace vj0.Windows;
 /* ~~~ GalleryWindow ~~~ */
 public partial class GalleryWindow : WindowBase<GalleryWindowModel>
 {
-    private readonly NavigatorContext NavigatorContext = new();
+    public GalleryWindowModel WM => WindowModel;
     
     public GalleryWindow()
     {
@@ -21,6 +20,7 @@ public partial class GalleryWindow : WindowBase<GalleryWindowModel>
     {
         InitializeComponent();
         captionButtons.Attach((VisualRoot as Window)!);
+        WindowModel = new GalleryWindowModel();
 
         _ = WindowModel.Initialize();
         DataContext = WindowModel;
@@ -29,5 +29,11 @@ public partial class GalleryWindow : WindowBase<GalleryWindowModel>
     private void Close(object? sender, RoutedEventArgs e)
     {
         Close();
+    }
+    
+    private void PrimaryButtonClick(object? sender, RoutedEventArgs e)
+    {
+        Close();
+        WindowModel.InvokePrimaryButtonClick();
     }
 }

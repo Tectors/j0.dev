@@ -198,21 +198,21 @@
                             </Grid>
                         </StackPanel>
                     </StackPanel>
-                    
-                    <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0 0 0 20" Opacity="0.7">
-                        <StackPanel x:Name="TipContainer" Orientation="Horizontal" Spacing="5">
-                            <avalonia:MaterialIcon Kind="Lightbulb"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Tip: " HorizontalAlignment="Center"/>
-                                <TextBlock x:Name="TipText" Text="" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
                 </Grid>
             </Grid>
         </navigation:NavigationFrame>
         
         <Border Margin="0 0 12 0" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 0 0 1" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="0 0 0 25" VerticalAlignment="Top" Width="120" Height="40"/>
-        <Border Margin="0 0 12 12" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Right" BorderThickness="1 1 0 0" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="25 0 0 0" VerticalAlignment="Bottom" Width="40" Height="40"/>
+        <Border Margin="0 0 0 12" Background="{DynamicResource BackgroundBrush}" HorizontalAlignment="Center" BorderThickness="1 1 1 0" BorderBrush="{DynamicResource BorderBrush}" CornerRadius="25 25 0 0" VerticalAlignment="Bottom" Width="450" Height="40"/>
+        <StackPanel ClipToBounds="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 20" Opacity="0.7">
+            <StackPanel x:Name="TipContainer" Orientation="Horizontal" Spacing="5">
+                <avalonia:MaterialIcon Kind="Lightbulb"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Tip: " HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TipText" Text="" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

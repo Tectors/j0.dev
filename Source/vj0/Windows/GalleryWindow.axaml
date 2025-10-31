@@ -35,9 +35,9 @@
     <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
         <Grid>
             <Grid VerticalAlignment="Top" RowDefinitions="Auto,*">
-                <Border Height="381" Width="680" IsHitTestVisible="False">
+                <Grid Height="381" Width="800" IsHitTestVisible="False">
                     <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                           Source="/Assets/TestScreenshot.png">
+                           Source="/Assets/Thumbnails/Default.png">
                         <Image.OpacityMask>
                             <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
                                 <GradientStop Color="#FF000000" Offset="0.8" />
@@ -45,11 +45,44 @@
                             </LinearGradientBrush>
                         </Image.OpacityMask>
                     </Image>
-                </Border>
+                    
+                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                           IsVisible="{Binding IsUpdate}"
+                           Source="/Assets/Thumbnails/Update.png">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Color="#FF000000" Offset="0.8" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                    
+                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                           IsVisible="{Binding IsDevelopmental}"
+                           Source="/Assets/Thumbnails/Developmental.png">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Color="#FF000000" Offset="0.8" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                    
+                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                           IsVisible="{Binding IsNew}"
+                           Source="/Assets/Thumbnails/New.png">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Color="#FF000000" Offset="0.8" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                </Grid>
 
                 <StackPanel Grid.Row="1" Margin="32 32" Spacing="20">
-                    <Border IsVisible="{Binding Tag}" Background="{DynamicResource AccentBackground}" CornerRadius="20" HorizontalAlignment="Left" Padding="10">
-                        <TextBlock Name="TagText" Text="{Binding TagText}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource Accent}"/>
+                    <Border IsVisible="{Binding Tag}" Background="{Binding TagBackground}" CornerRadius="20" HorizontalAlignment="Left" Padding="10">
+                        <TextBlock Name="TagText" Text="{Binding TagText}" FontSize="15" Foreground="{Binding TagForeground}"/>
                     </Border>
 
                     <TextBlock Name="Title" Text="{Binding Title}" FontSize="37" FontWeight="Bold"/>
@@ -59,12 +92,23 @@
             </Grid>
 
             <UniformGrid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Rows="1" ColumnSpacing="10" Margin="32">
-                <Button Content="Got it"
-                        Classes="ContentPrimary SoftHoverLift"
+                <Button Content="{Binding SecondaryButtonText}"
+                        Classes="ContentSecondary SoftHoverLift"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Click="Close"
-                        IsDefault="True"
+                        IsDefault="{Binding !PrimaryButtonEnabled}"
+                        IsVisible="{Binding SecondaryButtonEnabled}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"/>
+                
+                <Button Content="{Binding PrimaryButtonText}"
+                        Classes="ContentPrimary SoftHoverLift"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="PrimaryButtonClick"
+                        IsDefault="{Binding PrimaryButtonEnabled}"
+                        IsVisible="{Binding PrimaryButtonEnabled}"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center"/>
             </UniformGrid>
