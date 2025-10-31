@@ -121,9 +121,13 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemSeparatorStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemStyles.axaml"/>
       </ResourceDictionary.MergedDictionaries>
+      
+      <SolidColorBrush x:Key="Accent" Color="#00d5ff"/>
+      <SolidColorBrush x:Key="AccentBackground" Color="#005c6e"/>
+      <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#00d5ff"/>
 
-      <x:Double x:Key="TitleBarHeight">60</x:Double>
-      <Thickness x:Key="TitleBarNegativeTopMargin">0 -60 0 0</Thickness>
+      <x:Double x:Key="TitleBarHeight">63</x:Double>
+      <Thickness x:Key="TitleBarNegativeTopMargin">0 -63 0 0</Thickness>
       
       <x:Double x:Key="ListViewItemDisabledThemeOpacity">0.425</x:Double>
       
@@ -278,7 +282,6 @@
       <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#3574f0"/>
       
       <!-- NavigationView Brushes -->
-      <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="#0e91e8"/>
       <SolidColorBrush x:Key="NavigationViewItemSeparatorForeground" Color="#ffffff"/>
       <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
       <SolidColorBrush x:Key="TopNavigationViewItemForegroundDisabled" Color="Transparent"/>

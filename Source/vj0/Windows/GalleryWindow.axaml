@@ -3,9 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-    xmlns:fluent="clr-namespace:FluentIcons.Avalonia.Fluent;assembly=FluentIcons.Avalonia.Fluent"
-    xmlns:controls1="clr-namespace:vj0.Controls"
     xmlns:windowModels="clr-namespace:vj0.WindowModels"
 
     x:Class="vj0.Windows.GalleryWindow"
@@ -13,17 +10,19 @@
 
     Title="{Binding Title}"
     
-    Width="1100" Height="750"
-    
+    Width="680" Height="705"
     CanResize="False"
     
-    Background="{DynamicResource BackgroundBrush}"
     mc:Ignorable="d"
     
-    d:DesignWidth="{Binding $parent[Window].MinWidth}"
-    d:DesignHeight="{Binding $parent[Window].MinHeight}">
+    d:DesignWidth="680"
+    d:DesignHeight="705">
     
     <Window.Styles>
+        <Style Selector="CaptionButtons">
+            <Setter Property="Height" Value="45"/>
+        </Style>
+        
         <Style Selector="CaptionButtons Button#PART_RestoreButton">
             <Setter Property="IsVisible" Value="False"/>
         </Style>
@@ -34,64 +33,46 @@
     </Window.Styles>
     
     <Grid Margin="{Binding $parent[Window].OffScreenMargin}">
-        <Grid RowDefinitions="Auto,Auto,*,Auto">
-            <!-- Title Bar -->
-            <Grid>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
-                    <CaptionButtons Name="captionButtons"/>
+        <Grid>
+            <Grid VerticalAlignment="Top" RowDefinitions="Auto,*">
+                <Border Height="381" Width="680" IsHitTestVisible="False">
+                    <Image HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                           Source="/Assets/TestScreenshot.png">
+                        <Image.OpacityMask>
+                            <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                                <GradientStop Color="#FF000000" Offset="0.8" />
+                                <GradientStop Color="#00000000" Offset="1" />
+                            </LinearGradientBrush>
+                        </Image.OpacityMask>
+                    </Image>
+                </Border>
+
+                <StackPanel Grid.Row="1" Margin="32 32" Spacing="20">
+                    <Border IsVisible="{Binding Tag}" Background="{DynamicResource AccentBackground}" CornerRadius="20" HorizontalAlignment="Left" Padding="10">
+                        <TextBlock Name="TagText" Text="{Binding TagText}" FontSize="15" FontWeight="DemiBold" Foreground="{DynamicResource Accent}"/>
+                    </Border>
+
+                    <TextBlock Name="Title" Text="{Binding Title}" FontSize="37" FontWeight="Bold"/>
+
+                    <TextBlock Name="Description" Text="{Binding Description}" TextWrapping="Wrap" LineHeight="25" MaxHeight="95" TextTrimming="CharacterEllipsis" Foreground="#969696" FontSize="20"/>
                 </StackPanel>
             </Grid>
 
-            <!-- Navigation -->
-            <Grid Grid.Row="2" Background="{DynamicResource BackgroundBrush}">
-                <!-- Navigation -->
-                <controls:NavigationView
-                    x:Name="GalleryNavigationView"
-                
-                    PaneDisplayMode="LeftCompact"
-                    Classes="NoBackground"
-                    CompactPaneLength="0">
+            <UniformGrid HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Rows="1" ColumnSpacing="10" Margin="32">
+                <Button Content="Got it"
+                        Classes="ContentPrimary SoftHoverLift"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Click="Close"
+                        IsDefault="True"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"/>
+            </UniformGrid>
 
-                    <controls:Frame Margin="0 -20 0 0" x:Name="ContentFrame"/>
-                </controls:NavigationView>
-            </Grid>
-
-            <!-- Action Bar -->
-            <Grid Grid.Row="3" Background="{DynamicResource BackgroundBrush}">
-                <Grid>
-                    <controls1:CursorEffectControl/>
-                    
-                    <StackPanel Orientation="Horizontal"
-                                Height="60"
-                                Margin="25 5 0 5"
-                                HorizontalAlignment="Left"
-                                Spacing="10"
-                                VerticalAlignment="Bottom">
-                    </StackPanel>
-                    
-                    <StackPanel Orientation="Horizontal"
-                                Margin="0 0 25 25"
-                                HorizontalAlignment="Right"
-                                Spacing="10"
-                                VerticalAlignment="Bottom">
-
-                        <Button Cursor="Hand"
-                                FontSize="18"
-                                Padding="45 8"
-                                CornerRadius="4"
-                                Classes="BlueShine">
-                            
-                            <ToolTip.Tip>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Close without Saving</TextBlock>
-                                    <controls1:KeybindDisplay Keybind="Escape" />
-                                </StackPanel>
-                            </ToolTip.Tip>
-
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Next</TextBlock>
-                        </Button>
-                    </StackPanel>
-                </Grid>
+            <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+                    <CaptionButtons Name="captionButtons"/>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

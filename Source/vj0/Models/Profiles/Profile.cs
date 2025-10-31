@@ -26,7 +26,7 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 using UE4Config.Parsing;
-
+using vj0.API.UEDB.API.Responses;
 using vj0.Extensions;
 using vj0.Models.Profiles.Display;
 using vj0.Plugins;

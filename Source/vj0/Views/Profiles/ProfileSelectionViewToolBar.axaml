@@ -18,7 +18,7 @@
     VerticalAlignment="Stretch">
     
     <StackPanel Orientation="Horizontal" Spacing="10" ClipToBounds="False">
-        <Button Cursor="Hand" Classes="HoverLift" BorderThickness="0" Command="{x:Static profiles:Profile.CreateNewProfileCommand}" Height="35" Background="#0095ff" Opacity="1" CornerRadius="7" IsVisible="True">
+        <Button Cursor="Hand" Width="55" Classes="HoverLift" BorderThickness="0" Command="{x:Static profiles:Profile.CreateNewProfileCommand}" Height="35" Background="#0095ff" Opacity="1" CornerRadius="7" IsVisible="True">
             <ToolTip.Tip>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Create a New Profile</TextBlock>

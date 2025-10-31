@@ -1,5 +1,5 @@
 using Avalonia.Controls;
-
+using Avalonia.Interactivity;
 using vj0.Framework.Models;
 using vj0.Services;
 using vj0.WindowModels;
@@ -22,9 +22,12 @@ public partial class GalleryWindow : WindowBase<GalleryWindowModel>
         InitializeComponent();
         captionButtons.Attach((VisualRoot as Window)!);
 
-        NavigatorContext.Initialize(GalleryNavigationView);
-
         _ = WindowModel.Initialize();
         DataContext = WindowModel;
+    }
+
+    private void Close(object? sender, RoutedEventArgs e)
+    {
+        Close();
     }
 }

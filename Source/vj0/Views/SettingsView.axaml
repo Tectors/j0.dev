@@ -100,7 +100,7 @@
                 Name="EditProfileButton"
                 VerticalAlignment="Top"
                 Classes="Glass GlassDarkerInteraction HoverLift"
-                CornerRadius="18"
+                CornerRadius="12"
                 Width="393"
                 HorizontalContentAlignment="Stretch"
                 VerticalContentAlignment="Stretch"

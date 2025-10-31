@@ -363,7 +363,7 @@
 
     <Style Selector="Button.ContentSecondary:pointerover">
         <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="#1C1C1C" />
+        <Setter Property="Background" Value="#2e2e2e" />
         <Setter Property="BorderBrush" Value="#3E3E3E" />
     </Style>
 

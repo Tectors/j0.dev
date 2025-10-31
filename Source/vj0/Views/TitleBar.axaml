@@ -22,7 +22,7 @@
 
     <window:BaseTitleBar>
         <window:BaseTitleBar.LeftItems>
-            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{Binding DoesProfileExist}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Opacity="0.1" Text="/"/>
             
             <Grid Name="ProfileContainer" IsVisible="{Binding DoesProfileExist}" Margin="0 1 0 0">
                 <!-- 
@@ -65,7 +65,7 @@
                 </Button>
             </Grid>
             
-            <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Opacity="0.1" Text="/"/>
+            <TextBlock IsVisible="{x:Static vj0:Globals.ShowVersion}" IsHitTestVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Opacity="0.1" Text="/"/>
             
             <!-- Version Button -->
             <Button IsVisible="{x:Static vj0:Globals.ShowVersion}" Height="33" Classes="SoftHoverLift">
