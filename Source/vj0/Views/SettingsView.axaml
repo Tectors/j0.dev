@@ -50,9 +50,9 @@
         
         <controls:NavigationView FontSize="15" Margin="20 -2 20 0" x:Name="NavigationView" Classes="NoBackground" Background="Transparent" PaneDisplayMode="Left" OpenPaneLength="350" IsPaneToggleButtonVisible="False">
             <controls:NavigationView.MenuItems>
-                <controls:NavigationViewItem Content="Application" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
+                <controls:NavigationViewItem Content="Preferences" Tag="{x:Type views:ApplicationSettingsView}" IsSelected="True">
                     <controls:NavigationViewItem.IconSource>
-                        <fluent:FluentIconSource Icon="Settings" IconSize="Size32" IconVariant="Regular"/>
+                        <fluent:FluentIconSource Icon="Person" IconSize="Size32" IconVariant="Regular"/>
                     </controls:NavigationViewItem.IconSource>
                 </controls:NavigationViewItem>
 
