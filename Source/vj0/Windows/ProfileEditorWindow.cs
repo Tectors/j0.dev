@@ -154,7 +154,7 @@ public partial class ProfileEditorWindow : WindowBase<ProfileEditorWindowModel>
             return;
         }
 
-        if (WindowModel.Profile.HasErrors)
+        if (WindowModel.Profile.HasValidationErrors)
         {
             return;
         }

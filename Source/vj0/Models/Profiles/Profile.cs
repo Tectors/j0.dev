@@ -109,6 +109,16 @@ public class Profile : BaseProfileDisplay
     
     public async Task Initialize(CancellationToken cancellationToken = default)
     {
+        if (HasValidationErrors)
+        {
+            const string message = "Profile has errors. Modify the profile to continue.";
+
+            Status.OnFailure(message);
+            OnInitializationFailure?.Invoke(this);
+            
+            return;
+        }
+        
         ExplorerVM.Reset();
         ScopeVM.Reset();
 
@@ -141,12 +151,14 @@ public class Profile : BaseProfileDisplay
         {
             return;
         }
+        
         await InitializeProvider();
         
         if (cancellationToken.IsCancellationRequested)
         {
             return;
         }
+        
         await InitializeTextureStreaming();
         InitializeCache();
 
@@ -154,6 +166,7 @@ public class Profile : BaseProfileDisplay
         {
             return;
         }
+        
         await LoadKeys(cancellationToken);
         
         if (Provider is not null && Provider.Files.Count == 0 && Encryption.MainKey == EMPTY_CHAR && Provider.Keys.Count == 0)

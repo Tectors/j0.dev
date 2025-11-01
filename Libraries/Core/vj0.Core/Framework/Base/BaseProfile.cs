@@ -35,9 +35,43 @@ public partial class BaseProfile : ObservableValidator
     public BaseProfile()
     {
         UpdateSchemaVersion();
+        
+        WireChildValidators();
+        ValidateErrors();
     }
 
     public void UpdateSchemaVersion() => SchemaVersion = LatestSchemaVersion;
+    
+    [JsonIgnore]
+    [ObservableProperty]
+    private bool _hasValidationErrors;
+
+    private void WireChildValidators()
+    {
+        MappingsContainer.ErrorsChanged += (_, _) => ValidateErrors();
+        Encryption.ErrorsChanged += (_, _) => ValidateErrors();
+        ErrorsChanged += (_, _) => ValidateErrors();
+    }
+
+    private void ValidateErrors()
+    {
+        HasValidationErrors =
+            HasErrors ||
+            (MappingsContainer.HasErrors && MappingsContainer.Override) ||
+            Encryption.HasErrors;
+    }
+
+    partial void OnMappingsContainerChanged(BaseMappingsContainer value)
+    {
+        value.ErrorsChanged += (_, _) => ValidateErrors();
+        ValidateErrors();
+    }
+    
+    partial void OnEncryptionChanged(EncryptionContainer value)
+    {
+        value.ErrorsChanged += (_, _) => ValidateErrors();
+        ValidateErrors();
+    }
     
     [NotifyDataErrorInfo]
     [Required(ErrorMessage = "Profile Name is required.")]
@@ -46,7 +80,7 @@ public partial class BaseProfile : ObservableValidator
     private string _name = "";
 
     [NotifyDataErrorInfo]
-    [ArchiveDirectory] 
+    [ArchiveDirectory]
     [ObservableProperty] private string _archiveDirectory = "";
 
     partial void OnArchiveDirectoryChanged(string value)

@@ -138,7 +138,7 @@ public partial class ProfileEditorWindowModel : ProfileEditorViewModel
 
     public void Save()
     {
-        if (Profile is null || Profile.HasErrors || SelectedVersionName is null || !IsUserInterfaceEnabled)
+        if (Profile is null || Profile.HasValidationErrors || SelectedVersionName is null || !IsUserInterfaceEnabled)
         {
             return;
         }

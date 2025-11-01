@@ -82,6 +82,8 @@
                       VerticalAlignment="Center"
                       FontSize="20"/>
                   </Border>
+                  
+                  <avalonia:FluentIcon IsVisible="{Binding Profile.HasValidationErrors}" Icon="Warning" Foreground="Red" ToolTip.Tip="Profile has errors"></avalonia:FluentIcon>
                 </StackPanel>
                 
                 <!-- Directory -->
@@ -216,71 +218,74 @@
         </Grid>
 
         <Grid Grid.Row="2" ColumnDefinitions="*,10,50" Margin="25,0,25,25">
-          <Button
-            x:Name="StartButton"
-            Grid.Column="0"
-            Foreground="White"
-            IsEnabled="{Binding !IsRunning}"
-            Height="50"
-            Opacity="0.95"
-            Classes="PressScale HoverLift"
-            Cursor="Hand"
-            ClipToBounds="True"
-            BorderThickness="0"
-            Click="StartButton_Click"
-            CornerRadius="12"
-            HorizontalAlignment="Stretch">
-            
-            <Button.Background>
-              <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
-                <GradientStop Color="#1f66ff" Offset="0.95"/>
-              </LinearGradientBrush>
-            </Button.Background>
-            
-            <Button.Resources>
-              <ResourceDictionary>
-                <LinearGradientBrush x:Key="ButtonBackgroundPointerOver" StartPoint="0%,0%" EndPoint="100%,0%">
+          <Grid Grid.Column="0" IsEnabled="{Binding !Profile.HasValidationErrors}">
+            <Button
+              x:Name="StartButton"
+              Foreground="White"
+              IsEnabled="{Binding !IsRunning}"
+              Height="50"
+              Opacity="0.95"
+              Classes="PressScale HoverLift"
+              Cursor="Hand"
+              ClipToBounds="True"
+              BorderThickness="0"
+              Click="StartButton_Click"
+              CornerRadius="12"
+              HorizontalAlignment="Stretch">
+              
+              <Button.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
                   <GradientStop Color="#1f66ff" Offset="0.95"/>
                 </LinearGradientBrush>
-                
-                <LinearGradientBrush x:Key="ButtonBackgroundPressed" StartPoint="0%,0%" EndPoint="100%,0%">
-                  <GradientStop Color="#1248CC" Offset="0.05"/>
-                </LinearGradientBrush>
+              </Button.Background>
+              
+              <Button.Resources>
+                <ResourceDictionary>
+                  <LinearGradientBrush x:Key="ButtonBackgroundPointerOver" StartPoint="0%,0%" EndPoint="100%,0%">
+                    <GradientStop Color="#1f66ff" Offset="0.95"/>
+                  </LinearGradientBrush>
+                  
+                  <LinearGradientBrush x:Key="ButtonBackgroundPressed" StartPoint="0%,0%" EndPoint="100%,0%">
+                    <GradientStop Color="#1248CC" Offset="0.05"/>
+                  </LinearGradientBrush>
 
-                <LinearGradientBrush x:Key="ButtonBackgroundDisabled" StartPoint="0%,0%" EndPoint="100%,0%">
-                  <GradientStop Color="#802E2D2B" Offset="0.9"/>
-                </LinearGradientBrush>
-                
-                <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
-                <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
-              </ResourceDictionary>
-            </Button.Resources>
-            
-            <Grid>
-              <Border
-                Background="White"
-                Height="1.4"
-                Opacity="0.1"
-                CornerRadius="16 16 0 0"
-                Margin="0 -5 0 0"
-                VerticalAlignment="Top"
-                IsVisible="{Binding !IsRunning}"
-                HorizontalAlignment="Stretch"/>
+                  <LinearGradientBrush x:Key="ButtonBackgroundDisabled" StartPoint="0%,0%" EndPoint="100%,0%">
+                    <GradientStop Color="#802E2D2B" Offset="0.9"/>
+                  </LinearGradientBrush>
+                  
+                  <SolidColorBrush x:Key="ButtonForegroundPointerOver">White</SolidColorBrush>
+                  <SolidColorBrush x:Key="ButtonForegroundPressed">White</SolidColorBrush>
+                </ResourceDictionary>
+              </Button.Resources>
+              
+              <Grid>
+                <Grid IsVisible="{Binding !Profile.HasValidationErrors}">
+                  <Border
+                    Background="White"
+                    Height="1.4"
+                    Opacity="0.1"
+                    CornerRadius="16 16 0 0"
+                    Margin="0 -5 0 0"
+                    VerticalAlignment="Top"
+                    IsVisible="{Binding !IsRunning}"
+                    HorizontalAlignment="Stretch"/>
+                </Grid>
 
-              <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <controls:SymbolIcon
-                  Symbol="Play"
-                  HorizontalAlignment="Center"
-                  Margin="0 0 0 0"
-                  VerticalAlignment="Center"
-                  FontSize="22"/>
-                <TextBlock
-                  LetterSpacing="-0.2"
-                  FontWeight="Medium"
-                  Margin="0 1 0 0" Text="{Binding LoadButtonText}" FontSize="16" HorizontalAlignment="Center"/>
-              </StackPanel>
-            </Grid>
-          </Button>
+                <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <controls:SymbolIcon
+                    Symbol="Play"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 0"
+                    VerticalAlignment="Center"
+                    FontSize="22"/>
+                  <TextBlock
+                    LetterSpacing="-0.2"
+                    FontWeight="Medium"
+                    Margin="0 1 0 0" Text="{Binding LoadButtonText}" FontSize="16" HorizontalAlignment="Center"/>
+                </StackPanel>
+              </Grid>
+            </Button>
+          </Grid>
           
           <!-- Edit Button -->
           <Button

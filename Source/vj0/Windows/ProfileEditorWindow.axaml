@@ -176,8 +176,8 @@
 
                         <!-- Save -->
                         <Button Cursor="Hand"
-                                IsEnabled="{Binding !Profile.HasErrors}"
-                                IsHitTestVisible="{Binding !Profile.HasErrors}"
+                                IsEnabled="{Binding !Profile.HasValidationErrors}"
+                                IsHitTestVisible="{Binding !Profile.HasValidationErrors}"
                                 Classes="BlueShine HoverLift"
                                 Click="Save"
                                 Height="33"
@@ -200,12 +200,12 @@
                                     Opacity="0.1"
                                     CornerRadius="16 16 0 0"
                                     Margin="0 0 0 0"
-                                    IsVisible="{Binding !Profile.HasErrors}"
+                                    IsVisible="{Binding !Profile.HasValidationErrors}"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Stretch"/>
 
                                 <StackPanel Orientation="Horizontal" Spacing="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <avalonia:FluentIcon HorizontalAlignment="Center" VerticalAlignment="Center" Icon="Checkmark" IsVisible="{Binding !Profile.HasErrors}"></avalonia:FluentIcon>
+                                    <avalonia:FluentIcon HorizontalAlignment="Center" VerticalAlignment="Center" Icon="Checkmark" IsVisible="{Binding !Profile.HasValidationErrors}"></avalonia:FluentIcon>
                                     
                                     <TextBlock Margin="0 1 0 0" Text="{Binding SaveChangesText}" HorizontalAlignment="Center"/>
                                 </StackPanel>
