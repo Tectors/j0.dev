@@ -17,7 +17,7 @@
     d:DesignHeight="200">
     
     <Grid Classes="SettingsWrapper">
-        <TextBlock Classes="SettingsHeader">Application</TextBlock>
+        <TextBlock Classes="SettingsHeader">Preferences</TextBlock>
         
         <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
