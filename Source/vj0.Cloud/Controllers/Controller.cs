@@ -30,7 +30,7 @@ public class CloudApiController : ControllerBase
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     private static IEnumerable<BaseProfile> SecondaryBaseProfiles = [];
     private static BaseProfile? MainProfile;
-    private static bool IsBaseProfileReady => MainProfile!.Provider.Files.Count > 0;
+    private static bool IsBaseProfileReady => MainProfile != null && MainProfile!.Provider.Files.Count > 0;
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
     public static void SetProfile(BaseProfile profile)
