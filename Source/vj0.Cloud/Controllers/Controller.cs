@@ -81,9 +81,8 @@ public class CloudApiController : ControllerBase
     [HttpGet("export")]
     public ActionResult Get(bool raw, string? path)
     {
-        if (!IsBaseProfileReady) return BadRequest();
-        if (path is null) return BadRequest();
-        
+        if (!IsBaseProfileReady || path is null) return BadRequest();
+
         var contentType = Request.Headers.ContentType;
         path = path.SubstringBefore('.');
         
@@ -125,7 +124,7 @@ public class CloudApiController : ControllerBase
             });
         }
 
-        return StatusCode(500);
+        return File(textureData.Encode(ETextureFormat.Png, false, out _), "image/png");
     }
 
     /* Return a sound wave file format */
