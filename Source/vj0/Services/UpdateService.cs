@@ -43,11 +43,11 @@ public class UpdateService : IService
         win.CenterToScreen(MainWM.Window);
         win.Show();
         
-        win.WM.Title = "Update System Enhancements";
+        win.WM.Title = "Expanded Texture Data Support";
         win.WM.Tag = true;
         win.WM.TagType = TagType.New;
         win.WM.SecondaryButtonEnabled = false;
-        win.WM.Description = "This update improves how update reminders are handled and refreshes the CUEParse integration to the latest commit.";
+        win.WM.Description = "The cloud importer now handles PNG textures and raw octet texture data seamlessly.";
     }
 
     private async Task UpdateVersioning()
