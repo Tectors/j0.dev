@@ -120,6 +120,7 @@
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemHeaderStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemSeparatorStyles.axaml"/>
         <ResourceInclude Source="/Styles/FluentAvalonia/NavigationViewItemStyles.axaml"/>
+        <ResourceInclude Source="/Styles/FluentAvalonia/CaptionButtons.axaml"/>
       </ResourceDictionary.MergedDictionaries>
       
       <SolidColorBrush x:Key="Accent" Color="#00d5ff"/>

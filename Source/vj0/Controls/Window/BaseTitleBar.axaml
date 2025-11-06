@@ -12,7 +12,7 @@
     x:Class="vj0.Controls.Window.BaseTitleBar"
     mc:Ignorable="d"
     d:DesignWidth="900">
-
+    
     <Grid Height="{DynamicResource TitleBarHeight}" ClipToBounds="False">
         <!-- Background -->
         <Border
