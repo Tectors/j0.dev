@@ -239,7 +239,7 @@
 
   <Target Name="CopyPlugins" AfterTargets="Publish">
     <ItemGroup>
-        <PluginAssemblies Include="..\..\Plugins\Branded\**\bin\Debug\net8.0\$(RuntimeIdentifier)\vj0.Plugins.*.dll" />
+        <PluginAssemblies Include="..\..\Plugins\Branded\**\bin\Debug\$(TargetFramework)\$(RuntimeIdentifier)\vj0.Plugins.*.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(PluginAssemblies)" DestinationFolder="$(PublishDir)Plugins\" />
     </Target>
