@@ -93,6 +93,12 @@ public class CloudApiController : ControllerBase
         var provider = profile.Provider;
         provider.TryLoadPackageObject(path, export: out var localObject);
 
+        if (localObject == null)
+        {
+            var pkg = provider.LoadPackage(path);
+            localObject = pkg.ExportsLazy[0].Value;
+        }
+
         /* Return a raw export */
         if (raw) return HandleRawExport(path, provider);
 
