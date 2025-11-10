@@ -7,9 +7,9 @@ namespace vj0.Core;
 
 public static class Globals
 {
-    /* Format: 0.0.0 */
+    /* Format: 0.0.0.0 */
     public const string VERSION = "0.0.4.4";
-    public const string COMMIT = "";
+    public const string COMMIT = "f7e2880";
     
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);
     public static bool IS_COMMIT_UNAVAILABLE => !IS_COMMIT_AVAILABLE;

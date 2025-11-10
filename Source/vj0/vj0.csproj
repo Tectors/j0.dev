@@ -217,6 +217,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Thumbnails\Update\" />
+  </ItemGroup>
+
     <Target Name="IncludePlugins" BeforeTargets="ResolveProjectReferences">
         <ItemGroup>
             <ProjectReference Include="..\..\Plugins\Branded\**\vj0.Plugins.*.csproj" />

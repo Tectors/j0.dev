@@ -43,11 +43,11 @@ public class UpdateService : IService
         win.CenterToScreen(MainWM.Window);
         win.Show();
         
-        win.WM.Title = "Expanded Texture Data Support";
+        win.WM.Title = "Improved AES Key Retrieval";
         win.WM.Tag = true;
         win.WM.TagType = TagType.New;
         win.WM.SecondaryButtonEnabled = false;
-        win.WM.Description = "The cloud importer now handles PNG textures and raw octet texture data seamlessly.";
+        win.WM.Description = "Enhanced the AES Key fetching process for better reliability across branded APIs.";
     }
 
     private async Task UpdateVersioning()
