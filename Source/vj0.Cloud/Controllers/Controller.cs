@@ -1,7 +1,10 @@
+using CUE4Parse_Conversion;
+using CUE4Parse_Conversion.Meshes;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
+using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Exports.Texture;
 using CUE4Parse.UE4.Objects.Meshes;
 using CUE4Parse.UE4.Versions;
@@ -12,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 using Serilog;
-
+using vj0.Core;
 using vj0.Core.Convertors;
 using vj0.Core.Framework.Base;
 
@@ -150,8 +153,43 @@ public class CloudApiController : ControllerBase
         {
             UTexture texture => ProcessTexture(texture, contentType!),
             USoundWave wave => ProcessSoundWave(wave),
+            UStaticMesh staticMesh => ProcessStaticMesh(staticMesh),
             _ => HandleRawExport(path, provider)
         };
+    }
+    
+    private ObjectResult ProcessStaticMesh(UStaticMesh staticMesh)
+    {
+        var exporterOptions = new ExporterOptions
+        {
+            MeshFormat = EMeshFormat.ActorX,
+            ExportMaterials = false,
+            ExportMorphTargets = false
+        };
+
+        var exporter = new MeshExporter(staticMesh, exporterOptions);
+
+        var input = staticMesh.GetPathName();
+        input = input.Substring(0, input.LastIndexOf(".", StringComparison.Ordinal));
+            
+        var directory = Path.Combine(Globals.RuntimeFolder.FullName, input);
+        var output = new FileInfo(directory + ".pskx");
+
+        if (!output.Exists)
+        {
+            Directory.CreateDirectory(path: Path.GetDirectoryName(directory)!);
+        }
+
+        var newLod = exporter.MeshLods[0];
+        var newFilePath = newLod.FileName.Substring(0, newLod.FileName.LastIndexOf('/'))+ "/" + input.Substring(input.LastIndexOf('/') + 1) + "/" + staticMesh.Name + ".pskx";
+
+        newLod = new Mesh(newFilePath, newLod.FileData, newLod.Materials);
+        newLod.TryWriteToDir(new DirectoryInfo(Globals.RuntimeFolder.FullName), out var label, out var filePath);
+
+        return new OkObjectResult(JsonConvert.SerializeObject(new
+        {
+            path = filePath
+        }, Formatting.Indented));
     }
 
     /* Return a texture as a file / encoding */

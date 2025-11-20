@@ -316,6 +316,7 @@ public class Profile : BaseProfileDisplay
         
         Provider.ReadScriptData = Settings.Serialization.ReadBlueprintBytecode;
         Provider.ReadShaderMaps = Settings.Serialization.ReadMaterialShaderMaps;
+        Provider.ReadNaniteData = true;
         
         Provider.Initialize();
 
@@ -353,6 +354,8 @@ public class Profile : BaseProfileDisplay
                     }
                 }
             }
+            
+            Provider!.PostMount();
         }
     }
     
