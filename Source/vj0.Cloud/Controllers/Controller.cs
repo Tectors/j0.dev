@@ -107,12 +107,15 @@ public class CloudApiController : ControllerBase
                     
                     localObject = uObject;
                     
-                    return new OkObjectResult(JsonConvert.SerializeObject(new
+                    if (raw)
                     {
-                        exports = (object[])[
-                            localObject
-                        ]
-                    }, Formatting.Indented));
+                        return new OkObjectResult(JsonConvert.SerializeObject(new
+                        {
+                            exports = (object[])[
+                                localObject
+                            ]
+                        }, Formatting.Indented));
+                    }
                 }
             }
             
@@ -125,13 +128,17 @@ public class CloudApiController : ControllerBase
                     var uObject = export.Value;
                     if (uObject is null || uObject.ExportType != export_type) continue;
                     
+                    localObject = uObject;
                     exports.Add(uObject);
                 }
-                
-                return new OkObjectResult(JsonConvert.SerializeObject(new
+
+                if (raw)
                 {
-                    exports
-                }, Formatting.Indented));
+                    return new OkObjectResult(JsonConvert.SerializeObject(new
+                    {
+                        exports
+                    }, Formatting.Indented));
+                }
             }
         }
 
