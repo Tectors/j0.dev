@@ -76,10 +76,10 @@ public class CloudApiController : ControllerBase
             major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4
         }, Formatting.Indented));
     }
-    
+
     /* Normal Export */
     [HttpGet("export")]
-    public ActionResult Get(bool raw, string? path)
+    public ActionResult Get(bool raw, string? path, string? export_name, string? export_type)
     {
         if (!IsBaseProfileReady || path is null) return BadRequest();
 
@@ -92,11 +92,47 @@ public class CloudApiController : ControllerBase
         
         var provider = profile.Provider;
         provider.TryLoadPackageObject(path, export: out var localObject);
+        provider.TryLoadPackage(path, out var package);
 
-        if (localObject == null)
+        if (package is not null)
         {
-            var pkg = provider.LoadPackage(path);
-            localObject = pkg.ExportsLazy[0].Value;
+            localObject ??= package.ExportsLazy[0].Value;
+
+            if (!string.IsNullOrEmpty(export_name))
+            {
+                foreach (var export in package.ExportsLazy)
+                {
+                    var uObject = export.Value;
+                    if (uObject is null || uObject.Name != export_name) continue;
+                    
+                    localObject = uObject;
+                    
+                    return new OkObjectResult(JsonConvert.SerializeObject(new
+                    {
+                        exports = (object[])[
+                            localObject
+                        ]
+                    }, Formatting.Indented));
+                }
+            }
+            
+            if (!string.IsNullOrEmpty(export_type))
+            {
+                var exports = new List<UObject>();
+                
+                foreach (var export in package.ExportsLazy)
+                {
+                    var uObject = export.Value;
+                    if (uObject is null || uObject.ExportType != export_type) continue;
+                    
+                    exports.Add(uObject);
+                }
+                
+                return new OkObjectResult(JsonConvert.SerializeObject(new
+                {
+                    exports
+                }, Formatting.Indented));
+            }
         }
 
         /* Return a raw export */
@@ -126,7 +162,7 @@ public class CloudApiController : ControllerBase
             {
                 errored = true,
                 exceptionstring = "Invalid texture data, exported as json",
-                jsonOutput = new { texture }
+                exports = new { texture }
             });
         }
 
@@ -144,7 +180,7 @@ public class CloudApiController : ControllerBase
             {
                 errored = true,
                 exceptionstring = "Invalid audio data, returned raw export as json",
-                jsonOutput = new[] { wave }
+                exports = new[] { wave }
             });
         }
 
@@ -200,7 +236,7 @@ public class CloudApiController : ControllerBase
             /* Serialize object, and return it indented */
             return new OkObjectResult(JsonConvert.SerializeObject(new
             {
-                jsonOutput = finalExports
+                exports = finalExports
             }, Formatting.Indented, settings));
         }
         catch (Exception ex)

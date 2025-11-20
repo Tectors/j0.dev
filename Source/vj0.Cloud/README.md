@@ -15,7 +15,7 @@ Returns information about the currently running game.
 RAW parameter is used to get the raw exports of an object:
 ```json
 {
-  "jsonOutput": {
+  "exports": {
     ...
   }
 }

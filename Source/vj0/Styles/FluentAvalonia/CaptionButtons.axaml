@@ -66,11 +66,15 @@
                   Theme="{StaticResource FluentCaptionButton}"
                   AutomationProperties.Name="Minimize"
                   Win32Properties.NonClientHitTestResult="MinButton">
-            <Viewbox Width="11" Margin="2">
-              <Path Stretch="UniformToFill"
-                    Fill="{TemplateBinding Foreground}"
-                    Data="M2048 1229v-205h-2048v205h2048z" />
-            </Viewbox>
+            <Grid>
+              <!--<Viewbox Width="11" Margin="2">
+                <Path Stretch="UniformToFill"
+                      Fill="{TemplateBinding Foreground}"
+                      Data="M2048 1229v-205h-2048v205h2048z" />
+              </Viewbox>-->
+              
+              <Border Width="10" Height="1" Background="White" CornerRadius="1"></Border>
+            </Grid>
           </Button>
           <Button x:Name="PART_RestoreButton"
                   Theme="{StaticResource FluentCaptionButton}"
@@ -88,6 +92,7 @@
               </Viewbox>
               
               <Border Name="RestoreButtonDefault" Width="10" Height="10" BorderBrush="White" BorderThickness="1" CornerRadius="2"></Border>
+              <Border Width="10" Height="10" BorderBrush="White" Opacity="0.3" BorderThickness="1" CornerRadius="2" Margin="1 1 0 0"></Border>
             </Grid>
           </Button>
           <Button x:Name="PART_CloseButton"
@@ -96,11 +101,13 @@
                   Theme="{StaticResource FluentCaptionButton}"
                   AutomationProperties.Name="Close"
                   Win32Properties.NonClientHitTestResult="Close">
-            <Viewbox Width="11" Margin="2">
-              <Path Stretch="UniformToFill"
-                    Fill="{TemplateBinding Foreground}"
-                    Data="M1169 1024l879 -879l-145 -145l-879 879l-879 -879l-145 145l879 879l-879 879l145 145l879 -879l879 879l145 -145z" />
-            </Viewbox>
+            <Grid>
+              <Viewbox Width="11" Margin="2">
+                <Path Stretch="UniformToFill"
+                      Fill="{TemplateBinding Foreground}"
+                      Data="M1169 1024l879 -879l-145 -145l-879 879l-879 -879l-145 145l879 879l-879 879l145 145l879 -879l879 879l145 -145z" />
+              </Viewbox>
+            </Grid>
           </Button>
         </StackPanel>
       </ControlTemplate>
