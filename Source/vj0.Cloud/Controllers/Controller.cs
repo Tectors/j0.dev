@@ -181,7 +181,9 @@ public class CloudApiController : ControllerBase
         }
 
         var newLod = exporter.MeshLods[0];
-        var newFilePath = newLod.FileName.Substring(0, newLod.FileName.LastIndexOf('/'))+ "/" + input.Substring(input.LastIndexOf('/') + 1) + "/" + staticMesh.Name + ".pskx";
+        var newFilePath = newLod.FileName[..newLod.FileName.LastIndexOf('/')];
+        
+        newFilePath = newFilePath[..newFilePath.LastIndexOf('/')] + "/" + staticMesh.Name + ".pskx";
 
         newLod = new Mesh(newFilePath, newLod.FileData, newLod.Materials);
         newLod.TryWriteToDir(new DirectoryInfo(Globals.RuntimeFolder.FullName), out var label, out var filePath);
