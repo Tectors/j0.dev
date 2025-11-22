@@ -79,6 +79,33 @@ public class CloudApiController : ControllerBase
             major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4
         }, Formatting.Indented));
     }
+    
+    /* Request to retrieve all HLOD paths */
+    [HttpGet("hlod/paths")]
+    public ActionResult GetHLODPaths()
+    {
+        if (!IsBaseProfileReady) return new BadRequestObjectResult(JsonConvert.SerializeObject(new
+        {
+            reason = "Not initialized yet"
+        }, Formatting.Indented));
+        
+        List<string> paths = [];
+
+        paths.AddRange(
+        MainProfile?.Provider!.Files.Values!
+            .Select(a => a?.PathWithoutExtension)
+            .Where(p =>
+                p.Contains("/HLOD/") &&
+                p.Contains("/Maps/") &&
+                !p.EndsWith(".o"))
+            .Distinct()
+        );
+
+        return new OkObjectResult(JsonConvert.SerializeObject(new
+        {
+            paths
+        }, Formatting.Indented));
+    }
 
     /* Normal Export */
     [HttpGet("export")]
