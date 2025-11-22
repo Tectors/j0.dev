@@ -36,6 +36,29 @@ public class CloudApiController : ControllerBase
     private static bool IsBaseProfileReady => MainProfile != null && MainProfile!.Provider.Files.Count > 0;
     /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+    /* Responses */
+    private static readonly JsonResult NotInitializedResponse =
+        new(new
+        {
+            errorCode = "cloud.common.not_initialized",
+            errorMessage = "Not initialized yet",
+            numericErrorCode = 1000
+        })
+        {
+            StatusCode = StatusCodes.Status503ServiceUnavailable
+        };
+    
+    private static readonly JsonResult NotFoundResponse =
+        new(new
+        {
+            errorCode = "cloud.common.not_found",
+            errorMessage = "Not found",
+            numericErrorCode = 1001
+        })
+        {
+            StatusCode = StatusCodes.Status404NotFound
+        };
+    
     public static void SetProfile(BaseProfile profile)
     {
         if (profile is not null)
@@ -68,26 +91,35 @@ public class CloudApiController : ControllerBase
     [HttpGet("metadata")]
     public ActionResult Get()
     {
-        if (!IsBaseProfileReady) return new BadRequestObjectResult(JsonConvert.SerializeObject(new
-        {
-            reason = "Not initialized yet"
-        }, Formatting.Indented));
+        if (!IsBaseProfileReady) return NotInitializedResponse;
 
-        return new OkObjectResult(JsonConvert.SerializeObject(new
+        return new JsonResult(new
         {
             name = MainProfile?.Provider.ProjectName,
             major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4
-        }, Formatting.Indented));
+        });
+    }
+    
+    [HttpGet("status")]
+    public ActionResult GetStatus()
+    {
+        if (!IsBaseProfileReady) return NotInitializedResponse;
+
+        return new JsonResult(new
+        {
+            status = "Initialized"
+        });
+    }
+    
+    private static string Indented(object value)  {
+        return JsonConvert.SerializeObject(value, Formatting.Indented);
     }
     
     /* Request to retrieve all HLOD paths */
     [HttpGet("hlod/paths")]
     public ActionResult GetHLODPaths()
     {
-        if (!IsBaseProfileReady) return new BadRequestObjectResult(JsonConvert.SerializeObject(new
-        {
-            reason = "Not initialized yet"
-        }, Formatting.Indented));
+        if (!IsBaseProfileReady) return NotInitializedResponse;
         
         List<string> paths = [];
 
@@ -97,28 +129,29 @@ public class CloudApiController : ControllerBase
             .Where(p =>
                 p.Contains("/HLOD/") &&
                 p.Contains("/Maps/") &&
+                p.Contains("FortniteGame/Content") &&
                 !p.EndsWith(".o"))
             .Distinct()
         );
 
-        return new OkObjectResult(JsonConvert.SerializeObject(new
+        return new JsonResult(new
         {
             paths
-        }, Formatting.Indented));
+        });
     }
 
     /* Normal Export */
     [HttpGet("export")]
     public ActionResult Get(bool raw, string? path, string? export_name, string? export_type)
     {
-        if (!IsBaseProfileReady || path is null) return BadRequest();
+        if (!IsBaseProfileReady || path is null) return NotInitializedResponse;
 
         var contentType = Request.Headers.ContentType;
         path = path.SubstringBefore('.');
         
         /* Find the profile that'll have this asset */
         var profile = FindBaseProfileForPath(path, found: out var found);
-        if (!found) return new NotFoundResult();
+        if (!found) return NotFoundResponse;
         
         var provider = profile.Provider;
         provider.TryLoadPackageObject(path, export: out var localObject);
@@ -139,12 +172,12 @@ public class CloudApiController : ControllerBase
                     
                     if (raw)
                     {
-                        return new OkObjectResult(JsonConvert.SerializeObject(new
+                        return new JsonResult(new
                         {
                             exports = (object[])[
                                 localObject
                             ]
-                        }, Formatting.Indented));
+                        });
                     }
                 }
             }
@@ -164,10 +197,10 @@ public class CloudApiController : ControllerBase
 
                 if (raw)
                 {
-                    return new OkObjectResult(JsonConvert.SerializeObject(new
+                    return new JsonResult(new
                     {
                         exports
-                    }, Formatting.Indented));
+                    });
                 }
             }
         }
@@ -185,7 +218,7 @@ public class CloudApiController : ControllerBase
         };
     }
     
-    private ObjectResult ProcessStaticMesh(UStaticMesh staticMesh)
+    private static JsonResult ProcessStaticMesh(UStaticMesh staticMesh)
     {
         var exporterOptions = new ExporterOptions
         {
@@ -215,10 +248,10 @@ public class CloudApiController : ControllerBase
         newLod = new Mesh(newFilePath, newLod.FileData, newLod.Materials);
         newLod.TryWriteToDir(new DirectoryInfo(Globals.RuntimeFolder.FullName), out var label, out var filePath);
 
-        return new OkObjectResult(JsonConvert.SerializeObject(new
+        return new JsonResult(new
         {
-            path = filePath
-        }, Formatting.Indented));
+            path = filePath.Replace("/", "\\")
+        });
     }
 
     /* Return a texture as a file / encoding */
@@ -307,15 +340,21 @@ public class CloudApiController : ControllerBase
             var settings = new JsonSerializerSettings
                 { ContractResolver = new FColorVertexBufferCustomResolver(converters!) };
 
-            /* Serialize object, and return it indented */
-            return new OkObjectResult(JsonConvert.SerializeObject(new
+            var json = JsonConvert.SerializeObject(new
             {
                 exports = finalExports
-            }, Formatting.Indented, settings));
+            }, Formatting.Indented, settings);
+
+            return new ContentResult
+            {
+                Content = json,
+                ContentType = "application/json",
+                StatusCode = 200
+            };
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            return StatusCode(500, ex);
+            return NotFoundResponse;
         }
     }
     
