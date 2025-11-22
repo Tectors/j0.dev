@@ -2,10 +2,12 @@ using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Meshes;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
+using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Exports.Texture;
+using CUE4Parse.UE4.IO.Objects;
 using CUE4Parse.UE4.Objects.Meshes;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
@@ -142,7 +144,7 @@ public class CloudApiController : ControllerBase
 
     /* Normal Export */
     [HttpGet("export")]
-    public ActionResult Get(bool raw, string? path, string? export_name, string? export_type)
+    public ActionResult Get(bool raw, string? path, string? export_name, string? export_type, bool? metadata)
     {
         if (!IsBaseProfileReady || path is null) return NotInitializedResponse;
 
@@ -207,6 +209,7 @@ public class CloudApiController : ControllerBase
 
         /* Return a raw export */
         if (raw) return HandleRawExport(path, provider);
+        if (metadata is true) return HandleExportMetadata(path, provider);
 
         /* Switch on Class Type */
         return localObject switch
@@ -356,6 +359,27 @@ public class CloudApiController : ControllerBase
         {
             return NotFoundResponse;
         }
+    }
+    
+    public ActionResult HandleExportMetadata(string path, BaseProvider provider)
+    {
+        try
+        {
+            var json = JsonConvert.SerializeObject(provider.LoadPackage(path), Formatting.Indented);
+
+            return new ContentResult
+            {
+                Content = json,
+                ContentType = "application/json",
+                StatusCode = 200
+            };
+        }
+        catch (Exception)
+        {
+            /* ignored */
+        }
+
+        return NotFoundResponse;
     }
     
     /*
