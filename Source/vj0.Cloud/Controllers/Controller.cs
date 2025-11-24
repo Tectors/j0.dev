@@ -113,10 +113,6 @@ public class CloudApiController : ControllerBase
         });
     }
     
-    private static string Indented(object value)  {
-        return JsonConvert.SerializeObject(value, Formatting.Indented);
-    }
-    
     /* Request to retrieve all HLOD paths */
     [HttpGet("hlod/paths")]
     public ActionResult GetHLODPaths()
@@ -141,6 +137,39 @@ public class CloudApiController : ControllerBase
             paths
         });
     }
+    
+    /* Request to retrieve all HLOD paths */
+    [HttpGet("plugin")]
+    public ActionResult GetPlugin(string name)
+    {
+        if (!IsBaseProfileReady || MainProfile == null) return NotInitializedResponse;
+        
+        MainProfile.Provider.VirtualPaths.TryGetValue(name, out var path);
+        
+        string DirectoryPath = path
+            .Replace(MainProfile.Provider.ProjectName + "/Plugins/", "")
+            .Substring(0, path.LastIndexOf('/'));
+
+        return GetPluginManifest(path + "/" + name + ".uplugin");
+    }
+
+    public ActionResult GetPluginManifest(string path)
+    {
+        MainProfile!.Provider.TryGetGameFile(path, out var gameFile);
+        if (gameFile == null) return NotFoundResponse;
+            
+        var data = MainProfile.Provider.SaveAsset(gameFile);
+        using var stream = new MemoryStream(data);
+        stream.Position = 0;
+        using var reader = new StreamReader(stream);
+
+        return new ContentResult
+        {
+            Content = reader.ReadToEnd(),
+            ContentType = "application/json",
+            StatusCode = 200
+        };
+    }
 
     /* Normal Export */
     [HttpGet("export")]
@@ -148,6 +177,11 @@ public class CloudApiController : ControllerBase
     {
         if (!IsBaseProfileReady || path is null) return NotInitializedResponse;
 
+        if (path.EndsWith("uplugin") && MainProfile != null)
+        {
+            return GetPluginManifest(path);
+        }
+        
         var contentType = Request.Headers.ContentType;
         path = path.SubstringBefore('.');
         
