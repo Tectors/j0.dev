@@ -94,11 +94,16 @@ public class CloudApiController : ControllerBase
     public ActionResult Get()
     {
         if (!IsBaseProfileReady) return NotInitializedResponse;
+        
+        var enumName = Enum.GetName(typeof(EGame), MainProfile?.Version);
+        var underscore = enumName.LastIndexOf('_');
+        var minor_version = int.Parse(enumName[(underscore + 1)..]);
 
         return new JsonResult(new
         {
             name = MainProfile?.Provider.ProjectName,
-            major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4
+            major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4,
+            minor_version
         });
     }
     
@@ -157,7 +162,7 @@ public class CloudApiController : ControllerBase
     {
         MainProfile!.Provider.TryGetGameFile(path, out var gameFile);
         if (gameFile == null) return NotFoundResponse;
-            
+
         var data = MainProfile.Provider.SaveAsset(gameFile);
         using var stream = new MemoryStream(data);
         stream.Position = 0;
