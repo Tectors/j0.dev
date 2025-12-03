@@ -46,6 +46,11 @@ To simplify distribution, all license texts have been consolidated into a single
 git clone https://github.com/Tectors/j0.dev --recursive
 ```
 
+## Build
+```
+dotnet publish Source/vj0 -c Release --no-self-contained -r win-x64 -o "./Release" -p:PublishSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:IncludeNativeLibrariesForSelfExtract=true
+```
+
 ### Update Libraries
 
 ```
