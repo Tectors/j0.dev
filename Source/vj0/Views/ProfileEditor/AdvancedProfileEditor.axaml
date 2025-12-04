@@ -44,7 +44,7 @@
                                              Classes="clearButton"
                                              Text="{Binding Profile.MappingsContainer.Path}"/>
                         
-                                    <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseMappingsPathFile}">
+                                    <Button Classes="HoverLift" Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseMappingsPathFile}">
                                         <avalonia:SymbolIcon Symbol="Document"/>
                                     </Button>
                                 </Grid>

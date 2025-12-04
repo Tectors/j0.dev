@@ -67,18 +67,6 @@
                         <ComboBox Cursor="Hand" ItemsSource="{extensions:EnumToItemsSource {x:Type versions:ELanguage}}" SelectedItem="{Binding GameLanguage, Converter={StaticResource EnumToRecord}}"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
-                
-                <TextBlock Classes="SettingsCategory" Text="Advanced"/>
-                
-                <controls:SettingsExpander Header="Show Debug Data" Description="Displays extra information for certain panels.">
-                    <controls:SettingsExpander.IconSource>
-                        <fluent:FluentIconSource Icon="DeveloperBoard" />
-                    </controls:SettingsExpander.IconSource>
-                    
-                    <controls:SettingsExpander.Footer>
-                        <ToggleSwitch IsChecked="{Binding ShowDebugData}" Cursor="Hand"/>
-                    </controls:SettingsExpander.Footer>
-                </controls:SettingsExpander>
             </StackPanel>
         </ScrollViewer>
     </Grid>

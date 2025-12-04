@@ -43,14 +43,14 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
-                <controls:SettingsExpander Header="Decompile Bytecode into C++" Description="Allows bytecode to be decompiled into pseudo C++ format.">
+                <!--<controls:SettingsExpander Header="Decompile Bytecode into C++" Description="Allows bytecode to be decompiled into pseudo C++ format.">
                     <controls:SettingsExpander.IconSource>
                         <fluent:FluentIconSource Icon="QrCode" />
                     </controls:SettingsExpander.IconSource>
                     
                     <controls:SettingsExpander.Footer>
                     </controls:SettingsExpander.Footer>
-                </controls:SettingsExpander>
+                </controls:SettingsExpander>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

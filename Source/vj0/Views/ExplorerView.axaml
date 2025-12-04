@@ -164,7 +164,7 @@
                 </Border>
             </Grid>
             
-            <Grid Margin="0 -3 10 5" Grid.Row="3" IsVisible="{Binding Source={x:Static framework:AppServices.Settings}, Path=Application.ShowDebugData}">
+            <Grid Margin="0 -3 10 5" Grid.Row="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>

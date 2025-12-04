@@ -82,7 +82,7 @@
                         <TextBox Grid.Column="0" Classes="clearButton"
                                  HorizontalAlignment="Stretch"
                                  Text="{Binding Profile.ArchiveDirectory}"/>
-                        <Button Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseArchiveDirectoryPath}">
+                        <Button Classes="HoverLift" Cursor="Hand" VerticalAlignment="Top" Grid.Column="1" Margin="10 0 0 0" Command="{Binding Profile.BrowseArchiveDirectoryPath}">
                             <fluent:SymbolIcon Symbol="Folder"/>
                         </Button>
                     </Grid>

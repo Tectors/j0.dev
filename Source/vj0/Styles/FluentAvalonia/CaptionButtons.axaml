@@ -92,7 +92,7 @@
               </Viewbox>
               
               <Border Name="RestoreButtonDefault" Width="10" Height="10" BorderBrush="White" BorderThickness="1" CornerRadius="2"></Border>
-              <Border Width="10" Height="10" BorderBrush="White" Opacity="0.3" BorderThickness="1" CornerRadius="2" Margin="1 1 0 0"></Border>
+              <Border Width="8" Height="8" BorderBrush="White" Opacity="0.1" BorderThickness="1" CornerRadius="1"></Border>
             </Grid>
           </Button>
           <Button x:Name="PART_CloseButton"
