@@ -17,7 +17,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
     
     public bool DoesCharacteristicsMatch(BaseProfile Profile)
     {
-        return Profile.ArchiveDirectory.Contains("Fortnite", StringComparison.OrdinalIgnoreCase) && Regex.IsMatch(Profile.Name, @"^\d+(\.\d+){0,2}$");
+        return !string.IsNullOrEmpty(Profile.ArchiveDirectory) && Profile.ArchiveDirectory.Contains("Fortnite", StringComparison.OrdinalIgnoreCase) && Regex.IsMatch(Profile.Name, @"^\d+(\.\d+){0,2}$");
     }
 
     public async Task ResolveKeys(BaseProfile Profile)

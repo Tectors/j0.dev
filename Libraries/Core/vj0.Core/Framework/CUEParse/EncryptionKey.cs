@@ -17,10 +17,15 @@ public partial class EncryptionKey : ObservableObject
     {
         if (string.IsNullOrWhiteSpace(key))
         {
-            return true;
+            return false;
         }
 
         if (key.Contains(' '))
+        {
+            return false;
+        }
+        
+        if (key.Equals(""))
         {
             return false;
         }
@@ -31,7 +36,9 @@ public partial class EncryptionKey : ObservableObject
     }
 
     [JsonIgnore] public bool IsValid => IsValidKey(Key);
-    [JsonIgnore] public FAesKey AESKey => new(Key);
+    [JsonIgnore] public FAesKey AESKey => IsValidKey(Key) 
+        ? new FAesKey(Key)
+        : new FAesKey(Globals.EMPTY_CHAR);
 
     private bool Equals(EncryptionKey? other)
     {

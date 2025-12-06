@@ -446,7 +446,7 @@ public partial class MainWindowModel : WindowModelBase
     private void UpdateDiscordDetailStatus()
     {
         var details = IsProfileInitialized
-            ? $"{CurrentProfile!.Name} {LoadedFilesDisplay}"
+            ? $"{CurrentProfile!.Name} — Loaded"
             : $"{CurrentProfile!.Name} — Idling";
 
         Discord.UpdateDetails(details);

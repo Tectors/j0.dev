@@ -75,11 +75,13 @@ public static class SyncToFModel
                     ["key"] = key.Key,
                 });
             }
+
+            var archiveDirectory = profile.ArchiveDirectory.Replace("/", "\\").TrimEnd('\\');
             
-            perDirectory[profile.ArchiveDirectory.Replace("/", "\\").TrimEnd('\\')] = new JsonObject
+            perDirectory[archiveDirectory] = new JsonObject
             {
                 ["GameName"] = profile.Name,
-                ["GameDirectory"] = profile.ArchiveDirectory.Replace("/", "\\").TrimEnd('\\'),
+                ["GameDirectory"] = archiveDirectory,
                 
                 ["IsManual"] = true,
                 ["UeVersion"] = profile.Version.ToString(),
@@ -119,6 +121,13 @@ public static class SyncToFModel
                     ["dynamicKeys"] = keys
                 }
             };
+        }
+
+        if (MainWM.CurrentProfile is not null)
+        {
+            var archiveDirectory = MainWM.CurrentProfile.ArchiveDirectory.Replace("/", "\\").TrimEnd('\\');
+
+            Node["GameDirectory"] = archiveDirectory;
         }
 
         /* Save Profiles <~~~~~~~~~~~~~~~~~ */
