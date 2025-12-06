@@ -29,6 +29,8 @@ public partial class ApplicationSettingsViewModel : ViewModelBase
         ? new SlideNavigationTransitionInfo()
         : new SuppressNavigationTransitionInfo();
 
+    [ObservableProperty] private bool _syncFModel = false;
+    
     partial void OnGameLanguageChanged(ELanguage value)
     {
         if (MainWM.CurrentProfile is null || MainWM.CurrentProfile.Provider is null) return;

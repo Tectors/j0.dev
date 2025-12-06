@@ -466,6 +466,11 @@ public class Profile : BaseProfileDisplay
 
         var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
         await File.WriteAllTextAsync(Path.Combine(ProfilesFolder.ToString(), FileName), json);
+
+        if (Settings.Application.SyncFModel)
+        {
+            _ = SyncToFModel.Save();
+        }
     }
 
     public void Delete()

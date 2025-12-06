@@ -39,7 +39,7 @@ public static class Globals
     public const string DONATE_LINK = "https://ko-fi.com/t4ctor";
     
     /* Application Folders */
-    private static readonly string ApplicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+    public static readonly string ApplicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
     private static readonly string DataFolder = Path.Combine(ApplicationDataFolder, CODENAME);
     
     public static readonly DirectoryInfo ProfilesFolder = new(Path.Combine(DataFolder, "Profiles"));

@@ -21,7 +21,7 @@
         
         <ScrollViewer Classes="SettingsScrollViewer">
             <StackPanel Classes="SettingsStackPanel">
-                <TextBlock Classes="SettingsCategory" Text="Startup &amp; Behavior"/>
+                <TextBlock Classes="SettingsCategory" Text="Convenience"/>
                 
                 <controls:SettingsExpander
                     Header="Auto-Load Last Profile"
@@ -36,6 +36,16 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
+                <controls:SettingsExpander Header="Sync to FModel" Description="Syncs profiles to FModel's settings. (this wipes your FModel builds and syncs)">
+                    <controls:SettingsExpander.IconSource>
+                        <fluent:FluentIconSource Icon="CubeSync" />
+                    </controls:SettingsExpander.IconSource>
+                    
+                    <controls:SettingsExpander.Footer>
+                        <ToggleSwitch IsChecked="{Binding SyncFModel}" Cursor="Hand"/>
+                    </controls:SettingsExpander.Footer>
+                </controls:SettingsExpander>
+                
                 <controls:SettingsExpander Header="Remember Window Size" Description="Keeps track of the window size and restores it on next launch.">
                     <controls:SettingsExpander.IconSource>
                         <fluent:FluentIconSource Icon="Window" />
@@ -46,6 +56,8 @@
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
                 
+                <TextBlock Classes="SettingsCategory" Text="General"/>
+                
                 <controls:SettingsExpander Header="Tab Transitions" Description="Enable or disable the animation shown when switching between tabs.">
                     <controls:SettingsExpander.IconSource>
                         <fluent:FluentIconSource Icon="SlideTransition" />
@@ -55,8 +67,6 @@
                         <ToggleSwitch IsChecked="{Binding UseTabTransitions}" Cursor="Hand"/>
                     </controls:SettingsExpander.Footer>
                 </controls:SettingsExpander>
-                
-                <TextBlock Classes="SettingsCategory" Text="General"/>
                 
                 <controls:SettingsExpander Header="Game Language" Description="The language used for in-game text and menus.">
                     <controls:SettingsExpander.IconSource>

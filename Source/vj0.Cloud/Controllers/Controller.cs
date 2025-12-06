@@ -99,7 +99,8 @@ public class CloudApiController : ControllerBase
         {
             name = MainProfile?.Provider.ProjectName,
             major_version = MainProfile?.Version >= EGame.GAME_UE5_0 ? 5 : 4,
-            minor_version
+            minor_version,
+            profile = MainProfile
         });
     }
     
