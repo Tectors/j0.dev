@@ -2,12 +2,10 @@ using CUE4Parse_Conversion;
 using CUE4Parse_Conversion.Meshes;
 using CUE4Parse_Conversion.Sounds;
 using CUE4Parse_Conversion.Textures;
-using CUE4Parse.UE4.Assets;
 using CUE4Parse.UE4.Assets.Exports;
 using CUE4Parse.UE4.Assets.Exports.Sound;
 using CUE4Parse.UE4.Assets.Exports.StaticMesh;
 using CUE4Parse.UE4.Assets.Exports.Texture;
-using CUE4Parse.UE4.IO.Objects;
 using CUE4Parse.UE4.Objects.Meshes;
 using CUE4Parse.UE4.Versions;
 using CUE4Parse.Utils;
@@ -87,16 +85,14 @@ public class CloudApiController : ControllerBase
         SecondaryBaseProfiles = list;
     }
     
-    /* TODO: ................... ENDPOINTS START HERE ......................................................................... */
-    
     /* Metadata request to retrieve information about this process */
     [HttpGet("metadata")]
     public ActionResult Get()
     {
         if (!IsBaseProfileReady) return NotInitializedResponse;
         
-        var enumName = Enum.GetName(typeof(EGame), MainProfile?.Version);
-        var underscore = enumName.LastIndexOf('_');
+        var enumName = Enum.GetName(typeof(EGame), MainProfile?.Version!);
+        var underscore = enumName!.LastIndexOf('_');
         var minor_version = int.Parse(enumName[(underscore + 1)..]);
 
         return new JsonResult(new
@@ -150,15 +146,11 @@ public class CloudApiController : ControllerBase
         if (!IsBaseProfileReady || MainProfile == null) return NotInitializedResponse;
         
         MainProfile.Provider.VirtualPaths.TryGetValue(name, out var path);
-        
-        string DirectoryPath = path
-            .Replace(MainProfile.Provider.ProjectName + "/Plugins/", "")
-            .Substring(0, path.LastIndexOf('/'));
 
-        return GetPluginManifest(path + "/" + name + ".uplugin");
+        return GetRawExport(path + "/" + name + ".uplugin");
     }
 
-    public ActionResult GetPluginManifest(string path)
+    public ActionResult GetRawExport(string path)
     {
         MainProfile!.Provider.TryGetGameFile(path, out var gameFile);
         if (gameFile == null) return NotFoundResponse;
@@ -175,16 +167,16 @@ public class CloudApiController : ControllerBase
             StatusCode = 200
         };
     }
-
+    
     /* Normal Export */
     [HttpGet("export")]
-    public ActionResult Get(bool raw, string? path, string? export_name, string? export_type, bool? metadata)
+    public ActionResult GetExport(bool raw, string? path, string? export_name, string? export_type, bool? metadata, bool? save)
     {
         if (!IsBaseProfileReady || path is null) return NotInitializedResponse;
 
         if (path.EndsWith("uplugin") && MainProfile != null)
         {
-            return GetPluginManifest(path);
+            return GetRawExport(path);
         }
         
         var contentType = Request.Headers.ContentType;
@@ -222,7 +214,7 @@ public class CloudApiController : ControllerBase
                     }
                 }
             }
-            
+
             if (!string.IsNullOrEmpty(export_type))
             {
                 var exports = new List<UObject>();
@@ -242,6 +234,36 @@ public class CloudApiController : ControllerBase
                     {
                         exports
                     });
+                }
+            }
+        }
+
+        if (save is true)
+        {
+            switch (localObject)
+            {
+                case USoundWave wave:
+                {
+                    wave.Decode(true, out _, out var data);
+
+                    if (data != null)
+                    {
+                        var ownerName = wave.Owner!.Name;
+                        ownerName = ownerName.SubstringBeforeWithLast('/').TrimEnd('/');
+
+                        var savePath = Path.Combine(Globals.AudioFilesFolder.FullName, ownerName.Replace("/", "\\"));
+                        var finalPath = savePath + "\\" + Path.GetFileName(path) + ".ogg";
+
+                        Directory.CreateDirectory(savePath);
+                        System.IO.File.WriteAllBytes(finalPath, data);
+
+                        return new JsonResult(new
+                        {
+                            file = finalPath
+                        });
+                    }
+                    
+                    break;
                 }
             }
         }

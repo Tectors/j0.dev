@@ -48,6 +48,8 @@ public static class Globals
     public static readonly DirectoryInfo OnDemandFolder = new(Path.Combine(RuntimeFolder.ToString(), "Demand"));
     public static readonly DirectoryInfo MappingsFolder = new(Path.Combine(RuntimeFolder.ToString(), "Mappings"));
     public static readonly DirectoryInfo LogsFolder = new(Path.Combine(RuntimeFolder.ToString(), "Logs"));
+    private static readonly DirectoryInfo ExportFolder = new(Path.Combine(RuntimeFolder.ToString(), "Export"));
+    public static readonly DirectoryInfo AudioFilesFolder = new(Path.Combine(ExportFolder.ToString(), "Audio"));
     
     /* Other Constants */
     public static readonly FGuid ZERO_GUID = new();
