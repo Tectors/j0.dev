@@ -43,11 +43,11 @@ public class UpdateService : IService
         win.CenterToScreen(MainWM.Window);
         win.Show();
         
-        win.WM.Title = "Improved AES Key Retrieval";
+        win.WM.Title = "Sync To FModel";
         win.WM.Tag = true;
         win.WM.TagType = TagType.New;
         win.WM.SecondaryButtonEnabled = false;
-        win.WM.Description = "Enhanced the AES Key fetching process for better reliability across branded APIs.";
+        win.WM.Description = "Automatically refreshes FModel's directories based on your profiles, improving consistency, and reducing manual setup.";
     }
 
     private async Task UpdateVersioning()

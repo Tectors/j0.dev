@@ -82,7 +82,7 @@
                             
                             <!-- Donate button -->
                             <Grid>
-                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="10">
+                                <Border Margin="-35 0 -35 0" Opacity="0.65" Background="#ff1c68" Width="150" Height="25">
                                     <Border.Effect>
                                         <BlurEffect Radius="90"/>
                                     </Border.Effect>
@@ -91,22 +91,22 @@
                                 <Button Click="OpenKoFi" ToolTip.Tip="Help support us, it really means a lot."
                                         ClipToBounds="False"
                                         CornerRadius="10"
-                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="15 0" Height="40"
+                                        Cursor="Hand" HorizontalAlignment="Stretch" Padding="20 0" Height="43"
                                         Classes="Glass WhiteOutline RedPressedOutline HoverLift" HorizontalContentAlignment="Center"
                                         PointerEntered="Donate_OnPointerEntered"
                                         VerticalContentAlignment="Center">
-                                    <StackPanel Orientation="Horizontal" Spacing="14">
+                                    <StackPanel Orientation="Horizontal" Spacing="16">
                                         <Grid>
-                                            <Viewbox Width="18" Height="18" Stretch="Uniform">
+                                            <Viewbox Width="22" Height="22" Stretch="Uniform">
                                                 <Path Fill="#ff1c68"
                                                       Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
                                                 <Viewbox.Effect>
                                                     <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
-                                                                      OffsetX="0" OffsetY="0" Opacity="0.3"/>
+                                                                      OffsetX="1" OffsetY="1" Opacity="0.0"/>
                                                 </Viewbox.Effect>
                                             </Viewbox>
                                             
-                                            <Viewbox Width="18" Name="HeartScale" Height="18" Stretch="Uniform" ZIndex="1" IsHitTestVisible="False">
+                                            <Viewbox Width="22" Name="HeartScale" Height="22" Stretch="Uniform" ZIndex="1" IsHitTestVisible="False">
                                                 <Viewbox.RenderTransform>
                                                     <ScaleTransform ScaleX="1" ScaleY="1"/>
                                                 </Viewbox.RenderTransform>
@@ -115,7 +115,7 @@
                                                       Data="M20.84,4.61 C18.99,2.76 16.01,2.76 14.16,4.61 L12,6.77 L9.84,4.61 C7.99,2.76 5.01,2.76 3.16,4.61 C1.31,6.46 1.31,9.44 3.16,11.29 L12,20.13 L20.84,11.29 C22.69,9.44 22.69,6.46 20.84,4.61 Z"/>
                                                 <Viewbox.Effect>
                                                     <DropShadowEffect Color="#e3e3e3" BlurRadius="50"
-                                                                      OffsetX="0" OffsetY="0" Opacity="0.3"/>
+                                                                      OffsetX="0" OffsetY="0" Opacity="0.0"/>
                                                 </Viewbox.Effect>
                                             </Viewbox>
                                         </Grid>

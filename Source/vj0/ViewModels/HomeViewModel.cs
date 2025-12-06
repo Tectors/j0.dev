@@ -34,6 +34,12 @@ public class HomeViewModel : ViewModelBase
         "PR pushed 2067",
         "todo: fix this - 1993",
         "fix scheduled for Q3 1997",
+        "refactored 67 times, still works",
+        "is this thing on?",
+        "half code, half ritual",
+        "ᓚᘏᗢ",
+        "ᰔ",
+        "ogs remember umodel :]"
     ];
     
     public readonly string[] Tips =

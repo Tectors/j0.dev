@@ -9,7 +9,7 @@ public static class Globals
 {
     /* Format: 0.0.0.0 */
     public const string VERSION = "0.0.4.5";
-    public const string COMMIT = "";
+    public const string COMMIT = "d41e0f0";
     
     public static bool IS_COMMIT_AVAILABLE => !string.IsNullOrEmpty(COMMIT);
     public static bool IS_COMMIT_UNAVAILABLE => !IS_COMMIT_AVAILABLE;

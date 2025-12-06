@@ -53,22 +53,28 @@ public partial class HomeView : ViewBase<HomeViewModel>
         MainWM.NavigateToExplorer();
     }
 
+    static bool IsHeartAnimationPlaying;
+    
     private async void Donate_OnPointerPressed(object? sender)
     {
+        if (IsHeartAnimationPlaying) return;
+        
         if (HeartScale?.RenderTransform is not ScaleTransform heartTransform)
         {
             return;
         }
 
-        const double startScale = 1.5;
-        const double endScale = 15.0;
-        const double durationMs = 400;
+        const double startScale = 1.0;
+        const double endScale = 20.0;
+        const double durationMs = 800;
         const int stepMs = 16;
 
         var startOpacity = HeartScale.Opacity;
         const double endOpacity = 0.0;
 
         double elapsed = 0;
+        
+        IsHeartAnimationPlaying = true;
 
         while (elapsed < durationMs)
         {
@@ -91,6 +97,8 @@ public partial class HomeView : ViewBase<HomeViewModel>
         heartTransform.ScaleY = 1.0;
         
         HeartScale.Opacity = 1.0;
+        
+        IsHeartAnimationPlaying = false;
     }
 
     private void Donate_OnPointerEntered(object? sender, PointerEventArgs e)
