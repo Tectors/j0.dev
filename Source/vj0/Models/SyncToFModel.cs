@@ -3,7 +3,6 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
-using vj0.Core.Framework.CUEParse;
 using vj0.Models.Profiles;
 
 namespace vj0.Models;
@@ -29,6 +28,8 @@ public static class SyncToFModel
 
         Node = JsonNode.Parse(json);
         LoadedProfiles = await Profile.LoadAllAsync();
+   
+        LoadedProfiles = Profile.SortProfiles(LoadedProfiles);
     }
     
     public static Task Wipe()

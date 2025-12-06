@@ -59,10 +59,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
 
         var profiles = GameDetection.LoadedProfiles;
 
-        var sorted = profiles.OrderByDescending(p => !GetSortKey(p).IsNumeric)
-           .ThenByDescending(p => GetSortKey(p).NumericVersion)
-           .ThenBy(p => GetSortKey(p).NameLower)
-           .ToList();
+        var sorted = Profile.SortProfiles(profiles);
 
         _ = Task.Run(() =>
         {
@@ -162,7 +159,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
             ProfileListPanel.Children.Remove(existingBorder);
             IsEmpty = CardMap.Count == 0;
 
-            var newKey = GetSortKey(profile);
+            var newKey = profile.GetSortKey();
 
             for (var i = 0; i < ProfileListPanel.Children.Count; i++)
             {
@@ -172,7 +169,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
                     continue;
                 }
 
-                var existingKey = GetSortKey(existingCard.ViewModel.Profile);
+                var existingKey = existingCard.ViewModel.Profile.GetSortKey();
 
                 var compare = newKey.IsNumeric switch
                 {
@@ -195,7 +192,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
     {
         if (card.ViewModel.Profile is null || ProfileListPanel is null) return;
 
-        var newKey = GetSortKey(card.ViewModel.Profile);
+        var newKey = card.ViewModel.Profile.GetSortKey();
 
         for (var i = 0; i < ProfileListPanel.Children.Count; i++)
         {
@@ -205,7 +202,7 @@ public partial class ProfileSelectionViewModel : ViewModelBase
                 continue;
             }
 
-            var existingKey = GetSortKey(existingCard.ViewModel.Profile);
+            var existingKey = existingCard.ViewModel.Profile.GetSortKey();
 
             var compare = newKey.IsNumeric switch
             {
@@ -245,15 +242,5 @@ public partial class ProfileSelectionViewModel : ViewModelBase
         ViewModelMap[profile.FileName] = newVm;
         
         return newVm;
-    }
-
-    private static (bool IsNumeric, decimal? NumericVersion, string NameLower) GetSortKey(Profile profile)
-    {
-        if (decimal.TryParse(profile.Name, NumberStyles.Number, CultureInfo.InvariantCulture, out var version))
-        {
-            return (true, version, string.Empty);
-        }
-
-        return (false, null, profile.Name.ToLowerInvariant());
     }
 }

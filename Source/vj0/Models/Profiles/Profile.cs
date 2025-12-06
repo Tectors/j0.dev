@@ -793,4 +793,22 @@ public class Profile : BaseProfileDisplay
             Process.Start(new ProcessStartInfo("explorer.exe", argument) { UseShellExecute = true });
         }
     }
+    
+    public (bool IsNumeric, decimal? NumericVersion, string NameLower) GetSortKey()
+    {
+        if (decimal.TryParse(Name, NumberStyles.Number, CultureInfo.InvariantCulture, out var version))
+        {
+            return (true, version, string.Empty);
+        }
+
+        return (false, null, Name.ToLowerInvariant());
+    }
+
+    public static List<Profile> SortProfiles(List<Profile> Profiles)
+    {
+        return Profiles.OrderByDescending(p => !p.GetSortKey().IsNumeric)
+            .ThenByDescending(p => p.GetSortKey().NumericVersion)
+            .ThenBy(p => p.GetSortKey().NameLower)
+            .ToList();
+    }
 }
