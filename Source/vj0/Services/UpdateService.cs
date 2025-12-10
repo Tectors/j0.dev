@@ -34,6 +34,8 @@ public class UpdateService : IService
         
             if (CurrentVersion > LatestReleaseVersion) return;
         }
+
+        return;
         
         var win = new GalleryWindow
         {

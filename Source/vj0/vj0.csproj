@@ -219,7 +219,6 @@
 
   <ItemGroup>
     <Folder Include="Assets\Thumbnails\Update\" />
-    <Folder Include="Models\API\" />
   </ItemGroup>
 
     <Target Name="IncludePlugins" BeforeTargets="ResolveProjectReferences">
