@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace vj0.Models.API.Responses;
+namespace vj0.API.Models.GitHub.Responses;
 
 public class GitHubReleaseResponse
 {

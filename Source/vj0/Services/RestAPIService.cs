@@ -5,9 +5,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 using RestSharp;
-
+using vj0.API.Models.GitHub;
 using vj0.Framework;
-using vj0.Models.API;
 
 namespace vj0.Services;
 

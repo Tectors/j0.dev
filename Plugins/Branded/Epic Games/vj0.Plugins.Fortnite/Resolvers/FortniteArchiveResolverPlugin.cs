@@ -1,7 +1,8 @@
 using System.Text.RegularExpressions;
 
 using Serilog;
-
+using vj0.API.Models.GitHub;
+using vj0.API.Models.GitHub.Responses;
 using vj0.Plugins.Interfaces;
 using vj0.Plugins.Resolvers;
 using vj0.Core.Extensions;
@@ -25,7 +26,7 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
         var InherentlyMatches = ((IGamePlugin)this).DoesInherentlyMatch(Profile);
         
         const string UEDB_FN_API_URL = $"https://uedb.dev/svc/api/v1/fortnite/aes";
-        var GIT_ARCHIVE_URL = $"https://raw.githubusercontent.com/Tectors/fortnite-aes-archive/refs/heads/master/api/archive/{Profile.Name}.json";
+        var GIT_ARCHIVE_URL = $"https://raw.githubusercontent.com/dippyshere/fortnite-aes-archive/refs/heads/master/api/archive/{Profile.Name}.json";
 
         string API_URL;
 
@@ -39,8 +40,9 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
             }
             
             /* Server doesn't actually have proper versioning yet, at the time of writing this */
-            var useUEDBAPI = value >= 18.00;
-            API_URL = useUEDBAPI ? UEDB_FN_API_URL + $"?version={Profile.Name}" : GIT_ARCHIVE_URL;
+            /*var useUEDBAPI = value >= 18.00;
+            API_URL = useUEDBAPI ? UEDB_FN_API_URL + $"?version={Profile.Name}" : GIT_ARCHIVE_URL;*/
+            API_URL = GIT_ARCHIVE_URL;
         }
         
         var aes = await Globals.API.GetAesAsync(API_URL, useBaseUrl: false);
@@ -96,14 +98,25 @@ public sealed class FortniteArchiveResolverPlugin : IArchiveResolverPlugin, IGam
             return;
         }
         
-        if (value >= 15.20)
+        if (true /*value >= 15.20*/)
         {
-            var mapping = await Globals.API.FetchMappingAsync(Profile.Name);
-        
-            if (mapping is { LocalPath: not null })
+            var AvailableMappings = await API.Globals.GitHub.GetOrsionUmaps();
+            if (AvailableMappings is null) return;
+            
+            foreach (var Release in AvailableMappings)
             {
+                if (!Release.Name.Contains("+Release-" + Profile.Name + "-CL", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+                
+                var targetFolder = Path.Combine(Core.Globals.MappingsFolder.FullName, Profile.Name);
+                
+                var downloaded = await Globals.API.DownloadFileAsync(Release.DownloadURL, new DirectoryInfo(targetFolder));
+                if (downloaded is null) continue;
+                
                 Profile.MappingsContainer.Override = true;
-                Profile.MappingsContainer.Path = mapping.LocalPath;
+                Profile.MappingsContainer.Path = downloaded.FullName;
             }
         }
     }

@@ -80,4 +80,16 @@ public class APIBase
             Log.Error(response.Content);
         }
     }
+    
+    public async Task<FileInfo?> DownloadFileAsync(string url, DirectoryInfo destination)
+    {
+        var outPath = Path.Combine(destination.FullName, Path.GetFileName(url));
+        var data = await _client.DownloadDataAsync(new RestRequest(url));
+        if (data is null) return null;
+        
+        Directory.CreateDirectory(destination.FullName);
+
+        await File.WriteAllBytesAsync(outPath, data);
+        return new FileInfo(outPath);
+    }
 }
