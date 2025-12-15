@@ -39,7 +39,8 @@ public class HomeViewModel : ViewModelBase
         "half code, half ritual",
         "ᓚᘏᗢ",
         "ᰔ",
-        "ogs remember umodel :]"
+        "ogs remember umodel :]",
+        "ueparse broke things again!☕"
     ];
     
     public readonly string[] Tips =
